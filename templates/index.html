@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maria Rodriguez Portfolio</title>
+    <link rel="stylesheet" href="/static/styles.css"> <!-- Link to the external stylesheet -->
+    <script src="/static/script.js" defer></script> <!-- Link to your JavaScript file -->
+</head>
+<body>
+    <div id="cursor"></div>
+
+    <video id="video" autoplay loop muted>
+        <source src="/static/hello.mov" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <div class="icons-container">
+        <div class="icon-container" id="icon1-container">
+            <div id="icon1" class="icon"></div>
+            <div class="icon-label">About Me</div>
+        </div>
+        <div class="icon-container" id="icon2-container">
+            <div class="icon" id="icon2"></div>
+            <div class="icon-label">Resume</div>
+        </div>
+        <div class="icon-container" id="icon3-container">
+            <div class="icon" id="icon3"></div>
+            <div class="icon-label">Projects</div>
+        </div>
+        <div class="icon-container" id="icon5-container">
+            <div class="icon" id="icon5"></div>
+            <div class="icon-label">Contact Me</div>
+        </div>
+    </div>
+
+    <div id="modal1" class="modal">
+        <div class="modal-blue-line"></div>
+        <button class="modal-close">&times;</button>
+        <!-- Add content for About Me modal -->
+    </div>
+
+    <div id="modal2" class="modal">
+        <div class="modal-blue-line"></div>
+        <button class="modal-close">&times;</button>
+        <img src="/static/Maria Rodriguez - Resume.jpg" style="width: 105%; height: 105%; display: block; margin: 0.5px auto 0 -22px;" />
+    </div>
+
+    <div id="modal3" class="modal">
+        <div class="modal-blue-line"></div>
+        <button class="modal-close">&times;</button>
+        <!-- Add content for Projects modal -->
+    </div>
+
+    <div id="modal5" class="modal">
+        <div class="modal-blue-line"></div>
+        <button class="modal-close">&times;</button>
+        <form id="contact-form">
+            <div>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required />
+            </div>
+            <div>
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="4" required></textarea>
+            </div>
+            <button type="submit">Send Message</button>
+        </form>
+    </div>
+</body>
+</html>
