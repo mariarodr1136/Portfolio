@@ -9,6 +9,7 @@ const modals = {
 const closeButtons = document.querySelectorAll('.modal-close');
 let cursorVisible = false;
 
+// Update cursor position
 function updateCursor(e) {
     const x = e.clientX;
     const y = e.clientY;
@@ -38,17 +39,17 @@ function positionModal(modal) {
 }
 
 window.onload = () => {
-    // First, hide all modals
+    // Hide all modals initially
     Object.values(modals).forEach(modal => {
-        modal.style.display = 'none'; // Hide all modals initially
+        modal.style.display = 'none';
     });
 
-    // Then, show only the About Me modal
+    // Show only the About Me modal initially
     modals.icon1.style.display = 'block';
     positionModal(modals.icon1);
 };
 
-
+// Handle icon hover and click events
 icons.forEach(icon => {
     icon.addEventListener('mouseenter', () => {
         cursor.style.backgroundImage = "url('/static/click.png')";
@@ -67,6 +68,7 @@ icons.forEach(icon => {
     });
 });
 
+// Handle modal close button events
 closeButtons.forEach(button => {
     button.addEventListener('click', (e) => {
         const modal = e.target.closest('.modal');
@@ -82,6 +84,7 @@ closeButtons.forEach(button => {
     });
 });
 
+// Get the highest z-index among open modals
 function getHighestZIndex() {
     return Math.max(
         ...Array.from(document.querySelectorAll('.modal'))
@@ -91,6 +94,7 @@ function getHighestZIndex() {
     );
 }
 
+// Video drag functionality
 const video = document.getElementById('video');
 let isDraggingVideo = false;
 
@@ -123,6 +127,7 @@ video.addEventListener('mousedown', (e) => {
     });
 });
 
+// Form submission for contact form
 document.getElementById('contact-form').addEventListener('submit', function(event) {
     event.preventDefault();
 
@@ -151,14 +156,42 @@ document.getElementById('contact-form').addEventListener('submit', function(even
     });
 });
 
-// Blue line event listeners
+// Blue line event listeners for drag functionality
 const blueLines = document.querySelectorAll('.modal-blue-line');
-blueLines.forEach(blueLine => {
-    blueLine.addEventListener('mouseenter', () => {
-        cursor.style.backgroundImage = "url('/static/click.png')";
-    });
+let isDraggingModal = false;
 
-    blueLine.addEventListener('mouseleave', () => {
-        cursor.style.backgroundImage = "url('/static/cursor.png')";
+// Function to make modal draggable by the blue line
+function makeModalDraggable(modal, blueLine) {
+    let offsetX, offsetY;
+
+    blueLine.addEventListener('mousedown', (e) => {
+        isDraggingModal = true;
+        cursor.style.backgroundImage = "url('/static/click.png')";
+        
+        offsetX = e.clientX - modal.offsetLeft;
+        offsetY = e.clientY - modal.offsetTop;
+
+        function onModalDrag(event) {
+            if (isDraggingModal) {
+                modal.style.left = event.clientX - offsetX + 'px';
+                modal.style.top = event.clientY - offsetY + 'px';
+            }
+        }
+
+        document.addEventListener('mousemove', onModalDrag);
+
+        document.addEventListener('mouseup', () => {
+            isDraggingModal = false;
+            document.removeEventListener('mousemove', onModalDrag);
+            cursor.style.backgroundImage = "url('/static/cursor.png')";
+        });
     });
+}
+
+// Apply draggable functionality to all modals with blue lines
+Object.values(modals).forEach(modal => {
+    const blueLine = modal.querySelector('.modal-blue-line');
+    if (blueLine) {
+        makeModalDraggable(modal, blueLine);
+    }
 });
