@@ -236,3 +236,64 @@ Object.values(modals).forEach(modal => {
         makeModalDraggable(modal, blueLine);
     }
 });
+
+modals.icon4 = document.getElementById('modal4'); // Add calculator modal to modals object
+
+// Calculator functionality
+function addToDisplay(value) {
+    const display = document.getElementById('calc-display');
+    display.value += value;
+}
+
+function clearDisplay() {
+    document.getElementById('calc-display').value = '';
+}
+
+function calculate() {
+    const display = document.getElementById('calc-display');
+    try {
+        display.value = eval(display.value);
+    } catch (error) {
+        display.value = 'Error';
+    }
+}
+
+modals.icon4 = document.getElementById('modal4'); // Add calculator modal to modals object
+
+// Blue line for dragging the calculator modal
+const calcBlueLine = modals.icon4.querySelector('.modal-blue-line');
+
+// Apply draggable functionality to the calculator modal
+makeModalDraggable(modals.icon4, calcBlueLine);
+
+// Calculator functionality
+function addToDisplay(value) {
+    const display = document.getElementById('calc-display');
+    display.value += value;
+}
+
+function clearDisplay() {
+    document.getElementById('calc-display').value = '';
+}
+
+function calculate() {
+    const display = document.getElementById('calc-display');
+    try {
+        display.value = eval(display.value);
+    } catch (error) {
+        display.value = 'Error';
+    }
+}
+
+// Add event listeners to change the cursor when hovering over calculator buttons
+const calcButtons = document.querySelectorAll('.calc-buttons button');
+
+calcButtons.forEach(button => {
+    button.addEventListener('mouseenter', () => {
+        cursor.style.backgroundImage = "url('/static/click.png')";
+    });
+
+    button.addEventListener('mouseleave', () => {
+        cursor.style.backgroundImage = "url('/static/cursor.png')";
+    });
+});

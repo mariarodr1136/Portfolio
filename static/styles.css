@@ -20,7 +20,6 @@ body, html {
     z-index: 300; 
 }
 
-
 .icons-container {
     position: absolute;
     top: 20px;
@@ -40,10 +39,11 @@ body, html {
     cursor: none; 
 }
 
-#icon1 { background-image: url('/static/icon1.png'); }
+#icon1 { background-image: url('/static/aboutme.png'); }
 #icon2 { background-image: url('/static/icon2.png'); }
 #icon3 { background-image: url('/static/icon3.png'); }
-#icon5 { background-image: url('/static/icon5.png'); }
+#icon5 { background-image: url('/static/contactme.png'); }
+#icon4 { background-image: url('/static/calculator.png'); }
 
 .icon-label {
     font-style: italic;
@@ -220,4 +220,48 @@ button[type="submit"] {
     border-right: 4px solid black;
     border-bottom: 4px solid black;
     font-style: italic;
+}
+
+.calculator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    height: 325px;
+}
+
+#calc-display {
+    width: 225px;
+    height: 25px;
+    margin-top: 45px;
+    text-align: right;
+    margin-bottom: 10px;
+    font-family: 'Chicago', 'Charcoal', 'Geneva', sans-serif;
+    font-size: 24px;
+    padding-top: 5px; /* Add padding to move the text lower */
+    line-height: 1.5;  /* Adjust line height for better spacing */
+    border-top: 4px solid rgb(151, 151, 151);
+    border-left: 4px solid rgb(151, 151, 151);
+    border-right: 4px solid black;
+    border-bottom: 4px solid black;
+    cursor: none;
+}
+
+.calc-buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 50px);
+    gap: 10px;
+}
+
+.calc-buttons button {
+    width: 50px;
+    height: 50px;
+    font-size: 18px;
+    font-style: italic;
+    font-family: 'Chicago', 'Charcoal', 'Geneva', sans-serif;
+    border-top: 4px solid rgb(151, 151, 151);
+    border-left: 4px solid rgb(151, 151, 151);
+    border-right: 4px solid black;
+    border-bottom: 4px solid black;
+    cursor: none;
 }
