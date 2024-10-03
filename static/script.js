@@ -68,6 +68,47 @@ icons.forEach(icon => {
     });
 });
 
+// Select the input email and textarea fields
+const inputFields = document.querySelectorAll('input[type="email"], textarea');
+const textAreas = document.querySelectorAll('textarea, input');
+
+// Add event listeners to change the cursor when hovering over the input fields
+inputFields.forEach(field => {
+    field.addEventListener('mouseenter', () => {
+        cursor.style.backgroundImage = "url('/static/click.png')";
+    });
+    
+    field.addEventListener('mouseleave', () => {
+        cursor.style.backgroundImage = "url('/static/cursor.png')";
+    });
+});
+
+// Target the send button in the contact form
+const sendButton = document.querySelector('#contact-form button[type="submit"]');
+
+// Change cursor to click.png when hovering over the send button
+sendButton.addEventListener('mouseenter', () => {
+    cursor.style.backgroundImage = "url('/static/click.png')";
+});
+
+sendButton.addEventListener('mouseleave', () => {
+    cursor.style.backgroundImage = "url('/static/cursor.png')";
+});
+
+// Select all buttons inside project cards
+const projectCardButtons = document.querySelectorAll('.project-card button');
+
+// Add event listeners to change the cursor when hovering over the buttons
+projectCardButtons.forEach(button => {
+    button.addEventListener('mouseenter', () => {
+        cursor.style.backgroundImage = "url('/static/click.png')";
+    });
+
+    button.addEventListener('mouseleave', () => {
+        cursor.style.backgroundImage = "url('/static/cursor.png')";
+    });
+});
+
 // Handle modal close button events
 closeButtons.forEach(button => {
     button.addEventListener('click', (e) => {
