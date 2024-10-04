@@ -95,6 +95,18 @@ sendButton.addEventListener('mouseleave', () => {
     cursor.style.backgroundImage = "url('/static/cursor.png')";
 });
 
+// Select the download button
+const downloadButton = document.querySelector('.download-button');
+
+// Add event listeners to change the cursor when hovering over the download button
+downloadButton.addEventListener('mouseenter', () => {
+    cursor.style.backgroundImage = "url('/static/click.png')";
+});
+
+downloadButton.addEventListener('mouseleave', () => {
+    cursor.style.backgroundImage = "url('/static/cursor.png')";
+});
+
 // Select all buttons inside project cards
 const projectCardButtons = document.querySelectorAll('.project-card button');
 
@@ -168,6 +180,11 @@ video.addEventListener('mousedown', (e) => {
     });
 });
 
+// Github link
+document.getElementById('icon6').addEventListener('click', () => {
+    window.open('https://github.com/mariarodr1136', '_blank');
+});
+
 // Form submission for contact form
 document.getElementById('contact-form').addEventListener('submit', function(event) {
     event.preventDefault();
@@ -237,6 +254,7 @@ Object.values(modals).forEach(modal => {
     }
 });
 
+//Calculator Code
 modals.icon4 = document.getElementById('modal4'); // Add calculator modal to modals object
 
 // Calculator functionality
@@ -257,8 +275,6 @@ function calculate() {
         display.value = 'Error';
     }
 }
-
-modals.icon4 = document.getElementById('modal4'); // Add calculator modal to modals object
 
 // Blue line for dragging the calculator modal
 const calcBlueLine = modals.icon4.querySelector('.modal-blue-line');
