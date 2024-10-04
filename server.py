@@ -14,3 +14,7 @@ Handler.directory = 'templates/'
 with socketserver.TCPServer(("", PORT), Handler) as httpd:
     print(f"Serving on port {PORT}")
     httpd.serve_forever()
+
+# run the server: python3 server.py
+# end the server: Ctrl + C (in terminal)
+# server url: http://localhost:8000/templates/
