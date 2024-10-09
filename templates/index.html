@@ -10,11 +10,6 @@
 <body>
     <div id="cursor"></div>
 
-    <video id="video" autoplay loop muted>
-        <source src="/static/hello.mov" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
-
     <div class="icons-container">
         <div class="icon-container" id="icon1-container">
             <div id="icon1" class="icon"></div>
@@ -43,28 +38,28 @@
     </div>
 
     <div id="modal1" class="modal">
-        <div class="modal-blue-line"></div>
+        <div class="modal-blue-line">Settings</div>
         <button class="modal-close">&times;</button>
         <!-- Add content for About Me modal -->
         <div class="about-me-content">
             <div class="image-container">
                 <img src="/static/macos9.png" class="big-image" alt="macOS 9">
             </div>
-            <h3>Maria Rodriguez's Virtual Workspace</h3>
-            <p>Your entry point to digital innovation.</p>
-            <p>As you enter, you'll discover a blend of creative designs and powerful web applications. Join me on this journey as I continuously explore new technologies to elevate user experiences!</p>
+            <h3 class="no-italic">Maria Rodriguez's Virtual Workspace</h3>
+            <p>Your entry point to seamless digital experiences, brought to life by a software developer specializing in innovative solutions.</p>
+            <p>Building forward-thinking applications that push the boundaries of technology and elevate user interactions.</p>                     
         </div>
     </div>
 
     <div id="modal2" class="modal">
-        <div class="modal-blue-line"></div>
+        <div class="modal-blue-line">Resume</div>
         <button class="modal-close">&times;</button>
         <a href="/static/Maria Rodriguez - Resume.pdf" download class="download-button">⬇</a>
         <img src="/static/Maria Rodriguez - Resume.jpg" style="width: 105%; height: 105%; display: block; margin: 0.5px auto 0 -22px;" />
     </div>
 
     <div id="modal3" class="modal">
-        <div class="modal-blue-line"></div>
+        <div class="modal-blue-line">Projects</div>
         <button class="modal-close">&times;</button>
         <h3>My Projects</h3>
         <div class="project-card">
@@ -85,11 +80,11 @@
     </div>
        
     <div id="modal5" class="modal">
-        <div class="modal-blue-line"></div>
+        <div class="modal-blue-line">Contact</div>
         <button class="modal-close">&times;</button>
         <form id="contact-form">
             <div>
-                <label for="email">Email:</label>
+                <label for="email">Your Email:</label>
                 <input type="email" id="email" name="email" required />
             </div>
             <div>
@@ -101,7 +96,7 @@
     </div>
 
     <div id="modal4" class="modal">
-        <div class="modal-blue-line"></div>
+        <div class="modal-blue-line">Calculator</div>
         <button class="modal-close">&times;</button>
         <div class="calculator">
             <input type="text" id="calc-display" disabled />

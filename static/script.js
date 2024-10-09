@@ -147,39 +147,6 @@ function getHighestZIndex() {
     );
 }
 
-// Video drag functionality
-const video = document.getElementById('video');
-let isDraggingVideo = false;
-
-video.addEventListener('mouseenter', () => {
-    cursor.style.backgroundImage = "url('/static/click.png')";
-});
-
-video.addEventListener('mouseleave', () => {
-    cursor.style.backgroundImage = "url('/static/cursor.png')";
-});
-
-video.addEventListener('mousedown', (e) => {
-    isDraggingVideo = true;
-    cursor.style.backgroundImage = "url('/static/click.png')";
-
-    const offsetX = e.clientX - video.offsetLeft;
-    const offsetY = e.clientY - video.offsetTop;
-
-    function onVideoDrag(event) {
-        video.style.left = event.clientX - offsetX + 'px';
-        video.style.top = event.clientY - offsetY + 'px';
-    }
-
-    document.addEventListener('mousemove', onVideoDrag);
-
-    document.addEventListener('mouseup', () => {
-        isDraggingVideo = false;
-        document.removeEventListener('mousemove', onVideoDrag);
-        cursor.style.backgroundImage = "url('/static/cursor.png')";
-    });
-});
-
 // Github link
 document.getElementById('icon6').addEventListener('click', () => {
     window.open('https://github.com/mariarodr1136', '_blank');
