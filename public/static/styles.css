@@ -6,56 +6,65 @@ body, html {
     background-size: cover;
     background-position: center;
     overflow: hidden;
-    cursor: none; 
+    cursor: none;
 }
 
-#cursor  {
+#cursor {
     position: absolute;
-    width: 52px; 
+    width: 52px;
     height: 52px;
     background-image: url('/static/cursor.png');
     background-size: contain;
     background-repeat: no-repeat;
-    pointer-events: none;  
-    z-index: 300; 
+    pointer-events: none;
+    z-index: 300;
 }
 
 .icons-container {
     position: absolute;
     top: 20px;
-    left: auto; 
-    right: 20px; 
-    display: flex;
-    flex-direction: column; 
-    align-items: center; 
-    gap: 35px; 
+    right: 20px;
+    width: 70px; 
+}
+
+.icon-container {
+    position: absolute;
+    width: 70px;
+    text-align: center;
 }
 
 .icon {
-    width: 70px;  
+    width: 70px;
     height: 70px;
     background-size: contain;
     background-repeat: no-repeat;
-    cursor: none; 
+    cursor: none;
+}
+
+.icon-label {
+    font-style: italic;
+    margin-top: 5px;
+    font-family: 'Chicago', 'Charcoal', 'Geneva', sans-serif;
+    font-size: 14px;
+    color: #000000;
+    text-align: center;
+    background-color: rgba(219, 219, 219, 0.939);
 }
 
 #icon1 { background-image: url('/static/settings.png'); }
 #icon2 { background-image: url('/static/icon2.png'); }
 #icon3 { background-image: url('/static/icon3.png'); }
-#icon5 { background-image: url('/static/contactme.png'); }
 #icon4 { background-image: url('/static/calculator.png'); }
-#icon6 { background-image: url('/static/github.png');
-}
+#icon5 { background-image: url('/static/contactme.png'); }
+#icon6 { background-image: url('/static/github.png'); }
 
-.icon-label {
-    font-style: italic;
-    margin-top: 0px;
-    font-family: 'Chicago', 'Charcoal', 'Geneva', sans-serif; 
-    font-size: 14px;
-    color: #000000;  
-    text-align: center;
-    background-color: rgba(219, 219, 219, 0.939);  
-}
+/* Position each icon container */
+#icon1-container { top: 0; }
+#icon2-container { top: 120px; }  
+#icon3-container { top: 230px; }  
+#icon4-container { top: 350px; } 
+#icon5-container { top: 460px; }  
+#icon6-container { top: 570px; }  
 
 #modal1 {
     display: block; 
