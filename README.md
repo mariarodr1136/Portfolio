@@ -14,7 +14,7 @@ The purpose of this portfolio website is to:
 - Provide a unique and engaging user interface that mimics an old computer desktop environment.
 - Allow visitors to interact with my portfolio by opening and closing tabs, dragging icons, and exploring my work.
 
-SCREENSHOTS
+![PortfolioScreenshot](https://github.com/user-attachments/assets/a9177fbf-3f91-48cb-b5c0-ffd5c8016d34)
 
 ## Features
 - **Old Computer Desktop Design**: The design is inspired by classic desktop interfaces, complete with draggable icons and interactive tabs.
