@@ -3,10 +3,14 @@
 ## Overview
 Maria Rodriguez's Portfolio is a unique and interactive website designed to resemble an old computer desktop screen. It features draggable icons that represent various applications and tabs, creating a nostalgic user experience. This portfolio showcases my work as a software developer, featuring various projects, a contact form, and links to my resume and GitHub.
 
-## Languages Used
+## Languages & Frameworks Used
 - **HTML**: Structure of the web pages
 - **CSS**: Styling and layout of the website
 - **JavaScript**: Interactivity and dynamic content
+- **Express**: A web application framework for Node.js, used for building server-side applications
+- **Nodemailer**: A library for sending emails from Node.js applications
+- **dotenv**: A zero-dependency module that loads environment variables from a .env file into process.env
+- **body-parser**: Middleware for parsing incoming request bodies in a middleware before your handlers, available under the req.body property
 
 ## Purpose
 The purpose of this portfolio website is to:
@@ -30,11 +34,30 @@ The purpose of this portfolio website is to:
 ## Installation
 1. Clone the repository:
    ```bash
-   git clone <repository-url>
+   gh repo clone mariarodr1136/Portfolio
+
+   Alternatively, if you prefer to use HTTPS:
+   ```bash
+   git clone https://github.com/mariarodr1136/Portfolio.git
+   
+2. Navigate into the project directory:
+   ```bash
+   cd Portfolio
+3. Install any dependencies:
+   ```bash
+   npm install express nodemailer dotenv body-parser
+4. Start the local server:
+   ```bash
+   node server.js
+5. Open the Application in your browser:
+   ```bash
+   http://localhost:3000/
 
 ## Requirements
-A modern web browser (Chrome, Firefox, Safari, etc.) for the best user experience.
-Basic knowledge of HTML, CSS, and JavaScript if you want to modify the code.
+- A modern web browser: Chrome, Firefox, Safari, etc., for the best user experience
+- Basic knowledge of HTML, CSS, and JavaScript: If you want to modify the code
+- Node.js and npm: Make sure Node.js and npm are installed on your machine
+- Dependencies to install: express, nodemailer, dotenv, body-parser
 
 ## Contributing
 Contributions are welcome! If you have suggestions for improvements or features, feel free to fork the repository and create a pull request. You can also open issues to discuss potential changes or enhancements.
