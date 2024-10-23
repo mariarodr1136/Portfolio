@@ -3,6 +3,18 @@
 ## Overview
 Maria Rodriguez's Portfolio is a unique and interactive website designed to resemble an old computer desktop screen. It features draggable icons that represent various applications and tabs, creating a nostalgic user experience. This portfolio showcases my work as a software developer, featuring various projects, a contact form, and links to my resume and GitHub.
 
+## Table of Contents
+- [Overview](#overview)
+- [Languages & Frameworks Used](#languages--frameworks-used)
+- [Purpose](#purpose)
+- [Features](#features)
+- [Code Structure](#code-structure)
+- [Installation](#installation)
+- [Requirements](#requirements)
+- [Contributing](#contributing)
+- [Inspiration](#inspiration)
+- [Contact](#contact)
+
 ## Languages & Frameworks Used
 - **HTML**: Structure of the web pages
 - **CSS**: Styling and layout of the website
@@ -64,3 +76,7 @@ Contributions are welcome! If you have suggestions for improvements or features,
 
 ## Inspiration
 The design of this portfolio website draws inspiration from an old computer desktop screen, allowing users to interact with the portfolio in a nostalgic and playful manner. Icons represent different applications, and users can drag and open them to explore content in a unique style.
+
+## Contact
+If you have any questions or feedback, feel free to reach out at [mrodr.contact@gmail.com](mailto:mrodr.contact@gmail.com).
+
