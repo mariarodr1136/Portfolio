@@ -1,7 +1,7 @@
 # Maria Rodriguez Portfolio
 
 ## Overview
-Maria Rodriguez's Portfolio is a unique and interactive website designed to resemble an old computer desktop screen. It features draggable icons that represent various applications and tabs, creating a nostalgic user experience. This portfolio showcases my work as a software developer, featuring various projects, a contact form, and links to my resume and GitHub.
+Maria Rodriguez's Portfolio is a unique and interactive website designed to resemble an old computer desktop screen. It features draggable icons that represent various applications and tabs, creating a nostalgic user experience. This portfolio showcases my work as a software developer, featuring various projects, a contact form, an about me section, and links to my resume and GitHub.
 
 ## Table of Contents
 - [Overview](#overview)
@@ -26,7 +26,6 @@ Maria Rodriguez's Portfolio is a unique and interactive website designed to rese
 
 ## Purpose
 The purpose of this portfolio website is to:
-- Showcase my skills and projects as a software developer.
 - Provide a unique and engaging user interface that mimics an old computer desktop environment.
 - Allow visitors to interact with my portfolio by opening and closing tabs, dragging icons, and exploring my work.
 
