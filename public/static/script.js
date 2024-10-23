@@ -52,6 +52,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // Call openModal1 function when the DOM is fully loaded
     openModal1();
 
+    document.getElementById('icon4').addEventListener('click', () => {
+        modals.icon4.style.display = 'block'; // Show the calculator modal
+        modals.icon4.style.zIndex = getHighestZIndex() + 1; // Bring to front
+    });    
+
     // Handle icon hover events
     icons.forEach(icon => {
         icon.addEventListener('mouseenter', () => {
@@ -223,7 +228,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Calculator functionality
+    // Calculator functionality 
     function addToDisplay(value) {
         const display = document.getElementById('calc-display');
         display.value += value;

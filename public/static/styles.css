@@ -2,7 +2,7 @@ body, html {
     height: 100%;
     margin: 0;
     font-family: 'Chicago', 'Charcoal', 'Geneva', sans-serif;
-    background-image: url('/static/background5.jpg');
+    background-image: url('/static/background.png');
     background-size: cover;
     background-position: center;
     overflow: hidden;
@@ -46,9 +46,9 @@ body, html {
     margin-top: 5px;
     font-family: 'Chicago', 'Charcoal', 'Geneva', sans-serif;
     font-size: 14px;
-    color: #000000;
+    color: #000000cc;
     text-align: center;
-    background-color: rgba(219, 219, 219, 0.939);
+    background-color: rgba(219, 219, 219, 0.897);
 }
 
 #icon1 { background-image: url('/static/settings.png'); }
@@ -69,15 +69,15 @@ body, html {
 #modal1 {
     display: block; 
     position: fixed; 
-    top: 340px; /* Move to the top */
-    left: 285px; /* Move to the left */
+    top: 340px; 
+    left: 285px; 
     width: 500px; 
     height: 650px; 
     background-color: lightgrey; 
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3), 0 4px 8px rgba(0, 0, 0, 0.2);
     z-index: 200; 
-    border-top: 4px solid rgb(189, 189, 189);
-    border-left: 4px solid rgb(189, 189, 189);
+    border-top: 4px solid rgb(168, 168, 168);
+    border-left: 4px solid rgb(168, 168, 168);
     border-right: 4px solid black;
     border-bottom: 4px solid black;
     overflow: hidden; 
@@ -93,8 +93,8 @@ body, html {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3), 0 4px 8px rgba(0, 0, 0, 0.2);
     z-index: 200;
     overflow: hidden;
-    border-top: 4px solid rgb(189, 189, 189);
-    border-left: 4px solid rgb(189, 189, 189);
+    border-top: 4px solid rgb(168, 168, 168);
+    border-left: 4px solid rgb(168, 168, 168);
     border-right: 4px solid black;
     border-bottom: 4px solid black;
 }
@@ -131,8 +131,8 @@ body, html {
     font-size: 25px;
     color: #333;
     background: solid lightgrey;
-    border-top: 4px solid rgb(151, 151, 151);
-    border-left: 4px solid rgb(151, 151, 151);
+    border-top: 4px solid rgb(168, 168, 168);
+    border-left: 4px solid rgb(168, 168, 168);
     border-right: 4px solid black;
     border-bottom: 4px solid black;
     width: 35px;
@@ -192,8 +192,8 @@ button[type="submit"] {
     font-family: 'Chicago', 'Charcoal', 'Geneva', sans-serif !important; 
     font-size: 16px;
     font-style: italic;
-    border-top: 4px solid rgb(151, 151, 151);
-    border-left: 4px solid rgb(151, 151, 151);
+    border-top: 4px solid rgb(168, 168, 168);
+    border-left: 4px solid rgb(168, 168, 168);
     border-right: 4px solid black;
     border-bottom: 4px solid black;
     cursor: none;
@@ -243,10 +243,10 @@ button[type="submit"] {
     margin-bottom: 10px;
     font-family: 'Chicago', 'Charcoal', 'Geneva', sans-serif;
     font-size: 24px;
-    padding-top: 5px; /* Add padding to move the text lower */
-    line-height: 1.5;  /* Adjust line height for better spacing */
-    border-top: 4px solid rgb(151, 151, 151);
-    border-left: 4px solid rgb(151, 151, 151);
+    padding-top: 5px; 
+    line-height: 1.5;  
+    border-top: 4px solid rgb(168, 168, 168);
+    border-left: 4px solid rgb(168, 168, 168);
     border-right: 4px solid black;
     border-bottom: 4px solid black;
     cursor: none;
@@ -264,8 +264,8 @@ button[type="submit"] {
     font-size: 18px;
     font-style: italic;
     font-family: 'Chicago', 'Charcoal', 'Geneva', sans-serif;
-    border-top: 4px solid rgb(151, 151, 151);
-    border-left: 4px solid rgb(151, 151, 151);
+    border-top: 4px solid rgb(168, 168, 168);
+    border-left: 4px solid rgb(168, 168, 168);
     border-right: 4px solid black;
     border-bottom: 4px solid black;
     cursor: none;
@@ -273,8 +273,8 @@ button[type="submit"] {
 
 .download-button {
     position: absolute;
-    top: 60px; /* Adjust this value to move it lower */
-    left: 10px; /* Move the button to the left side */
+    top: 60px;
+    left: 10px; 
     color: rgb(21, 21, 130);
     background: none;
     padding: 5px;
@@ -283,26 +283,26 @@ button[type="submit"] {
 }
 
 .about-me-content {
-    padding: 30px 30px !important; /* Reduce padding to center content better */
+    padding: 30px 30px !important; 
     font-family: 'Chicago', 'Charcoal', 'Geneva', sans-serif;
     text-align: center;
-    margin: auto; /* Keep the modal centered */
-    max-width: 600px; /* Set a maximum width for the content */
+    margin: auto; 
+    max-width: 600px; 
     font-style: italic;
 }
 
 .image-container {
-    text-align: center; /* Center the image */
-    margin-bottom: 30px; /* Add some space below the image */
+    text-align: center; 
+    margin-bottom: 30px; 
 }
 
 .big-image {
-    width: 100% !important; /* Force width to 100% of the container */
-    max-width: 350px !important; /* Set a smaller maximum width */
-    height: auto !important; /* Maintain aspect ratio */
-    margin-top: 55px !important; /* Move the image lower */
+    width: 100% !important; 
+    max-width: 350px !important; 
+    height: auto !important;
+    margin-top: 55px !important; 
 }
 
 .no-italic {
-    font-style: normal; /* Remove italics from the h3 */
+    font-style: normal; 
 }
