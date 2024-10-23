@@ -36,7 +36,7 @@ The purpose of this portfolio website is to:
    ```bash
    gh repo clone mariarodr1136/Portfolio
 
-   Alternatively, if you prefer to use HTTPS:
+- Alternatively, if you prefer to use HTTPS:
    ```bash
    git clone https://github.com/mariarodr1136/Portfolio.git
    
