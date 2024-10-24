@@ -11,8 +11,8 @@ Maria Rodriguez's Portfolio is a unique and interactive website designed to rese
 - [Code Structure](#code-structure)
 - [Installation](#installation)
 - [Requirements](#requirements)
-- [Contributing](#contributing)
 - [Inspiration](#inspiration)
+- [Contributing](#contributing)
 - [Contact](#contact)
 
 ## Languages & Frameworks Used
@@ -70,11 +70,30 @@ The purpose of this portfolio website is to:
 - Node.js and npm: Make sure Node.js and npm are installed on your machine
 - Dependencies to install: express, nodemailer, dotenv, body-parser
 
-## Contributing
-Contributions are welcome! If you have suggestions for improvements or features, feel free to fork the repository and create a pull request. You can also open issues to discuss potential changes or enhancements.
-
 ## Inspiration
 The design of this portfolio website draws inspiration from an old computer desktop screen, allowing users to interact with the portfolio in a nostalgic and playful manner. Icons represent different applications, and users can drag and open them to explore content in a unique style.
+
+## Contributing:
+
+Feel free to submit issues or pull requests for improvements or bug fixes. You can also open issues to discuss potential changes or enhancements. All contributions are welcome to enhance the app’s features or functionality!
+
+To contribute, please follow these steps:
+
+1. Fork the repository.
+2. Create a new branch for your feature or bug fix:
+   ```bash
+   git checkout -b feat/your-feature-name
+- Alternatively, for bug fixes:
+   ```bash
+   git checkout -b fix/your-bug-fix-name
+3. Make your changes and run all tests before committing the changes and make sure all tests are passed.
+4. After all tests are passed, commit your changes with descriptive messages:
+   ```bash
+   git commit -m 'add your commit message'
+5. Push your changes to your forked repository:
+   ```bash
+   git push origin feat/your-feature-name.
+6. Submit a pull request to the main repository, explaining your changes and providing any necessary details.
 
 ## Contact
 If you have any questions or feedback, feel free to reach out at [mrodr.contact@gmail.com](mailto:mrodr.contact@gmail.com).
