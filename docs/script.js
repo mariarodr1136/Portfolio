@@ -55,10 +55,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // Handle icon hover events
     icons.forEach(icon => {
         icon.addEventListener('mouseenter', () => {
-            cursor.style.backgroundImage = "url('/static/click.png')";
+            cursor.style.backgroundImage = "url('static/click.png')";
         });
         icon.addEventListener('mouseleave', () => {
-            cursor.style.backgroundImage = "url('/static/cursor.png')";
+            cursor.style.backgroundImage = "url('static/cursor.png')";
         });
     });
 
@@ -68,11 +68,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // Add event listeners to change the cursor when hovering over the input fields
     inputFields.forEach(field => {
         field.addEventListener('mouseenter', () => {
-            cursor.style.backgroundImage = "url('/static/click.png')";
+            cursor.style.backgroundImage = "url('static/click.png')";
         });
         
         field.addEventListener('mouseleave', () => {
-            cursor.style.backgroundImage = "url('/static/cursor.png')";
+            cursor.style.backgroundImage = "url('static/cursor.png')";
         });
     });
 
@@ -81,11 +81,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Change cursor to click.png when hovering over the send button
     sendButton.addEventListener('mouseenter', () => {
-        cursor.style.backgroundImage = "url('/static/click.png')";
+        cursor.style.backgroundImage = "url('static/click.png')";
     });
 
     sendButton.addEventListener('mouseleave', () => {
-        cursor.style.backgroundImage = "url('/static/cursor.png')";
+        cursor.style.backgroundImage = "url('static/cursor.png')";
     });
 
     // Select the download button
@@ -93,11 +93,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Add event listeners to change the cursor when hovering over the download button
     downloadButton.addEventListener('mouseenter', () => {
-        cursor.style.backgroundImage = "url('/static/click.png')";
+        cursor.style.backgroundImage = "url('static/click.png')";
     });
 
     downloadButton.addEventListener('mouseleave', () => {
-        cursor.style.backgroundImage = "url('/static/cursor.png')";
+        cursor.style.backgroundImage = "url('static/cursor.png')";
     });
 
     // Select all buttons inside project cards
@@ -106,11 +106,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // Add event listeners to change the cursor when hovering over the buttons
     projectCardButtons.forEach(button => {
         button.addEventListener('mouseenter', () => {
-            cursor.style.backgroundImage = "url('/static/click.png')";
+            cursor.style.backgroundImage = "url('static/click.png')";
         });
 
         button.addEventListener('mouseleave', () => {
-            cursor.style.backgroundImage = "url('/static/cursor.png')";
+            cursor.style.backgroundImage = "url('static/cursor.png')";
         });
     });
 
@@ -122,11 +122,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         button.addEventListener('mouseenter', () => {
-            cursor.style.backgroundImage = "url('/static/click.png')";
+            cursor.style.backgroundImage = "url('static/click.png')";
         });
 
         button.addEventListener('mouseleave', () => {
-            cursor.style.backgroundImage = "url('/static/cursor.png')";
+            cursor.style.backgroundImage = "url('static/cursor.png')";
         });
     });
 
@@ -193,7 +193,7 @@ document.getElementById('contact-form').addEventListener('submit', function(even
 
         blueLine.addEventListener('mousedown', (e) => {
             isDraggingModal = true;
-            cursor.style.backgroundImage = "url('/static/click.png')";
+            cursor.style.backgroundImage = "url('static/click.png')";
             
             offsetX = e.clientX - modal.offsetLeft;
             offsetY = e.clientY - modal.offsetTop;
@@ -210,7 +210,7 @@ document.getElementById('contact-form').addEventListener('submit', function(even
             document.addEventListener('mouseup', () => {
                 isDraggingModal = false;
                 document.removeEventListener('mousemove', onModalDrag);
-                cursor.style.backgroundImage = "url('/static/cursor.png')";
+                cursor.style.backgroundImage = "url('static/cursor.png')";
             });
         });
     }
@@ -247,11 +247,11 @@ document.getElementById('contact-form').addEventListener('submit', function(even
 
     calcButtons.forEach(button => {
         button.addEventListener('mouseenter', () => {
-            cursor.style.backgroundImage = "url('/static/click.png')";
+            cursor.style.backgroundImage = "url('static/click.png')";
         });
 
         button.addEventListener('mouseleave', () => {
-            cursor.style.backgroundImage = "url('/static/cursor.png')";
+            cursor.style.backgroundImage = "url('static/cursor.png')";
         });
     });
 
@@ -272,11 +272,11 @@ document.getElementById('contact-form').addEventListener('submit', function(even
         let startX, startY;
 
         container.addEventListener('mouseenter', () => {
-            cursor.style.backgroundImage = "url('/static/click.png')";
+            cursor.style.backgroundImage = "url('static/click.png')";
         });
 
         container.addEventListener('mouseleave', () => {
-            cursor.style.backgroundImage = "url('/static/cursor.png')";
+            cursor.style.backgroundImage = "url('static/cursor.png')";
         });
 
         container.addEventListener('mousedown', (e) => {
@@ -316,7 +316,7 @@ document.getElementById('contact-form').addEventListener('submit', function(even
                     }
                 }
 
-                cursor.style.backgroundImage = "url('/static/cursor.png')";
+                cursor.style.backgroundImage = "url('static/cursor.png')";
             }
 
             document.addEventListener('mousemove', onMouseMove);
