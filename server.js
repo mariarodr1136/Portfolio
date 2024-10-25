@@ -23,7 +23,7 @@ app.post('/send-email', (req, res) => {
 
     const mailOptions = {
         from: process.env.EMAIL_USER,
-        to: process.env.EMAIL_USER, // Your email address
+        to: process.env.EMAIL_USER, 
         subject: 'New Message from Portfolio',
         text: message
     };
