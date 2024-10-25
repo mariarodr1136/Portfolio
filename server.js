@@ -36,10 +36,10 @@ app.post('/send-email', (req, res) => {
     });
 });
 
-app.listen(3000, () => {
-    console.log('Server running on port 3000');
+const PORT = process.env.PORT || 3000; // Use the port from environment variable or 3000 for local
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
 });
 
-
 // run server: node server.js
-//http://localhost:3000/
+// http://localhost:3000/
