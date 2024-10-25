@@ -140,48 +140,48 @@ document.addEventListener('DOMContentLoaded', () => {
         );
     }
 
-    // Form submission for contact form
-    document.getElementById('contact-form').addEventListener('submit', function(event) {
-        event.preventDefault();
+// Form submission for contact form
+document.getElementById('contact-form').addEventListener('submit', function(event) {
+    event.preventDefault();
 
-        const submitButton = event.target.querySelector('button[type="submit"]');
+    const submitButton = event.target.querySelector('button[type="submit"]');
 
-        // Check if the button is already disabled
-        if (submitButton.disabled) return;
+    // Check if the button is already disabled
+    if (submitButton.disabled) return;
 
-        submitButton.disabled = true; // Disable the button to prevent multiple submissions
+    submitButton.disabled = true; // Disable the button to prevent multiple submissions
 
-        const message = event.target.message.value;
+    const message = event.target.message.value;
 
-        // Validate input
-        if (!message) {
-            alert('Please enter a message.');
-            submitButton.disabled = false; // Re-enable the button
-            return;
+    // Validate input
+    if (!message) {
+        alert('Please enter a message.');
+        submitButton.disabled = false; // Re-enable the button
+        return;
+    }
+
+    // Send the message to your Heroku email endpoint
+    fetch('https://mrodr-portfolio.herokuapp.com/send-email', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ message })
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
         }
-
-        // Send the message to your email endpoint
-        fetch('/send-email', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ message })
-        })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            alert('Message sent successfully!');
-            event.target.reset(); // Reset the form
-        })
-        .catch(error => {
-            alert('There was a problem sending your message: ' + error.message);
-        })
-        .finally(() => {
-            submitButton.disabled = false; // Re-enable the button
-        });
-    });       
+        alert('Message sent successfully!');
+        event.target.reset(); // Reset the form
+    })
+    .catch(error => {
+        alert('There was a problem sending your message: ' + error.message);
+    })
+    .finally(() => {
+        submitButton.disabled = false; // Re-enable the button
+    });
+});  
 
     // Blue line event listeners for drag functionality
     const blueLines = document.querySelectorAll('.modal-blue-line');
