@@ -8,7 +8,7 @@ const app = express();
 app.use(bodyParser.json());
 
 // Serve static files from the 'public' directory and its subdirectories
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'docs')));
 
 const transporter = nodemailer.createTransport({
     service: 'Gmail',

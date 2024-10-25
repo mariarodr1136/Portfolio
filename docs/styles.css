@@ -2,7 +2,7 @@ body, html {
     height: 100%;
     margin: 0;
     font-family: 'Chicago', 'Charcoal', 'Geneva', sans-serif;
-    background-image: url('public/static/background.png');
+    background-image: url('/static/background.png');
     background-size: cover;
     background-position: center;
     overflow: hidden;
