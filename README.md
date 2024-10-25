@@ -1,16 +1,31 @@
 # Maria Rodriguez Portfolio
 
 ## Overview
-Maria Rodriguez's Portfolio is a unique and interactive website designed to resemble an old computer desktop screen. It features draggable icons that represent various applications and tabs, creating a nostalgic user experience. This portfolio showcases my work as a software developer, featuring various projects, a contact form, and links to my resume and GitHub.
+Maria Rodriguez's Portfolio is a unique and interactive website designed to resemble an old computer desktop screen. It features draggable icons that represent various applications and tabs, creating a nostalgic user experience. This portfolio showcases my work as a software developer, featuring various projects, a contact form, an about me section, and links to my resume and GitHub.
 
-## Languages Used
+## Table of Contents
+- [Overview](#overview)
+- [Languages & Frameworks Used](#languages--frameworks-used)
+- [Purpose](#purpose)
+- [Features](#features)
+- [Code Structure](#code-structure)
+- [Installation](#installation)
+- [Requirements](#requirements)
+- [Inspiration](#inspiration)
+- [Contributing](#contributing)
+- [Contact](#contact)
+
+## Languages & Frameworks Used
 - **HTML**: Structure of the web pages
 - **CSS**: Styling and layout of the website
 - **JavaScript**: Interactivity and dynamic content
+- **Express**: A web application framework for Node.js, used for building server-side applications
+- **Nodemailer**: A library for sending emails from Node.js applications
+- **dotenv**: A zero-dependency module that loads environment variables from a .env file into process.env
+- **body-parser**: Middleware for parsing incoming request bodies in a middleware before your handlers, available under the req.body property
 
 ## Purpose
 The purpose of this portfolio website is to:
-- Showcase my skills and projects as a software developer.
 - Provide a unique and engaging user interface that mimics an old computer desktop environment.
 - Allow visitors to interact with my portfolio by opening and closing tabs, dragging icons, and exploring my work.
 
@@ -30,14 +45,56 @@ The purpose of this portfolio website is to:
 ## Installation
 1. Clone the repository:
    ```bash
-   git clone <repository-url>
+   gh repo clone mariarodr1136/Portfolio
+
+- Alternatively, if you prefer to use HTTPS:
+   ```bash
+   git clone https://github.com/mariarodr1136/Portfolio.git
+   
+2. Navigate into the project directory:
+   ```bash
+   cd Portfolio
+3. Install any dependencies:
+   ```bash
+   npm install express nodemailer dotenv body-parser
+4. Start the local server:
+   ```bash
+   node server.js
+5. Open the Application in your browser:
+   ```bash
+   http://localhost:3000/
 
 ## Requirements
-A modern web browser (Chrome, Firefox, Safari, etc.) for the best user experience.
-Basic knowledge of HTML, CSS, and JavaScript if you want to modify the code.
-
-## Contributing
-Contributions are welcome! If you have suggestions for improvements or features, feel free to fork the repository and create a pull request. You can also open issues to discuss potential changes or enhancements.
+- A modern web browser: Chrome, Firefox, Safari, etc., for the best user experience
+- Basic knowledge of HTML, CSS, and JavaScript: If you want to modify the code
+- Node.js and npm: Make sure Node.js and npm are installed on your machine
+- Dependencies to install: express, nodemailer, dotenv, body-parser
 
 ## Inspiration
 The design of this portfolio website draws inspiration from an old computer desktop screen, allowing users to interact with the portfolio in a nostalgic and playful manner. Icons represent different applications, and users can drag and open them to explore content in a unique style.
+
+## Contributing:
+
+Feel free to submit issues or pull requests for improvements or bug fixes. You can also open issues to discuss potential changes or enhancements. All contributions are welcome to enhance the app’s features or functionality!
+
+To contribute, please follow these steps:
+
+1. Fork the repository.
+2. Create a new branch for your feature or bug fix:
+   ```bash
+   git checkout -b feat/your-feature-name
+- Alternatively, for bug fixes:
+   ```bash
+   git checkout -b fix/your-bug-fix-name
+3. Make your changes and run all tests before committing the changes and make sure all tests are passed.
+4. After all tests are passed, commit your changes with descriptive messages:
+   ```bash
+   git commit -m 'add your commit message'
+5. Push your changes to your forked repository:
+   ```bash
+   git push origin feat/your-feature-name.
+6. Submit a pull request to the main repository, explaining your changes and providing any necessary details.
+
+## Contact
+If you have any questions or feedback, feel free to reach out at [mrodr.contact@gmail.com](mailto:mrodr.contact@gmail.com).
+
