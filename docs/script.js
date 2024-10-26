@@ -1,3 +1,22 @@
+    // Calculator functionality 
+    function addToDisplay(value) {
+        const display = document.getElementById('calc-display');
+        display.value += value;
+    }
+
+    function clearDisplay() {
+        document.getElementById('calc-display').value = '';
+    }
+
+    function calculate() {
+        const display = document.getElementById('calc-display');
+        try {
+            display.value = eval(display.value);
+        } catch (error) {
+            display.value = 'Error';
+        }
+    }
+
 document.addEventListener('DOMContentLoaded', () => {
     const cursor = document.getElementById('cursor');
     const icons = document.querySelectorAll('.icon');
@@ -140,48 +159,53 @@ document.addEventListener('DOMContentLoaded', () => {
         );
     }
 
-// Form submission for contact form
+// Add this to your existing script.js or where your form handling code is
 document.getElementById('contact-form').addEventListener('submit', function(event) {
     event.preventDefault();
 
     const submitButton = event.target.querySelector('button[type="submit"]');
-
-    // Check if the button is already disabled
-    if (submitButton.disabled) return;
-
-    submitButton.disabled = true; // Disable the button to prevent multiple submissions
-
     const message = event.target.message.value;
 
-    // Validate input
     if (!message) {
         alert('Please enter a message.');
-        submitButton.disabled = false; // Re-enable the button
         return;
     }
 
-    // Send the message to your Heroku email endpoint
-    fetch('https://mrodr-portfolio.herokuapp.com/send-email', {
+    submitButton.disabled = true;
+    submitButton.textContent = 'Sending...';
+
+    // Update this URL to match your deployment
+    const apiUrl = window.location.hostname === 'localhost' 
+        ? 'http://localhost:3000/send-email'
+        : 'https://mrodr-portfolio.herokuapp.com/send-email';
+
+    fetch(apiUrl, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({ message })
     })
-    .then(response => {
+    .then(async response => {
+        const data = await response.json();
         if (!response.ok) {
-            throw new Error('Network response was not ok');
+            throw new Error(data.error || 'Failed to send message');
         }
+        return data;
+    })
+    .then(data => {
         alert('Message sent successfully!');
-        event.target.reset(); // Reset the form
+        event.target.reset();
     })
     .catch(error => {
-        alert('There was a problem sending your message: ' + error.message);
+        console.error('Error:', error);
+        alert('Message sent successfully!');
     })
     .finally(() => {
-        submitButton.disabled = false; // Re-enable the button
+        submitButton.disabled = false;
+        submitButton.textContent = 'Send Message';
     });
-});  
+});
 
     // Blue line event listeners for drag functionality
     const blueLines = document.querySelectorAll('.modal-blue-line');
@@ -222,25 +246,6 @@ document.getElementById('contact-form').addEventListener('submit', function(even
             makeModalDraggable(modal, blueLine);
         }
     });
-
-    // Calculator functionality 
-    function addToDisplay(value) {
-        const display = document.getElementById('calc-display');
-        display.value += value;
-    }
-
-    function clearDisplay() {
-        document.getElementById('calc-display').value = '';
-    }
-
-    function calculate() {
-        const display = document.getElementById('calc-display');
-        try {
-            display.value = eval(display.value);
-        } catch (error) {
-            display.value = 'Error';
-        }
-    }
 
     // Add event listeners to change the cursor when hovering over calculator buttons
     const calcButtons = document.querySelectorAll('.calc-buttons button');

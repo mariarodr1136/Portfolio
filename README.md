@@ -38,9 +38,10 @@ The purpose of this portfolio website is to:
 - **Interactive Calculator**: An embedded calculator allows users to perform basic arithmetic operations.
 
 ## Code Structure
-- **style.css**: Styles for the portfolio 
+- **styles.css**: Styles for the portfolio
 - **script.js**: JavaScript for interactivity (Images, PDFs, and other media)
 - **index.html**: Main HTML file for the portfolio
+- **server.js**: Backend server using Express.js to handle email requests and serve static files
 
 ## Installation
 1. Clone the repository:
@@ -65,10 +66,10 @@ The purpose of this portfolio website is to:
    http://localhost:3000/
 
 ## Requirements
-- A modern web browser: Chrome, Firefox, Safari, etc., for the best user experience
-- Basic knowledge of HTML, CSS, and JavaScript: If you want to modify the code
-- Node.js and npm: Make sure Node.js and npm are installed on your machine
-- Dependencies to install: express, nodemailer, dotenv, body-parser
+- A modern web browser: Chrome, Firefox, Safari, etc., for the best user experience.
+- Basic knowledge of HTML, CSS, and JavaScript: If you want to modify the code.
+- Node.js and npm: Make sure Node.js and npm are installed on your machine.
+- Dependencies to install: express, nodemailer, dotenv, body-parser.
 
 ## Inspiration
 The design of this portfolio website draws inspiration from an old computer desktop screen, allowing users to interact with the portfolio in a nostalgic and playful manner. Icons represent different applications, and users can drag and open them to explore content in a unique style.
