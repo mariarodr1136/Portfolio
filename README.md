@@ -29,6 +29,11 @@ The purpose of this portfolio website is to:
 - Provide a unique and engaging user interface that mimics an old computer desktop environment.
 - Allow visitors to interact with my portfolio by opening and closing tabs, dragging icons, and exploring my work.
 
+## Live Demo
+<p align="center">
+  <a href="https://mariarodr1136.github.io/Portfolio/" target="_blank">Live Demo Link</a>
+</p>
+
 ![PortfolioScreenshot](https://github.com/user-attachments/assets/a9177fbf-3f91-48cb-b5c0-ffd5c8016d34)
 
 ## Features
