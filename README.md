@@ -34,7 +34,9 @@ The purpose of this portfolio website is to:
   <a href="https://mariarodr1136.github.io/Portfolio/" target="_blank">Live Demo Link</a>
 </p>
 
-![PortfolioScreenshot](https://github.com/user-attachments/assets/a9177fbf-3f91-48cb-b5c0-ffd5c8016d34)
+<img width="1460" alt="Screenshot 2024-10-22 at 9 02 15 PM" src="https://github.com/user-attachments/assets/b7146a87-27c8-4a74-acce-babf094f21bf">
+
+<img width="1461" alt="Screenshot 2024-10-22 at 9 03 22 PM" src="https://github.com/user-attachments/assets/a2377e89-e8d9-4602-ae8a-7966c01cf52a">
 
 ## Features
 - **Old Computer Desktop Design**: The design is inspired by classic desktop interfaces, complete with draggable icons and interactive tabs.
