@@ -1,4 +1,8 @@
-    // Calculator functionality 
+// Project Buttons
+function launchProject(url) {
+    window.open(url, '_blank');
+}  
+// Calculator functionality 
     function addToDisplay(value) {
         const display = document.getElementById('calc-display');
         display.value += value;
@@ -267,7 +271,7 @@ document.getElementById('contact-form').addEventListener('submit', function(even
                 positionModal(modal);
             }
         });
-    });
+    });    
 
     // Icon dragging and clicking functionality
     const iconContainers = document.querySelectorAll('.icon-container');
