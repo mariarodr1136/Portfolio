@@ -3,6 +3,9 @@
 ## Overview
 Maria Rodriguez's Portfolio is a unique and interactive website designed to resemble an old computer desktop screen. It features draggable icons that represent various applications and tabs, creating a nostalgic user experience. This portfolio showcases my work as a software developer, featuring various projects, a contact form, an about me section, and links to my resume and GitHub.
 
+![HTML](https://img.shields.io/badge/Languages%20&%20Frameworks-HTML-orange) ![CSS](https://img.shields.io/badge/Languages%20&%20Frameworks-CSS-blue) ![JavaScript](https://img.shields.io/badge/Languages%20&%20Frameworks-JavaScript-yellow) ![Express](https://img.shields.io/badge/Languages%20&%20Frameworks-Express-lightgrey) ![Nodemailer](https://img.shields.io/badge/Languages%20&%20Frameworks-Nodemailer-red) ![dotenv](https://img.shields.io/badge/Languages%20&%20Frameworks-dotenv-success) ![body-parser](https://img.shields.io/badge/Languages%20&%20Frameworks-body--parser-purple)
+
+
 ## Table of Contents
 - [Overview](#overview)
 - [Languages & Frameworks Used](#languages--frameworks-used)
