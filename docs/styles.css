@@ -275,7 +275,7 @@ button[type="submit"] {
 .download-button {
     position: absolute;
     top: 60px;
-    left: 10px; 
+    left: 20px; 
     color: rgb(21, 21, 130);
     background: none;
     padding: 5px;
