@@ -1,3 +1,4 @@
+/* ====== Global Styles ====== */
 body, html {
     height: 100%;
     margin: 0;
@@ -6,9 +7,10 @@ body, html {
     background-size: cover;
     background-position: center;
     overflow: hidden;
-    cursor: none;
+    cursor: none; /* Hidden for custom cursor */
 }
 
+/* ====== Custom Cursor ====== */
 #cursor {
     position: absolute;
     width: 45px;
@@ -20,11 +22,12 @@ body, html {
     z-index: 300;
 }
 
+/* ====== Desktop Icons Layout ====== */
 .icons-container {
     position: absolute;
     top: 20px;
     right: 20px;
-    width: 70px; 
+    width: 70px;
 }
 
 .icon-container {
@@ -33,6 +36,7 @@ body, html {
     text-align: center;
 }
 
+/* Icon Styling */
 .icon {
     width: 78px;
     height: 78px;
@@ -51,6 +55,7 @@ body, html {
     background-color: rgba(219, 219, 219, 0.897);
 }
 
+/* Individual Icon Images */
 #icon1 { background-image: url('static/settings.png'); }
 #icon2 { background-image: url('static/icon2.png'); }
 #icon3 { background-image: url('static/icon3.png'); }
@@ -58,7 +63,7 @@ body, html {
 #icon5 { background-image: url('static/contactme.png'); }
 #icon6 { background-image: url('static/github.png'); }
 
-/* Position each icon container */
+/* Icon Positioning */
 #icon1-container { top: 0; }
 #icon2-container { top: 120px; }  
 #icon3-container { top: 230px; }  
@@ -66,23 +71,8 @@ body, html {
 #icon5-container { top: 460px; }  
 #icon6-container { top: 580px; }  
 
-#modal1 {
-    display: block; 
-    position: fixed; 
-    top: 340px; 
-    left: 285px; 
-    width: 500px; 
-    height: 650px; 
-    background-color: lightgrey; 
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3), 0 4px 8px rgba(0, 0, 0, 0.2);
-    z-index: 200; 
-    border-top: 4px solid rgb(168, 168, 168);
-    border-left: 4px solid rgb(168, 168, 168);
-    border-right: 4px solid black;
-    border-bottom: 4px solid black;
-    overflow: hidden; 
-}
-
+/* ====== Modal Windows ====== */
+/* Base Modal Styles */
 .modal {
     display: none;
     position: fixed;
@@ -93,23 +83,23 @@ body, html {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3), 0 4px 8px rgba(0, 0, 0, 0.2);
     z-index: 200;
     overflow: auto;
+    /* Classic OS-style borders */
     border-top: 4px solid rgb(168, 168, 168);
     border-left: 4px solid rgb(168, 168, 168);
     border-right: 4px solid black;
     border-bottom: 4px solid black;
 }
 
-.modal-title {
-    font-size: 18px;
-    color: white;
-    text-align: left;
-    position: absolute;
-    left: 10px;
-    top: 50%;
-    transform: translateY(-50%);
+/* Individual Modal Dimensions */
+#modal1 { 
+    width: 500px; 
+    height: 600px;
+    display: block;
+    position: fixed;
+    top: 340px;
+    left: 285px;
 }
 
-#modal1 { width: 500px; height: 600px; }
 #modal2 { width: 480px; height: 680px; }
 #modal3 { width: 720px; height: 750px; }
 
@@ -123,6 +113,17 @@ body, html {
     padding: 40px 20px 20px;
 }
 
+/* Modal Components */
+.modal-title {
+    font-size: 18px;
+    color: white;
+    text-align: left;
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
 .modal-close {
     position: absolute;
     top: 10px;
@@ -131,6 +132,7 @@ body, html {
     font-size: 25px;
     color: #333;
     background: solid lightgrey;
+    /* Classic OS-style button borders */
     border-top: 4px solid rgb(168, 168, 168);
     border-left: 4px solid rgb(168, 168, 168);
     border-right: 4px solid black;
@@ -161,6 +163,7 @@ body, html {
     line-height: 30px;
 }
 
+/* ====== Form Styles ====== */
 form {
     width: 100%;
     display: flex;
@@ -169,7 +172,6 @@ form {
     margin-top: 30px; 
     cursor: none;
     font-style: italic;
-    
 }
 
 textarea {
@@ -184,14 +186,15 @@ textarea::placeholder {
     font-style: italic;
 }
 
+/* Submit Button Styling */
 button[type="submit"] {
     padding: 12px;
     background-color: rgb(21, 21, 130);
     color: white;
-    cursor: pointer; 
     font-family: 'Chicago', 'Charcoal', 'Geneva', sans-serif !important; 
     font-size: 16px;
     font-style: italic;
+    /* Classic OS-style button borders */
     border-top: 4px solid rgb(168, 168, 168);
     border-left: 4px solid rgb(168, 168, 168);
     border-right: 4px solid black;
@@ -199,6 +202,7 @@ button[type="submit"] {
     cursor: none;
 }
 
+/* ====== Project Cards ====== */
 .project-card {
     background-color: #f9f9f9;
     border: 1px solid #ccc;
@@ -220,6 +224,7 @@ button[type="submit"] {
     padding: 10px 10px;
     cursor: none;
     background: solid lightgrey;
+    /* Classic OS-style button borders */
     border-top: 4px solid rgb(151, 151, 151);
     border-left: 4px solid rgb(151, 151, 151);
     border-right: 4px solid black;
@@ -227,6 +232,7 @@ button[type="submit"] {
     font-style: italic;
 }
 
+/* ====== Calculator Styles ====== */
 .calculator {
     display: flex;
     flex-direction: column;
@@ -245,6 +251,7 @@ button[type="submit"] {
     font-size: 24px;
     padding-top: 5px; 
     line-height: 1.5;  
+    /* Classic OS-style input borders */
     border-top: 4px solid rgb(168, 168, 168);
     border-left: 4px solid rgb(168, 168, 168);
     border-right: 4px solid black;
@@ -265,6 +272,7 @@ button[type="submit"] {
     font-size: 18px;
     font-style: italic;
     font-family: 'Chicago', 'Charcoal', 'Geneva', sans-serif;
+    /* Classic OS-style button borders */
     border-top: 4px solid rgb(168, 168, 168);
     border-left: 4px solid rgb(168, 168, 168);
     border-right: 4px solid black;
@@ -272,6 +280,7 @@ button[type="submit"] {
     cursor: none;
 }
 
+/* ====== Utility Classes ====== */
 .download-button {
     position: absolute;
     top: 73px;
