@@ -39,7 +39,8 @@ The purpose of this portfolio website is to:
 
 <img width="1460" alt="Screenshot 2024-10-22 at 9 02 15 PM" src="https://github.com/user-attachments/assets/b7146a87-27c8-4a74-acce-babf094f21bf">
 
-<img width="1461" alt="Screenshot 2024-10-22 at 9 03 22 PM" src="https://github.com/user-attachments/assets/a2377e89-e8d9-4602-ae8a-7966c01cf52a">
+<img width="1461" alt="Screenshot 2024-11-01 at 11 12 16 AM" src="https://github.com/user-attachments/assets/800784d2-1bfa-416f-a935-c25b3b658b25">
+
 
 ## Features
 - **Old Computer Desktop Design**: The design is inspired by classic desktop interfaces, complete with draggable icons and interactive tabs.
