@@ -38,8 +38,8 @@ body, html {
 
 /* Icon Styling */
 .icon {
-    width: 78px;
-    height: 78px;
+    width: 80px;
+    height: 80px;
     background-size: contain;
     background-repeat: no-repeat;
     cursor: none;
@@ -59,17 +59,20 @@ body, html {
 #icon1 { background-image: url('static/settings.png'); }
 #icon2 { background-image: url('static/icon2.png'); }
 #icon3 { background-image: url('static/icon3.png'); }
-#icon4 { background-image: url('static/calculator.png'); }
+/* #icon4 { background-image: url('static/calculator.png'); } */
 #icon5 { background-image: url('static/contactme.png'); }
 #icon6 { background-image: url('static/github.png'); }
+#icon7 { background-image: url('static/linkedin.png'); }
+
 
 /* Icon Positioning */
 #icon1-container { top: 0; }
 #icon2-container { top: 120px; }  
 #icon3-container { top: 230px; }  
-#icon4-container { top: 350px; } 
-#icon5-container { top: 460px; }  
-#icon6-container { top: 580px; }  
+/* #icon4-container { top: 350px; } */
+#icon5-container { top: 340px; }  
+#icon6-container { top: 450px; }  
+#icon7-container { top: 560px; }  
 
 /* ====== Modal Windows ====== */
 /* Base Modal Styles */
@@ -101,7 +104,15 @@ body, html {
 }
 
 #modal2 { width: 480px; height: 680px; }
-#modal3 { width: 720px; height: 750px; }
+
+#modal3 { 
+    width: 720px; 
+    height: 750px;
+    display: block;
+    position: fixed;
+    top: 410px;
+    left: 960px;
+}
 
 #modal5 { 
     width: 550px; 
@@ -315,4 +326,163 @@ button[type="submit"] {
 
 .no-italic {
     font-style: normal; 
+}
+
+/* Mobile Responsiveness Media Queries */
+@media screen and (max-width: 768px) {
+    body, html {
+        overflow-y: auto;
+        overflow-x: hidden;
+        touch-action: manipulation;
+    }
+
+    /* Disable custom cursor on mobile */
+    #cursor {
+        display: none;
+    }
+
+    /* Icons Container Redesign */
+    .icons-container {
+        position: static;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+        top: 10px;
+        right: 0;
+        gap: 20px;
+        padding: 10px;
+    }
+
+    .icon-container {
+        position: static;
+        width: calc(33.33% - 20px);
+        margin: 10px;
+        text-align: center;
+    }
+
+    .icon-label {
+        font-size: 12px;
+    }
+
+    /* Modal Adjustments */
+    .modal {
+        position: fixed !important;
+        width: 95% !important;
+        max-width: 95% !important;
+        height: auto !important;
+        left: 2.5% !important;
+        top: 5% !important;
+        transform: none !important;
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+
+    /* Specific Modal Positioning Reset */
+    #modal1, #modal3 {
+        top: 5% !important;
+        left: 2.5% !important;
+    }
+
+    /* Responsive Images */
+    .big-image {
+        max-width: 100% !important;
+        height: auto !important;
+        margin-top: 20px !important;
+    }
+
+    /* Project Cards */
+    .project-card {
+        padding: 15px;
+        margin-bottom: 10px;
+    }
+
+    .project-card h4 {
+        font-size: 14px;
+    }
+
+    .project-card button {
+        font-size: 10px;
+        padding: 8px;
+    }
+
+    /* Contact Form */
+    #modal5 {
+        width: 95% !important;
+        height: auto !important;
+        padding: 20px !important;
+    }
+
+    form {
+        width: 100%;
+        gap: 10px;
+    }
+
+    textarea {
+        height: 100px;
+        font-size: 14px;
+    }
+
+    /* Calculator */
+    .calculator {
+        width: 100%;
+        padding: 5px;
+    }
+
+    #calc-display {
+        width: 90%;
+        font-size: 18px;
+    }
+
+    .calc-buttons {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 5px;
+        width: 90%;
+    }
+
+    .calc-buttons button {
+        width: 100%;
+        height: 40px;
+        font-size: 16px;
+    }
+
+    /* Download Button */
+    .download-button {
+        top: 50px;
+        left: 10px;
+    }
+}
+
+/* Smaller Mobile Devices */
+@media screen and (max-width: 480px) {
+    .icons-container {
+        gap: 10px;
+    }
+
+    .icon-container {
+        width: calc(50% - 10px);
+    }
+
+    .modal {
+        max-height: 95vh;
+    }
+
+    .project-card {
+        padding: 10px;
+    }
+
+    .project-card h4 {
+        font-size: 12px;
+    }
+}
+
+/* Ensure proper scaling */
+@viewport {
+    width: device-width;
+    zoom: 1;
+}
+
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
 }

@@ -63,13 +63,18 @@ document.addEventListener('DOMContentLoaded', () => {
             modal.style.display = 'none';
         });
     
-        // Show only the About Me modal initially
-        if (modals.icon1) {
-            modals.icon1.style.display = 'block';
-            modals.icon1.style.zIndex = getHighestZIndex() + 1;
-        } else {
-            console.error('Modal 1 not found');
-        }
+        // Show both Settings (icon1) and Projects (icon3) modals
+        const modalsToOpen = [modals.icon1, modals.icon3];
+        
+        modalsToOpen.forEach((modal, index) => {
+            if (modal) {
+                modal.style.display = 'block';
+                // Increment z-index for each modal to ensure they stack correctly
+                modal.style.zIndex = getHighestZIndex() + index + 1;
+            } else {
+                console.error(`Modal ${index + 1} not found`);
+            }
+        });
     }
     
     // Call openModal1 function when the DOM is fully loaded
@@ -319,6 +324,9 @@ document.getElementById('contact-form').addEventListener('submit', function(even
                     if (iconId === 'icon6') {
                         // Open GitHub link only on click
                         window.open('https://github.com/mariarodr1136', '_blank');
+                    } else if (iconId === 'icon7') {
+                        // Open LinkedIn link only on click
+                        window.open('https://www.linkedin.com/in/mariarodr/', '_blank');
                     } else if (modals[iconId]) {
                         modals[iconId].style.display = 'block';
                         modals[iconId].style.zIndex = getHighestZIndex() + 1;
