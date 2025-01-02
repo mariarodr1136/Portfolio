@@ -1,3 +1,13 @@
+function launchURL(url) {
+    // Check if window is already being opened
+    if (!launchURL.isOpening) {
+        launchURL.isOpening = true;
+        window.open(url, '_blank');
+        setTimeout(() => {
+            launchURL.isOpening = false;
+        }, 100);
+    }
+}
 // Project Buttons
 function launchProject(url) {
     window.open(url, '_blank');
@@ -297,15 +307,14 @@ document.getElementById('contact-form').addEventListener('submit', function(even
             isDragging = false;
             startX = e.clientX;
             startY = e.clientY;
-
+        
             const offsetX = e.clientX - container.offsetLeft;
             const offsetY = e.clientY - container.offsetTop;
-
+        
             function onMouseMove(event) {
                 const deltaX = Math.abs(event.clientX - startX);
                 const deltaY = Math.abs(event.clientY - startY);
-
-                // If the mouse has moved more than a small threshold, consider it a drag
+        
                 if (deltaX > 5 || deltaY > 5) {
                     isDragging = true;
                     container.style.position = 'absolute';
@@ -313,29 +322,26 @@ document.getElementById('contact-form').addEventListener('submit', function(even
                     container.style.top = event.clientY - offsetY + 'px';
                 }
             }
-
+        
             function onMouseUp() {
                 document.removeEventListener('mousemove', onMouseMove);
                 document.removeEventListener('mouseup', onMouseUp);
-
+        
                 if (!isDragging) {
-                    // This was a click, not a drag
                     const iconId = container.querySelector('.icon').id;
                     if (iconId === 'icon6') {
-                        // Open GitHub link only on click
-                        window.open('https://github.com/mariarodr1136', '_blank');
+                        launchURL('https://github.com/mariarodr1136');
                     } else if (iconId === 'icon7') {
-                        // Open LinkedIn link only on click
-                        window.open('https://www.linkedin.com/in/mariarodr/', '_blank');
+                        launchURL('https://www.linkedin.com/in/mariarodr/');
                     } else if (modals[iconId]) {
                         modals[iconId].style.display = 'block';
                         modals[iconId].style.zIndex = getHighestZIndex() + 1;
                     }
                 }
-
+        
                 cursor.style.backgroundImage = "url('static/cursor.png')";
             }
-
+        
             document.addEventListener('mousemove', onMouseMove);
             document.addEventListener('mouseup', onMouseUp);
         });
