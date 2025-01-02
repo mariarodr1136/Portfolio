@@ -178,53 +178,51 @@ document.addEventListener('DOMContentLoaded', () => {
         );
     }
 
-// Add this to your existing script.js or where your form handling code is
-document.getElementById('contact-form').addEventListener('submit', function(event) {
-    event.preventDefault();
-
-    const submitButton = event.target.querySelector('button[type="submit"]');
-    const message = event.target.message.value;
-
-    if (!message) {
-        alert('Please enter a message.');
-        return;
-    }
-
-    submitButton.disabled = true;
-    submitButton.textContent = 'Sending...';
-
-    // Update this URL to match your deployment
-    const apiUrl = window.location.hostname === 'localhost' 
-        ? 'http://localhost:3000/send-email'
-        : 'https://mrodr-portfolio.herokuapp.com/send-email';
-
-    fetch(apiUrl, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ message })
-    })
-    .then(async response => {
-        const data = await response.json();
-        if (!response.ok) {
-            throw new Error(data.error || 'Failed to send message');
+    document.getElementById('contact-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+    
+        const submitButton = event.target.querySelector('button[type="submit"]');
+        const message = event.target.message.value;
+    
+        if (!message) {
+            alert('Please enter a message.');
+            return;
         }
-        return data;
-    })
-    .then(data => {
-        alert('Message sent successfully!');
-        event.target.reset();
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        alert('Message sent successfully!');
-    })
-    .finally(() => {
-        submitButton.disabled = false;
-        submitButton.textContent = 'Send Message';
+    
+        submitButton.disabled = true;
+        submitButton.textContent = 'Sending...';
+    
+        const apiUrl = window.location.hostname === 'localhost' 
+            ? 'http://localhost:3000/send-email'
+            : 'https://mrodr-portfolio.herokuapp.com/send-email';
+    
+        fetch(apiUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ message })
+        })
+        .then(async response => {
+            const data = await response.json();
+            if (!response.ok) {
+                throw new Error(data.error || 'Failed to send message');
+            }
+            return data;
+        })
+        .then(data => {
+            alert('Message sent successfully!');
+            event.target.reset();
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Failed to send message. Please try again later.');
+        })
+        .finally(() => {
+            submitButton.disabled = false;
+            submitButton.textContent = 'Send Message';
+        });
     });
-});
 
     // Blue line event listeners for drag functionality
     const blueLines = document.querySelectorAll('.modal-blue-line');
