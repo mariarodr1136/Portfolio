@@ -8,28 +8,11 @@ function launchURL(url) {
         }, 100);
     }
 }
+
 // Project Buttons
 function launchProject(url) {
     window.open(url, '_blank');
-}  
-// Calculator functionality 
-    function addToDisplay(value) {
-        const display = document.getElementById('calc-display');
-        display.value += value;
-    }
-
-    function clearDisplay() {
-        document.getElementById('calc-display').value = '';
-    }
-
-    function calculate() {
-        const display = document.getElementById('calc-display');
-        try {
-            display.value = eval(display.value);
-        } catch (error) {
-            display.value = 'Error';
-        }
-    }
+}
 
 document.addEventListener('DOMContentLoaded', () => {
     const cursor = document.getElementById('cursor');
@@ -79,7 +62,6 @@ document.addEventListener('DOMContentLoaded', () => {
         modalsToOpen.forEach((modal, index) => {
             if (modal) {
                 modal.style.display = 'block';
-                // Increment z-index for each modal to ensure they stack correctly
                 modal.style.zIndex = getHighestZIndex() + index + 1;
             } else {
                 console.error(`Modal ${index + 1} not found`);
@@ -100,31 +82,16 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Select the input email and textarea fields
-    const inputFields = document.querySelectorAll('input[type="email"], textarea');
-
-    // Add event listeners to change the cursor when hovering over the input fields
-    inputFields.forEach(field => {
-        field.addEventListener('mouseenter', () => {
+    // Add email button cursor events
+    const emailButton = document.querySelector('.contact-button');
+    if (emailButton) {
+        emailButton.addEventListener('mouseenter', () => {
             cursor.style.backgroundImage = "url('static/click.png')";
         });
-        
-        field.addEventListener('mouseleave', () => {
+        emailButton.addEventListener('mouseleave', () => {
             cursor.style.backgroundImage = "url('static/cursor.png')";
         });
-    });
-
-    // Target the send button in the contact form
-    const sendButton = document.querySelector('#contact-form button[type="submit"]');
-
-    // Change cursor to click.png when hovering over the send button
-    sendButton.addEventListener('mouseenter', () => {
-        cursor.style.backgroundImage = "url('static/click.png')";
-    });
-
-    sendButton.addEventListener('mouseleave', () => {
-        cursor.style.backgroundImage = "url('static/cursor.png')";
-    });
+    }
 
     // Select the download button
     const downloadButton = document.querySelector('.download-button');
@@ -178,52 +145,6 @@ document.addEventListener('DOMContentLoaded', () => {
         );
     }
 
-    document.getElementById('contact-form').addEventListener('submit', function(event) {
-        event.preventDefault();
-    
-        const submitButton = event.target.querySelector('button[type="submit"]');
-        const message = event.target.message.value;
-    
-        if (!message) {
-            alert('Please enter a message.');
-            return;
-        }
-    
-        submitButton.disabled = true;
-        submitButton.textContent = 'Sending...';
-    
-        const apiUrl = window.location.hostname === 'localhost' 
-            ? 'http://localhost:3000/send-email'
-            : 'https://mrodr-portfolio.herokuapp.com/send-email';
-    
-        fetch(apiUrl, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ message })
-        })
-        .then(async response => {
-            const data = await response.json();
-            if (!response.ok) {
-                throw new Error(data.error || 'Failed to send message');
-            }
-            return data;
-        })
-        .then(data => {
-            alert('Message sent successfully!');
-            event.target.reset();
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            alert('Failed to send message. Please try again later.');
-        })
-        .finally(() => {
-            submitButton.disabled = false;
-            submitButton.textContent = 'Send Message';
-        });
-    });
-
     // Blue line event listeners for drag functionality
     const blueLines = document.querySelectorAll('.modal-blue-line');
     let isDraggingModal = false;
@@ -262,19 +183,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (blueLine) {
             makeModalDraggable(modal, blueLine);
         }
-    });
-
-    // Add event listeners to change the cursor when hovering over calculator buttons
-    const calcButtons = document.querySelectorAll('.calc-buttons button');
-
-    calcButtons.forEach(button => {
-        button.addEventListener('mouseenter', () => {
-            cursor.style.backgroundImage = "url('static/click.png')";
-        });
-
-        button.addEventListener('mouseleave', () => {
-            cursor.style.backgroundImage = "url('static/cursor.png')";
-        });
     });
 
     // Update positioning when window is resized
