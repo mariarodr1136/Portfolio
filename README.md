@@ -1,7 +1,11 @@
 # Maria Rodriguez Portfolio
 
 ## Overview
-Maria Rodriguez's Portfolio is a unique and interactive website designed to resemble an old computer desktop screen. It features draggable icons that represent various applications and tabs, creating a nostalgic user experience. This portfolio showcases my work as a software developer, featuring various projects, a contact form, an about me section, and links to my resume and GitHub.
+Welcome to my **Portfolio** website! It is an interactive and unique platform that I designed to resemble an **old computer desktop screen**. The website features draggable icons that represent various applications and tabs, creating a nostalgic user experience. This portfolio showcases my work as a **software developer**, featuring several of my **projects**, a **contact form**, an **about me** section, and links to my **resume**, **LinkedIn**, and **GitHub** profile.
+
+The interactive design was built using modern web technologies, including **HTML**, **CSS**, and **JavaScript**, and offers visitors a hands-on experience where they can explore my work and learn more about my technical skills and background. My goal with this project was to create an engaging and memorable user interface while demonstrating my abilities as a developer.
+
+You can explore the website's features, interact with different sections, and access all of my work right from this custom desktop-inspired layout. Each tab and icon brings something new and dynamic to your experience as you navigate through the portfolio.
 
 ![HTML](https://img.shields.io/badge/Languages%20&%20Frameworks-HTML-orange) ![CSS](https://img.shields.io/badge/Languages%20&%20Frameworks-CSS-blue) ![JavaScript](https://img.shields.io/badge/Languages%20&%20Frameworks-JavaScript-yellow) ![Express](https://img.shields.io/badge/Languages%20&%20Frameworks-Express-lightgrey) ![Nodemailer](https://img.shields.io/badge/Languages%20&%20Frameworks-Nodemailer-red) ![dotenv](https://img.shields.io/badge/Languages%20&%20Frameworks-dotenv-success) ![body-parser](https://img.shields.io/badge/Languages%20&%20Frameworks-body--parser-purple)
 
