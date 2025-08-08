@@ -5,10 +5,11 @@ Welcome to my **Portfolio** — an interactive site styled like a vintage **comp
  
  The interactive design was built using modern web technologies, including **HTML**, **CSS**, and **JavaScript**, and offers visitors a hands-on experience where they can explore my work and learn more about my technical skills and background. My goal with this project was to create an engaging and memorable user interface while demonstrating my abilities as a developer.
  
- You can explore the website's features, interact with different sections, and access all of my work right from this custom desktop-inspired layout. Each tab and icon brings something new and dynamic to your experience as you navigate through the portfolio.
+Feel free to click around, move things, and explore. Each icon and tab reveals something new, so your journey through my portfolio is just as interactive as the projects it contains.  
 
 ![HTML](https://img.shields.io/badge/Languages%20&%20Frameworks-HTML-orange) ![CSS](https://img.shields.io/badge/Languages%20&%20Frameworks-CSS-blue) ![JavaScript](https://img.shields.io/badge/Languages%20&%20Frameworks-JavaScript-yellow) ![Express](https://img.shields.io/badge/Languages%20&%20Frameworks-Express-lightgrey) ![Nodemailer](https://img.shields.io/badge/Languages%20&%20Frameworks-Nodemailer-red) ![dotenv](https://img.shields.io/badge/Languages%20&%20Frameworks-dotenv-success) ![body-parser](https://img.shields.io/badge/Languages%20&%20Frameworks-body--parser-purple)
 
+https://github.com/user-attachments/assets/e4c59ba2-cedf-4007-9779-b3876d255786
 
 ## Table of Contents
 - [Overview](#overview)
