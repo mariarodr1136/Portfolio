@@ -22,7 +22,8 @@ document.addEventListener('DOMContentLoaded', () => {
         icon2: document.getElementById('modal2'),
         icon3: document.getElementById('modal3'),
         icon4: document.getElementById('modal4'),
-        icon5: document.getElementById('modal5')
+        icon5: document.getElementById('modal5'),
+        icon8: document.getElementById('modal8'),
     };
     const closeButtons = document.querySelectorAll('.modal-close');
     let cursorVisible = false;
@@ -56,8 +57,8 @@ document.addEventListener('DOMContentLoaded', () => {
             modal.style.display = 'none';
         });
     
-        // Show both Settings (icon1) and Projects (icon3) modals
-        const modalsToOpen = [modals.icon1, modals.icon3];
+        // Show only Settings (icon1) modal
+        const modalsToOpen = [modals.icon1];
         
         modalsToOpen.forEach((modal, index) => {
             if (modal) {
@@ -242,6 +243,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     } else if (modals[iconId]) {
                         modals[iconId].style.display = 'block';
                         modals[iconId].style.zIndex = getHighestZIndex() + 1;
+                        if (iconId === 'icon8') {
+                            initMinesweeper();
+                        }
                     }
                 }
         
@@ -252,4 +256,120 @@ document.addEventListener('DOMContentLoaded', () => {
             document.addEventListener('mouseup', onMouseUp);
         });
     });
+
+    // === Minesweeper ===
+    const MS_ROWS = 9, MS_COLS = 9, MS_MINES = 10;
+    let msGrid, msTimer, msMinesLeft, msResetBtn, msInterval, msStarted, msRevealed;
+
+    function initMinesweeper() {
+        msGrid = document.getElementById('mines-grid');
+        msTimer = document.getElementById('ms-timer');
+        msMinesLeft = document.getElementById('ms-mines-left');
+        msResetBtn = document.getElementById('ms-reset');
+        if (!msGrid) return;
+        msGrid.innerHTML = '';
+        msGrid.style.gridTemplateColumns = `repeat(${MS_COLS}, 34px)`;
+        let board = createBoard(MS_ROWS, MS_COLS, MS_MINES);
+        msMinesLeft.textContent = pad(MS_MINES);
+        msTimer.textContent = '000';
+        msStarted = false; msRevealed = 0;
+        clearInterval(msInterval);
+        msResetBtn.onclick = () => initMinesweeper();
+
+        board.forEach((row, r) => {
+            row.forEach((cell, c) => {
+                const div = document.createElement('div');
+                div.className = 'ms-cell';
+                div.setAttribute('role','gridcell');
+                div.dataset.r = r; div.dataset.c = c;
+                div.oncontextmenu = (e)=>{ e.preventDefault(); toggleFlag(board, r, c, div); };
+                div.addEventListener('mousedown', (e)=>{
+                    if (e.button === 0) {
+                        if (!msStarted) startTimer();
+                        reveal(board, r, c);
+                    }
+                });
+                msGrid.appendChild(div);
+            });
+        });
+
+        function startTimer(){
+            msStarted = true; let t=0; msTimer.textContent = pad(0);
+            msInterval = setInterval(()=>{ t++; msTimer.textContent = pad(t); }, 1000);
+        }
+
+        function gameOver(win){
+            clearInterval(msInterval);
+            msResetBtn.textContent = win ? '😎' : '☹️';
+            // reveal all mines on loss
+            if (!win){
+                board.forEach((row,r)=>row.forEach((cell,c)=>{
+                    if (cell.mine){
+                        const el = cellEl(r,c); el.classList.add('open','mine');
+                    }
+                }));
+            }
+        }
+
+        function cellEl(r,c){ return msGrid.querySelector(`.ms-cell[data-r="${r}"][data-c="${c}"]`); }
+
+        function reveal(board, r, c){
+            const cell = board[r][c];
+            const el = cellEl(r,c);
+            if (cell.open || cell.flag) return;
+            cell.open = true; el.classList.add('open');
+            if (cell.mine){ el.classList.add('mine'); gameOver(false); return; }
+            msRevealed++;
+            if (cell.count>0){ el.textContent = cell.count; el.style.color = countColor(cell.count); }
+            else { // flood fill
+                neighbors(r,c).forEach(([nr,nc])=> reveal(board, nr, nc));
+            }
+            if (msRevealed === MS_ROWS*MS_COLS - MS_MINES){ gameOver(true); }
+        }
+
+        function toggleFlag(board, r, c, el){
+            const cell = board[r][c];
+            if (cell.open) return;
+            cell.flag = !cell.flag;
+            el.classList.toggle('flag', cell.flag);
+            const left = MS_MINES - board.flat().filter(x=>x.flag).length;
+            msMinesLeft.textContent = pad(Math.max(0,left));
+        }
+
+        function neighbors(r,c){
+            const res=[];
+            for (let dr=-1; dr<=1; dr++){
+                for (let dc=-1; dc<=1; dc++){
+                    if (dr===0 && dc===0) continue;
+                    const nr=r+dr, nc=c+dc;
+                    if (nr>=0 && nr<MS_ROWS && nc>=0 && nc<MS_COLS) res.push([nr,nc]);
+                }
+            }
+            return res;
+        }
+
+        function createBoard(rows, cols, mines){
+            const board = Array.from({length: rows}, ()=> Array.from({length: cols}, ()=>({mine:false, open:false, flag:false, count:0})));
+            let placed=0;
+            while (placed < mines){
+                const r = Math.floor(Math.random()*rows);
+                const c = Math.floor(Math.random()*cols);
+                if (!board[r][c].mine){ board[r][c].mine = true; placed++; }
+            }
+            for (let r=0; r<rows; r++){
+                for (let c=0; c<cols; c++){
+                    if (board[r][c].mine) continue;
+                    let cnt=0; neighbors(r,c).forEach(([nr,nc])=>{ if (board[nr][nc].mine) cnt++; });
+                    board[r][c].count = cnt;
+                }
+            }
+            return board;
+        }
+
+        function pad(n){ return String(n).padStart(3,'0'); }
+        function countColor(n){
+            const colors = {1:'#0000ff',2:'#008200',3:'#ff0000',4:'#000084',5:'#840000',6:'#008284',7:'#000000',8:'#808080'};
+            return colors[n] || '#000';
+        }
+    }
 });
