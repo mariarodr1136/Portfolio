@@ -70,7 +70,7 @@ body, html {
 #icon5 { background-image: url('static/contactme.png'); }
 #icon6 { background-image: url('static/github.png'); }
 #icon7 { background-image: url('static/linkedin.png'); }
-#icon8 { background-image: url('static/minesweeper.png'); }
+#icon8 { background-image: url('static/games.png'); }
 
 /* Icon Positioning */
 #icon1-container { top: 0; }
@@ -135,6 +135,19 @@ body, html {
 }
 
 #modal8 { width: 366px; height: 550px; }
+
+/* Games modal */
+#modal9 { width: 520px; height: 230px; }
+.games-modal { padding: 60px 20px 20px; }
+.games-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; justify-items: center; }
+.game-item { width: 110px; text-align: center; }
+.game-item.disabled { opacity: 0.6; filter: grayscale(60%); pointer-events: none; }
+.game-icon { width: 80px; height: 80px; background-size: contain; background-repeat: no-repeat; margin: 0 auto; }
+.game-icon.minesweeper { background-image: url('static/minesweeper.png'); }
+.game-icon.pinball { background-image: url('static/pinball.png'); }
+.game-icon.solitaire { background-image: url('static/solitaire.png'); }
+.game-label { margin-top: 6px; font-size: 13px; font-style: italic; background: rgba(219,219,219,0.9); padding: 2px 4px; }
+#game-minesweeper .game-label { margin-top: -40px; }
 
 /* Modal Components */
 .modal-title {

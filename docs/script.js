@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
         icon5: document.getElementById('modal5'),
         icon6: document.getElementById('modal6'),
         icon7: document.getElementById('modal7'),
-        icon8: document.getElementById('modal8'),
+        icon8: document.getElementById('modal9'),
     };
     const closeButtons = document.querySelectorAll('.modal-close');
     let cursorVisible = false;
@@ -192,7 +192,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Apply draggable functionality to all modals with blue lines
-    Object.values(modals).forEach(modal => {
+    document.querySelectorAll('.modal').forEach(modal => {
         const blueLine = modal.querySelector('.modal-blue-line');
         if (blueLine) {
             makeModalDraggable(modal, blueLine);
@@ -253,9 +253,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (modal) {
                         modal.style.display = 'block';
                         modal.style.zIndex = getHighestZIndex() + 1;
-                        if (iconId === 'icon8') {
-                            initMinesweeper();
-                        }
+                        // icon8 now opens Games; Minesweeper is launched from inside the Games modal
                     }
                 }
         
@@ -270,6 +268,25 @@ document.addEventListener('DOMContentLoaded', () => {
     // === Minesweeper ===
     const MS_ROWS = 9, MS_COLS = 9, MS_MINES = 10;
     let msGrid, msTimer, msMinesLeft, msResetBtn, msInterval, msStarted, msRevealed;
+
+    // Games modal interactions
+    const gamesMinesweeper = document.getElementById('game-minesweeper');
+    if (gamesMinesweeper) {
+        gamesMinesweeper.addEventListener('click', () => {
+            const msModal = document.getElementById('modal8');
+            if (msModal) {
+                msModal.style.display = 'block';
+                msModal.style.zIndex = getHighestZIndex() + 1;
+                initMinesweeper();
+            }
+        });
+        gamesMinesweeper.addEventListener('mouseenter', () => {
+            cursor.style.backgroundImage = "url('static/click.png')";
+        });
+        gamesMinesweeper.addEventListener('mouseleave', () => {
+            cursor.style.backgroundImage = "url('static/cursor.png')";
+        });
+    }
 
     function initMinesweeper() {
         msGrid = document.getElementById('mines-grid');
