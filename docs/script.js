@@ -288,6 +288,24 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // === Pinball ===
+    const gamesPinball = document.getElementById('game-pinball');
+    if (gamesPinball) {
+        gamesPinball.addEventListener('click', () => {
+            const pbModal = document.getElementById('modal10');
+            if (pbModal) {
+                pbModal.style.display = 'block';
+                pbModal.style.zIndex = getHighestZIndex() + 1;
+            }
+        });
+        gamesPinball.addEventListener('mouseenter', () => {
+            cursor.style.backgroundImage = "url('static/click.png')";
+        });
+        gamesPinball.addEventListener('mouseleave', () => {
+            cursor.style.backgroundImage = "url('static/cursor.png')";
+        });
+    }
+
     function initMinesweeper() {
         msGrid = document.getElementById('mines-grid');
         msTimer = document.getElementById('ms-timer');

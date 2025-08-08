@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Pinball</title>
+    <style>
+      html, body { height:100%; margin:0; background:#000; }
+      .center { display:flex; align-items:center; justify-content:center; height:100%; color:#ddd; font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif; text-align:center; padding:24px; }
+      .btn { display:inline-block; margin-top:12px; padding:10px 14px; background:#1e1e7a; color:#fff; border:1px solid #333; text-decoration:none; border-radius:4px; }
+      .hint { color:#aaa; font-size: 14px; margin-top: 6px; }
+      iframe { width:100%; height:100%; border:0; }
+    </style>
+  </head>
+  <body>
+    <div class="center" id="placeholder">
+      <div>
+        <h2>Pinball will load here</h2>
+        <p>Build the Space Cadet Pinball project for the web and place the output files in this folder.</p>
+        <ol style="text-align:left; max-width:720px; margin: 10px auto;">
+          <li>Install Emscripten SDK and activate it.</li>
+          <li>Build the game to WebAssembly (wasm) using the project's web/CMake instructions.</li>
+          <li>Copy the generated index.html/.js/.wasm plus assets into this folder.</li>
+        </ol>
+        <div class="hint">Once copied, this placeholder will be replaced by the game.</div>
+      </div>
+    </div>
+    <script>
+      // If a "build" subfolder exists with an index, redirect to it (optional pattern)
+      fetch('build/index.html', { method:'HEAD' }).then(r=>{
+        if (r.ok) location.replace('build/index.html');
+      }).catch(()=>{});
+    </script>
+  </body>
+</html>

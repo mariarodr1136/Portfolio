@@ -148,6 +148,13 @@ body, html {
 .game-icon.solitaire { background-image: url('static/solitaire.png'); }
 .game-label { margin-top: 6px; font-size: 13px; font-style: italic; background: rgba(219,219,219,0.9); padding: 2px 4px; }
 #game-minesweeper .game-label { margin-top: -40px; }
+#game-pinball .game-icon { width: 110px; height: 110px; }
+#game-solitaire .game-icon { width: 110px; height: 110px; }
+
+/* Pinball modal */
+#modal10 { width: 650px; height: 550px; }
+.pinball-wrap { padding: 60px 8px 8px; height: calc(100% - 60px); }
+.pinball-frame { width: 100%; height: 100%; border: none; background: #000; }
 
 /* Modal Components */
 .modal-title {
