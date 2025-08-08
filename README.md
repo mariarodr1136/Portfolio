@@ -1,7 +1,7 @@
 # Maria Rodriguez Portfolio
 
 ## Overview
-Welcome to my **Portfolio** website! It is an interactive and unique platform that I designed to resemble an **old computer desktop screen**. The website features draggable icons that represent various applications and tabs, creating a nostalgic user experience. This portfolio showcases my work as a **software developer**, featuring several of my **projects**, a **contact form**, an **about me** section, and links to my **resume**, **LinkedIn**, and **GitHub** profile.
+Welcome to my **Portfolio** — an interactive site styled like a vintage **computer desktop**. Drag icons to open apps and tabs for a nostalgic, hands-on experience. Inside the desktop you'll find my **software development projects**, an **about me** section, a **contact form**, a fun **minigame**, and quick links to my **resume**, **LinkedIn**, and **GitHub**.
  
  The interactive design was built using modern web technologies, including **HTML**, **CSS**, and **JavaScript**, and offers visitors a hands-on experience where they can explore my work and learn more about my technical skills and background. My goal with this project was to create an engaging and memorable user interface while demonstrating my abilities as a developer.
  
@@ -50,7 +50,6 @@ The purpose of this portfolio website is to:
 - **Old Computer Desktop Design**: The design is inspired by classic desktop interfaces, complete with draggable icons and interactive tabs.
 - **Draggable Icons**: Users can move icons around the screen for a personalized experience.
 - **Modals for Content**: Clicking on icons opens modals with detailed information, such as projects, contact forms, and downloadable content (like my resume).
-- **Interactive Calculator**: An embedded calculator allows users to perform basic arithmetic operations.
 - **Minesweeper Game**: A playable version of Minesweeper is available as part of the interactive desktop, adapted from [Jon Ziebell’s original Minesweeper repository](https://github.com/ziebelje/minesweeper).
 
 ## Code Structure
