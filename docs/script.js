@@ -23,6 +23,8 @@ document.addEventListener('DOMContentLoaded', () => {
         icon3: document.getElementById('modal3'),
         icon4: document.getElementById('modal4'),
         icon5: document.getElementById('modal5'),
+        icon6: document.getElementById('modal6'),
+        icon7: document.getElementById('modal7'),
         icon8: document.getElementById('modal8'),
     };
     const closeButtons = document.querySelectorAll('.modal-close');
@@ -120,6 +122,17 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // Add hover listeners for social modal action buttons
+    const socialActionButtons = document.querySelectorAll('.modal-action-btn');
+    socialActionButtons.forEach(button => {
+        button.addEventListener('mouseenter', () => {
+            cursor.style.backgroundImage = "url('static/click.png')";
+        });
+        button.addEventListener('mouseleave', () => {
+            cursor.style.backgroundImage = "url('static/cursor.png')";
+        });
+    });
+
     // Handle modal close button events
     closeButtons.forEach(button => {
         button.addEventListener('click', (e) => {
@@ -201,7 +214,7 @@ document.addEventListener('DOMContentLoaded', () => {
     iconContainers.forEach(container => {
         let isDragging = false;
         let startX, startY;
-
+        
         container.addEventListener('mouseenter', () => {
             cursor.style.backgroundImage = "url('static/click.png')";
         });
@@ -236,13 +249,10 @@ document.addEventListener('DOMContentLoaded', () => {
         
                 if (!isDragging) {
                     const iconId = container.querySelector('.icon').id;
-                    if (iconId === 'icon6') {
-                        launchURL('https://github.com/mariarodr1136');
-                    } else if (iconId === 'icon7') {
-                        launchURL('https://www.linkedin.com/in/mariarodr/');
-                    } else if (modals[iconId]) {
-                        modals[iconId].style.display = 'block';
-                        modals[iconId].style.zIndex = getHighestZIndex() + 1;
+                    const modal = modals[iconId];
+                    if (modal) {
+                        modal.style.display = 'block';
+                        modal.style.zIndex = getHighestZIndex() + 1;
                         if (iconId === 'icon8') {
                             initMinesweeper();
                         }

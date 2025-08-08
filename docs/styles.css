@@ -315,3 +315,8 @@ body, html {
 .ms-cell.open { background:#e1e1e1; border:1px solid #888; }
 .ms-cell.flag::after { content:'🚩'; }
 .ms-cell.mine::after { content:'💣'; }
+
+/* Social modals */
+.social-modal { padding: 60px 40px 20px; text-align: center; }
+.social-image { max-width: 800px; height: auto; display: block; margin: 10px auto 16px; border-top: 4px solid rgb(168, 168, 168); border-left: 4px solid rgb(168, 168, 168); border-right: 4px solid black; border-bottom: 4px solid black; background:#dcdcdc; }
+.modal-action-btn { background-color: rgb(21, 21, 130); color: white; font-family: 'Chicago', 'Charcoal', 'Geneva', sans-serif !important; font-size: 12px; padding: 10px 10px; cursor: none; background: solid lightgrey; border-top: 4px solid rgb(151, 151, 151); border-left: 4px solid rgb(151, 151, 151); border-right: 4px solid black; border-bottom: 4px solid black; font-style: italic; }
