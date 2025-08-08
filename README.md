@@ -51,6 +51,7 @@ The purpose of this portfolio website is to:
 - **Draggable Icons**: Users can move icons around the screen for a personalized experience.
 - **Modals for Content**: Clicking on icons opens modals with detailed information, such as projects, contact forms, and downloadable content (like my resume).
 - **Interactive Calculator**: An embedded calculator allows users to perform basic arithmetic operations.
+- **Minesweeper Game**: A playable version of Minesweeper is available as part of the interactive desktop, adapted from [Jon Ziebell’s original Minesweeper repository](https://github.com/ziebelje/minesweeper).
 
 ## Code Structure
 - **styles.css**: Styles for the portfolio
