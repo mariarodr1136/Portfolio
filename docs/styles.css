@@ -3,7 +3,7 @@ body, html {
     height: 100%;
     margin: 0;
     font-family: 'Chicago', 'Charcoal', 'Geneva', sans-serif;
-    background-image: url('static/background.png');
+    background-image: url('static/background9.jpg');
     background-size: cover;
     background-position: center;
     overflow: hidden;
@@ -104,11 +104,11 @@ body, html {
 /* Individual Modal Dimensions */
 #modal1 { 
     width: 500px; 
-    height: 600px;
+    height: 485px;
     display: block;
     position: fixed;
-    top: 45%;
-    left: 50%;
+    top: 28%;
+    left: 82%;
     transform: translate(-50%, -45%);
 }
 
@@ -320,6 +320,19 @@ body, html {
     height: auto !important;
     margin-top: 55px !important; 
 }
+
+/* Scoped override: make Clippy smaller only in Settings modal */
+#modal1 .big-image {
+    max-width: 240px !important;
+    margin-top: 25px !important; 
+    margin-bottom: -15px !important;
+}
+
+#modal1 .image-container { margin-bottom: 0px; }
+#modal1 h3.no-italic { margin: 0px 0 30px !important; }
+#modal1 .about-me-content p { margin-top: 0px !important; }
+#modal1 .about-me-content { padding-top: 10px !important; }
+#modal1 .about-me-content p + p { margin-top: 35px !important; }
 
 .no-italic {
     font-style: normal; 
