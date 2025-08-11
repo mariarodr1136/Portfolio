@@ -138,6 +138,15 @@ document.addEventListener('DOMContentLoaded', () => {
         button.addEventListener('click', (e) => {
             const modal = e.target.closest('.modal');
             modal.style.display = 'none';
+            // Special handling: if pinball modal closed, unload iframe to stop audio
+            if (modal.id === 'modal10') {
+                const frame = modal.querySelector('.pinball-frame');
+                if (frame) {
+                    // Unload to ensure SDL_mixer music stops
+                    frame.src = 'about:blank';
+                    frame.removeAttribute('data-pinball-loaded');
+                }
+            }
         });
 
         button.addEventListener('mouseenter', () => {
@@ -296,6 +305,12 @@ document.addEventListener('DOMContentLoaded', () => {
             if (pbModal) {
                 pbModal.style.display = 'block';
                 pbModal.style.zIndex = getHighestZIndex() + 1;
+                // Reload pinball iframe if it was previously unloaded to stop music
+                const frame = pbModal.querySelector('.pinball-frame');
+                if (frame && (!frame.getAttribute('data-pinball-loaded') || frame.src === 'about:blank')) {
+                    frame.src = 'games/pinball/SpaceCadetPinball.html';
+                    frame.setAttribute('data-pinball-loaded','1');
+                }
             }
         });
         gamesPinball.addEventListener('mouseenter', () => {
