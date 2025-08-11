@@ -7,7 +7,7 @@ Welcome to my **Portfolio** — an interactive site styled like a vintage **comp
  
 Feel free to click around, move things, and explore. Each icon and tab reveals something new, so your journey through my portfolio is just as interactive as the projects it contains.  
 
-![HTML](https://img.shields.io/badge/Languages%20&%20Frameworks-HTML-orange) ![CSS](https://img.shields.io/badge/Languages%20&%20Frameworks-CSS-blue) ![JavaScript](https://img.shields.io/badge/Languages%20&%20Frameworks-JavaScript-yellow) ![Express](https://img.shields.io/badge/Languages%20&%20Frameworks-Express-lightgrey) ![Nodemailer](https://img.shields.io/badge/Languages%20&%20Frameworks-Nodemailer-red) ![dotenv](https://img.shields.io/badge/Languages%20&%20Frameworks-dotenv-success) ![body-parser](https://img.shields.io/badge/Languages%20&%20Frameworks-body--parser-purple)
+![HTML](https://img.shields.io/badge/HTML-5-orange) ![CSS](https://img.shields.io/badge/CSS-3-blue) ![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-yellow) ![Node.js](https://img.shields.io/badge/Runtime-Node.js-green) ![Express](https://img.shields.io/badge/Backend-Express-lightgrey) ![Nodemailer](https://img.shields.io/badge/Email-Nodemailer-red) ![dotenv](https://img.shields.io/badge/Config-dotenv-success) ![body-parser](https://img.shields.io/badge/Middleware-body--parser-purple) ![WebAssembly](https://img.shields.io/badge/Tech-WebAssembly-654ff0) ![Emscripten](https://img.shields.io/badge/Toolchain-Emscripten-302f8e) ![SDL2](https://img.shields.io/badge/Library-SDL2-0d72b9) ![SDL_mixer](https://img.shields.io/badge/Audio-SDL__mixer-bd3d3a) ![ImGui](https://img.shields.io/badge/UI-ImGui-1b6ac6) ![TinySoundFont](https://img.shields.io/badge/MIDI-TinySoundFont-6a4) ![GitHub Pages](https://img.shields.io/badge/Deploy-GitHub%20Pages-171515)
 
 https://github.com/user-attachments/assets/e4c59ba2-cedf-4007-9779-b3876d255786
 
@@ -24,13 +24,37 @@ https://github.com/user-attachments/assets/e4c59ba2-cedf-4007-9779-b3876d255786
 - [Contact](#contact)
 
 ## Languages & Frameworks Used
-- **HTML**: Structure of the web pages
-- **CSS**: Styling and layout of the website
-- **JavaScript**: Interactivity and dynamic content
-- **Express**: A web application framework for Node.js, used for building server-side applications
-- **Nodemailer**: A library for sending emails from Node.js applications
-- **dotenv**: A zero-dependency module that loads environment variables from a .env file into process.env
-- **body-parser**: Middleware for parsing incoming request bodies in a middleware before your handlers, available under the req.body property
+### Frontend
+- **HTML / CSS / JavaScript (ES6+)**: Core structure, presentation, and client‑side interactivity
+- **Custom Desktop UI**: Windowed modal system (drag, z-index stacking, custom cursor) built from scratch
+- **Accessibility Considerations**: Semantic elements and ARIA roles in interactive components (e.g., Minesweeper grid)
+
+### Games & Interactive Components
+- **Minesweeper (vanilla JS adaptation)**: Logic port with enhancements & styling
+- **Space Cadet Pinball (WASM)**: C++ codebase compiled to WebAssembly via Emscripten; uses SDL2, SDL2_mixer for audio, TinySoundFont (TSF) for MIDI playback, and Dear ImGui for in‑game UI overlays
+
+### Toolchain / Low‑Level
+- **WebAssembly (WASM)**: Performance‑critical C++ game code running in the browser
+- **Emscripten**: Compiles original C++ sources to `.wasm`, generates JS glue & preloads assets (PINBALL.DAT, sound effects)
+- **SDL2 / SDL2_mixer**: Input, rendering surface, and audio mixing
+- **TinySoundFont (TSF)**: Synth-based MIDI music fallback (selected build path)
+- **ImGui**: Immediate mode UI library (debug / internal overlay elements in the C++ game code)
+
+### Backend / Infrastructure
+- **Node.js + Express**: Lightweight server for local development & handling contact form POST submissions
+- **Nodemailer**: Email transport for the contact form
+- **dotenv**: Environment variable management
+- **body-parser**: Request body parsing (now built-in to Express >=4.16—kept for clarity)
+
+### Deployment
+- **GitHub Pages**: Static hosting of the portfolio (including built WASM artifacts)
+- **Procfile (optional)**: Enables easy deployment to platforms like Render / Railway / Heroku for the email service if needed
+
+### Version Control & Build Utilities
+- **Git / GitHub**: Source hosting & issue tracking
+- **CMake**: Build system for the C++ game portion
+
+> If you're only interested in the web portfolio, you can ignore the `spacecadet/` source tree — the built artifacts already live under `docs/games/pinball/`.
 
 ## Purpose
 The purpose of this portfolio website is to:
@@ -48,45 +72,83 @@ The purpose of this portfolio website is to:
 
 
 ## Features
-- **Old Computer Desktop Design**: The design is inspired by classic desktop interfaces, complete with draggable icons and interactive tabs.
-- **Draggable Icons**: Users can move icons around the screen for a personalized experience.
-- **Modals for Content**: Clicking on icons opens modals with detailed information, such as projects, contact forms, and downloadable content (like my resume).
-- **Minesweeper Game**: A playable version of Minesweeper is available as part of the interactive desktop, adapted from [Jon Ziebell’s original Minesweeper repository](https://github.com/ziebelje/minesweeper).
-- **Space Cadet Pinball**: A playable port of *Space Cadet Pinball* included in the interactive desktop, ported by Muzychenko Andrey and Alula — adapted from their repository: [alula/SpaceCadetPinball](https://github.com/alula/SpaceCadetPinball).
+- **Retro Desktop Interface**: Windowed modal system evokes classic OS aesthetics (title bars, close buttons, draggable windows).
+- **Custom Pointer & Interaction Feedback**: The pointer changes contextually (e.g., clickable vs idle) for a tactile feel.
+- **Draggable Icons & State Preservation**: Icons can be rearranged to personalize layout per session (simple DOM state managed in JS).
+- **Dynamic Modals**: Modular content windows for About, Projects, Resume (PDF / PNG), Social links, Contact form, and Games hub.
+- **Minesweeper Game**: Playable, keyboard & mouse friendly; adapted from [Jon Ziebell’s repository](https://github.com/ziebelje/minesweeper) with UI and accessibility adjustments.
+- **Space Cadet Pinball (WebAssembly)**: Fully playable port compiled from original reverse‑engineered C++ sources. Audio (effects + music) enabled via SDL_mixer + TSF Synth.
+- **On‑Demand Game Lifecycle**: Pinball iframe is dynamically reloaded / torn down; music stops cleanly when modal closes.
+- **Contact Form Integration**: Submits through Express backend + Nodemailer (optional when served statically you can disable or point to a server endpoint).
+- **Performance Conscious**: Only one heavy WASM game; lazy iframe loading prevents blocking initial content.
+- **Cross‑Platform**: Runs in any modern WASM‑capable browser (Chrome, Firefox, Safari, Edge, Mobile Chromium variants).
 
 ## Code Structure
-- **styles.css**: Styles for the portfolio
-- **script.js**: JavaScript for interactivity (Images, PDFs, and other media)
-- **index.html**: Main HTML file for the portfolio
-- **server.js**: Backend server using Express.js to handle email requests and serve static files
+```
+root/
+├── docs/                      # GitHub Pages root (served site)
+│   ├── index.html             # Main desktop UI
+│   ├── styles.css             # Portfolio styling
+│   ├── script.js              # Desktop/window/game modal logic
+│   └── games/pinball/         # Deployed WASM build (html/js/wasm/data)
+├── spacecadet/                # C++ source + CMake for Space Cadet Pinball
+│   ├── CMakeLists.txt
+│   └── SpaceCadetPinball/     # Game source (SDL2, ImGui, audio, assets preload)
+├── portfolio-contact-form/    # (If separated) contact form package.json / service
+├── server.js                  # Express server (email relay + static)
+├── package.json               # Node dependencies (backend utilities)
+├── procfile                   # Optional platform process declaration
+└── README.md
+```
+Key files:
+- `docs/games/pinball/SpaceCadetPinball.html|js|wasm|data`: Runtime artifacts produced by Emscripten build.
+- `spacecadet/game_resources/`: Original DAT + WAV assets used at build time (preloaded into virtual FS).
+- `server.js`: Provides `/contact` endpoint (POST) using Nodemailer.
 
 ## Installation
-1. Clone the repository:
-   ```bash
-   gh repo clone mariarodr1136/Portfolio
+### 1. Clone
+```bash
+git clone https://github.com/mariarodr1136/Portfolio.git
+cd Portfolio
+```
 
-- Alternatively, if you prefer to use HTTPS:
-   ```bash
-   git clone https://github.com/mariarodr1136/Portfolio.git
-   
-2. Navigate into the project directory:
-   ```bash
-   cd Portfolio
-3. Install any dependencies:
-   ```bash
-   npm install express nodemailer dotenv body-parser
-4. Start the local server:
-   ```bash
-   node server.js
-5. Open the Application in your browser:
-   ```bash
-   http://localhost:3000/
+### 2. Install Node dependencies
+Uses `package.json` (no need to manually install each library):
+```bash
+npm install
+```
+
+### 3. Run locally (static + contact form)
+```bash
+node server.js
+# or with nodemon if installed: npx nodemon server.js
+```
+Visit: http://localhost:3000/
+
+### 4. (Optional) Build Space Cadet Pinball from source
+You only need this if you want to modify the C++ game.
+Requirements: Emscripten SDK (`emsdk`), CMake ≥ 3.16.
+```bash
+# Activate emsdk environment (example path)
+source ~/emsdk/emsdk_env.sh
+cd spacecadet
+mkdir -p build-web && cd build-web
+emcmake cmake -DCMAKE_BUILD_TYPE=Release ..
+cmake --build . -j
+cp bin/SpaceCadetPinball.* ../../docs/games/pinball/
+```
+Hard refresh the site to load the new build.
+
+### 5. (Optional) Deploy to GitHub Pages
+The `docs/` directory is already structured for Pages.
+Enable Pages in repository settings, pointing to branch `main` / folder `docs`.
 
 ## Requirements
-- A modern web browser: Chrome, Firefox, Safari, etc., for the best user experience.
-- Basic knowledge of HTML, CSS, and JavaScript: If you want to modify the code.
-- Node.js and npm: Make sure Node.js and npm are installed on your machine.
-- Dependencies to install: express, nodemailer, dotenv, body-parser.
+- Modern browser with WebAssembly support (all evergreen browsers)
+- Node.js 18+ (for local server / contact form)
+- (Optional) Emscripten + CMake if rebuilding the Pinball game
+- Basic web dev knowledge if extending UI
+- Outbound email credentials (SMTP) for Nodemailer (configure via `.env`)
 
 ## Inspiration
 The design of this portfolio website draws inspiration from an old computer desktop screen, allowing users to interact with the portfolio in a nostalgic and playful manner. Icons represent different applications, and users can drag and open them to explore content in a unique style.
@@ -99,25 +161,23 @@ The design of this portfolio website draws inspiration from an old computer desk
 ---
 
 ## Contributing
-Feel free to submit issues or pull requests for improvements or bug fixes. You can also open issues to discuss potential changes or enhancements. All contributions are welcome to enhance the app’s features or functionality!
+Contributions welcome—UI polish, performance tweaks, accessibility improvements, or additional retro mini‑apps.
 
-To contribute, please follow these steps:
+1. Fork the repo
+2. Create a branch:
+   ```bash
+   git checkout -b feat/my-feature
+   # or
+   git checkout -b fix/issue-###
+   ```
+3. Make changes (for C++ WASM builds, also rebuild & copy updated artifacts)
+4. Commit:
+   ```bash
+   git commit -m "feat: add <short description>"
+   ```
+5. Push & open a Pull Request with context / screenshots if UI related
 
-1. Fork the repository.
-2. Create a new branch for your feature or bug fix:
-   ```bash
-   git checkout -b feat/your-feature-name
-- Alternatively, for bug fixes:
-   ```bash
-   git checkout -b fix/your-bug-fix-name
-3. Make your changes and run all tests before committing the changes and make sure all tests are passed.
-4. After all tests are passed, commit your changes with descriptive messages:
-   ```bash
-   git commit -m 'add your commit message'
-5. Push your changes to your forked repository:
-   ```bash
-   git push origin feat/your-feature-name.
-6. Submit a pull request to the main repository, explaining your changes and providing any necessary details.
+> Tip: If modifying the Pinball C++ sources, keep PRs focused (avoid mixing frontend & game engine changes unless necessary).
 
 ## Contact
 If you have any questions or feedback, feel free to reach out at [mrodr.contact@gmail.com](mailto:mrodr.contact@gmail.com).
