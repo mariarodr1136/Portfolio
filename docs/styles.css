@@ -104,11 +104,11 @@ body, html {
 /* Individual Modal Dimensions */
 #modal1 { 
     width: 500px; 
-    height: 485px;
+    height: 425px;
     display: block;
     position: fixed;
-    top: 28%;
-    left: 82%;
+    top: 45%;
+    left: 50%;
     transform: translate(-50%, -45%);
 }
 
@@ -323,7 +323,7 @@ body, html {
 
 /* Scoped override: make Clippy smaller only in Settings modal */
 #modal1 .big-image {
-    max-width: 240px !important;
+    max-width: 200px !important;
     margin-top: 25px !important; 
     margin-bottom: -15px !important;
 }
@@ -331,8 +331,8 @@ body, html {
 #modal1 .image-container { margin-bottom: 0px; }
 #modal1 h3.no-italic { margin: 0px 0 30px !important; }
 #modal1 .about-me-content p { margin-top: 0px !important; }
-#modal1 .about-me-content { padding-top: 10px !important; }
-#modal1 .about-me-content p + p { margin-top: 35px !important; }
+#modal1 .about-me-content { padding-top: 9px !important; }
+#modal1 .about-me-content p + p { margin-top: 28px !important; }
 
 .no-italic {
     font-style: normal; 
