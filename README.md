@@ -91,6 +91,13 @@ The purpose of this portfolio website is to:
 ## Inspiration
 The design of this portfolio website draws inspiration from an old computer desktop screen, allowing users to interact with the portfolio in a nostalgic and playful manner. Icons represent different applications, and users can drag and open them to explore content in a unique style.
 
+---
+
+<img width="1468" height="833" alt="Screenshot 2025-08-11 at 1 08 24 PM" src="https://github.com/user-attachments/assets/be8cc3b4-e534-4082-b681-38050bf6bf4f" />
+<img width="1462" height="827" alt="Screenshot 2025-08-11 at 1 09 21 PM" src="https://github.com/user-attachments/assets/00a2ea11-4e9c-404e-b846-14289b04fd9d" />
+
+---
+
 ## Contributing
 Feel free to submit issues or pull requests for improvements or bug fixes. You can also open issues to discuss potential changes or enhancements. All contributions are welcome to enhance the app’s features or functionality!
 
