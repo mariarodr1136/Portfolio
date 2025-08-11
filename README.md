@@ -139,10 +139,6 @@ cp bin/SpaceCadetPinball.* ../../docs/games/pinball/
 ```
 Hard refresh the site to load the new build.
 
-### 5. (Optional) Deploy to GitHub Pages
-The `docs/` directory is already structured for Pages.
-Enable Pages in repository settings, pointing to branch `main` / folder `docs`.
-
 ## Requirements
 - Modern browser with WebAssembly support (all evergreen browsers)
 - Node.js 18+ (for local server / contact form)
