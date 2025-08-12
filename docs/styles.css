@@ -3,7 +3,7 @@ body, html {
     height: 100%;
     margin: 0;
     font-family: 'Chicago', 'Charcoal', 'Geneva', sans-serif;
-    background-image: url('static/background9.jpg');
+    background-image: url('static/background5.jpg');
     background-size: cover;
     background-position: center;
     overflow: hidden;
@@ -83,13 +83,13 @@ body.dragging-disable-select, body.dragging-disable-select * {
 
 /* Icon Positioning */
 #icon1-container { top: 0; }
-#icon2-container { top: 130px; }  
-#icon3-container { top: 255px; }  
+#icon2-container { top: 120px; }  
+#icon3-container { top: 240px; }  
 /* #icon4-container { top: 350px; } */
-#icon5-container { top: 370px; }  
-#icon6-container { top: 490px; }  
-#icon7-container { top: 610px; }  
-#icon8-container { top: 730px; }
+#icon5-container { top: 350px; }  
+#icon6-container { top: 470px; }  
+#icon7-container { top: 580px; }  
+#icon8-container { top: 700px; }
 #icon9-container { position: fixed; right: 20px; bottom: 20px; top: auto; left: auto; }
 
 /* ====== Modal Windows ====== */
@@ -117,8 +117,8 @@ body.dragging-disable-select, body.dragging-disable-select * {
     height: 425px;
     display: block;
     position: fixed;
-    top: 24%;
-    left: 82.3%;
+    top: 45%;
+    left: 50%;
     transform: translate(-50%, -45%);
 }
 
