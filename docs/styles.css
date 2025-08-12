@@ -10,6 +10,14 @@ body, html {
     cursor: none; 
 }
 
+/* Disable text selection while dragging icons/modals */
+body.dragging-disable-select, body.dragging-disable-select * {
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+    -ms-user-select: none !important;
+    user-select: none !important;
+}
+
 /* ====== Custom Cursor ====== */
 #cursor {
     position: absolute;
@@ -71,16 +79,18 @@ body, html {
 #icon6 { background-image: url('static/github.png'); }
 #icon7 { background-image: url('static/linkedin.png'); }
 #icon8 { background-image: url('static/games.png'); }
+#icon9 { background-image: url('static/trash.png'); }
 
 /* Icon Positioning */
 #icon1-container { top: 0; }
 #icon2-container { top: 130px; }  
-#icon3-container { top: 245px; }  
+#icon3-container { top: 255px; }  
 /* #icon4-container { top: 350px; } */
-#icon5-container { top: 355px; }  
-#icon6-container { top: 468px; }  
-#icon7-container { top: 580px; }  
-#icon8-container { top: 700px; }
+#icon5-container { top: 370px; }  
+#icon6-container { top: 490px; }  
+#icon7-container { top: 610px; }  
+#icon8-container { top: 730px; }
+#icon9-container { position: fixed; right: 20px; bottom: 20px; top: auto; left: auto; }
 
 /* ====== Modal Windows ====== */
 /* Base Modal Styles */
@@ -151,8 +161,16 @@ body, html {
 #game-pinball .game-icon { width: 110px; height: 110px; }
 #game-solitaire .game-icon { width: 110px; height: 110px; }
 
-/* Pinball modal */
+/* Pinball and trash modal */
 #modal10 { width: 650px; height: 550px; }
+.trash-content { padding: 60px 20px 20px; display: flex; flex-direction: column; height: calc(100% - 0px); box-sizing: border-box; }
+#modal11 { width: 480px; height: 360px; }
+.trash-hint { font-size: 13px; font-style: italic; background: rgba(219,219,219,0.9); padding: 6px 8px; border-top: 4px solid rgb(168,168,168); border-left: 4px solid rgb(168,168,168); border-right: 4px solid black; border-bottom: 4px solid black; text-align: center; margin: 0 auto; display: block; }
+.trash-items { margin-top: 12px; flex: 1; min-height: 0; border-top: 4px solid rgb(168,168,168); border-left: 4px solid rgb(168,168,168); border-right: 4px solid black; border-bottom: 4px solid black; padding: 8px; display: flex; flex-wrap: wrap; gap: 8px; align-content: flex-start; background:#e5e5e5; overflow: auto; }
+.trash-items .icon-container { position: static !important; cursor: none; }
+.icon-container.trashed { opacity: 1; filter: none; }
+.trash-items .icon-label { background: #ececec; }
+.icon-container.drag-preview { z-index: 260 !important; pointer-events: none; }
 .pinball-wrap { padding: 60px 8px 8px; height: calc(100% - 60px); }
 .pinball-frame { width: 100%; height: 100%; border: none; background: #000; }
 

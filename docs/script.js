@@ -26,6 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
         icon6: document.getElementById('modal6'),
         icon7: document.getElementById('modal7'),
         icon8: document.getElementById('modal9'),
+    icon9: document.getElementById('modal11'),
     };
     const closeButtons = document.querySelectorAll('.modal-close');
     let cursorVisible = false;
@@ -95,7 +96,6 @@ document.addEventListener('DOMContentLoaded', () => {
             cursor.style.backgroundImage = "url('static/cursor.png')";
         });
     }
-
     // Select the download button
     const downloadButton = document.querySelector('.download-button');
 
@@ -178,6 +178,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         blueLine.addEventListener('mousedown', (e) => {
             isDraggingModal = true;
+            document.body.classList.add('dragging-disable-select');
             cursor.style.backgroundImage = "url('static/click.png')";
             
             offsetX = e.clientX - modal.offsetLeft;
@@ -196,6 +197,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 isDraggingModal = false;
                 document.removeEventListener('mousemove', onModalDrag);
                 cursor.style.backgroundImage = "url('static/cursor.png')";
+                document.body.classList.remove('dragging-disable-select');
             });
         });
     }
@@ -220,9 +222,74 @@ document.addEventListener('DOMContentLoaded', () => {
     // Icon dragging and clicking functionality
     const iconContainers = document.querySelectorAll('.icon-container');
 
+    // Trash specific elements
+    const trashModal = document.getElementById('modal11');
+    const trashArea = document.getElementById('trash-items');
+    const desktopArea = document.querySelector('.icons-container');
+    const TRASH_ICON_ID = 'icon9';
+    const TRASH_CONTAINER_ID = 'icon9-container';
+
+    function isTrashed(container){
+        return container.classList.contains('trashed');
+    }
+
+    function moveToTrash(container){
+        if (container.id === TRASH_CONTAINER_ID) return; // Do not trash the trash icon
+        container.classList.add('trashed');
+        container.style.position = 'relative';
+        container.style.left = '0px';
+        container.style.top = '0px';
+        trashArea.appendChild(container);
+    }
+
+    function restoreFromTrash(container, dropX, dropY, offsetX, offsetY){
+        container.classList.remove('trashed');
+        // Place onto body for free positioning
+        if (container.parentElement !== document.body){
+            document.body.appendChild(container);
+        }
+        container.style.position = 'absolute';
+        const vw = window.innerWidth;
+        const vh = window.innerHeight;
+        let left = dropX - offsetX;
+        let top = dropY - offsetY;
+        left = Math.max(0, Math.min(vw - container.offsetWidth, left));
+        top = Math.max(0, Math.min(vh - container.offsetHeight, top));
+        container.style.left = left + 'px';
+        container.style.top = top + 'px';
+        container.style.zIndex = 120; // above desktop base
+    }
+
+    function ensureOnDesktop(container){
+        if (container.parentElement === document.body) return;
+        if (container.id === TRASH_CONTAINER_ID) return; // keep trash icon in column
+        const rect = container.getBoundingClientRect();
+        document.body.appendChild(container);
+        container.style.position = 'absolute';
+        container.style.left = rect.left + 'px';
+        container.style.top = rect.top + 'px';
+    }
+
+    // Allow dragging icons into trash modal when it's open
+    let currentDragged = null;
+    const trashIconContainer = document.getElementById(TRASH_CONTAINER_ID);
+
+    function isOverTrashIcon(mouseX, mouseY){
+        if (!trashIconContainer) return false;
+        const r = trashIconContainer.getBoundingClientRect();
+        return mouseX >= r.left && mouseX <= r.right && mouseY >= r.top && mouseY <= r.bottom;
+    }
+
+    function isOverTrashModal(mouseX, mouseY){
+        if (!trashModal || trashModal.style.display === 'none') return false;
+        const r = trashModal.getBoundingClientRect();
+        return mouseX >= r.left && mouseX <= r.right && mouseY >= r.top && mouseY <= r.bottom;
+    }
+
     iconContainers.forEach(container => {
         let isDragging = false;
         let startX, startY;
+    let pointerOffsetX = 0, pointerOffsetY = 0, lastClientX = 0, lastClientY = 0;
         
         container.addEventListener('mouseenter', () => {
             cursor.style.backgroundImage = "url('static/click.png')";
@@ -236,39 +303,99 @@ document.addEventListener('DOMContentLoaded', () => {
             isDragging = false;
             startX = e.clientX;
             startY = e.clientY;
-        
-            const offsetX = e.clientX - container.offsetLeft;
-            const offsetY = e.clientY - container.offsetTop;
-        
-            function onMouseMove(event) {
+            lastClientX = e.clientX;
+            lastClientY = e.clientY;
+            document.body.classList.add('dragging-disable-select');
+            currentDragged = container;
+
+            // Capture initial bounding box and compute pointer offset
+            const rect = container.getBoundingClientRect();
+            pointerOffsetX = e.clientX - rect.left;
+            pointerOffsetY = e.clientY - rect.top;
+
+            // Reparent immediately only if NOT currently in trash (so trashed icons stay visible in trash on click)
+            if (!isTrashed(container) && container.id !== TRASH_CONTAINER_ID && container.parentElement !== document.body) {
+                document.body.appendChild(container);
+                container.style.position = 'absolute';
+                container.style.left = rect.left + 'px';
+                container.style.top = rect.top + 'px';
+            }
+
+            function onMouseMove(event){
+                lastClientX = event.clientX;
+                lastClientY = event.clientY;
                 const deltaX = Math.abs(event.clientX - startX);
                 const deltaY = Math.abs(event.clientY - startY);
-        
-                if (deltaX > 5 || deltaY > 5) {
+                if (deltaX > 3 || deltaY > 3){
                     isDragging = true;
+                }
+                if (!isDragging) return;
+
+                // If icon is trashed and hasn't been reparented yet but user started dragging, reparent now for smooth drag
+                if (isTrashed(container) && container.parentElement !== document.body) {
+                    const currentRect = container.getBoundingClientRect();
+                    document.body.appendChild(container);
                     container.style.position = 'absolute';
-                    container.style.left = event.clientX - offsetX + 'px';
-                    container.style.top = event.clientY - offsetY + 'px';
+                    container.style.left = currentRect.left + 'px';
+                    container.style.top = currentRect.top + 'px';
+                }
+
+                // Move with cursor
+                container.style.left = (event.clientX - pointerOffsetX) + 'px';
+                container.style.top = (event.clientY - pointerOffsetY) + 'px';
+
+                // Hover preview over trash modal
+                if (isOverTrashModal(event.clientX, event.clientY) && container.id !== TRASH_CONTAINER_ID){
+                    if (!container.classList.contains('drag-preview')){
+                        container.classList.add('drag-preview');
+                    }
+                } else if (container.classList.contains('drag-preview') && !isOverTrashModal(event.clientX, event.clientY)) {
+                    container.classList.remove('drag-preview');
                 }
             }
-        
-            function onMouseUp() {
+
+            function onMouseUp(event){
                 document.removeEventListener('mousemove', onMouseMove);
                 document.removeEventListener('mouseup', onMouseUp);
-        
-                if (!isDragging) {
-                    const iconId = container.querySelector('.icon').id;
-                    const modal = modals[iconId];
-                    if (modal) {
+
+                if (!isDragging){
+                    const iconId = container.querySelector('.icon')?.id;
+                    const modal = iconId && modals[iconId];
+                    if (modal){
                         modal.style.display = 'block';
                         modal.style.zIndex = getHighestZIndex() + 1;
-                        // icon8 now opens Games; Minesweeper is launched from inside the Games modal
+                    }
+                } else {
+                    const mouseX = lastClientX;
+                    const mouseY = lastClientY;
+                    const overTrashIcon = isOverTrashIcon(mouseX, mouseY);
+                    const inTrashModal = isOverTrashModal(mouseX, mouseY);
+                    if ((overTrashIcon || inTrashModal) && container.id !== TRASH_CONTAINER_ID){
+                        if (overTrashIcon){
+                            trashModal.style.display = 'block';
+                            trashModal.style.zIndex = getHighestZIndex() + 1;
+                        }
+                        moveToTrash(container);
+                    } else if (isTrashed(container)) {
+                        restoreFromTrash(container, mouseX, mouseY, pointerOffsetX, pointerOffsetY);
+                    } else {
+                        // Stay where dropped; ensure bounds
+                        const vw = window.innerWidth, vh = window.innerHeight;
+                        let left = mouseX - pointerOffsetX;
+                        let top = mouseY - pointerOffsetY;
+                        left = Math.max(0, Math.min(vw - container.offsetWidth, left));
+                        top = Math.max(0, Math.min(vh - container.offsetHeight, top));
+                        container.style.left = left + 'px';
+                        container.style.top = top + 'px';
                     }
                 }
-        
+
+                container.classList.remove('drag-preview');
                 cursor.style.backgroundImage = "url('static/cursor.png')";
+                currentDragged = null;
+                document.body.classList.remove('dragging-disable-select');
             }
-        
+
             document.addEventListener('mousemove', onMouseMove);
             document.addEventListener('mouseup', onMouseUp);
         });
@@ -320,6 +447,9 @@ document.addEventListener('DOMContentLoaded', () => {
             cursor.style.backgroundImage = "url('static/cursor.png')";
         });
     }
+
+    // Trash modal open on trash icon click already handled in generic handler; add highlighting when dragging over
+    // (Optional) Minimal feedback removed per user preference
 
     function initMinesweeper() {
         msGrid = document.getElementById('mines-grid');
