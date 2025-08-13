@@ -219,6 +219,107 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });    
 
+    // === Taskbar Clock ===
+    const clockEl = document.getElementById('taskbar-clock');
+    if (clockEl) {
+        function formatTime(date) {
+            // Example: 3:07 PM
+            const opts = { hour: 'numeric', minute: '2-digit' };
+            return date.toLocaleTimeString([], opts);
+        }
+        function tickClock() {
+            clockEl.textContent = formatTime(new Date());
+        }
+        tickClock();
+        if (!window.__taskbarClockInterval) {
+            window.__taskbarClockInterval = setInterval(tickClock, 1000);
+        }
+    }
+
+    // === Start Menu ===
+    const startBtn = document.getElementById('start-button');
+    const startMenu = document.getElementById('start-menu');
+    const menuMap = {
+        'start-open-settings': 'modal1',
+        'start-open-resume': 'modal2',
+        'start-open-projects': 'modal3',
+        'start-open-games': 'modal9',
+        'start-open-contact': 'modal5',
+        'start-open-github': 'modal6',
+        'start-open-linkedin': 'modal7',
+    };
+
+    function positionStartMenu(){
+        if (!startBtn || !startMenu) return;
+        const rect = startBtn.getBoundingClientRect();
+        // Align left edge of menu to Start button left; place above taskbar
+        startMenu.style.left = Math.max(8, rect.left) + 'px';
+        startMenu.style.bottom = (window.innerHeight - rect.top + 6) + 'px';
+    }
+
+    function toggleStartMenu(forceState){
+        if (!startMenu) return;
+        const isOpen = startMenu.classList.contains('open');
+        const next = forceState !== undefined ? forceState : !isOpen;
+        if (next){ positionStartMenu(); }
+        startMenu.classList.toggle('open', next);
+        startMenu.setAttribute('aria-hidden', next ? 'false' : 'true');
+        startBtn && startBtn.classList.toggle('active', next);
+    }
+
+    if (startBtn && startMenu){
+    startBtn.addEventListener('click', (e)=>{
+            e.stopPropagation();
+            toggleStartMenu();
+        });
+
+        // Change custom cursor on hover and click
+        startBtn.addEventListener('mouseenter', ()=>{
+            cursor.style.backgroundImage = "url('static/click.png')";
+        });
+        startBtn.addEventListener('mouseleave', ()=>{
+            cursor.style.backgroundImage = "url('static/cursor.png')";
+        });
+        startBtn.addEventListener('mousedown', ()=>{
+            cursor.style.backgroundImage = "url('static/click.png')";
+        });
+        startBtn.addEventListener('mouseup', ()=>{
+            cursor.style.backgroundImage = "url('static/cursor.png')";
+        });
+
+        // Close when clicking outside
+        document.addEventListener('click', (e)=>{
+            if (!startMenu.classList.contains('open')) return;
+            const within = startMenu.contains(e.target) || startBtn.contains(e.target);
+            if (!within) toggleStartMenu(false);
+        });
+
+        // Escape closes
+    document.addEventListener('keydown', (e)=>{
+            if (e.key === 'Escape' && startMenu.classList.contains('open')) toggleStartMenu(false);
+        });
+
+    // Reposition on resize
+    window.addEventListener('resize', ()=>{ if (startMenu.classList.contains('open')) positionStartMenu(); });
+
+        // Menu item handlers
+        Object.keys(menuMap).forEach(id => {
+            const btn = document.getElementById(id);
+            if (!btn) return;
+            btn.addEventListener('click', ()=>{
+                const modalId = menuMap[id];
+                const modal = document.getElementById(modalId);
+                if (modal){
+                    modal.style.display = 'block';
+                    modal.style.zIndex = getHighestZIndex() + 1;
+                    toggleStartMenu(false);
+                }
+            });
+            btn.addEventListener('mouseenter', ()=>{ cursor.style.backgroundImage = "url('static/click.png')"; });
+            btn.addEventListener('mouseleave', ()=>{ cursor.style.backgroundImage = "url('static/cursor.png')"; });
+        });
+    }
+
     // Icon dragging and clicking functionality
     const iconContainers = document.querySelectorAll('.icon-container');
 

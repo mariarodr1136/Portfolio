@@ -246,6 +246,26 @@
         </div>
     </div>
 
-    <script src="script.js" defer></script>
+    <!-- Bottom taskbar -->
+    <div class="taskbar" role="navigation" aria-label="Taskbar">
+        <button id="start-button" class="taskbar-start-btn" aria-label="Start">Start</button>
+        <!-- spacer for future taskbar items -->
+        <div class="taskbar-spacer" aria-hidden="true"></div>
+    <div id="taskbar-clock" class="taskbar-clock" aria-live="polite" title="Current time"></div>
+    </div>
+
+    <!-- Start menu -->
+    <nav id="start-menu" class="start-menu" aria-label="Start menu" aria-hidden="true">
+        <ul class="start-menu-list">
+            <li><button id="start-open-settings" class="start-menu-item">Settings</button></li>
+            <li><button id="start-open-resume" class="start-menu-item">Resume</button></li>
+            <li><button id="start-open-projects" class="start-menu-item">Projects</button></li>
+            <li><button id="start-open-games" class="start-menu-item">Games</button></li>
+            <li><button id="start-open-contact" class="start-menu-item">Contact</button></li>
+            <li class="start-sep"></li>
+            <li><button id="start-open-github" class="start-menu-item">GitHub</button></li>
+            <li><button id="start-open-linkedin" class="start-menu-item">LinkedIn</button></li>
+        </ul>
+    </nav>
 </body>
 </html>

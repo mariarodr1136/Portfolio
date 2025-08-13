@@ -83,14 +83,14 @@ body.dragging-disable-select, body.dragging-disable-select * {
 
 /* Icon Positioning */
 #icon1-container { top: 0; }
-#icon2-container { top: 120px; }  
-#icon3-container { top: 240px; }  
+#icon2-container { top: 115px; }  
+#icon3-container { top: 220px; }  
 /* #icon4-container { top: 350px; } */
-#icon5-container { top: 350px; }  
-#icon6-container { top: 470px; }  
-#icon7-container { top: 580px; }  
-#icon8-container { top: 700px; }
-#icon9-container { position: fixed; right: 20px; bottom: 20px; top: auto; left: auto; }
+#icon5-container { top: 330px; }  
+#icon6-container { top: 440px; }  
+#icon7-container { top: 550px; }  
+#icon8-container { top: 660px; }
+#icon9-container { position: fixed; right: 30px; bottom: 50px; top: auto; left: auto; }
 
 /* ====== Modal Windows ====== */
 /* Base Modal Styles */
@@ -222,6 +222,115 @@ body.dragging-disable-select, body.dragging-disable-select * {
     padding-top: 8px;
     line-height: 30px;
 }
+
+/* ====== Bottom Taskbar ====== */
+.taskbar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 25px; /* thick gray line */
+    background: #bdbdbd; /* gray */
+    border-top: 4px solid rgb(168,168,168);
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 8px;
+    z-index: 210; /* above icons, below cursor */
+}
+
+.taskbar-start-btn {
+    cursor: none;
+    font-family: 'Chicago', 'Charcoal', 'Geneva', sans-serif;
+    font-style: italic;
+    color: #fff;
+    background: rgb(21, 21, 130);
+    border-top: 4px solid rgb(168,168,168);
+    border-left: 4px solid rgb(168,168,168);
+    border-right: 4px solid black;
+    border-bottom: 4px solid black;
+    padding: 6px 24px;
+    line-height: 1;
+    position: relative;
+    top: -3px; 
+    margin-left: 10px; 
+}
+
+.taskbar-start-btn.active {
+    /* pressed look: invert borders */
+    border-top: 4px solid black;
+    border-left: 4px solid black;
+    border-right: 4px solid rgb(168,168,168);
+    border-bottom: 4px solid rgb(168,168,168);
+    background: #1b1b80;
+}
+
+.taskbar-spacer { flex: 1; }
+
+.taskbar-clock {
+    font-family: 'Chicago', 'Charcoal', 'Geneva', sans-serif;
+    font-style: italic;
+    color: #1b1b1b;
+    background: #dcdcdc;
+    border-top: 4px solid rgb(168,168,168);
+    border-left: 4px solid rgb(168,168,168);
+    border-right: 4px solid black;
+    border-bottom: 4px solid black;
+    padding: 4px 10px;
+    line-height: 1;
+    margin-right: 10px;
+    position: relative;
+    top: -3px; /* align with Start button */
+}
+
+/* ====== Start Menu ====== */
+.start-menu {
+    position: fixed;
+    left: 8px; /* near Start button */
+    bottom: 48px; /* above the taskbar height + padding */
+    width: 220px;
+    background: #dcdcdc;
+    border-top: 4px solid rgb(168,168,168);
+    border-left: 4px solid rgb(168,168,168);
+    border-right: 4px solid black;
+    border-bottom: 4px solid black;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.25);
+    z-index: 220;
+    display: none;
+}
+
+.start-menu.open { display: block; }
+
+.start-menu-list {
+    list-style: none;
+    margin: 0;
+    padding: 6px;
+}
+
+.start-menu-item {
+    width: 100%;
+    text-align: left;
+    font-family: 'Chicago', 'Charcoal', 'Geneva', sans-serif;
+    font-style: italic;
+    color: #000;
+    background: #e9e9e9;
+    border-top: 3px solid rgb(168,168,168);
+    border-left: 3px solid rgb(168,168,168);
+    border-right: 3px solid black;
+    border-bottom: 3px solid black;
+    padding: 6px 10px;
+    margin: 4px 0;
+    cursor: none;
+}
+
+.start-menu-item:hover {
+    background: #cfcfcf;
+}
+
+.start-sep { height: 1px; background: #b0b0b0; margin: 6px 0; }
 
 /* ====== Contact Content Styles ====== */
 .contact-content {
