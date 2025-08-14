@@ -1,0 +1,24 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Build js-solitaire (external)",
+			"type": "shell",
+			"command": "bash -lc 'set -e; cd \"$HOME/Downloads/js-solitaire-master\"; echo \"PWD=$(pwd)\"; rm -rf node_modules package-lock.json || true; npm uninstall node-sass || true; npm install -D sass autoprefixer || true; npm install; npm run build'",
+			"args": [],
+			"isBackground": false,
+			"problemMatcher": [
+				"$eslint-stylish"
+			],
+			"group": "build"
+		},
+		{
+			"label": "Import solitaire src and build",
+			"type": "shell",
+			"command": "bash -lc 'set -e\n# Copy original source from Downloads into Vite project src\nSRC_DIR=\"$HOME/Downloads/js-solitaire-master/src\"\nDEST_DIR=\"$PWD/games/solitaire-vite/src\"\nif [ -d \"$SRC_DIR\" ]; then\n  rm -rf \"$DEST_DIR\"/*\n  cp -R \"$SRC_DIR\"/* \"$DEST_DIR\"/\nelse\n  echo \"Source not found: $SRC_DIR\" >&2\n  exit 2\nfi\n\n# Ensure Vite entry exists and points to src/index.js\nINDEX_HTML=\"$PWD/games/solitaire-vite/index.html\"\nif [ -f \"$INDEX_HTML\" ]; then\n  # Replace script line to use /src/index.js\n  perl -0777 -pe \"s#<script[^>]*src=\\\"/src/[^\\\"]+\\\"[^>]*></script>#<script type=\\\"module\\\" src=\\\"/src/index.js\\\"></script>#g\" \"$INDEX_HTML\" > \"$INDEX_HTML.tmp\" && mv \"$INDEX_HTML.tmp\" \"$INDEX_HTML\"\nfi\n\ncd \"$PWD/games/solitaire-vite\"\n# Install deps if package-lock missing\n[ -d node_modules ] || npm install\nnpm run build\n'",
+			"args": [],
+			"isBackground": false,
+			"group": "build"
+		}
+	]
+}

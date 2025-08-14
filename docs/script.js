@@ -146,6 +146,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     frame.src = 'about:blank';
                     frame.removeAttribute('data-pinball-loaded');
                 }
+            } else if (modal.id === 'modal12') {
+                const frame = modal.querySelector('.solitaire-frame');
+                if (frame) {
+                    frame.src = 'about:blank';
+                }
             }
         });
 
@@ -545,6 +550,28 @@ document.addEventListener('DOMContentLoaded', () => {
             cursor.style.backgroundImage = "url('static/click.png')";
         });
         gamesPinball.addEventListener('mouseleave', () => {
+            cursor.style.backgroundImage = "url('static/cursor.png')";
+        });
+    }
+
+    // === Solitaire ===
+    const gamesSolitaire = document.getElementById('game-solitaire');
+    if (gamesSolitaire) {
+        gamesSolitaire.addEventListener('click', () => {
+            const solModal = document.getElementById('modal12');
+            if (solModal) {
+                solModal.style.display = 'block';
+                solModal.style.zIndex = getHighestZIndex() + 1;
+                const frame = solModal.querySelector('.solitaire-frame');
+                if (frame && frame.src === 'about:blank') {
+                    frame.src = 'games/solitaire/index.html';
+                }
+            }
+        });
+        gamesSolitaire.addEventListener('mouseenter', () => {
+            cursor.style.backgroundImage = "url('static/click.png')";
+        });
+        gamesSolitaire.addEventListener('mouseleave', () => {
             cursor.style.backgroundImage = "url('static/cursor.png')";
         });
     }

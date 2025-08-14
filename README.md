@@ -32,6 +32,11 @@ https://github.com/user-attachments/assets/e4c59ba2-cedf-4007-9779-b3876d255786
 ### Games & Interactive Components
 - **Minesweeper (vanilla JS adaptation)**: Logic port with enhancements & styling
 - **Space Cadet Pinball (WASM)**: C++ codebase compiled to WebAssembly via Emscripten; uses SDL2, SDL2_mixer for audio, TinySoundFont (TSF) for MIDI playback, and Dear ImGui for in‑game UI overlays
+- **Solitaire (vanilla JS + Vite)**: Original JS/SCSS game bundled with Vite. Built assets are emitted to `docs/games/solitaire` and loaded via an iframe in the “Solitaire” modal. Uses:
+   - JavaScript (ES modules)
+   - SCSS (compiled via `sass`)
+   - Vite (base set to `./` so all asset paths are relative inside the iframe)
+   - All sprites inlined as base64 (no external asset hosting needed)
 
 ### Toolchain / Low‑Level
 - **WebAssembly (WASM)**: Performance‑critical C++ game code running in the browser
@@ -49,6 +54,7 @@ https://github.com/user-attachments/assets/e4c59ba2-cedf-4007-9779-b3876d255786
 ### Deployment
 - **GitHub Pages**: Static hosting of the portfolio (including built WASM artifacts)
 - **Procfile (optional)**: Enables easy deployment to platforms like Render / Railway / Heroku for the email service if needed
+- **Solitaire bundle**: Vite build writes directly into `docs/games/solitaire` so the iframe at `games/solitaire/index.html` works on static hosts
 
 ### Version Control & Build Utilities
 - **Git / GitHub**: Source hosting & issue tracking
@@ -90,10 +96,13 @@ root/
 │   ├── index.html             # Main desktop UI
 │   ├── styles.css             # Portfolio styling
 │   ├── script.js              # Desktop/window/game modal logic
-│   └── games/pinball/         # Deployed WASM build (html/js/wasm/data)
+│   ├── games/pinball/         # Deployed WASM build (html/js/wasm/data)
+│   └── games/solitaire/       # Deployed Solitaire bundle (Vite output)
 ├── spacecadet/                # C++ source + CMake for Space Cadet Pinball
 │   ├── CMakeLists.txt
 │   └── SpaceCadetPinball/     # Game source (SDL2, ImGui, audio, assets preload)
+├── games/
+│   └── solitaire-vite/        # Vite project used to build the Solitaire bundle
 ├── portfolio-contact-form/    # (If separated) contact form package.json / service
 ├── server.js                  # Express server (email relay + static)
 ├── package.json               # Node dependencies (backend utilities)
@@ -102,6 +111,7 @@ root/
 ```
 Key files:
 - `docs/games/pinball/SpaceCadetPinball.html|js|wasm|data`: Runtime artifacts produced by Emscripten build.
+- `docs/games/solitaire/index.html` (+ assets): Static Vite build for Solitaire used by the iframe in the “Solitaire” modal.
 - `spacecadet/game_resources/`: Original DAT + WAV assets used at build time (preloaded into virtual FS).
 - `server.js`: Provides `/contact` endpoint (POST) using Nodemailer.
 
@@ -124,6 +134,17 @@ node server.js
 # or with nodemon if installed: npx nodemon server.js
 ```
 Visit: http://localhost:3000/
+
+### 3.1 (Optional) Build the Solitaire game
+Rebuild only when you change files under `games/solitaire-vite/`.
+```bash
+# From repo root
+npm run build:solitaire
+
+# Dev server for Solitaire (standalone, hot reload)
+npm run dev:solitaire
+```
+The build writes to `docs/games/solitaire/` which the desktop iframe loads.
 
 ### 4. (Optional) Build Space Cadet Pinball from source
 You only need this if you want to modify the C++ game.
