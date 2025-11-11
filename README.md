@@ -1,4 +1,4 @@
-# Maria Rodriguez Portfolio
+# Maria Rodriguez Portfolio 💻
 
 ## Overview
 Welcome to my **Portfolio** — an interactive site styled like a vintage **computer desktop**. Drag icons to open apps and tabs for a nostalgic, hands-on experience. Inside the desktop you'll find my **software development projects**, an **about me** section, a **contact form**, a fun **minigame** section, and quick links to my **resume**, **LinkedIn**, and **GitHub**.
