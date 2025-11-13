@@ -118,7 +118,7 @@ Key files:
 ## Installation
 ### 1. Clone
 ```bash
-git clone https://github.com/<YOUR_GITHUB_USERNAME>/Portfolio.git
+git clone https://github.com/mariarodr1136/Portfolio.git
 cd Portfolio
 ```
 
