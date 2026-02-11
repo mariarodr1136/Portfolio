@@ -83,13 +83,13 @@ body.dragging-disable-select, body.dragging-disable-select * {
 
 /* Icon Positioning */
 #icon1-container { top: 0; }
-#icon2-container { top: 115px; }  
-#icon3-container { top: 220px; }  
+#icon2-container { top: 110px; }  
+#icon3-container { top: 215px; }  
 /* #icon4-container { top: 350px; } */
-#icon5-container { top: 330px; }  
-#icon6-container { top: 440px; }  
-#icon7-container { top: 550px; }  
-#icon8-container { top: 660px; }
+#icon5-container { top: 320px; }  
+#icon6-container { top: 425px; }  
+#icon7-container { top: 530px; }  
+#icon8-container { top: 635px; }
 #icon9-container { position: fixed; right: 30px; bottom: 50px; top: auto; left: auto; }
 
 /* ====== Modal Windows ====== */
