@@ -9,7 +9,7 @@ Welcome to my **Portfolio** — an interactive site styled like a vintage **comp
  
 Feel free to click around, move things, and explore. Each icon and tab reveals something new, so your journey through my portfolio is just as interactive as the projects it contains. 
 
-Live Application: mariarodr1136.github.io/Portfolio/
+Live Application: [mariarodr1136.github.io/Portfolio/](https://mariarodr1136.github.io/Portfolio/)
 
 ---
 
