@@ -69,15 +69,37 @@
     <div id="modal3" class="modal">
         <div class="modal-blue-line">Projects</div>
         <button class="modal-close">&times;</button>
-        <h3>My Projects</h3>
+        <div class="projects-scroll">
         <div class="project-card">
-            <h4>EcoHabits: Sustainability Tracker - iOS Mobile Application</h4>
-            <h4 style="font-style: italic;">Swift | SwiftUI | Xcode | Hugging Face API</h4>
-            <p>EcoHabits Tracker is an iOS app designed to engage children in cultivating sustainable habits through gamified challenges and personalized guidance. Built with Swift and SwiftUI, it motivates users to adopt eco-friendly actions like reducing plastic, saving water, and eating plant-based meals. The app includes an AI-powered assistant, real-time impact tracking, and a rewards system to visualize progress and encourage eco-conscious behaviors.</p>
+            <h4>Atmosphere Analyzer: Smart Data Visualization Tool</h4>
+            <h4 style="font-style: italic;">Python | AWS (Lambda, S3) | React | Django</h4>
+            <p>Atmosphere Analyzer is an environmental monitoring system that simulates real-time sensor data with Python, integrates AWS S3 for scalable storage, and uses AWS Lambda for dynamic data processing, with a Django backend API delivering data to a React frontend that visualizes key environmental metrics. This project provides insights into environmental trends, supporting sustainable resource management through smart data visualization.</p>
             <div class="project-images">
-                <img src="static/ecohabits.jpg" alt="EcoHabits screenshot"> 
+                <video src="static/AtmosphereDemo.mov" autoplay muted loop playsinline alt="Atmosphere Analyzer demo"></video>
             </div>
-            <button onclick="launchProject('https://github.com/mariarodr1136/EcoHabitTracker')">View GitHub Repository</button>
+            <button onclick="launchProject('https://github.com/mariarodr1136/AtmosphereAnalyzer')">View GitHub Repository</button>
+            <button onclick="launchProject('https://atmosphere-analyzer-dashboard.onrender.com/')">View Live Application</button>
+        </div>
+
+        <div class="project-card">
+            <h4>LeafMedic: Embedded Plant Disease Detection System</h4>
+            <h4 style="font-style: italic;">Python | TensorFlow Lite | OpenCV | PyQt5 | Raspberry Pi</h4>
+            <p>LeafMedic is an edge AI application that performs real-time plant disease classification using computer vision and machine learning, fully deployed on a Raspberry Pi. It captures leaf images via a camera module, runs on-device inference with a MobileNetV1 model optimized for TensorFlow Lite, and returns confidence-ranked predictions across 16 disease classes. The system includes a PyQt5 interface for real-time preview and batch processing, along with a curated treatment database covering 43 diseases.</p>
+            <div class="project-images">
+                <img src="static/leafmedic.JPG" alt="LeafMedic screenshot">
+            </div>
+            <button onclick="launchProject('https://github.com/mariarodr1136/LeafMedic')">View GitHub Repository</button>
+        </div>
+
+        <div class="project-card">
+            <h4>Micro-Investment Education Platform - Full-Stack Development</h4>
+            <h4 style="font-style: italic;">React | Node.js | Express | MongoDB | Alpha Vantage API</h4>
+            <p>The Micro-Investment Education Platform simulates micro-investments in a risk-free environment, enabling users to experiment with investment strategies and assess market risks using virtual funds. Built with React for the front-end, Node.js and Express for backend logic, and MongoDB for managing user data and transaction history, it integrates Alpha Vantage and NEWS APIs for real-time market data to enhance decision-making.</p>
+            <div class="project-images">
+                <video src="static/MicroInvestmentPlatform.mov" autoplay muted loop playsinline alt="Micro-Investment Platform demo"></video>
+            </div>
+            <button onclick="launchProject('https://github.com/mariarodr1136/MicroInvestmentPlatform')">View GitHub Repository</button>
+            <button onclick="launchProject('https://microinvestmentplatform-frontend.onrender.com/')">View Live Application</button>
         </div>
 
         <div class="project-card">
@@ -85,52 +107,43 @@
             <h4 style="font-style: italic;">Java | Spring Boot | JavaScript | React | PostgreSQL</h4>
             <p>The Supply Chain Visualizer is a web application that visualizes and analyzes supply chain networks through a React frontend and Spring Boot/Java backend. It allows businesses to map their supply chains, track inventory, and monitor shipments in real-time. With Leaflet maps and Chart.js, it offers user-friendly, data-driven insights to identify bottlenecks and optimize operations.</p>
             <div class="project-images">
-                <img src="static/scv-1.png" alt="Supply Chain Visualizer screenshot"> 
-                <img src="static/scv-2.png" alt="Supply Chain Visualizer screenshot"> 
+                <video src="static/SupplyChainDemo.mov" autoplay muted loop playsinline alt="Supply Chain Visualizer demo"></video>
             </div>
             <button onclick="launchProject('https://github.com/mariarodr1136/SupplyChainVisualizer')">View GitHub Repository</button>
+            <button onclick="launchProject('https://supply-chain-visualizer.onrender.com/login')">View Live Application</button>
         </div>
-        
-        <div class="project-card">
-            <h4>Micro-Investment Education Platform - Full-Stack Development</h4>
-            <h4 style="font-style: italic;">React | Node.js | Express | MongoDB | Alpha Vantage API</h4>
-            <p>The Micro-Investment Education Platform simulates micro-investments in a risk-free environment, enabling users to experiment with investment strategies and assess market risks using virtual funds. Built with React for the front-end, Node.js and Express for backend logic, and MongoDB for managing user data and transaction history, it integrates Alpha Vantage and NEWS APIs for real-time market data to enhance decision-making.</p>
-            <div class="project-images">
-                <img src="static/microinvest.png" alt="Micro-Investment Platform screenshot"> 
-            </div>
-            <button onclick="launchProject('https://github.com/mariarodr1136/MicroInvestmentPlatform')">View GitHub Repository</button>
-        </div>
-        
-        <div class="project-card">
-            <h4>Atmosphere Analyzer: Smart Data Visualization Tool</h4>
-            <h4 style="font-style: italic;">Python | AWS (Lambda, S3) | React | Django</h4>
-            <p>Atmosphere Analyzer is an environmental monitoring system that simulates real-time sensor data with Python, integrates AWS S3 for scalable storage, and uses AWS Lambda for dynamic data processing, with a Django backend API delivering data to a React frontend that visualizes key environmental metrics. This project provides insights into environmental trends, supporting sustainable resource management through smart data visualization.</p>
-            <div class="project-images">
-                <img src="static/atmosphere.png" alt="Atmosphere Analyzer screenshot"> 
-            </div>
-            <button onclick="launchProject('https://github.com/mariarodr1136/AtmosphereAnalyzer')">View GitHub Repository</button>
-        </div>   
-        
+
         <div class="project-card">
             <h4>FraudWatch: Credit Card Fraud Detection System</h4>
             <h4 style="font-style: italic;">Python | Flask | Pandas | scikit-learn | Plotly</h4>
             <p>FraudWatch is a real-time credit card fraud detection system built with Python and Flask, using a Random Forest classifier for accurate fraud prediction. It processes transaction data, with scikit-learn for model training and Plotly for interactive performance visualizations. The system includes data preprocessing with StandardScaler to optimize model accuracy and provides users with an intuitive platform to explore results.</p>
             <div class="project-images">
-                <img src="static/fraudwatch-1.png" alt="FraudWatch screenshot"> 
-                <img src="static/fraudwatch-2.png" alt="FraudWatch screenshot"> 
+                <img src="static/fraudwatch-1.png" alt="FraudWatch screenshot">
+                <img src="static/fraudwatch-2.png" alt="FraudWatch screenshot">
             </div>
             <button onclick="launchProject('https://github.com/mariarodr1136/FraudDetectionSystem')">View GitHub Repository</button>
         </div>
-        
+
+        <div class="project-card">
+            <h4>EcoHabits: Sustainability Tracker - iOS Mobile Application</h4>
+            <h4 style="font-style: italic;">Swift | SwiftUI | Xcode | Hugging Face API</h4>
+            <p>EcoHabits Tracker is an iOS app designed to engage children in cultivating sustainable habits through gamified challenges and personalized guidance. Built with Swift and SwiftUI, it motivates users to adopt eco-friendly actions like reducing plastic, saving water, and eating plant-based meals. The app includes an AI-powered assistant, real-time impact tracking, and a rewards system to visualize progress and encourage eco-conscious behaviors.</p>
+            <div class="project-images">
+                <img src="static/ecohabits.jpg" alt="EcoHabits screenshot">
+            </div>
+            <button onclick="launchProject('https://github.com/mariarodr1136/EcoHabitTracker')">View GitHub Repository</button>
+        </div>
+
         <div class="project-card">
             <h4>Maria Rodriguez Portfolio - Website</h4>
-            <h4 style="font-style: italic;">JavaScript | Express | CSS | HTML </h4>
+            <h4 style="font-style: italic;">JavaScript | Express | CSS | HTML</h4>
             <p>Maria Rodriguez's Portfolio is an interactive website designed to mimic a classic computer desktop, featuring draggable icons for a playful and engaging user experience. Built using HTML, CSS, and JavaScript for front-end functionality, with Express.js and Nodemailer for backend processing and email handling. The portfolio includes interactive modals and dynamic content, allowing users to explore projects, contact forms, and downloadable files in a retro-inspired interface.</p>
             <div class="project-images">
-                <img src="static/portfolio.png" alt="Portfolio website screenshot"> 
+                <img src="static/portfolio.png" alt="Portfolio website screenshot">
             </div>
             <button onclick="launchProject('https://github.com/mariarodr1136/Portfolio')">View GitHub Repository</button>
-        </div>  
+        </div>
+        </div>
     </div>
 
     <div id="modal5" class="modal">
@@ -222,6 +235,15 @@
         <button class="modal-close">&times;</button>
         <div class="solitaire-wrap">
             <iframe class="solitaire-frame" src="games/solitaire/index.html" title="Solitaire" loading="lazy" allow="fullscreen" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <!-- Terminal modal (auto-opens, no icon, no close button) -->
+    <div id="modal13" class="modal terminal-modal">
+        <div class="modal-blue-line">Terminal</div>
+        <button class="modal-close">&times;</button>
+        <div class="terminal-body">
+            <pre id="terminal-output"></pre><span class="terminal-cursor"></span>
         </div>
     </div>
 

@@ -58,10 +58,10 @@ document.addEventListener('DOMContentLoaded', () => {
         Object.values(modals).forEach(modal => {
             modal.style.display = 'none';
         });
-    
-        // Show only Settings (icon1) modal
+
+        // Show Settings and Terminal modals on load
         const modalsToOpen = [modals.icon1];
-        
+
         modalsToOpen.forEach((modal, index) => {
             if (modal) {
                 modal.style.display = 'block';
@@ -70,8 +70,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 console.error(`Modal ${index + 1} not found`);
             }
         });
+
+        // Open terminal modal behind Settings
+        const terminalModal = document.getElementById('modal13');
+        if (terminalModal) {
+            terminalModal.style.display = 'block';
+            terminalModal.style.zIndex = 199;
+            startTerminalTyping();
+        }
+
+        // Ensure Settings is on top
+        if (modals.icon1) {
+            modals.icon1.style.zIndex = 200;
+        }
     }
-    
+
     // Call openModal1 function when the DOM is fully loaded
     openModal1();
 
@@ -688,5 +701,121 @@ document.addEventListener('DOMContentLoaded', () => {
             const colors = {1:'#0000ff',2:'#008200',3:'#ff0000',4:'#000084',5:'#840000',6:'#008284',7:'#000000',8:'#808080'};
             return colors[n] || '#000';
         }
+    }
+
+    // === Terminal Typing Animation ===
+    function startTerminalTyping() {
+        const output = document.getElementById('terminal-output');
+        if (!output) return;
+
+        // Sequence of actions: {text, typo, correction} or just {text}
+        // A "typo" types wrong text, pauses, deletes it, then types the correction
+        const sequence = [
+            { text: '> initializing workspace...\n' },
+            { text: '> loading portfolio modules...\n\n' },
+            { text: 'const developer = {\n' },
+            { text: '    name: "Maria Rodriguez",\n' },
+            { text: '    role: "', typo: 'Softwrae', correction: 'Software Developer' },
+            { text: '",\n' },
+            { text: '    skills: ["Java", "Python",\n' },
+            { text: '             "JavaScript", "SQL",\n' },
+            { text: '             "C", "React", "AWS",\n' },
+            { text: '             "PostgreSQL", "MongoDB",\n' },
+            { text: '             "MySQL"],\n' },
+            { text: '    passion: "Building innovative\n' },
+            { text: '              solutions"\n' },
+            { text: '};\n\n' },
+            { text: 'function createProject(idea) {\n' },
+            { text: '    const code = design(idea);\n' },
+            { text: '    const result = build(code);\n' },
+            { text: '    return deploy(', typo: 'reuslt', correction: 'result' },
+            { text: ');\n' },
+            { text: '}\n\n' },
+            { text: '> compiling...\n' },
+            { text: '> system ready_' },
+        ];
+
+        let seqIndex = 0;
+        let charIndex = 0;
+        let currentText = '';
+        let phase = 'typing'; // 'typing' | 'typo' | 'pause' | 'deleting' | 'correcting' | 'done'
+        let typoText = '';
+        let typoCharIndex = 0;
+        let deleteCount = 0;
+
+        function tick() {
+            const item = sequence[seqIndex];
+            if (!item) {
+                // Animation complete — just stop with blinking cursor
+                return;
+            }
+
+            if (phase === 'typing') {
+                if (charIndex < item.text.length) {
+                    currentText += item.text[charIndex];
+                    output.textContent = currentText;
+                    charIndex++;
+                    setTimeout(tick, 40 + Math.random() * 40);
+                } else if (item.typo) {
+                    // Start typing the typo
+                    phase = 'typo';
+                    typoText = item.typo;
+                    typoCharIndex = 0;
+                    setTimeout(tick, 40);
+                } else {
+                    // Move to next sequence item
+                    seqIndex++;
+                    charIndex = 0;
+                    setTimeout(tick, 20);
+                }
+            } else if (phase === 'typo') {
+                if (typoCharIndex < typoText.length) {
+                    currentText += typoText[typoCharIndex];
+                    output.textContent = currentText;
+                    typoCharIndex++;
+                    setTimeout(tick, 40 + Math.random() * 40);
+                } else {
+                    // Pause before deleting
+                    phase = 'pause';
+                    setTimeout(tick, 600);
+                }
+            } else if (phase === 'pause') {
+                phase = 'deleting';
+                deleteCount = typoText.length;
+                setTimeout(tick, 80);
+            } else if (phase === 'deleting') {
+                if (deleteCount > 0) {
+                    currentText = currentText.slice(0, -1);
+                    output.textContent = currentText;
+                    deleteCount--;
+                    setTimeout(tick, 35);
+                } else {
+                    // Now type the correction
+                    phase = 'correcting';
+                    typoText = item.correction;
+                    typoCharIndex = 0;
+                    setTimeout(tick, 200);
+                }
+            } else if (phase === 'correcting') {
+                if (typoCharIndex < typoText.length) {
+                    currentText += typoText[typoCharIndex];
+                    output.textContent = currentText;
+                    typoCharIndex++;
+                    setTimeout(tick, 40 + Math.random() * 40);
+                } else {
+                    // Done with this item, move on
+                    phase = 'typing';
+                    seqIndex++;
+                    charIndex = 0;
+                    setTimeout(tick, 20);
+                }
+            }
+
+            // Keep terminal scrolled to bottom
+            const body = output.parentElement;
+            if (body) body.scrollTop = body.scrollHeight;
+        }
+
+        tick();
     }
 });
