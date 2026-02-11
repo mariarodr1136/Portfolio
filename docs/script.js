@@ -21,7 +21,6 @@ document.addEventListener('DOMContentLoaded', () => {
         icon1: document.getElementById('modal1'),
         icon2: document.getElementById('modal2'),
         icon3: document.getElementById('modal3'),
-        icon4: document.getElementById('modal4'),
         icon5: document.getElementById('modal5'),
         icon6: document.getElementById('modal6'),
         icon7: document.getElementById('modal7'),
