@@ -17,14 +17,35 @@ https://github.com/user-attachments/assets/e4c59ba2-cedf-4007-9779-b3876d255786
 ---
 
 ## Table of Contents
-- [Languages & Frameworks Used](#languages--frameworks-used)
 - [Features](#features)
+- [Languages & Frameworks Used](#languages--frameworks-used)
 - [Code Structure](#code-structure)
 - [Installation](#installation)
 - [Requirements](#requirements)
 - [Inspiration](#inspiration)
 - [Contributing](#contributing)
 - [Contact](#contact)
+
+---
+
+## Features
+- **Retro Desktop Interface**: Windowed modal system evokes classic OS aesthetics (title bars, close buttons, draggable windows).
+- **Start Menu**: Click the Start button to launch any window from a classic dropdown menu.
+- **Taskbar Window Tabs**: Each open window gets a grey tab in the bottom taskbar showing its name — click to bring the window to front, just like a real OS.
+- **Custom Pointer & Interaction Feedback**: The pointer changes contextually (e.g., clickable vs idle) for a tactile feel.
+- **Draggable Icons & Free Positioning**: Icons can be rearranged anywhere on the desktop by dragging.
+- **Trash System**: Drag icons to the Trash to remove them from the desktop; drag them back out to restore.
+- **Terminal Typing Animation**: A terminal window auto-types a code snippet with realistic typos and corrections on page load.
+- **Dynamic Modals**: Content windows for Settings, Projects, Resume (PDF / PNG), Social links (GitHub, LinkedIn), Contact, and Games hub.
+- **Responsive Modal Scaling**: All windows scale automatically to fit the viewport, from mobile to ultrawide.
+- **Minesweeper Game**: Playable, keyboard & mouse friendly; adapted from [Jon Ziebell's repository](https://github.com/ziebelje/minesweeper) with UI and accessibility adjustments.
+- **Space Cadet Pinball (WebAssembly)**: Fully playable port compiled from original reverse-engineered C++ sources. Audio (effects + music) enabled via SDL_mixer + TSF Synth.
+- **Solitaire**: Classic card game built with vanilla JS and bundled with Vite.
+- **On-Demand Game Lifecycle**: Pinball and Solitaire iframes are dynamically reloaded / torn down; audio stops cleanly when modals close.
+- **Performance Conscious**: Only one heavy WASM game; lazy iframe loading prevents blocking initial content.
+- **Cross-Platform**: Runs in any modern WASM-capable browser (Chrome, Firefox, Safari, Edge, Mobile Chromium variants).
+
+---
 
 ## Languages & Frameworks Used
 ### Frontend
@@ -46,25 +67,6 @@ https://github.com/user-attachments/assets/e4c59ba2-cedf-4007-9779-b3876d255786
 - **CMake**: Build system for the C++ game portion
 
 > If you're only interested in the web portfolio, you can ignore the `spacecadet/` source tree — the built artifacts already live under `docs/games/pinball/`.
-
----
-
-## Features
-- **Retro Desktop Interface**: Windowed modal system evokes classic OS aesthetics (title bars, close buttons, draggable windows).
-- **Start Menu**: Click the Start button to launch any window from a classic dropdown menu.
-- **Taskbar Window Tabs**: Each open window gets a grey tab in the bottom taskbar showing its name — click to bring the window to front, just like a real OS.
-- **Custom Pointer & Interaction Feedback**: The pointer changes contextually (e.g., clickable vs idle) for a tactile feel.
-- **Draggable Icons & Free Positioning**: Icons can be rearranged anywhere on the desktop by dragging.
-- **Trash System**: Drag icons to the Trash to remove them from the desktop; drag them back out to restore.
-- **Terminal Typing Animation**: A terminal window auto-types a code snippet with realistic typos and corrections on page load.
-- **Dynamic Modals**: Content windows for Settings, Projects, Resume (PDF / PNG), Social links (GitHub, LinkedIn), Contact, and Games hub.
-- **Responsive Modal Scaling**: All windows scale automatically to fit the viewport, from mobile to ultrawide.
-- **Minesweeper Game**: Playable, keyboard & mouse friendly; adapted from [Jon Ziebell's repository](https://github.com/ziebelje/minesweeper) with UI and accessibility adjustments.
-- **Space Cadet Pinball (WebAssembly)**: Fully playable port compiled from original reverse-engineered C++ sources. Audio (effects + music) enabled via SDL_mixer + TSF Synth.
-- **Solitaire**: Classic card game built with vanilla JS and bundled with Vite.
-- **On-Demand Game Lifecycle**: Pinball and Solitaire iframes are dynamically reloaded / torn down; audio stops cleanly when modals close.
-- **Performance Conscious**: Only one heavy WASM game; lazy iframe loading prevents blocking initial content.
-- **Cross-Platform**: Runs in any modern WASM-capable browser (Chrome, Firefox, Safari, Edge, Mobile Chromium variants).
 
 ### Games & Interactive Components
 - **Minesweeper (vanilla JS adaptation)**: Logic port with enhancements & styling
@@ -92,23 +94,6 @@ The design of this portfolio website is inspired by an old computer desktop scre
 
 ---
 
-## Features
-- **Retro Desktop Interface**: Windowed modal system evokes classic OS aesthetics (title bars, close buttons, draggable windows).
-- **Start Menu**: Click the Start button to launch any window from a classic dropdown menu.
-- **Taskbar Window Tabs**: Each open window gets a grey tab in the bottom taskbar showing its name — click to bring the window to front, just like a real OS.
-- **Custom Pointer & Interaction Feedback**: The pointer changes contextually (e.g., clickable vs idle) for a tactile feel.
-- **Draggable Icons & Free Positioning**: Icons can be rearranged anywhere on the desktop by dragging.
-- **Trash System**: Drag icons to the Trash to remove them from the desktop; drag them back out to restore.
-- **Terminal Typing Animation**: A terminal window auto-types a code snippet with realistic typos and corrections on page load.
-- **Dynamic Modals**: Content windows for Settings, Projects, Resume (PDF / PNG), Social links (GitHub, LinkedIn), Contact, and Games hub.
-- **Responsive Modal Scaling**: All windows scale automatically to fit the viewport, from mobile to ultrawide.
-- **Minesweeper Game**: Playable, keyboard & mouse friendly; adapted from [Jon Ziebell's repository](https://github.com/ziebelje/minesweeper) with UI and accessibility adjustments.
-- **Space Cadet Pinball (WebAssembly)**: Fully playable port compiled from original reverse-engineered C++ sources. Audio (effects + music) enabled via SDL_mixer + TSF Synth.
-- **Solitaire**: Classic card game built with vanilla JS and bundled with Vite.
-- **On-Demand Game Lifecycle**: Pinball and Solitaire iframes are dynamically reloaded / torn down; audio stops cleanly when modals close.
-- **Performance Conscious**: Only one heavy WASM game; lazy iframe loading prevents blocking initial content.
-- **Cross-Platform**: Runs in any modern WASM-capable browser (Chrome, Firefox, Safari, Edge, Mobile Chromium variants).
-
 ## Code Structure
 ```
 root/
@@ -134,6 +119,8 @@ Key files:
 - `docs/games/solitaire/index.html` (+ assets): Static Vite build for Solitaire used by the iframe in the "Solitaire" modal.
 - `spacecadet/game_resources/`: Original DAT + WAV assets used at build time (preloaded into virtual FS).
 - `server.js`: Simple Express static server that serves the `docs/` directory for local development.
+
+---
 
 ## Installation
 ### 1. Clone
