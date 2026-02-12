@@ -18,7 +18,6 @@ https://github.com/user-attachments/assets/e4c59ba2-cedf-4007-9779-b3876d255786
 
 ## Table of Contents
 - [Languages & Frameworks Used](#languages--frameworks-used)
-- [Purpose](#purpose)
 - [Features](#features)
 - [Code Structure](#code-structure)
 - [Installation](#installation)
@@ -33,6 +32,39 @@ https://github.com/user-attachments/assets/e4c59ba2-cedf-4007-9779-b3876d255786
 - **Custom Desktop UI**: Windowed modal system (drag, z-index stacking, custom cursor, taskbar tabs) built from scratch
 - **Responsive Scaling**: Modals scale dynamically to fit any viewport size
 - **Accessibility Considerations**: Semantic elements and ARIA roles in interactive components (e.g., Minesweeper grid, taskbar, Start menu)
+
+### Backend / Infrastructure
+- **Node.js + Express**: Lightweight static file server for local development
+- **body-parser / CORS**: Request middleware
+
+### Deployment
+- **GitHub Pages**: Static hosting of the portfolio (including built WASM artifacts)
+- **Solitaire bundle**: Vite build writes directly into `docs/games/solitaire` so the iframe at `games/solitaire/index.html` works on static hosts
+
+### Version Control & Build Utilities
+- **Git / GitHub**: Source hosting & issue tracking
+- **CMake**: Build system for the C++ game portion
+
+> If you're only interested in the web portfolio, you can ignore the `spacecadet/` source tree — the built artifacts already live under `docs/games/pinball/`.
+
+---
+
+## Features
+- **Retro Desktop Interface**: Windowed modal system evokes classic OS aesthetics (title bars, close buttons, draggable windows).
+- **Start Menu**: Click the Start button to launch any window from a classic dropdown menu.
+- **Taskbar Window Tabs**: Each open window gets a grey tab in the bottom taskbar showing its name — click to bring the window to front, just like a real OS.
+- **Custom Pointer & Interaction Feedback**: The pointer changes contextually (e.g., clickable vs idle) for a tactile feel.
+- **Draggable Icons & Free Positioning**: Icons can be rearranged anywhere on the desktop by dragging.
+- **Trash System**: Drag icons to the Trash to remove them from the desktop; drag them back out to restore.
+- **Terminal Typing Animation**: A terminal window auto-types a code snippet with realistic typos and corrections on page load.
+- **Dynamic Modals**: Content windows for Settings, Projects, Resume (PDF / PNG), Social links (GitHub, LinkedIn), Contact, and Games hub.
+- **Responsive Modal Scaling**: All windows scale automatically to fit the viewport, from mobile to ultrawide.
+- **Minesweeper Game**: Playable, keyboard & mouse friendly; adapted from [Jon Ziebell's repository](https://github.com/ziebelje/minesweeper) with UI and accessibility adjustments.
+- **Space Cadet Pinball (WebAssembly)**: Fully playable port compiled from original reverse-engineered C++ sources. Audio (effects + music) enabled via SDL_mixer + TSF Synth.
+- **Solitaire**: Classic card game built with vanilla JS and bundled with Vite.
+- **On-Demand Game Lifecycle**: Pinball and Solitaire iframes are dynamically reloaded / torn down; audio stops cleanly when modals close.
+- **Performance Conscious**: Only one heavy WASM game; lazy iframe loading prevents blocking initial content.
+- **Cross-Platform**: Runs in any modern WASM-capable browser (Chrome, Firefox, Safari, Edge, Mobile Chromium variants).
 
 ### Games & Interactive Components
 - **Minesweeper (vanilla JS adaptation)**: Logic port with enhancements & styling
@@ -50,30 +82,13 @@ https://github.com/user-attachments/assets/e4c59ba2-cedf-4007-9779-b3876d255786
 - **TinySoundFont (TSF)**: Synth-based MIDI music fallback (selected build path)
 - **ImGui**: Immediate mode UI library (debug / internal overlay elements in the C++ game code)
 
-### Backend / Infrastructure
-- **Node.js + Express**: Lightweight static file server for local development
-- **body-parser / CORS**: Request middleware
-
-### Deployment
-- **GitHub Pages**: Static hosting of the portfolio (including built WASM artifacts)
-- **Solitaire bundle**: Vite build writes directly into `docs/games/solitaire` so the iframe at `games/solitaire/index.html` works on static hosts
-
-### Version Control & Build Utilities
-- **Git / GitHub**: Source hosting & issue tracking
-- **CMake**: Build system for the C++ game portion
-
-> If you're only interested in the web portfolio, you can ignore the `spacecadet/` source tree — the built artifacts already live under `docs/games/pinball/`.
-
-## Purpose
-The purpose of this portfolio website is to:
-- Provide a unique and engaging user interface that mimics an old computer desktop environment.
-- Allow visitors to interact with my portfolio by opening and closing windows, dragging icons, and exploring my work.
-
 ---
 
-<img width="1460" alt="Screenshot 2024-10-22 at 9 02 15 PM" src="https://github.com/user-attachments/assets/b7146a87-27c8-4a74-acce-babf094f21bf">
+## Inspiration 
+The design of this portfolio website is inspired by an old computer desktop screen, creating a nostalgic and playful experience that invites users to interact with the content. Icons function as applications that can be dragged, opened, and closed, while familiar elements like the taskbar, Start menu, and window tabs recreate the feel of a classic operating system. This approach provides a unique and engaging user interface that allows visitors to explore my work in an interactive, hands-on way rather than through a traditional static layout.
 
-<img width="1461" alt="Screenshot 2024-11-01 at 11 12 16 AM" src="https://github.com/user-attachments/assets/800784d2-1bfa-416f-a935-c25b3b658b25">
+<img width="1468" height="833" alt="Screenshot 2025-08-11 at 1 08 24 PM" src="https://github.com/user-attachments/assets/be8cc3b4-e534-4082-b681-38050bf6bf4f" />
+<img width="1462" height="827" alt="Screenshot 2025-08-11 at 1 09 21 PM" src="https://github.com/user-attachments/assets/00a2ea11-4e9c-404e-b846-14289b04fd9d" />
 
 ---
 
@@ -171,13 +186,11 @@ Hard refresh the site to load the new build.
 - (Optional) Emscripten + CMake if rebuilding the Pinball game
 - Basic web dev knowledge if extending UI
 
-## Inspiration
-The design of this portfolio website draws inspiration from an old computer desktop screen, allowing users to interact with the portfolio in a nostalgic and playful manner. Icons represent different applications, and users can drag and open them to explore content in a unique style. The taskbar, Start menu, and window tabs recreate the feel of a classic operating system.
-
 ---
 
-<img width="1468" height="833" alt="Screenshot 2025-08-11 at 1 08 24 PM" src="https://github.com/user-attachments/assets/be8cc3b4-e534-4082-b681-38050bf6bf4f" />
-<img width="1462" height="827" alt="Screenshot 2025-08-11 at 1 09 21 PM" src="https://github.com/user-attachments/assets/00a2ea11-4e9c-404e-b846-14289b04fd9d" />
+<img width="1460" alt="Screenshot 2024-10-22 at 9 02 15 PM" src="https://github.com/user-attachments/assets/b7146a87-27c8-4a74-acce-babf094f21bf">
+
+<img width="1461" alt="Screenshot 2024-11-01 at 11 12 16 AM" src="https://github.com/user-attachments/assets/800784d2-1bfa-416f-a935-c25b3b658b25">
 
 ---
 
