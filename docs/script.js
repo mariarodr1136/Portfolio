@@ -197,7 +197,7 @@ document.addEventListener('DOMContentLoaded', () => {
             isDraggingModal = true;
             document.body.classList.add('dragging-disable-select');
             cursor.style.backgroundImage = "url('static/click.png')";
-            
+
             offsetX = e.clientX - modal.offsetLeft;
             offsetY = e.clientY - modal.offsetTop;
 
@@ -229,12 +229,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Update positioning when window is resized
     window.addEventListener('resize', () => {
-        Object.values(modals).forEach(modal => {
-            if (modal.style.display === 'block') {
-                positionModal(modal);
-            }
-        });
-    });    
+    });
 
     // === Taskbar Clock ===
     const clockEl = document.getElementById('taskbar-clock');
@@ -431,14 +426,6 @@ document.addEventListener('DOMContentLoaded', () => {
             pointerOffsetX = e.clientX - rect.left;
             pointerOffsetY = e.clientY - rect.top;
 
-            // Reparent immediately only if NOT currently in trash (so trashed icons stay visible in trash on click)
-            if (!isTrashed(container) && container.id !== TRASH_CONTAINER_ID && container.parentElement !== document.body) {
-                document.body.appendChild(container);
-                container.style.position = 'absolute';
-                container.style.left = rect.left + 'px';
-                container.style.top = rect.top + 'px';
-            }
-
             function onMouseMove(event){
                 lastClientX = event.clientX;
                 lastClientY = event.clientY;
@@ -449,8 +436,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
                 if (!isDragging) return;
 
-                // If icon is trashed and hasn't been reparented yet but user started dragging, reparent now for smooth drag
-                if (isTrashed(container) && container.parentElement !== document.body) {
+                // Reparent to body on first drag movement (not on click)
+                if (container.id !== TRASH_CONTAINER_ID && container.parentElement !== document.body) {
                     const currentRect = container.getBoundingClientRect();
                     document.body.appendChild(container);
                     container.style.position = 'absolute';

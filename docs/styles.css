@@ -35,24 +35,26 @@ body.dragging-disable-select, body.dragging-disable-select * {
     position: absolute;
     top: 20px;
     left: 25px;
-    width: 60px;
+    bottom: 50px; /* stop above taskbar */
+    width: 75px;
 }
 
 .icon-container {
     position: absolute;
-    width: 75px;
+    width: min(75px, 9vh);
     text-align: center;
-    display: flex;          
-    flex-direction: column;  
-    align-items: center;     
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 /* Icon Styling */
 .icon {
-    width: 75px;
-    height: 75px;
+    width: min(75px, 9vh);
+    height: min(75px, 9vh);
     background-size: contain;
     background-repeat: no-repeat;
+    background-position: center;
     cursor: none;
 }
 
@@ -60,7 +62,7 @@ body.dragging-disable-select, body.dragging-disable-select * {
     font-style: italic;
     margin-top: 5px;
     font-family: 'Chicago', 'Charcoal', 'Geneva', sans-serif;
-    font-size: 14px;
+    font-size: min(14px, 1.8vh);
     color: #000000cc;
     text-align: center;
     background-color: rgba(219, 219, 219, 0.897);
@@ -80,14 +82,14 @@ body.dragging-disable-select, body.dragging-disable-select * {
 #icon8 { background-image: url('static/games.png'); }
 #icon9 { background-image: url('static/trash.png'); }
 
-/* Icon Positioning */
-#icon1-container { top: 0; }
-#icon2-container { top: 110px; }  
-#icon3-container { top: 215px; }  
-#icon5-container { top: 320px; }  
-#icon6-container { top: 430px; }  
-#icon7-container { top: 530px; }  
-#icon8-container { top: 635px; }
+/* Icon Positioning — percentage-based so icons scale with viewport */
+#icon1-container { top: 0%; }
+#icon2-container { top: 14.3%; }
+#icon3-container { top: 28.6%; }
+#icon5-container { top: 42.9%; }
+#icon6-container { top: 57.1%; }
+#icon7-container { top: 71.4%; }
+#icon8-container { top: 85.7%; }
 #icon9-container { position: fixed; right: 30px; bottom: 50px; top: auto; left: auto; }
 
 /* ====== Modal Windows ====== */
@@ -110,8 +112,8 @@ body.dragging-disable-select, body.dragging-disable-select * {
 }
 
 /* Individual Modal Dimensions */
-#modal1 { 
-    width: 500px; 
+#modal1 {
+    width: 500px;
     height: 425px;
     display: block;
     position: fixed;
@@ -140,12 +142,12 @@ body.dragging-disable-select, body.dragging-disable-select * {
 }
 
 #modal5 {
-    width: 550px; 
-    height: 150px; 
+    width: 550px;
+    height: 150px;
     background-color: #f9f9f9;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start; 
+    justify-content: flex-start;
     align-items: center;
     padding: 40px 20px 20px;
 }
@@ -490,7 +492,7 @@ body.dragging-disable-select, body.dragging-disable-select * {
     display: block;
     position: fixed;
     top: 60px;
-    right: 90px;
+    right: 100px;
     left: auto;
     transform: none;
 }
