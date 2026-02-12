@@ -129,8 +129,8 @@ body.dragging-disable-select, body.dragging-disable-select * {
     height: 750px;
     display: block;
     position: fixed;
-    top: 410px;
-    left: 960px;
+    top: 5%;
+    left: 40%;
 }
 
 #modal3 { overflow: hidden; }
@@ -481,8 +481,20 @@ body.dragging-disable-select, body.dragging-disable-select * {
 .ms-cell.mine::after { content:'💣'; }
 
 /* Social modals */
-.social-modal { padding: 60px 40px 20px; text-align: center; }
-.social-image { max-width: 800px; height: auto; display: block; margin: 10px auto 16px; border-top: 4px solid rgb(168, 168, 168); border-left: 4px solid rgb(168, 168, 168); border-right: 4px solid black; border-bottom: 4px solid black; background:#dcdcdc; }
+#modal6 { width: 740px; height: 600px; }
+#modal7 { width: 740px; height: 600px; }
+.social-modal {
+    height: 100%;
+    box-sizing: border-box;
+    padding: 60px 28px 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
+    text-align: center;
+}
+.social-image { width: 100%; max-width: 100%; max-height: calc(100% - 90px); height: auto; display: block; margin: 0 auto; border-top: 4px solid rgb(168, 168, 168); border-left: 4px solid rgb(168, 168, 168); border-right: 4px solid black; border-bottom: 4px solid black; background:#dcdcdc; object-fit: contain; }
 .modal-action-btn { background-color: rgb(21, 21, 130); color: white; font-family: 'Chicago', 'Charcoal', 'Geneva', sans-serif !important; font-size: 12px; padding: 10px 10px; cursor: none; background: solid lightgrey; border-top: 4px solid rgb(151, 151, 151); border-left: 4px solid rgb(151, 151, 151); border-right: 4px solid black; border-bottom: 4px solid black; font-style: italic; }
 
 /* ====== Terminal Modal ====== */

@@ -28,7 +28,89 @@ document.addEventListener('DOMContentLoaded', () => {
     icon9: document.getElementById('modal11'),
     };
     const closeButtons = document.querySelectorAll('.modal-close');
+    const allModals = document.querySelectorAll('.modal');
+    const designViewport = {
+        width: 1440,
+        height: 900
+    };
+    const taskbarHeight = 30;
     let cursorVisible = false;
+
+    function parsePxValue(value) {
+        const px = parseFloat(value);
+        return Number.isFinite(px) ? px : 0;
+    }
+
+    function measureModalSize(modal) {
+        const computed = window.getComputedStyle(modal);
+        const wasHidden = computed.display === 'none';
+        const previousDisplay = modal.style.display;
+        const previousVisibility = modal.style.visibility;
+        const previousPointerEvents = modal.style.pointerEvents;
+
+        if (wasHidden) modal.style.display = 'block';
+        modal.style.visibility = 'hidden';
+        modal.style.pointerEvents = 'none';
+
+        const rect = modal.getBoundingClientRect();
+
+        modal.style.pointerEvents = previousPointerEvents;
+        modal.style.visibility = previousVisibility;
+        if (wasHidden) modal.style.display = previousDisplay;
+
+        return {
+            width: rect.width,
+            height: rect.height
+        };
+    }
+
+    function cacheModalBaseSizes() {
+        allModals.forEach((modal) => {
+            const style = window.getComputedStyle(modal);
+            let baseWidth = parsePxValue(style.width);
+            let baseHeight = parsePxValue(style.height);
+
+            if (baseWidth <= 0 || baseHeight <= 0) {
+                const measured = measureModalSize(modal);
+                baseWidth = measured.width;
+                baseHeight = measured.height;
+            }
+
+            if (baseWidth > 0) modal.dataset.baseWidth = String(baseWidth);
+            if (baseHeight > 0) modal.dataset.baseHeight = String(baseHeight);
+        });
+    }
+
+    function resizeModalsToViewport() {
+        const widthRatio = window.innerWidth / designViewport.width;
+        const heightRatio = (window.innerHeight - taskbarHeight) / (designViewport.height - taskbarHeight);
+        const baseScale = Math.min(widthRatio, heightRatio);
+        const boostedScale = baseScale * 1.18;
+        const globalScale = Math.max(0.5, Math.min(boostedScale, 2.2));
+
+        allModals.forEach((modal) => {
+            const baseWidth = parsePxValue(modal.dataset.baseWidth);
+            const baseHeight = parsePxValue(modal.dataset.baseHeight);
+            if (!baseWidth || !baseHeight) return;
+
+            const maxWidth = Math.max(260, window.innerWidth - 24);
+            const maxHeight = Math.max(180, window.innerHeight - taskbarHeight - 12);
+            const boundedScale = Math.min(globalScale, maxWidth / baseWidth, maxHeight / baseHeight);
+
+            modal.style.width = `${baseWidth}px`;
+            modal.style.height = `${baseHeight}px`;
+            if (modal.id === 'modal13') {
+                modal.style.transformOrigin = 'top right';
+                modal.style.transform = `scale(${boundedScale})`;
+            } else if (modal.id === 'modal3') {
+                modal.style.transformOrigin = 'top left';
+                modal.style.transform = `scale(${boundedScale})`;
+            } else {
+                modal.style.transformOrigin = 'center center';
+                modal.style.transform = `translate(-50%, -50%) scale(${boundedScale})`;
+            }
+        });
+    }
 
     // Update cursor position
     function updateCursor(e) {
@@ -227,8 +309,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Update positioning when window is resized
+    cacheModalBaseSizes();
+    resizeModalsToViewport();
+
+    // Update modal sizing when window is resized
     window.addEventListener('resize', () => {
+        resizeModalsToViewport();
     });
 
     // === Taskbar Clock ===
