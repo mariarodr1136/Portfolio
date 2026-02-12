@@ -165,6 +165,64 @@ document.addEventListener('DOMContentLoaded', () => {
         if (modals.icon1) {
             modals.icon1.style.zIndex = 200;
         }
+
+        // Add initial taskbar tabs
+        if (terminalModal) addTaskbarTab(terminalModal);
+        if (modals.icon1) addTaskbarTab(modals.icon1);
+    }
+
+    // === Taskbar Tabs ===
+    const taskbarTabs = document.getElementById('taskbar-tabs');
+
+    function getModalTitle(modal) {
+        const blueLine = modal.querySelector('.modal-blue-line');
+        return blueLine ? blueLine.textContent.trim() : modal.id;
+    }
+
+    function addTaskbarTab(modal) {
+        if (!taskbarTabs) return;
+        // Don't duplicate
+        if (taskbarTabs.querySelector(`[data-modal-id="${modal.id}"]`)) {
+            updateActiveTab(modal);
+            return;
+        }
+        const tab = document.createElement('button');
+        tab.className = 'taskbar-tab active';
+        tab.dataset.modalId = modal.id;
+        tab.textContent = getModalTitle(modal);
+        tab.addEventListener('click', () => {
+            if (modal.style.display === 'none') {
+                // Restore minimized modal
+                modal.style.display = 'block';
+                modal.style.zIndex = getHighestZIndex() + 1;
+                updateActiveTab(modal);
+            } else {
+                // Bring to front
+                modal.style.zIndex = getHighestZIndex() + 1;
+                updateActiveTab(modal);
+            }
+        });
+        tab.addEventListener('mouseenter', () => {
+            cursor.style.backgroundImage = "url('static/click.png')";
+        });
+        tab.addEventListener('mouseleave', () => {
+            cursor.style.backgroundImage = "url('static/cursor.png')";
+        });
+        taskbarTabs.appendChild(tab);
+        updateActiveTab(modal);
+    }
+
+    function removeTaskbarTab(modal) {
+        if (!taskbarTabs) return;
+        const tab = taskbarTabs.querySelector(`[data-modal-id="${modal.id}"]`);
+        if (tab) tab.remove();
+    }
+
+    function updateActiveTab(activeModal) {
+        if (!taskbarTabs) return;
+        taskbarTabs.querySelectorAll('.taskbar-tab').forEach(tab => {
+            tab.classList.toggle('active', tab.dataset.modalId === activeModal.id);
+        });
     }
 
     // Call openModal1 function when the DOM is fully loaded
@@ -232,6 +290,7 @@ document.addEventListener('DOMContentLoaded', () => {
         button.addEventListener('click', (e) => {
             const modal = e.target.closest('.modal');
             modal.style.display = 'none';
+            removeTaskbarTab(modal);
             // Special handling: if pinball modal closed, unload iframe to stop audio
             if (modal.id === 'modal10') {
                 const frame = modal.querySelector('.pinball-frame');
@@ -279,6 +338,8 @@ document.addEventListener('DOMContentLoaded', () => {
             isDraggingModal = true;
             document.body.classList.add('dragging-disable-select');
             cursor.style.backgroundImage = "url('static/click.png')";
+            modal.style.zIndex = getHighestZIndex() + 1;
+            updateActiveTab(modal);
 
             offsetX = e.clientX - modal.offsetLeft;
             offsetY = e.clientY - modal.offsetTop;
@@ -410,6 +471,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (modal){
                     modal.style.display = 'block';
                     modal.style.zIndex = getHighestZIndex() + 1;
+                    addTaskbarTab(modal);
                     toggleStartMenu(false);
                 }
             });
@@ -555,6 +617,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (modal){
                         modal.style.display = 'block';
                         modal.style.zIndex = getHighestZIndex() + 1;
+                        addTaskbarTab(modal);
                     }
                 } else {
                     const mouseX = lastClientX;
@@ -565,6 +628,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         if (overTrashIcon){
                             trashModal.style.display = 'block';
                             trashModal.style.zIndex = getHighestZIndex() + 1;
+                            addTaskbarTab(trashModal);
                         }
                         moveToTrash(container);
                     } else if (isTrashed(container)) {
@@ -604,6 +668,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (msModal) {
                 msModal.style.display = 'block';
                 msModal.style.zIndex = getHighestZIndex() + 1;
+                addTaskbarTab(msModal);
                 initMinesweeper();
             }
         });
@@ -623,6 +688,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (pbModal) {
                 pbModal.style.display = 'block';
                 pbModal.style.zIndex = getHighestZIndex() + 1;
+                addTaskbarTab(pbModal);
                 // Reload pinball iframe if it was previously unloaded to stop music
                 const frame = pbModal.querySelector('.pinball-frame');
                 if (frame && (!frame.getAttribute('data-pinball-loaded') || frame.src === 'about:blank')) {
@@ -647,6 +713,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (solModal) {
                 solModal.style.display = 'block';
                 solModal.style.zIndex = getHighestZIndex() + 1;
+                addTaskbarTab(solModal);
                 const frame = solModal.querySelector('.solitaire-frame');
                 if (frame && frame.src === 'about:blank') {
                     frame.src = 'games/solitaire/index.html';
