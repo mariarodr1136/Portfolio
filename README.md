@@ -2,7 +2,6 @@
 
 ![HTML](https://img.shields.io/badge/HTML-5-orange) ![CSS](https://img.shields.io/badge/CSS-3-blue) ![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-yellow) ![Node.js](https://img.shields.io/badge/Runtime-Node.js-green) ![Express](https://img.shields.io/badge/Backend-Express-lightgrey) ![Nodemailer](https://img.shields.io/badge/Email-Nodemailer-red) ![dotenv](https://img.shields.io/badge/Config-dotenv-success) ![body-parser](https://img.shields.io/badge/Middleware-body--parser-purple) ![WebAssembly](https://img.shields.io/badge/Tech-WebAssembly-654ff0) ![Emscripten](https://img.shields.io/badge/Toolchain-Emscripten-302f8e) ![SDL2](https://img.shields.io/badge/Library-SDL2-0d72b9) ![SDL_mixer](https://img.shields.io/badge/Audio-SDL__mixer-bd3d3a) ![ImGui](https://img.shields.io/badge/UI-ImGui-1b6ac6) ![TinySoundFont](https://img.shields.io/badge/MIDI-TinySoundFont-6a4) ![GitHub Pages](https://img.shields.io/badge/Deploy-GitHub%20Pages-171515)
 
-## Overview
 Welcome to my **Portfolio** — an interactive site styled like a vintage **computer desktop**. Drag icons to open apps and tabs for a nostalgic, hands-on experience. Inside the desktop you'll find my **software development projects**, an **about me** section, a **contact form**, a fun **minigame** section, and quick links to my **resume**, **LinkedIn**, and **GitHub**.
  
  The interactive design was built using modern web technologies, including **HTML**, **CSS**, and **JavaScript**, and offers visitors a hands-on experience where they can explore my work and learn more about my technical skills and background. My goal with this project was to create an engaging and memorable user interface while demonstrating my abilities as a developer.
@@ -18,7 +17,6 @@ https://github.com/user-attachments/assets/e4c59ba2-cedf-4007-9779-b3876d255786
 ---
 
 ## Table of Contents
-- [Overview](#overview)
 - [Languages & Frameworks Used](#languages--frameworks-used)
 - [Purpose](#purpose)
 - [Features](#features)
