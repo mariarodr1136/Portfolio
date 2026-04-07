@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: maria-portfolio
+    runtime: static
+    plan: free
+    buildCommand: echo "Static site ready"
+    staticPublishPath: ./docs
