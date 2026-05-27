@@ -170,13 +170,6 @@
     function updatePanelPosition() {
         if (!agent || !panel) return;
 
-        const terminalModal = document.getElementById('modal13');
-        if (!terminalModal || window.getComputedStyle(terminalModal).display === 'none') {
-            panel.classList.remove('is-open');
-            panel.setAttribute('aria-hidden', 'true');
-            return;
-        }
-
         if (panelOpen) {
             panel.classList.add('is-open');
             panel.setAttribute('aria-hidden', 'false');
@@ -186,25 +179,29 @@
             return;
         }
 
-        const terminalRect = terminalModal.getBoundingClientRect();
-        const panelRect = panel.getBoundingClientRect();
+        const terminalModal = document.getElementById('modal13');
+        const currentlyVisible = terminalModal && window.getComputedStyle(terminalModal).display !== 'none';
+
         const margin = 12;
         const viewportWidth = window.innerWidth;
         const viewportHeight = window.innerHeight;
-
+        const panelRect = panel.getBoundingClientRect();
         const panelWidth = panelRect.width || 360;
         const panelHeight = panelRect.height || 180;
 
-        let left, top;
         if (!hasCustomPosition) {
-            panelX = terminalRect.left;
-            panelY = terminalRect.top + terminalRect.height + 10;
+            if (currentlyVisible) {
+                const terminalRect = terminalModal.getBoundingClientRect();
+                panelX = terminalRect.left;
+                panelY = terminalRect.top + terminalRect.height + 10;
+            } else {
+                panelX = viewportWidth - panelWidth - margin - 180;
+                panelY = viewportHeight - panelHeight - taskbarOffset - 40;
+            }
         }
-        left = panelX;
-        top = panelY;
 
-        left = clamp(left, margin, viewportWidth - panelWidth - margin);
-        top = clamp(top, margin, viewportHeight - panelHeight - taskbarOffset);
+        let left = clamp(panelX, margin, viewportWidth - panelWidth - margin);
+        let top = clamp(panelY, margin, viewportHeight - panelHeight - taskbarOffset);
         
         panelX = left;
         panelY = top;
@@ -212,11 +209,12 @@
         panel.style.left = `${left}px`;
         panel.style.top = `${top}px`;
 
-        const terminalZ = parseFloat(window.getComputedStyle(terminalModal).zIndex) || 199;
-        const currentZ = parseFloat(panel.style.zIndex) || 0;
-        if (currentZ < terminalZ + 2) {
-            panel.style.zIndex = String(terminalZ + 2);
+        let zIndex = 236; // Default panel z-index
+        if (currentlyVisible) {
+            const terminalZ = parseFloat(window.getComputedStyle(terminalModal).zIndex) || 199;
+            zIndex = Math.max(zIndex, terminalZ + 2);
         }
+        panel.style.zIndex = String(zIndex);
     }
 
     function positionAgent() {
@@ -224,51 +222,48 @@
         if (isDraggingPanel || isDraggingClippy) return;
 
         const terminalModal = document.getElementById('modal13');
-        if (!terminalModal || window.getComputedStyle(terminalModal).display === 'none') {
-            agent._el.hide();
-            if (panel) {
-                panel.classList.remove('is-open');
-                panel.setAttribute('aria-hidden', 'true');
-            }
-            return;
-        }
+        const currentlyVisible = terminalModal && window.getComputedStyle(terminalModal).display !== 'none';
 
-        agent._el.show();
-
-        const terminalRect = terminalModal.getBoundingClientRect();
         const width = agent._el.outerWidth() || 124;
         const height = agent._el.outerHeight() || 93;
         const margin = 12;
         const viewportWidth = window.innerWidth;
         const viewportHeight = window.innerHeight;
 
-        let x, y;
         if (!hasCustomPosition) {
-            clippyX = terminalRect.left + terminalRect.width - width;
-            clippyY = terminalRect.top + terminalRect.height + 10;
-            
-            // Set initial panel position relative to Terminal too
-            panelX = terminalRect.left;
-            panelY = terminalRect.top + terminalRect.height + 10;
-            
-            hasCustomPosition = true;
+            if (currentlyVisible) {
+                const terminalRect = terminalModal.getBoundingClientRect();
+                clippyX = terminalRect.left + terminalRect.width - width;
+                clippyY = terminalRect.top + terminalRect.height + 10;
+                
+                panelX = terminalRect.left;
+                panelY = terminalRect.top + terminalRect.height + 10;
+                
+                hasCustomPosition = true;
+            } else {
+                clippyX = viewportWidth - width - margin - 40;
+                clippyY = viewportHeight - height - taskbarOffset - 40;
+                
+                panelX = clippyX - 360 - 20;
+                panelY = clippyY;
+                
+                hasCustomPosition = true;
+            }
         }
-        x = clippyX;
-        y = clippyY;
 
-        x = clamp(x, margin, viewportWidth - width - margin);
-        y = clamp(y, margin, viewportHeight - height - taskbarOffset);
+        let x = clamp(clippyX, margin, viewportWidth - width - margin);
+        let y = clamp(clippyY, margin, viewportHeight - height - taskbarOffset);
         
         clippyX = x;
         clippyY = y;
 
-        const terminalZ = parseFloat(window.getComputedStyle(terminalModal).zIndex) || 199;
-        const currentAgentZ = parseFloat(agent._el.css('z-index')) || 0;
-        if (currentAgentZ < terminalZ + 1) {
-            agent._el.css({ left: x, top: y, zIndex: terminalZ + 1 });
-        } else {
-            agent._el.css({ left: x, top: y });
+        let zIndex = 235; // Default clippy z-index
+        if (currentlyVisible) {
+            const terminalZ = parseFloat(window.getComputedStyle(terminalModal).zIndex) || 199;
+            zIndex = Math.max(zIndex, terminalZ + 1);
         }
+        
+        agent._el.css({ left: x, top: y, zIndex: zIndex });
         agent.reposition();
 
         updatePanelPosition();
