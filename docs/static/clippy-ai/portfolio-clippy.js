@@ -104,6 +104,11 @@
 
         panel.addEventListener('mouseenter', () => setCursor(true));
         panel.addEventListener('mouseleave', () => setCursor(false));
+        panel.addEventListener('mousedown', () => {
+            if (typeof window.focusClippyAndPanel === 'function') {
+                window.focusClippyAndPanel();
+            }
+        });
 
         const closeButton = document.getElementById('portfolio-clippy-close');
         closeButton.addEventListener('click', () => {
@@ -205,7 +210,10 @@
         panel.style.top = `${top}px`;
 
         const terminalZ = parseFloat(window.getComputedStyle(terminalModal).zIndex) || 199;
-        panel.style.zIndex = String(terminalZ + 2);
+        const currentZ = parseFloat(panel.style.zIndex) || 0;
+        if (currentZ < terminalZ + 2) {
+            panel.style.zIndex = String(terminalZ + 2);
+        }
     }
 
     function positionAgent() {
@@ -243,7 +251,12 @@
         y = clamp(y, margin, viewportHeight - height - taskbarOffset);
 
         const terminalZ = parseFloat(window.getComputedStyle(terminalModal).zIndex) || 199;
-        agent._el.css({ left: x, top: y, zIndex: terminalZ + 1 });
+        const currentAgentZ = parseFloat(agent._el.css('z-index')) || 0;
+        if (currentAgentZ < terminalZ + 1) {
+            agent._el.css({ left: x, top: y, zIndex: terminalZ + 1 });
+        } else {
+            agent._el.css({ left: x, top: y });
+        }
         agent.reposition();
 
         updatePanelPosition();
@@ -447,6 +460,11 @@
 
             agent._el.on('mouseenter', () => setCursor(true));
             agent._el.on('mouseleave', () => setCursor(false));
+            agent._el.on('mousedown', () => {
+                if (typeof window.focusClippyAndPanel === 'function') {
+                    window.focusClippyAndPanel();
+                }
+            });
             agent._el.on('keydown', (event) => {
                 if (event.key === 'Enter' || event.key === ' ') {
                     event.preventDefault();

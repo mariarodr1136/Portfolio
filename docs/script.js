@@ -326,10 +326,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Get the highest z-index among open modals
+    // Get the highest z-index among open modals and Clippy elements
     function getHighestZIndex() {
         return Math.max(
-            ...Array.from(document.querySelectorAll('.modal'))
+            ...Array.from(document.querySelectorAll('.modal, #portfolio-clippy-panel, .clippy'))
                 .map(el => parseFloat(window.getComputedStyle(el).zIndex))
                 .filter(zIndex => !Number.isNaN(zIndex)),
             0
@@ -361,7 +361,32 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    function focusModal(modalId) {
+        const modal = document.getElementById(modalId);
+        if (!modal) return;
+        const currentHighest = getHighestZIndex();
+        if (parseFloat(modal.style.zIndex) < currentHighest || !modal.style.zIndex) {
+            modal.style.zIndex = currentHighest + 1;
+            updateActiveTab(modal);
+        }
+    }
+
+    function focusClippyAndPanel() {
+        const panel = document.getElementById('portfolio-clippy-panel');
+        const agentEl = document.querySelector('.clippy');
+        if (!panel && !agentEl) return;
+        const highest = getHighestZIndex();
+        if (agentEl) {
+            agentEl.style.zIndex = String(highest + 1);
+        }
+        if (panel) {
+            panel.style.zIndex = String(highest + 2);
+        }
+    }
+
     window.openPortfolioModal = openPortfolioModalById;
+    window.focusPortfolioModal = focusModal;
+    window.focusClippyAndPanel = focusClippyAndPanel;
 
     // Blue line event listeners for drag functionality
     const blueLines = document.querySelectorAll('.modal-blue-line');
@@ -408,6 +433,18 @@ document.addEventListener('DOMContentLoaded', () => {
         if (blueLine) {
             makeModalDraggable(modal, blueLine);
         }
+        
+        // Bring to front on mousedown anywhere inside the modal
+        modal.addEventListener('mousedown', () => {
+            const currentHighest = getHighestZIndex();
+            if (parseFloat(modal.style.zIndex) < currentHighest || !modal.style.zIndex) {
+                modal.style.zIndex = currentHighest + 1;
+                updateActiveTab(modal);
+                if (modal.id === 'modal13' && typeof window.repositionPortfolioClippy === 'function') {
+                    window.repositionPortfolioClippy();
+                }
+            }
+        });
     });
 
     cacheModalBaseSizes();

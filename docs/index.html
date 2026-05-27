@@ -55,7 +55,7 @@
         <button class="modal-close">&times;</button>
         <div class="about-me-content">
             <h3 class="no-italic">Maria Rodriguez's Virtual Workspace</h3>
-            <p>Your entry point to seamless digital experiences, brought to life by a software developer specializing in innovative solutions.</p>
+            <p>Your entry point to seamless digital experiences, brought to life by a software developer.</p>
             <p>Feel free to click around, move things, and explore!</p>
         </div>
     </div>
@@ -119,6 +119,18 @@
         </div>
 
         <div class="project-card">
+            <h4>GenAI Technical Interviewer: Voice-Driven Simulator</h4>
+            <h4 style="font-style: italic;">React | Vite | Node.js | Express | Groq API | Web Speech API</h4>
+            <p>The GenAI Technical Interviewer is an interactive voice-driven web application designed to simulate technical interviews. Candidates respond aloud to algorithm and system design questions, which are transcribed using Groq Whisper Large v3. The system generates adaptive follow-up questions via Groq Llama 3 70B and reads them back using the browser's native Web Speech API (Text-to-Speech), offering a complete, responsive interview practice environment.</p>
+            <div class="project-images">
+                <img src="static/genai-interviewer.png" alt="GenAI Technical Interviewer screenshot">
+            </div>
+            <p>Note: The live app is hosted on Render's free tier, so the backend may take 1-2 minutes to wake up after inactivity.</p>
+            <button onclick="launchProject('https://github.com/mariarodr1136/GenAI-Technical-Interviewer')">View GitHub Repository</button>
+            <button onclick="launchProject('https://genai-technical-interviewer-1.onrender.com/')">View Live Application</button>
+        </div>
+
+        <div class="project-card">
             <h4>FraudWatch: Credit Card Fraud Detection System</h4>
             <h4 style="font-style: italic;">Python | Flask | Pandas | scikit-learn | Plotly</h4>
             <p>FraudWatch is a real-time credit card fraud detection system built with Python and Flask, using a Random Forest classifier for accurate fraud prediction. It processes transaction data, with scikit-learn for model training and Plotly for interactive performance visualizations. The system includes data preprocessing with StandardScaler to optimize model accuracy and provides users with an intuitive platform to explore results.</p>
@@ -127,6 +139,16 @@
                 <img src="static/fraudwatch-2.png" alt="FraudWatch screenshot">
             </div>
             <button onclick="launchProject('https://github.com/mariarodr1136/FraudDetectionSystem')">View GitHub Repository</button>
+        </div>
+
+        <div class="project-card">
+            <h4>Raspberry Pi Hardware Experiments</h4>
+            <h4 style="font-style: italic;">Python | Raspberry Pi | GPIO | Electronics | Hardware Interfacing</h4>
+            <p>A hands-on collection of Raspberry Pi hardware experiments designed to teach hardware interfacing, sensor integration, and embedded systems programming. Featuring projects with components like ultrasonic sensors, PIR motion detectors, servo motors, ADC modules, LCD displays, and RFID readers, it demonstrates how software and hardware interact to build real-world systems like environmental monitoring, home automation, and robotic controls.</p>
+            <div class="project-images">
+                <img src="static/raspberry-pi-lab.png" alt="Raspberry Pi Hardware Experiments screenshot">
+            </div>
+            <button onclick="launchProject('https://github.com/mariarodr1136/RaspberryPiLab')">View GitHub Repository</button>
         </div>
 
         <div class="project-card">
