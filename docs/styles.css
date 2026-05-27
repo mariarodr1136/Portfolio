@@ -3,7 +3,7 @@ body, html {
     height: 100%;
     margin: 0;
     font-family: 'Chicago', 'Charcoal', 'Geneva', sans-serif;
-    background-image: url('static/background5.jpg');
+    background-image: url('static/background.png');
     background-size: cover;
     background-position: center;
     overflow: hidden;
@@ -114,7 +114,8 @@ body.dragging-disable-select, body.dragging-disable-select * {
 /* Individual Modal Dimensions */
 #modal1 {
     width: 500px;
-    height: 425px;
+    height: auto; 
+    min-height: 300px; 
     display: block;
     position: fixed;
     top: 60%;
@@ -144,7 +145,6 @@ body.dragging-disable-select, body.dragging-disable-select * {
 #modal5 {
     width: 550px;
     height: 150px;
-    background-color: #f9f9f9;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -479,6 +479,11 @@ body.dragging-disable-select, body.dragging-disable-select * {
     font-style: italic;
 }
 
+.about-me-content h3 {
+    padding-top: 80px !important; 
+    margin-top: 0 !important;
+}
+
 .image-container {
     text-align: center; 
     margin-bottom: 30px; 
@@ -582,4 +587,170 @@ body.dragging-disable-select, body.dragging-disable-select * {
 @keyframes blink-cursor {
     0%, 100% { opacity: 1; }
     50% { opacity: 0; }
+}
+
+/* ====== Clippy Assistant ====== */
+.clippy,
+.clippy * {
+    cursor: none !important;
+}
+
+.clippy {
+    z-index: 235;
+    filter: drop-shadow(0 5px 2px rgba(0, 0, 0, 0.2));
+}
+
+.portfolio-clippy-panel {
+    position: fixed;
+    width: min(360px, calc(100vw - 24px));
+    background: #dcdcdc;
+    border-top: 4px solid rgb(168,168,168);
+    border-left: 4px solid rgb(168,168,168);
+    border-right: 4px solid black;
+    border-bottom: 4px solid black;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.25);
+    z-index: 236;
+    display: none;
+    font-family: 'Chicago', 'Charcoal', 'Geneva', sans-serif;
+    font-style: italic;
+    color: #000;
+    cursor: none;
+}
+
+.portfolio-clippy-panel.is-open {
+    display: block;
+}
+
+.portfolio-clippy-panel::after {
+    content: '';
+    position: absolute;
+    right: -14px;
+    top: 40px;
+    width: 24px;
+    height: 24px;
+    background: #dcdcdc;
+    border-top: 4px solid rgb(168, 168, 168);
+    border-right: 4px solid black;
+    border-left: none;
+    border-bottom: none;
+    transform: rotate(45deg);
+}
+
+.portfolio-clippy-titlebar {
+    min-height: 26px;
+    background-color: rgb(21, 21, 130);
+    border: 4px solid lightgrey;
+    color: #d9d9d9;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 3px 6px 3px 12px;
+    font-size: 14px;
+}
+
+#portfolio-clippy-close {
+    cursor: none;
+    width: 24px;
+    height: 24px;
+    line-height: 14px;
+    background: lightgrey;
+    color: #111;
+    border-top: 3px solid rgb(168,168,168);
+    border-left: 3px solid rgb(168,168,168);
+    border-right: 3px solid black;
+    border-bottom: 3px solid black;
+    font-size: 18px;
+    padding: 0;
+}
+
+.portfolio-clippy-log {
+    position: relative;
+    z-index: 1;
+    min-height: 54px;
+    max-height: 130px;
+    overflow-y: auto;
+    padding: 10px 12px 6px;
+    font-size: 13px;
+    line-height: 1.35;
+}
+
+.portfolio-clippy-log p {
+    margin: 0;
+}
+
+.portfolio-clippy-actions {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 6px;
+    padding: 0 10px 8px;
+}
+
+.portfolio-clippy-actions button,
+.portfolio-clippy-form button {
+    cursor: none;
+    background: #ececec;
+    color: #111;
+    border-top: 3px solid rgb(168,168,168);
+    border-left: 3px solid rgb(168,168,168);
+    border-right: 3px solid black;
+    border-bottom: 3px solid black;
+    font-family: 'Chicago', 'Charcoal', 'Geneva', sans-serif;
+    font-style: italic;
+    font-size: 12px;
+    min-height: 30px;
+    padding: 4px 6px;
+}
+
+.portfolio-clippy-actions button:active,
+.portfolio-clippy-form button:active,
+#portfolio-clippy-close:active {
+    border-top-color: black;
+    border-left-color: black;
+    border-right-color: rgb(168,168,168);
+    border-bottom-color: rgb(168,168,168);
+}
+
+.portfolio-clippy-form {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    gap: 6px;
+    padding: 0 10px 10px;
+}
+
+#portfolio-clippy-input {
+    flex: 1;
+    min-width: 0;
+    height: 28px;
+    box-sizing: border-box;
+    background: #fff;
+    border-top: 3px solid black;
+    border-left: 3px solid black;
+    border-right: 3px solid rgb(168,168,168);
+    border-bottom: 3px solid rgb(168,168,168);
+    cursor: none;
+    font-family: 'Chicago', 'Charcoal', 'Geneva', sans-serif;
+    font-size: 12px;
+    padding: 4px 6px;
+}
+
+.clippy-balloon {
+    z-index: 236 !important;
+}
+
+@media (max-width: 520px) {
+    .portfolio-clippy-panel {
+        width: calc(100vw - 24px);
+    }
+
+    .portfolio-clippy-actions {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .portfolio-clippy-panel::after {
+        display: none;
+    }
 }

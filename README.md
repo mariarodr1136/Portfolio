@@ -36,6 +36,8 @@ https://github.com/user-attachments/assets/e4c59ba2-cedf-4007-9779-b3876d255786
 - **Draggable Icons & Free Positioning**: Icons can be rearranged anywhere on the desktop by dragging.
 - **Trash System**: Drag icons to the Trash to remove them from the desktop; drag them back out to restore.
 - **Terminal Typing Animation**: A terminal window auto-types a code snippet with realistic typos and corrections on page load.
+- **Interactive Clippy Assistant**: A vintage Microsoft Office Assistant (Clippy) loaded dynamically. Click him to toggle a control panel, ask questions, or trigger quick desktop navigation shortcuts (Resume, Projects, Contact, Games).
+- **Reciprocal Dragging & Modal Coupling**: Dragging the Clippy agent moves his control panel, and dragging the panel title bar moves Clippy in sync. Both elements are coupled to the Terminal Modal—they follow it during drags and viewport scaling, preserving custom offsets if relocated by the user.
 - **Dynamic Modals**: Content windows for Settings, Projects, Resume (PDF / PNG), Social links (GitHub, LinkedIn), Contact, and Games hub.
 - **Responsive Modal Scaling**: All windows scale automatically to fit the viewport, from mobile to ultrawide.
 - **Minesweeper Game**: Playable, keyboard & mouse friendly; adapted from [Jon Ziebell's repository](https://github.com/ziebelje/minesweeper) with UI and accessibility adjustments.
@@ -102,6 +104,7 @@ root/
 │   ├── styles.css             # Portfolio styling
 │   ├── script.js              # Desktop/window/taskbar/game logic
 │   ├── static/                # Images, fonts, and other assets
+│   │   └── clippy-ai/         # Clippy agent libraries, assets, and custom logic
 │   ├── games/pinball/         # Deployed WASM build (html/js/wasm/data)
 │   └── games/solitaire/       # Deployed Solitaire bundle (Vite output)
 ├── spacecadet/                # C++ source + CMake for Space Cadet Pinball
@@ -115,6 +118,7 @@ root/
 └── README.md
 ```
 Key files:
+- `docs/static/clippy-ai/portfolio-clippy.js`: Custom controller logic coupling Clippy to the terminal modal, managing z-indices, and handling reciprocal dual-dragging.
 - `docs/games/pinball/SpaceCadetPinball.html|js|wasm|data`: Runtime artifacts produced by Emscripten build.
 - `docs/games/solitaire/index.html` (+ assets): Static Vite build for Solitaire used by the iframe in the "Solitaire" modal.
 - `spacecadet/game_resources/`: Original DAT + WAV assets used at build time (preloaded into virtual FS).

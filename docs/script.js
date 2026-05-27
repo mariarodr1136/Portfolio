@@ -110,6 +110,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 modal.style.transform = `translate(-50%, -50%) scale(${boundedScale})`;
             }
         });
+
+        if (typeof window.repositionPortfolioClippy === 'function') {
+            window.repositionPortfolioClippy();
+        }
     }
 
     // Update cursor position
@@ -200,6 +204,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Bring to front
                 modal.style.zIndex = getHighestZIndex() + 1;
                 updateActiveTab(modal);
+            }
+            if (modal.id === 'modal13' && typeof window.repositionPortfolioClippy === 'function') {
+                window.repositionPortfolioClippy();
             }
         });
         tab.addEventListener('mouseenter', () => {
@@ -305,6 +312,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     frame.src = 'about:blank';
                 }
             }
+            if (modal.id === 'modal13' && typeof window.repositionPortfolioClippy === 'function') {
+                window.repositionPortfolioClippy();
+            }
         });
 
         button.addEventListener('mouseenter', () => {
@@ -325,6 +335,33 @@ document.addEventListener('DOMContentLoaded', () => {
             0
         );
     }
+
+    function openPortfolioModalById(modalId) {
+        const modal = document.getElementById(modalId);
+        if (!modal) return;
+
+        modal.style.display = 'block';
+        modal.style.zIndex = getHighestZIndex() + 1;
+        addTaskbarTab(modal);
+        updateActiveTab(modal);
+
+        if (modalId === 'modal8') {
+            initMinesweeper();
+        } else if (modalId === 'modal10') {
+            const frame = modal.querySelector('.pinball-frame');
+            if (frame && (!frame.getAttribute('data-pinball-loaded') || frame.src === 'about:blank')) {
+                frame.src = 'games/pinball/SpaceCadetPinball.html';
+                frame.setAttribute('data-pinball-loaded', '1');
+            }
+        } else if (modalId === 'modal12') {
+            const frame = modal.querySelector('.solitaire-frame');
+            if (frame && frame.src === 'about:blank') {
+                frame.src = 'games/solitaire/index.html';
+            }
+        }
+    }
+
+    window.openPortfolioModal = openPortfolioModalById;
 
     // Blue line event listeners for drag functionality
     const blueLines = document.querySelectorAll('.modal-blue-line');
@@ -348,6 +385,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (isDraggingModal) {
                     modal.style.left = event.clientX - offsetX + 'px';
                     modal.style.top = event.clientY - offsetY + 'px';
+                    if (modal.id === 'modal13' && typeof window.repositionPortfolioClippy === 'function') {
+                        window.repositionPortfolioClippy();
+                    }
                 }
             }
 
