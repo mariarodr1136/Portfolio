@@ -10,10 +10,10 @@
     let positionTimer = null;
 
     let hasCustomPosition = false;
-    let clippyOffsetX = 0;
-    let clippyOffsetY = 0;
-    let panelOffsetX = 0;
-    let panelOffsetY = 0;
+    let clippyX = 0;
+    let clippyY = 0;
+    let panelX = 0;
+    let panelY = 0;
     let isDraggingPanel = false;
     let isDraggingClippy = false;
 
@@ -197,14 +197,17 @@
 
         let left, top;
         if (!hasCustomPosition) {
-            panelOffsetX = 0;
-            panelOffsetY = terminalRect.height + 10;
+            panelX = terminalRect.left;
+            panelY = terminalRect.top + terminalRect.height + 10;
         }
-        left = terminalRect.left + panelOffsetX;
-        top = terminalRect.top + panelOffsetY;
+        left = panelX;
+        top = panelY;
 
         left = clamp(left, margin, viewportWidth - panelWidth - margin);
         top = clamp(top, margin, viewportHeight - panelHeight - taskbarOffset);
+        
+        panelX = left;
+        panelY = top;
 
         panel.style.left = `${left}px`;
         panel.style.top = `${top}px`;
@@ -241,14 +244,23 @@
 
         let x, y;
         if (!hasCustomPosition) {
-            clippyOffsetX = terminalRect.width - width;
-            clippyOffsetY = terminalRect.height + 10;
+            clippyX = terminalRect.left + terminalRect.width - width;
+            clippyY = terminalRect.top + terminalRect.height + 10;
+            
+            // Set initial panel position relative to Terminal too
+            panelX = terminalRect.left;
+            panelY = terminalRect.top + terminalRect.height + 10;
+            
+            hasCustomPosition = true;
         }
-        x = terminalRect.left + clippyOffsetX;
-        y = terminalRect.top + clippyOffsetY;
+        x = clippyX;
+        y = clippyY;
 
         x = clamp(x, margin, viewportWidth - width - margin);
         y = clamp(y, margin, viewportHeight - height - taskbarOffset);
+        
+        clippyX = x;
+        clippyY = y;
 
         const terminalZ = parseFloat(window.getComputedStyle(terminalModal).zIndex) || 199;
         const currentAgentZ = parseFloat(agent._el.css('z-index')) || 0;
@@ -344,24 +356,15 @@
 
                 setCursor(false);
 
-                const terminalModal = document.getElementById('modal13');
-                if (terminalModal) {
-                    const terminalRect = terminalModal.getBoundingClientRect();
-                    const clippyRect = agent._el[0].getBoundingClientRect();
+                const clippyRect = agent._el[0].getBoundingClientRect();
+                clippyX = clippyRect.left;
+                clippyY = clippyRect.top;
 
-                    hasCustomPosition = true;
-                    clippyOffsetX = clippyRect.left - terminalRect.left;
-                    clippyOffsetY = clippyRect.top - terminalRect.top;
-                    
-                    if (panel && window.getComputedStyle(panel).display !== 'none') {
-                        const panelRect = panel.getBoundingClientRect();
-                        panelOffsetX = panelRect.left - terminalRect.left;
-                        panelOffsetY = panelRect.top - terminalRect.top;
-                    } else {
-                        panelOffsetX = clippyOffsetX - 360 - 10;
-                        panelOffsetY = clippyOffsetY;
-                    }
-                }
+                const panelRect = panel.getBoundingClientRect();
+                panelX = panelRect.left;
+                panelY = panelRect.top;
+
+                hasCustomPosition = true;
                 positionAgent();
             }
 
@@ -424,23 +427,18 @@
                 isDraggingClippy = false;
                 
                 if (clippyDragMoved) {
-                    const terminalModal = document.getElementById('modal13');
-                    if (terminalModal) {
-                        const terminalRect = terminalModal.getBoundingClientRect();
-                        const clippyRect = agent._el[0].getBoundingClientRect();
-                        
-                        hasCustomPosition = true;
-                        clippyOffsetX = clippyRect.left - terminalRect.left;
-                        clippyOffsetY = clippyRect.top - terminalRect.top;
-                        
-                        if (panel && window.getComputedStyle(panel).display !== 'none') {
-                            const panelRect = panel.getBoundingClientRect();
-                            panelOffsetX = panelRect.left - terminalRect.left;
-                            panelOffsetY = panelRect.top - terminalRect.top;
-                        } else {
-                            panelOffsetX = clippyOffsetX - 360 - 10;
-                            panelOffsetY = clippyOffsetY;
-                        }
+                    hasCustomPosition = true;
+                    const clippyRect = agent._el[0].getBoundingClientRect();
+                    clippyX = clippyRect.left;
+                    clippyY = clippyRect.top;
+                    
+                    if (panel && window.getComputedStyle(panel).display !== 'none') {
+                        const panelRect = panel.getBoundingClientRect();
+                        panelX = panelRect.left;
+                        panelY = panelRect.top;
+                    } else {
+                        panelX = clippyX - 360 - 10;
+                        panelY = clippyY;
                     }
                 } else {
                     // It was a click!

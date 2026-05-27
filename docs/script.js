@@ -410,9 +410,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (isDraggingModal) {
                     modal.style.left = event.clientX - offsetX + 'px';
                     modal.style.top = event.clientY - offsetY + 'px';
-                    if (modal.id === 'modal13' && typeof window.repositionPortfolioClippy === 'function') {
-                        window.repositionPortfolioClippy();
-                    }
+
                 }
             }
 
@@ -440,9 +438,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (parseFloat(modal.style.zIndex) < currentHighest || !modal.style.zIndex) {
                 modal.style.zIndex = currentHighest + 1;
                 updateActiveTab(modal);
-                if (modal.id === 'modal13' && typeof window.repositionPortfolioClippy === 'function') {
-                    window.repositionPortfolioClippy();
-                }
+
             }
         });
     });
