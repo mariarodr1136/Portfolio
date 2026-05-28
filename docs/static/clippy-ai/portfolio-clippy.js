@@ -101,6 +101,7 @@
             </form>
         `;
         document.body.appendChild(panel);
+        panel.style.zIndex = '236';
 
         panel.addEventListener('mouseenter', () => setCursor(true));
         panel.addEventListener('mouseleave', () => setCursor(false));
@@ -165,6 +166,9 @@
         panel.classList.toggle('is-open', panelOpen);
         panel.setAttribute('aria-hidden', panelOpen ? 'false' : 'true');
         updatePanelPosition();
+        if (panelOpen && typeof window.focusClippyAndPanel === 'function') {
+            window.focusClippyAndPanel();
+        }
     }
 
     function updatePanelPosition() {
@@ -208,13 +212,6 @@
 
         panel.style.left = `${left}px`;
         panel.style.top = `${top}px`;
-
-        let zIndex = 236; // Default panel z-index
-        if (currentlyVisible) {
-            const terminalZ = parseFloat(window.getComputedStyle(terminalModal).zIndex) || 199;
-            zIndex = Math.max(zIndex, terminalZ + 2);
-        }
-        panel.style.zIndex = String(zIndex);
     }
 
     function positionAgent() {
@@ -257,13 +254,7 @@
         clippyX = x;
         clippyY = y;
 
-        let zIndex = 235; // Default clippy z-index
-        if (currentlyVisible) {
-            const terminalZ = parseFloat(window.getComputedStyle(terminalModal).zIndex) || 199;
-            zIndex = Math.max(zIndex, terminalZ + 1);
-        }
-        
-        agent._el.css({ left: x, top: y, zIndex: zIndex });
+        agent._el.css({ left: x, top: y });
         agent.reposition();
 
         updatePanelPosition();
@@ -383,6 +374,7 @@
                 'aria-label': 'Clippy assistant',
                 tabindex: '0'
             });
+            agent._el.css({ zIndex: 235 });
 
             // Hook clippy drag methods to also drag the panel
             const originalStartDrag = agent._startDrag;
