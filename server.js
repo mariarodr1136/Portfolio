@@ -43,7 +43,7 @@ function getForwardHeaders(req) {
     if (headers['referer']) {
         try {
             const refUrl = new URL(headers['referer']);
-            if (refUrl.hostname === 'localhost' || refUrl.hostname === '127.0.0.1') {
+            if (refUrl.host === req.headers.host || refUrl.hostname === 'localhost' || refUrl.hostname === '127.0.0.1') {
                 headers['referer'] = 'https://github.com' + refUrl.pathname + refUrl.search + refUrl.hash;
             }
         } catch (e) {
