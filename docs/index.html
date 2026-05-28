@@ -89,7 +89,7 @@
             <h4 style="font-style: italic;">Python | TensorFlow Lite | OpenCV | PyQt5 | Raspberry Pi</h4>
             <p>LeafMedic is an edge AI application performing real-time plant disease classification on a Raspberry Pi. It uses computer vision and a MobileNetV1 model optimized for TensorFlow Lite for on-device inference, supported by a PyQt5 interface for preview/batch processing and a curated treatment database.</p>
             <div class="project-images">
-                <video src="static/LeafMedic.mp4" autoplay muted loop playsinline alt="LeafMedic demo" style="max-height: 350px;"></video>
+                <video src="static/LeafMedic.mov" autoplay muted loop playsinline alt="LeafMedic demo" style="max-height: 350px;"></video>
             </div>
             <button onclick="launchProject('https://github.com/mariarodr1136/LeafMedic')">View GitHub Repository</button>
         </div>
@@ -135,8 +135,7 @@
             <h4 style="font-style: italic;">Python | Flask | Pandas | scikit-learn | Plotly</h4>
             <p>A real-time credit card fraud detection system built with Python and Flask. Uses a Random Forest classifier (scikit-learn) for transaction analysis, StandardScaler preprocessing, and Plotly to visualize machine learning performance.</p>
             <div class="project-images">
-                <img src="static/fraudwatch-1.png" alt="FraudWatch screenshot">
-                <img src="static/fraudwatch-2.png" alt="FraudWatch screenshot">
+                <video src="static/FraudDemo.mov" autoplay muted loop playsinline alt="FraudWatch demo"></video>
             </div>
             <button onclick="launchProject('https://github.com/mariarodr1136/FraudDetectionSystem')">View GitHub Repository</button>
         </div>
@@ -146,20 +145,11 @@
             <h4 style="font-style: italic;">Python | Raspberry Pi | GPIO | Electronics | Hardware Interfacing</h4>
             <p>A collection of hardware interfacing and embedded programming projects on Raspberry Pi. Integrates sensors, motors, and displays (PIR, RFID, ultrasonic, LCD) to build real-world systems like environmental monitoring and home automation.</p>
             <div class="project-images">
-                <img src="static/raspberry-pi-lab.png" alt="Raspberry Pi Hardware Experiments screenshot">
+                <video src="static/Raspberry_Demo.mov" autoplay muted loop playsinline alt="Raspberry Pi Hardware Experiments demo"></video>
             </div>
             <button onclick="launchProject('https://github.com/mariarodr1136/RaspberryPiLab')">View GitHub Repository</button>
         </div>
 
-        <div class="project-card">
-            <h4>EcoHabits: Sustainability Tracker - iOS Mobile Application</h4>
-            <h4 style="font-style: italic;">Swift | SwiftUI | Xcode | Hugging Face API</h4>
-            <p>A gamified iOS app built with Swift and SwiftUI to encourage sustainable habits in children. Features an AI-powered assistant, real-time carbon/water footprint impact tracking, and a rewards system to incentivize eco-friendly choices.</p>
-            <div class="project-images">
-                <img src="static/ecohabits.jpg" alt="EcoHabits screenshot">
-            </div>
-            <button onclick="launchProject('https://github.com/mariarodr1136/EcoHabitTracker')">View GitHub Repository</button>
-        </div>
 
         <div class="project-card">
             <h4>Maria Rodriguez Portfolio - Website</h4>
@@ -287,6 +277,14 @@
         <button class="modal-close">&times;</button>
         <div class="terminal-body">
             <pre id="terminal-output"></pre><span class="terminal-cursor"></span>
+        </div>
+    </div>
+
+    <!-- Pixelate modal (auto-opens on load, loop video) -->
+    <div id="modal14" class="modal">
+        <button class="modal-close">&times;</button>
+        <div class="pixelate-body">
+            <video src="static/Pixelate.mp4" autoplay muted loop playsinline class="pixelate-video"></video>
         </div>
     </div>
 
