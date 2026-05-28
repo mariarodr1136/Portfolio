@@ -311,6 +311,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (frame) {
                     frame.src = 'about:blank';
                 }
+            } else if (modal.id === 'modal6') {
+                const frame = modal.querySelector('.browser-frame');
+                if (frame) {
+                    frame.src = 'about:blank';
+                }
             }
             if (modal.id === 'modal13' && typeof window.repositionPortfolioClippy === 'function') {
                 window.repositionPortfolioClippy();
@@ -357,6 +362,11 @@ document.addEventListener('DOMContentLoaded', () => {
             const frame = modal.querySelector('.solitaire-frame');
             if (frame && frame.src === 'about:blank') {
                 frame.src = 'games/solitaire/index.html';
+            }
+        } else if (modalId === 'modal6') {
+            const frame = modal.querySelector('.browser-frame');
+            if (frame && frame.src === 'about:blank') {
+                frame.src = '/proxy?url=' + encodeURIComponent('https://github.com/mariarodr1136');
             }
         }
     }
@@ -442,6 +452,114 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    // === Retro Browser Implementation for GitHub Modal ===
+    const githubIframe = document.getElementById('github-iframe');
+    const githubAddressBar = document.getElementById('github-address-bar');
+    const githubBackBtn = document.getElementById('github-back-btn');
+    const githubForwardBtn = document.getElementById('github-forward-btn');
+    const githubRefreshBtn = document.getElementById('github-refresh-btn');
+
+    // Helper to register browser control events
+    function registerBrowserControls(iframe, addressBar, backBtn, forwardBtn, refreshBtn, defaultUrl) {
+        if (!iframe || !addressBar) return;
+
+        // Update Address Bar on Frame Load
+        iframe.addEventListener('load', () => {
+            try {
+                const currentLoc = iframe.contentWindow.location;
+                if (currentLoc.href === 'about:blank') return;
+                
+                let displayUrl = '';
+                if (currentLoc.pathname.startsWith('/proxy')) {
+                    const params = new URLSearchParams(currentLoc.search);
+                    displayUrl = params.get('url') || defaultUrl;
+                } else if (currentLoc.pathname.includes('linkedin-profile.html')) {
+                    displayUrl = 'https://www.linkedin.com/in/mariarodr/';
+                } else {
+                    const baseDomain = defaultUrl.includes('github.com') ? 'https://github.com' : 'https://www.linkedin.com';
+                    displayUrl = baseDomain + currentLoc.pathname + currentLoc.search + currentLoc.hash;
+                }
+                addressBar.value = displayUrl;
+            } catch (err) {
+                console.error('Failed to read iframe location:', err);
+            }
+        });
+
+        // Navigation input
+        addressBar.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                let targetUrl = addressBar.value.trim();
+                if (targetUrl) {
+                    if (!/^https?:\/\//i.test(targetUrl)) {
+                        targetUrl = 'https://' + targetUrl;
+                    }
+                    iframe.src = '/proxy?url=' + encodeURIComponent(targetUrl);
+                }
+            }
+        });
+
+        // Button clicks
+        if (backBtn) {
+            backBtn.addEventListener('click', () => {
+                try { iframe.contentWindow.history.back(); } catch(err) { console.error(err); }
+            });
+            backBtn.addEventListener('mouseenter', () => { cursor.style.backgroundImage = "url('static/click.png')"; });
+            backBtn.addEventListener('mouseleave', () => { cursor.style.backgroundImage = "url('static/cursor.png')"; });
+        }
+        if (forwardBtn) {
+            forwardBtn.addEventListener('click', () => {
+                try { iframe.contentWindow.history.forward(); } catch(err) { console.error(err); }
+            });
+            forwardBtn.addEventListener('mouseenter', () => { cursor.style.backgroundImage = "url('static/click.png')"; });
+            forwardBtn.addEventListener('mouseleave', () => { cursor.style.backgroundImage = "url('static/cursor.png')"; });
+        }
+        if (refreshBtn) {
+            refreshBtn.addEventListener('click', () => {
+                try { iframe.contentWindow.location.reload(); } catch(err) { console.error(err); }
+            });
+            refreshBtn.addEventListener('mouseenter', () => { cursor.style.backgroundImage = "url('static/click.png')"; });
+            refreshBtn.addEventListener('mouseleave', () => { cursor.style.backgroundImage = "url('static/cursor.png')"; });
+        }
+
+        // Custom cursor for Address Bar
+        addressBar.addEventListener('mouseenter', () => {
+            cursor.style.backgroundImage = "url('static/click.png')";
+        });
+        addressBar.addEventListener('mouseleave', () => {
+            cursor.style.backgroundImage = "url('static/cursor.png')";
+        });
+    }
+
+    // Register GitHub browser instance
+    registerBrowserControls(
+        githubIframe, 
+        githubAddressBar, 
+        githubBackBtn, 
+        githubForwardBtn, 
+        githubRefreshBtn, 
+        'https://github.com/mariarodr1136'
+    );
+
+    // Handle custom cursor tracking from within GitHub same-origin iframe
+    window.updateCursorFromIframe = (iframeEvent) => {
+        if (!githubIframe) return;
+        const rect = githubIframe.getBoundingClientRect();
+        const x = rect.left + iframeEvent.clientX;
+        const y = rect.top + iframeEvent.clientY;
+        
+        requestAnimationFrame(() => {
+            cursor.style.transform = `translate(${x}px, ${y}px)`;
+            cursor.style.opacity = '1';
+            cursorVisible = true;
+            
+            if (iframeEvent.isClickable) {
+                cursor.style.backgroundImage = "url('static/click.png')";
+            } else {
+                cursor.style.backgroundImage = "url('static/cursor.png')";
+            }
+        });
+    };
 
     cacheModalBaseSizes();
     resizeModalsToViewport();
@@ -540,13 +658,8 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!btn) return;
             btn.addEventListener('click', ()=>{
                 const modalId = menuMap[id];
-                const modal = document.getElementById(modalId);
-                if (modal){
-                    modal.style.display = 'block';
-                    modal.style.zIndex = getHighestZIndex() + 1;
-                    addTaskbarTab(modal);
-                    toggleStartMenu(false);
-                }
+                openPortfolioModalById(modalId);
+                toggleStartMenu(false);
             });
             btn.addEventListener('mouseenter', ()=>{ cursor.style.backgroundImage = "url('static/click.png')"; });
             btn.addEventListener('mouseleave', ()=>{ cursor.style.backgroundImage = "url('static/cursor.png')"; });
@@ -686,11 +799,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 if (!isDragging){
                     const iconId = container.querySelector('.icon')?.id;
-                    const modal = iconId && modals[iconId];
-                    if (modal){
-                        modal.style.display = 'block';
-                        modal.style.zIndex = getHighestZIndex() + 1;
-                        addTaskbarTab(modal);
+                    const modalId = iconId && modals[iconId]?.id;
+                    if (modalId) {
+                        openPortfolioModalById(modalId);
                     }
                 } else {
                     const mouseX = lastClientX;
@@ -699,9 +810,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const inTrashModal = isOverTrashModal(mouseX, mouseY);
                     if ((overTrashIcon || inTrashModal) && container.id !== TRASH_CONTAINER_ID){
                         if (overTrashIcon){
-                            trashModal.style.display = 'block';
-                            trashModal.style.zIndex = getHighestZIndex() + 1;
-                            addTaskbarTab(trashModal);
+                            openPortfolioModalById('modal11');
                         }
                         moveToTrash(container);
                     } else if (isTrashed(container)) {
@@ -737,13 +846,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const gamesMinesweeper = document.getElementById('game-minesweeper');
     if (gamesMinesweeper) {
         gamesMinesweeper.addEventListener('click', () => {
-            const msModal = document.getElementById('modal8');
-            if (msModal) {
-                msModal.style.display = 'block';
-                msModal.style.zIndex = getHighestZIndex() + 1;
-                addTaskbarTab(msModal);
-                initMinesweeper();
-            }
+            openPortfolioModalById('modal8');
         });
         gamesMinesweeper.addEventListener('mouseenter', () => {
             cursor.style.backgroundImage = "url('static/click.png')";
@@ -757,18 +860,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const gamesPinball = document.getElementById('game-pinball');
     if (gamesPinball) {
         gamesPinball.addEventListener('click', () => {
-            const pbModal = document.getElementById('modal10');
-            if (pbModal) {
-                pbModal.style.display = 'block';
-                pbModal.style.zIndex = getHighestZIndex() + 1;
-                addTaskbarTab(pbModal);
-                // Reload pinball iframe if it was previously unloaded to stop music
-                const frame = pbModal.querySelector('.pinball-frame');
-                if (frame && (!frame.getAttribute('data-pinball-loaded') || frame.src === 'about:blank')) {
-                    frame.src = 'games/pinball/SpaceCadetPinball.html';
-                    frame.setAttribute('data-pinball-loaded','1');
-                }
-            }
+            openPortfolioModalById('modal10');
         });
         gamesPinball.addEventListener('mouseenter', () => {
             cursor.style.backgroundImage = "url('static/click.png')";
@@ -782,16 +874,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const gamesSolitaire = document.getElementById('game-solitaire');
     if (gamesSolitaire) {
         gamesSolitaire.addEventListener('click', () => {
-            const solModal = document.getElementById('modal12');
-            if (solModal) {
-                solModal.style.display = 'block';
-                solModal.style.zIndex = getHighestZIndex() + 1;
-                addTaskbarTab(solModal);
-                const frame = solModal.querySelector('.solitaire-frame');
-                if (frame && frame.src === 'about:blank') {
-                    frame.src = 'games/solitaire/index.html';
-                }
-            }
+            openPortfolioModalById('modal12');
         });
         gamesSolitaire.addEventListener('mouseenter', () => {
             cursor.style.backgroundImage = "url('static/click.png')";

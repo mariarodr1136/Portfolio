@@ -241,18 +241,31 @@
     <div id="modal6" class="modal">
         <div class="modal-blue-line">GitHub</div>
         <button class="modal-close">&times;</button>
-        <div class="social-modal">
-            <img src="static/githubprof.png" alt="GitHub logo" class="social-image" />
-            <button class="modal-action-btn" onclick="launchURL('https://github.com/mariarodr1136')">Open GitHub Page</button>
+        <div class="browser-wrap">
+            <div class="browser-toolbar">
+                <button class="browser-btn" id="github-back-btn" title="Back">&larr;</button>
+                <button class="browser-btn" id="github-forward-btn" title="Forward">&rarr;</button>
+                <button class="browser-btn" id="github-refresh-btn" title="Refresh">&#x21BB;</button>
+                <input type="text" class="browser-address" id="github-address-bar" value="https://github.com/mariarodr1136" />
+            </div>
+            <iframe class="browser-frame" id="github-iframe" src="about:blank" title="GitHub Browser" loading="lazy" allow="fullscreen" allowfullscreen></iframe>
         </div>
     </div>
 
     <div id="modal7" class="modal">
         <div class="modal-blue-line">LinkedIn</div>
         <button class="modal-close">&times;</button>
-        <div class="social-modal">
-            <img src="static/linkedinprof.png" alt="LinkedIn logo" class="social-image" />
-            <button class="modal-action-btn" onclick="launchURL('https://www.linkedin.com/in/mariarodr/')">Open LinkedIn Page</button>
+        <div class="browser-wrap">
+            <div class="browser-toolbar">
+                <button class="browser-btn" id="linkedin-back-btn" title="Back" disabled>&larr;</button>
+                <button class="browser-btn" id="linkedin-forward-btn" title="Forward" disabled>&rarr;</button>
+                <button class="browser-btn" id="linkedin-refresh-btn" title="Refresh" disabled>&#x21BB;</button>
+                <input type="text" class="browser-address" id="linkedin-address-bar" value="https://www.linkedin.com/in/mariarodr/" readonly />
+            </div>
+            <div class="social-modal">
+                <img src="static/linkedinprof.png" alt="LinkedIn logo" class="social-image" />
+                <button class="modal-action-btn" onclick="launchURL('https://www.linkedin.com/in/mariarodr/')">Open LinkedIn Page</button>
+            </div>
         </div>
     </div>
 
