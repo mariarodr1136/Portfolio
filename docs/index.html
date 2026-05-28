@@ -243,12 +243,15 @@
         <button class="modal-close">&times;</button>
         <div class="browser-wrap">
             <div class="browser-toolbar">
-                <button class="browser-btn" id="github-back-btn" title="Back">&larr;</button>
-                <button class="browser-btn" id="github-forward-btn" title="Forward">&rarr;</button>
-                <button class="browser-btn" id="github-refresh-btn" title="Refresh">&#x21BB;</button>
-                <input type="text" class="browser-address" id="github-address-bar" value="https://github.com/mariarodr1136" />
+                <button class="browser-btn" id="github-back-btn" title="Back" disabled>&larr;</button>
+                <button class="browser-btn" id="github-forward-btn" title="Forward" disabled>&rarr;</button>
+                <button class="browser-btn" id="github-refresh-btn" title="Refresh" disabled>&#x21BB;</button>
+                <input type="text" class="browser-address" id="github-address-bar" value="https://github.com/mariarodr1136" readonly />
             </div>
-            <iframe class="browser-frame" id="github-iframe" src="about:blank" title="GitHub Browser" loading="lazy" allow="fullscreen" allowfullscreen></iframe>
+            <div class="social-modal">
+                <img src="static/githubprof.png" alt="GitHub logo" class="social-image" />
+                <button class="modal-action-btn" onclick="launchURL('https://github.com/mariarodr1136')">Open GitHub Page</button>
+            </div>
         </div>
     </div>
 

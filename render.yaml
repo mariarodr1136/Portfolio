@@ -1,6 +1,6 @@
 services:
   - type: web
     name: maria-portfolio
-    runtime: node
-    buildCommand: npm install
-    startCommand: node server.js
+    runtime: static
+    buildCommand: echo "Static site ready"
+    staticPublishPath: ./docs
