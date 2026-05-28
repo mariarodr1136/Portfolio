@@ -194,6 +194,10 @@ app.all('*', async (req, res) => {
         return res.status(404).send('Not Found');
     }
     
+    if (req.path === '/about:blank') {
+        return res.send('');
+    }
+    
     let targetHost = 'https://github.com';
     const referer = req.headers['referer'];
     if (referer) {

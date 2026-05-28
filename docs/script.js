@@ -354,18 +354,18 @@ document.addEventListener('DOMContentLoaded', () => {
             initMinesweeper();
         } else if (modalId === 'modal10') {
             const frame = modal.querySelector('.pinball-frame');
-            if (frame && (!frame.getAttribute('data-pinball-loaded') || frame.src === 'about:blank')) {
+            if (frame && (!frame.getAttribute('data-pinball-loaded') || !frame.src || frame.src === 'about:blank' || frame.src.endsWith('about:blank'))) {
                 frame.src = 'games/pinball/SpaceCadetPinball.html';
                 frame.setAttribute('data-pinball-loaded', '1');
             }
         } else if (modalId === 'modal12') {
             const frame = modal.querySelector('.solitaire-frame');
-            if (frame && frame.src === 'about:blank') {
+            if (frame && (!frame.src || frame.src === 'about:blank' || frame.src.endsWith('about:blank'))) {
                 frame.src = 'games/solitaire/index.html';
             }
         } else if (modalId === 'modal6') {
             const frame = modal.querySelector('.browser-frame');
-            if (frame && frame.src === 'about:blank') {
+            if (frame && (!frame.src || frame.src === 'about:blank' || frame.src.endsWith('about:blank'))) {
                 frame.src = '/proxy?url=' + encodeURIComponent('https://github.com/mariarodr1136');
             }
         }
@@ -468,7 +468,7 @@ document.addEventListener('DOMContentLoaded', () => {
         iframe.addEventListener('load', () => {
             try {
                 const currentLoc = iframe.contentWindow.location;
-                if (currentLoc.href === 'about:blank') return;
+                if (currentLoc.href === 'about:blank' || currentLoc.href.endsWith('about:blank') || currentLoc.pathname === '/about:blank') return;
                 
                 let displayUrl = '';
                 if (currentLoc.pathname.startsWith('/proxy')) {
