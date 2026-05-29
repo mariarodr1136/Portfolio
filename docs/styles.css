@@ -522,12 +522,12 @@ body.dragging-disable-select, body.dragging-disable-select * {
 .ms-cell.mine::after { content:'💣'; }
 
 /* Social modals */
-#modal6 { width: 740px; height: 560px; overflow: hidden; }
-#modal7 { width: 740px; height: 560px; overflow: hidden; }
+#modal6 { width: 740px; height: 516px; overflow: hidden; }
+#modal7 { width: 740px; height: 516px; overflow: hidden; }
 
 /* Retro Browser Styles */
 .browser-wrap {
-    padding-top: 50px;
+    padding-top: 60px;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -603,6 +603,38 @@ body.dragging-disable-select, body.dragging-disable-select * {
     gap: 8px;
 }
 .social-image { width: auto; max-width: 100%; max-height: calc(100% - 90px); height: auto; display: block; margin: 0 auto; border-top: 4px solid rgb(168, 168, 168); border-left: 4px solid rgb(168, 168, 168); border-right: 4px solid black; border-bottom: 4px solid black; background:#dcdcdc; object-fit: contain; }
+.video-overlay-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    max-width: 100%;
+    height: auto;
+}
+.social-video {
+    width: auto;
+    max-width: 100%;
+    max-height: 400px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    border-top: 4px solid rgb(168, 168, 168);
+    border-left: 4px solid rgb(168, 168, 168);
+    border-right: 4px solid black;
+    border-bottom: 4px solid black;
+    background: #dcdcdc;
+    object-fit: contain;
+    filter: brightness(0.85) grayscale(20%);
+}
+.video-overlay-container .modal-action-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    white-space: nowrap;
+}
 .modal-action-btn { background-color: rgb(21, 21, 130); color: white; font-family: 'Chicago', 'Charcoal', 'Geneva', sans-serif !important; font-size: 12px; padding: 10px 10px; cursor: none; background: solid lightgrey; border-top: 4px solid rgb(151, 151, 151); border-left: 4px solid rgb(151, 151, 151); border-right: 4px solid black; border-bottom: 4px solid black; font-style: italic; }
 
 /* ====== Terminal Modal ====== */
