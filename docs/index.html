@@ -73,9 +73,9 @@
         <button class="modal-close">&times;</button>
         <div class="projects-scroll">
         <div class="project-card">
-            <h4>Atmosphere Analyzer: Smart Data Visualization Tool</h4>
-            <h4 style="font-style: italic;">Python | AWS (Lambda, S3) | React | Django</h4>
-            <p>Atmosphere Analyzer is an environmental monitoring platform that simulates real-time sensor data with Python. It integrates AWS S3 and Lambda for scalable storage and dynamic data processing, delivering metrics through a Django backend API to a React frontend for interactive visualization.</p>
+            <h4>Atmosphere Analyzer: Real-Time Monitoring Dashboard</h4>
+            <h4 style="font-style: italic;">Python | React | Django | WebSockets</h4>
+            <p>Atmosphere Analyzer is a real-time environmental monitoring dashboard that streams live weather and AQI data using Django Channels WebSockets. It integrates OpenWeatherMap and OpenAQ APIs with EPA AQI conversion and a stateful simulation fallback for zero-downtime operation. The interactive React frontend features configurable alert thresholds, a compare-cities mode, rolling time-series charts, and Leaflet maps for geographic visualization.</p>
             <div class="project-images">
                 <video src="static/AtmosphereDemo.mov" autoplay muted loop playsinline alt="Atmosphere Analyzer demo"></video>
             </div>
@@ -85,9 +85,9 @@
         </div>
 
         <div class="project-card">
-            <h4>LeafMedic: Embedded Plant Disease Detection System</h4>
-            <h4 style="font-style: italic;">Python | TensorFlow Lite | OpenCV | PyQt5 | Raspberry Pi</h4>
-            <p>LeafMedic is an edge AI application performing real-time plant disease classification on a Raspberry Pi. It uses computer vision and a MobileNetV1 model optimized for TensorFlow Lite for on-device inference, supported by a PyQt5 interface for preview/batch processing and a curated treatment database.</p>
+            <h4>Leaf-Medic: Computer Vision & ML System</h4>
+            <h4 style="font-style: italic;">Python | TensorFlow | OpenCV | PyQt6 | Raspberry Pi</h4>
+            <p>Leaf-Medic is an edge AI system that deploys TensorFlow Lite MobileNetV1 on a Raspberry Pi, achieving 90%+ accuracy across 16 plant disease classes. The preprocessing pipeline handles automatic dtype detection, channels transposition, and dynamic input sizing for robust inference. A modular PyQt6 GUI surfaces confidence-ranked predictions and a 43-disease treatment database, with QThread keeping the interface responsive during processing.</p>
             <div class="project-images">
                 <video src="static/LeafMedic.mov" autoplay muted loop playsinline alt="LeafMedic demo" style="max-height: 350px;"></video>
             </div>
@@ -97,7 +97,7 @@
         <div class="project-card">
             <h4>Micro-Investment Education Platform - Full-Stack Development</h4>
             <h4 style="font-style: italic;">React | Node.js | Express | MongoDB | Alpha Vantage API</h4>
-            <p>A full-stack simulation platform for risk-free micro-investing. Built with React, Node.js, Express, and MongoDB, it integrates Alpha Vantage and NEWS APIs to provide real-time market data, letting users practice investment strategies and track portfolios with virtual funds.</p>
+            <p>A full-stack MERN trading simulation platform for risk-free micro-investing. It features JWT authentication with bcrypt hashing and Express middleware that enforces per-user data ownership across all routes. Alpha Vantage and News API are integrated with server-side caching to handle rate limits and deliver real-time stock data, with the frontend offering live price previews, Chart.js trend charts, per-trade P&L tracking, and a competitive leaderboard.</p>
             <div class="project-images">
                 <video src="static/MicroInvestmentPlatform.mov" autoplay muted loop playsinline alt="Micro-Investment Platform demo"></video>
             </div>
@@ -107,9 +107,9 @@
         </div>
 
         <div class="project-card">
-            <h4>Supply Chain Visualizer - Web Application</h4>
-            <h4 style="font-style: italic;">Java | Spring Boot | JavaScript | React | PostgreSQL</h4>
-            <p>A web application for visualizing and analyzing supply chain networks in real-time. Features a React frontend and Spring Boot backend, utilizing Leaflet maps and Chart.js to map inventory, track shipments, and highlight operational bottlenecks.</p>
+            <h4>Supply Chain Visualizer: Logistics Dashboard</h4>
+            <h4 style="font-style: italic;">Java | Spring Boot | React | PostgreSQL | Docker</h4>
+            <p>A full-stack logistics dashboard with 20+ REST endpoints across shipments, inventory, and analytics resources built using Spring Boot and Spring Data JPA. All routes are secured with Spring Security and JWT stateless authentication with CORS configured for cross-origin access. The backend is Dockerized with multi-stage builds and deployed via Render Blueprint IaC, with a React frontend powered by Leaflet maps and Chart.js for real-time supply chain visualization.</p>
             <div class="project-images">
                 <video src="static/SupplyChainDemo.mov" autoplay muted loop playsinline alt="Supply Chain Visualizer demo"></video>
             </div>
