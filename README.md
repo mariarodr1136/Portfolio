@@ -1,6 +1,6 @@
 # Maria Rodriguez Portfolio 💻
 
-![HTML](https://img.shields.io/badge/HTML-5-orange) ![CSS](https://img.shields.io/badge/CSS-3-blue) ![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-yellow) ![Node.js](https://img.shields.io/badge/Runtime-Node.js-green) ![Express](https://img.shields.io/badge/Backend-Express-lightgrey) ![WebAssembly](https://img.shields.io/badge/Tech-WebAssembly-654ff0) ![Emscripten](https://img.shields.io/badge/Toolchain-Emscripten-302f8e) ![SDL2](https://img.shields.io/badge/Library-SDL2-0d72b9) ![SDL_mixer](https://img.shields.io/badge/Audio-SDL__mixer-bd3d3a) ![ImGui](https://img.shields.io/badge/UI-ImGui-1b6ac6) ![TinySoundFont](https://img.shields.io/badge/MIDI-TinySoundFont-6a4) ![GitHub Pages](https://img.shields.io/badge/Deploy-GitHub%20Pages-171515)
+![HTML](https://img.shields.io/badge/HTML-5-orange) ![CSS](https://img.shields.io/badge/CSS-3-blue) ![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-yellow) ![Node.js](https://img.shields.io/badge/Runtime-Node.js-green) ![Express](https://img.shields.io/badge/Backend-Express-lightgrey) ![WebAssembly](https://img.shields.io/badge/Tech-WebAssembly-654ff0) ![Render](https://img.shields.io/badge/Deploy-Render-46E3B7)
 
 Welcome to my **Portfolio** — an interactive site styled like a vintage **computer desktop**. Drag icons to open apps, use the **Start menu** to launch windows, and watch them appear as **taskbar tabs** at the bottom — just like a real OS. Inside the desktop you'll find my **software development projects**, an **about me** section, a **contact link**, a fun **minigame** section, and quick links to my **resume**, **LinkedIn**, and **GitHub**.
 
@@ -18,6 +18,7 @@ https://github.com/user-attachments/assets/e4c59ba2-cedf-4007-9779-b3876d255786
 
 ## Table of Contents
 - [Features](#features)
+- [Featured Engineering Projects](#featured-engineering-projects)
 - [Languages & Frameworks Used](#languages--frameworks-used)
 - [Code Structure](#code-structure)
 - [Installation](#installation)
@@ -40,12 +41,29 @@ https://github.com/user-attachments/assets/e4c59ba2-cedf-4007-9779-b3876d255786
 - **Reciprocal Dragging & Modal Coupling**: Dragging the Clippy agent moves his control panel, and dragging the panel title bar moves Clippy in sync. Both elements are coupled to the Terminal Modal—they follow it during drags and viewport scaling, preserving custom offsets if relocated by the user.
 - **Dynamic Modals**: Content windows for Settings, Projects, Resume (PDF / PNG), Social links (GitHub, LinkedIn), Contact, and Games hub.
 - **Responsive Modal Scaling**: All windows scale automatically to fit the viewport, from mobile to ultrawide.
+- **Mobile Responsive Layout**: Full mobile breakpoint (≤768px) reflows the icon column into a horizontal scrollable dock, caps all modals to screen width, restores native touch behavior, and disables drag interactions on small screens.
 - **Minesweeper Game**: Playable, keyboard & mouse friendly; adapted from [Jon Ziebell's repository](https://github.com/ziebelje/minesweeper) with UI and accessibility adjustments.
 - **Space Cadet Pinball (WebAssembly)**: Fully playable port compiled from original reverse-engineered C++ sources. Audio (effects + music) enabled via SDL_mixer + TSF Synth.
 - **Solitaire**: Classic card game built with vanilla JS and bundled with Vite.
 - **On-Demand Game Lifecycle**: Pinball and Solitaire iframes are dynamically reloaded / torn down; audio stops cleanly when modals close.
 - **Performance Conscious**: Only one heavy WASM game; lazy iframe loading prevents blocking initial content.
 - **Cross-Platform**: Runs in any modern WASM-capable browser (Chrome, Firefox, Safari, Edge, Mobile Chromium variants).
+
+---
+
+## Featured Engineering Projects
+
+Projects showcased inside the portfolio's Projects window:
+
+| Project | Stack | Description |
+|---------|-------|-------------|
+| [Atmosphere Analyzer](https://github.com/mariarodr1136/AtmosphereAnalyzer) | Python · React · Django · WebSockets | Real-time weather & AQI dashboard streaming live data via Django Channels WebSockets; EPA AQI conversion, Leaflet maps, rolling time-series charts, and compare-cities mode |
+| [Leaf-Medic](https://github.com/mariarodr1136/LeafMedic) | Python · TensorFlow · OpenCV · PyQt6 · Raspberry Pi | Edge AI system deploying TensorFlow Lite MobileNetV1 on Raspberry Pi for plant disease classification — 90%+ accuracy across 16 disease classes, 43-disease treatment database |
+| [Micro-Investment Platform](https://github.com/mariarodr1136/MicroInvestmentPlatform) | React · Node.js · Express · MongoDB | MERN trading simulator with JWT + bcrypt auth, real-time stock data via Alpha Vantage (server-side cached), Chart.js P&L tracking, and a competitive leaderboard |
+| [Supply Chain Visualizer](https://github.com/mariarodr1136/SupplyChainVisualizer) | Java · Spring Boot · React · PostgreSQL · Docker | Logistics dashboard with 20+ REST endpoints, Spring Security JWT stateless auth, Dockerized multi-stage backend deployed via Render Blueprint IaC |
+| [GenAI Technical Interviewer](https://github.com/mariarodr1136/GenAI-Technical-Interviewer) | React · Node.js · Express · Groq API · Web Speech API | Voice-driven interview simulator: Groq Whisper v3 transcription → Llama 3 adaptive question generation → browser TTS playback |
+| [FraudWatch](https://github.com/mariarodr1136/FraudDetectionSystem) | Python · Flask · Pandas · scikit-learn · Plotly | Credit card fraud detection pipeline with Random Forest classifier, StandardScaler preprocessing, and Plotly dashboard for confusion matrices, ROC curves, and real-time scoring |
+| [Raspberry Pi Lab](https://github.com/mariarodr1136/RaspberryPiLab) | Python · Raspberry Pi · GPIO | Hardware interfacing experiments: PIR motion detection, RFID access control, ultrasonic distance sensing, and LCD display — each independently wired and programmed |
 
 ---
 
@@ -61,8 +79,8 @@ https://github.com/user-attachments/assets/e4c59ba2-cedf-4007-9779-b3876d255786
 - **body-parser / CORS**: Request middleware
 
 ### Deployment
-- **GitHub Pages**: Static hosting of the portfolio (including built WASM artifacts)
-- **Solitaire bundle**: Vite build writes directly into `docs/games/solitaire` so the iframe at `games/solitaire/index.html` works on static hosts
+- **Render**: Static site deployed via `render.yaml` blueprint, serving the `docs/` directory — no build step required
+- **Solitaire bundle**: Vite build writes directly into `docs/games/solitaire/` so the iframe at `docs/games/solitaire/index.html` loads correctly on the static host
 
 ### Version Control & Build Utilities
 - **Git / GitHub**: Source hosting & issue tracking
@@ -113,6 +131,7 @@ root/
 ├── games/
 │   └── solitaire-vite/        # Vite project used to build the Solitaire bundle
 ├── server.js                  # Express static file server (local dev)
+├── render.yaml                # Render Blueprint — static site config (serves docs/)
 ├── package.json               # Node dependencies
 ├── procfile                   # Optional platform process declaration
 └── README.md
