@@ -15,6 +15,8 @@ function launchProject(url) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    function isMobile() { return window.innerWidth <= 768; }
+
     const cursor = document.getElementById('cursor');
     const icons = document.querySelectorAll('.icon');
     const modals = {
@@ -82,6 +84,18 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function resizeModalsToViewport() {
+        if (isMobile()) {
+            allModals.forEach(modal => {
+                modal.style.width = '';
+                modal.style.height = '';
+                modal.style.transform = '';
+                modal.style.transformOrigin = '';
+            });
+            if (typeof window.repositionPortfolioClippy === 'function') {
+                window.repositionPortfolioClippy();
+            }
+            return;
+        }
         const widthRatio = window.innerWidth / designViewport.width;
         const heightRatio = (window.innerHeight - taskbarHeight) / (designViewport.height - taskbarHeight);
         const baseScale = Math.min(widthRatio, heightRatio);
@@ -157,17 +171,17 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Open terminal modal behind Settings
+        // Open terminal modal behind Settings (desktop only)
         const terminalModal = document.getElementById('modal13');
-        if (terminalModal) {
+        if (terminalModal && !isMobile()) {
             terminalModal.style.display = 'block';
             terminalModal.style.zIndex = 199;
             startTerminalTyping();
         }
 
-        // Open Pixelate modal on load
+        // Open Pixelate modal on load (desktop only)
         const pixelateModal = document.getElementById('modal14');
-        if (pixelateModal) {
+        if (pixelateModal && !isMobile()) {
             pixelateModal.style.display = 'block';
             pixelateModal.style.zIndex = 201;
         }
@@ -178,8 +192,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // Add initial taskbar tabs
-        if (terminalModal) addTaskbarTab(terminalModal);
-        if (pixelateModal) addTaskbarTab(pixelateModal);
+        if (terminalModal && !isMobile()) addTaskbarTab(terminalModal);
+        if (pixelateModal && !isMobile()) addTaskbarTab(pixelateModal);
         if (modals.icon1) addTaskbarTab(modals.icon1);
     }
 
@@ -428,6 +442,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Function to make modal draggable by the blue line
     function makeModalDraggable(modal, blueLine) {
+        if (isMobile()) return;
         let offsetX, offsetY;
 
         blueLine.addEventListener('mousedown', (e) => {

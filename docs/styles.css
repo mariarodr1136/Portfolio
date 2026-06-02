@@ -876,6 +876,187 @@ body.dragging-disable-select, body.dragging-disable-select * {
     right: 22px;
 }
 
+/* ====== Mobile Layout (≤768px) ====== */
+@media (max-width: 768px) {
+    /* Restore native cursor / touch indicator */
+    body, html { cursor: auto; }
+    * { cursor: auto !important; }
+    #cursor { display: none !important; }
+
+    /* Icon dock: horizontal scrollable row pinned above taskbar */
+    .icons-container {
+        position: fixed !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 38px !important;
+        top: auto !important;
+        width: 100% !important;
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch;
+        align-items: flex-end !important;
+        padding: 6px 8px 4px !important;
+        gap: 8px !important;
+        z-index: 150 !important;
+        box-sizing: border-box !important;
+        background: rgba(200, 200, 200, 0.55);
+    }
+
+    .icon-container {
+        position: static !important;
+        left: auto !important;
+        top: auto !important;
+        flex-shrink: 0 !important;
+        width: 55px !important;
+    }
+
+    /* Trash lives in the dock row, not fixed corner */
+    #icon9-container {
+        position: static !important;
+        right: auto !important;
+        bottom: auto !important;
+    }
+
+    .icon {
+        width: 50px !important;
+        height: 50px !important;
+    }
+
+    .icon-label {
+        font-size: 10px !important;
+    }
+
+    /* Prevent double-tap zoom on icons */
+    .icon-container { touch-action: manipulation; }
+
+    /* All modals: full-width, positioned from top, no transform */
+    .modal {
+        position: fixed !important;
+        left: 8px !important;
+        right: 8px !important;
+        top: 8px !important;
+        width: calc(100vw - 16px) !important;
+        max-width: calc(100vw - 16px) !important;
+        transform: none !important;
+        box-sizing: border-box !important;
+    }
+
+    /* Settings */
+    #modal1 {
+        top: 18% !important;
+        height: auto !important;
+    }
+
+    /* Resume */
+    #modal2 {
+        height: calc(100vh - 130px) !important;
+        overflow-y: auto !important;
+    }
+
+    /* Projects */
+    #modal3 {
+        height: calc(100vh - 130px) !important;
+    }
+
+    /* Contact */
+    #modal5 {
+        height: auto !important;
+        padding: 50px 16px 24px !important;
+        top: 22% !important;
+    }
+
+    /* GitHub / LinkedIn */
+    #modal6, #modal7 {
+        height: calc(100vh - 130px) !important;
+    }
+
+    /* Minesweeper */
+    #modal8 { height: auto !important; }
+
+    /* Games folder */
+    #modal9 { height: auto !important; }
+
+    /* Pinball */
+    #modal10 { height: calc(100vh - 130px) !important; }
+
+    /* Trash */
+    #modal11 { height: calc(100vh - 130px) !important; }
+
+    /* Solitaire */
+    #modal12 { height: calc(100vh - 130px) !important; }
+
+    /* Terminal: compact strip at top */
+    #modal13 {
+        top: 8px !important;
+        left: 8px !important;
+        right: 8px !important;
+        height: 170px !important;
+        transform: none !important;
+    }
+
+    /* Pixelate: keep small, centered */
+    #modal14 {
+        width: 220px !important;
+        height: 155px !important;
+        left: 50% !important;
+        top: 50% !important;
+        transform: translate(-50%, -50%) !important;
+    }
+
+    /* Project card buttons: full-width stacked */
+    .project-card button {
+        display: block !important;
+        width: 100% !important;
+        margin-top: 8px !important;
+        box-sizing: border-box !important;
+    }
+
+    /* Taskbar: tighter on small screens */
+    .taskbar-start-btn {
+        padding: 6px 10px !important;
+        flex-shrink: 0 !important;
+    }
+
+    .taskbar-tabs {
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+    }
+
+    .taskbar-tab {
+        max-width: 80px !important;
+        min-width: 50px !important;
+        font-size: 10px !important;
+        padding: 4px 6px !important;
+    }
+
+    .taskbar-clock {
+        flex-shrink: 0 !important;
+        font-size: 10px !important;
+        padding: 4px 6px !important;
+        margin-right: 4px !important;
+    }
+
+    /* Browser address bar: clip long URLs */
+    .browser-address {
+        font-size: 10px !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+    }
+
+    /* Clippy panel */
+    .portfolio-clippy-panel {
+        width: calc(100vw - 24px);
+    }
+    .portfolio-clippy-actions {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .portfolio-clippy-panel::after {
+        display: none;
+    }
+}
+
 @media (max-width: 520px) {
     .portfolio-clippy-panel {
         width: calc(100vw - 24px);
