@@ -179,13 +179,6 @@ document.addEventListener('DOMContentLoaded', () => {
             startTerminalTyping();
         }
 
-        // Open Pixelate modal on load (desktop only)
-        const pixelateModal = document.getElementById('modal14');
-        if (pixelateModal && !isMobile()) {
-            pixelateModal.style.display = 'block';
-            pixelateModal.style.zIndex = 201;
-        }
-
         // Ensure Settings is on top
         if (modals.icon1) {
             modals.icon1.style.zIndex = 200;
@@ -193,7 +186,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Add initial taskbar tabs
         if (terminalModal && !isMobile()) addTaskbarTab(terminalModal);
-        if (pixelateModal && !isMobile()) addTaskbarTab(pixelateModal);
         if (modals.icon1) addTaskbarTab(modals.icon1);
     }
 
@@ -201,7 +193,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const taskbarTabs = document.getElementById('taskbar-tabs');
 
     function getModalTitle(modal) {
-        if (modal.id === 'modal14') return 'Video';
         const blueLine = modal.querySelector('.modal-blue-line');
         return blueLine ? blueLine.textContent.trim() : modal.id;
     }
@@ -480,8 +471,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const blueLine = modal.querySelector('.modal-blue-line');
         if (blueLine) {
             makeModalDraggable(modal, blueLine);
-        } else if (modal.id === 'modal14') {
-            makeModalDraggable(modal, modal);
         }
         
         // Bring to front on mousedown anywhere inside the modal
