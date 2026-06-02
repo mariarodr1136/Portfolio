@@ -345,6 +345,29 @@ document.addEventListener('DOMContentLoaded', () => {
         );
     }
 
+    let projectVideoObserver = null;
+
+    function initProjectVideoLazyLoad() {
+        if (projectVideoObserver) return;
+        const scrollEl = document.querySelector('#modal3 .projects-scroll');
+        if (!scrollEl) return;
+
+        projectVideoObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                const video = entry.target;
+                const src = video.dataset.src;
+                if (src && !video.src) {
+                    video.src = src;
+                    video.play().catch(() => {});
+                }
+                projectVideoObserver.unobserve(video);
+            });
+        }, { root: scrollEl, rootMargin: '100px', threshold: 0 });
+
+        scrollEl.querySelectorAll('video[data-src]').forEach(v => projectVideoObserver.observe(v));
+    }
+
     function openPortfolioModalById(modalId) {
         const modal = document.getElementById(modalId);
         if (!modal) return;
@@ -354,7 +377,9 @@ document.addEventListener('DOMContentLoaded', () => {
         addTaskbarTab(modal);
         updateActiveTab(modal);
 
-        if (modalId === 'modal8') {
+        if (modalId === 'modal3') {
+            initProjectVideoLazyLoad();
+        } else if (modalId === 'modal8') {
             initMinesweeper();
         } else if (modalId === 'modal10') {
             const frame = modal.querySelector('.pinball-frame');
