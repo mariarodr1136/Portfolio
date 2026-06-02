@@ -120,10 +120,10 @@
 
         <div class="project-card">
             <h4>GenAI Technical Interviewer: Voice-Driven Simulator</h4>
-            <h4 style="font-style: italic;">React | Vite | Node.js | Express | Groq API | Web Speech API</h4>
-            <p>A full-stack voice-driven technical interview simulator powered by the Groq LLM API. The interview loop captures candidate speech via the browser's Web Speech API, transcribes it through Groq Whisper v3, and generates adaptive follow-up questions using Llama 3 in real-time. Responses are read back aloud via the browser's native Text-to-Speech engine, creating a hands-free, end-to-end mock interview experience with no human interviewer required.</p>
+            <h4 style="font-style: italic;">React | Vite | Node.js | Express | Groq API | Web Speech API | MediaRecorder API</h4>
+            <p>A full-stack voice-driven technical interview simulator built with React and Node.js/Express. Candidates select a topic (Algorithms, System Design, Frontend, Backend, or Behavioral) and difficulty level, then answer prompts by speaking — audio is captured via the MediaRecorder API, transcribed by Groq Whisper Large v3, and fed to Llama 3 70B to generate contextual follow-up questions. Responses are read back through the browser's native Text-to-Speech engine with live audio visualization during recording. Sessions end with an AI-generated debrief including a readiness rating, strengths, and improvement areas. Includes a text-input fallback, auto-start microphone mode, and rate limiting for API protection.</p>
             <div class="project-images">
-                <video data-src="static/GenAI_Demo.mp4" autoplay muted loop playsinline alt="GenAI Technical Interviewer demo"></video>
+                <video data-src="static/GenAI_Demo.mov" autoplay muted loop playsinline alt="GenAI Technical Interviewer demo"></video>
             </div>
             <p>Note: The live app is hosted on Render's free tier, so the backend may take 1-2 minutes to wake up after inactivity.</p>
             <button onclick="launchProject('https://github.com/mariarodr1136/GenAI-Technical-Interviewer')">View GitHub Repository</button>
@@ -132,12 +132,14 @@
 
         <div class="project-card">
             <h4>FraudWatch: Credit Card Fraud Detection System</h4>
-            <h4 style="font-style: italic;">Python | Flask | Pandas | scikit-learn | Plotly</h4>
-            <p>A machine learning pipeline for detecting credit card fraud, built with Python and Flask. Transaction data is preprocessed with Pandas and StandardScaler before being evaluated by a trained Random Forest classifier via scikit-learn. An interactive Plotly dashboard visualizes model performance through confusion matrices, ROC curves, and feature importance charts, and supports real-time transaction scoring against the trained model.</p>
+            <h4 style="font-style: italic;">Python | Flask | scikit-learn | Pandas | NumPy | Plotly | joblib</h4>
+            <p>A machine learning application that detects fraudulent credit card transactions using a Random Forest classifier trained on 284,807 real transactions (Kaggle dataset) with an 80/20 stratified split. The model achieves 99.95% accuracy, 96.05% precision, and an 83.91% F1-score on fraud detection. A Flask-powered interactive dashboard surfaces performance metrics, a confusion matrix heatmap, and feature importance rankings via Plotly. Users can run live predictions against random test-set transactions, with a balanced view of fraudulent and legitimate examples side-by-side. The model is persisted with joblib for instant server-side loading.</p>
             <div class="project-images">
                 <video data-src="static/FraudDemo.mov" autoplay muted loop playsinline alt="FraudWatch demo"></video>
             </div>
+            <p>Note: The live app is hosted on Render's free tier, so the backend may take 1-2 minutes to wake up after inactivity.</p>
             <button onclick="launchProject('https://github.com/mariarodr1136/FraudDetectionSystem')">View GitHub Repository</button>
+            <button onclick="launchProject('https://frauddetectionsystem-qcmh.onrender.com/')">View Live Application</button>
         </div>
 
         <div class="project-card">
