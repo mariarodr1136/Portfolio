@@ -13,6 +13,25 @@
     <script src="static/clippy-ai/portfolio-clippy.js" defer></script>
 </head>
 <body>
+    <!-- Boot Screen -->
+    <div id="boot-screen">
+        <div class="boot-content">
+            <div class="boot-logo">
+                <div class="boot-flag">
+                    <div class="boot-flag-q1"></div>
+                    <div class="boot-flag-q2"></div>
+                    <div class="boot-flag-q3"></div>
+                    <div class="boot-flag-q4"></div>
+                </div>
+                <div class="boot-title">Windows <em>95</em></div>
+            </div>
+            <div class="boot-bar-track">
+                <div class="boot-bar-fill" id="boot-bar-fill"></div>
+            </div>
+            <div class="boot-status-text" id="boot-status-text">Starting Windows 95...</div>
+        </div>
+    </div>
+
     <div id="cursor"></div>
 
     <div class="icons-container">
@@ -57,6 +76,27 @@
             <h3 class="no-italic">Maria Rodriguez's Virtual Workspace</h3>
             <p>Your entry point to seamless digital experiences, brought to life by a software developer.</p>
             <p>Feel free to click around, move things, and explore!</p>
+            <div class="wallpaper-section">
+                <p class="wallpaper-label">Desktop Wallpaper</p>
+                <div class="wallpaper-options" id="wallpaper-options">
+                    <div class="wallpaper-thumb" data-wallpaper="none" title="None">
+                        <div class="wallpaper-preview wp-none"></div>
+                        <span>None</span>
+                    </div>
+                    <div class="wallpaper-thumb" data-wallpaper="static/background.png" title="Wallpaper 1">
+                        <div class="wallpaper-preview" style="background-image:url('static/background.png')"></div>
+                    </div>
+                    <div class="wallpaper-thumb" data-wallpaper="static/background12.jpg" title="Wallpaper 2">
+                        <div class="wallpaper-preview" style="background-image:url('static/background12.jpg')"></div>
+                    </div>
+                    <div class="wallpaper-thumb" data-wallpaper="static/background3.JPG" title="Wallpaper 3">
+                        <div class="wallpaper-preview" style="background-image:url('static/background3.JPG')"></div>
+                    </div>
+                    <div class="wallpaper-thumb" data-wallpaper="static/background5.jpg" title="Wallpaper 4">
+                        <div class="wallpaper-preview" style="background-image:url('static/background5.jpg')"></div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 

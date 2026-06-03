@@ -1,3 +1,4 @@
+
 function launchURL(url) {
     // Check if window is already being opened
     if (!launchURL.isOpening) {
@@ -16,6 +17,17 @@ function launchProject(url) {
 
 document.addEventListener('DOMContentLoaded', () => {
     function isMobile() { return window.innerWidth <= 768; }
+
+    // ====== Wallpaper: restore on load ======
+    (function restoreWallpaper() {
+        const saved = localStorage.getItem('portfolio-wallpaper');
+        if (saved && saved !== 'none') {
+            document.body.style.backgroundImage = `url('${saved}')`;
+            document.body.style.backgroundSize = 'cover';
+            document.body.style.backgroundPosition = 'center';
+            document.body.style.backgroundRepeat = 'no-repeat';
+        }
+    })();
 
     const cursor = document.getElementById('cursor');
     const icons = document.querySelectorAll('.icon');
@@ -103,6 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const globalScale = Math.max(0.5, Math.min(boostedScale, 2.2));
 
         allModals.forEach((modal) => {
+            if (modal.dataset.userResized) return;
             const baseWidth = parsePxValue(modal.dataset.baseWidth);
             const baseHeight = parsePxValue(modal.dataset.baseHeight);
             if (!baseWidth || !baseHeight) return;
@@ -242,7 +255,9 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateActiveTab(activeModal) {
         if (!taskbarTabs) return;
         taskbarTabs.querySelectorAll('.taskbar-tab').forEach(tab => {
-            tab.classList.toggle('active', tab.dataset.modalId === activeModal.id);
+            const isActive = tab.dataset.modalId === activeModal.id;
+            tab.classList.toggle('active', isActive);
+            if (isActive) tab.classList.remove('minimized');
         });
     }
 
@@ -487,6 +502,92 @@ document.addEventListener('DOMContentLoaded', () => {
     // Handle custom cursor tracking from within same-origin iframe (safe no-op)
     window.updateCursorFromIframe = (iframeEvent) => {};
 
+    // ====== Minimize buttons (added dynamically) ======
+    document.querySelectorAll('.modal').forEach(modal => {
+        const btn = document.createElement('button');
+        btn.className = 'modal-minimize';
+        btn.textContent = '_';
+        btn.setAttribute('aria-label', 'Minimize');
+        modal.appendChild(btn);
+
+        btn.addEventListener('click', () => {
+            modal.style.display = 'none';
+            const tab = taskbarTabs ? taskbarTabs.querySelector(`[data-modal-id="${modal.id}"]`) : null;
+            if (tab) { tab.classList.remove('active'); tab.classList.add('minimized'); }
+        });
+        btn.addEventListener('mouseenter', () => { cursor.style.backgroundImage = "url('static/click.png')"; });
+        btn.addEventListener('mouseleave', () => { cursor.style.backgroundImage = "url('static/cursor.png')"; });
+    });
+
+    // ====== Resize handles (added dynamically) ======
+    function makeModalResizable(modal) {
+        if (isMobile()) return;
+        const handle = document.createElement('div');
+        handle.className = 'resize-handle';
+        modal.appendChild(handle);
+
+        handle.addEventListener('mousedown', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+
+            const rect = modal.getBoundingClientRect();
+            modal.style.left = rect.left + 'px';
+            modal.style.top  = rect.top  + 'px';
+            modal.style.transform = 'none';
+            modal.style.transformOrigin = '';
+            modal.dataset.userResized = 'true';
+
+            const startX = e.clientX, startY = e.clientY;
+            const startW = rect.width,  startH = rect.height;
+            const minW = 200, minH = 120;
+
+            document.body.classList.add('dragging-disable-select');
+
+            function onMove(ev) {
+                const newW = Math.max(minW, startW + ev.clientX - startX);
+                const newH = Math.max(minH, startH + ev.clientY - startY);
+                modal.style.width  = newW + 'px';
+                modal.style.height = newH + 'px';
+                modal.dataset.baseWidth  = String(newW);
+                modal.dataset.baseHeight = String(newH);
+            }
+            function onUp() {
+                document.removeEventListener('mousemove', onMove);
+                document.removeEventListener('mouseup', onUp);
+                document.body.classList.remove('dragging-disable-select');
+            }
+            document.addEventListener('mousemove', onMove);
+            document.addEventListener('mouseup', onUp);
+        });
+    }
+    document.querySelectorAll('.modal').forEach(makeModalResizable);
+
+    // ====== Wallpaper picker ======
+    function applyWallpaper(value) {
+        if (value === 'none') {
+            document.body.style.backgroundImage = '';
+        } else {
+            document.body.style.backgroundImage = `url('${value}')`;
+            document.body.style.backgroundSize = 'cover';
+            document.body.style.backgroundPosition = 'center';
+            document.body.style.backgroundRepeat = 'no-repeat';
+        }
+        localStorage.setItem('portfolio-wallpaper', value);
+        document.querySelectorAll('.wallpaper-thumb').forEach(t => {
+            t.classList.toggle('wallpaper-selected', t.dataset.wallpaper === value);
+        });
+    }
+
+    // Mark the current saved wallpaper as selected
+    const savedWP = localStorage.getItem('portfolio-wallpaper') || 'none';
+    document.querySelectorAll('.wallpaper-thumb').forEach(t => {
+        t.classList.toggle('wallpaper-selected', t.dataset.wallpaper === savedWP);
+        t.addEventListener('click', () => applyWallpaper(t.dataset.wallpaper));
+        t.addEventListener('mouseenter', () => { cursor.style.backgroundImage = "url('static/click.png')"; });
+        t.addEventListener('mouseleave', () => { cursor.style.backgroundImage = "url('static/cursor.png')"; });
+    });
+
+
     cacheModalBaseSizes();
     resizeModalsToViewport();
 
@@ -724,10 +825,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.removeEventListener('mouseup', onMouseUp);
 
                 if (!isDragging){
-                    const iconId = container.querySelector('.icon')?.id;
-                    const modalId = iconId && modals[iconId]?.id;
-                    if (modalId) {
-                        openPortfolioModalById(modalId);
+                    const now = Date.now();
+                    const last = container._lastClick || 0;
+                    container._lastClick = now;
+                    // Deselect all, then select this one
+                    iconContainers.forEach(ic => ic.classList.remove('icon-selected'));
+                    if (now - last < 400) {
+                        // Double-click: open modal
+                        container._lastClick = 0;
+                        const iconId = container.querySelector('.icon')?.id;
+                        const modalId = iconId && modals[iconId]?.id;
+                        if (modalId) openPortfolioModalById(modalId);
+                    } else {
+                        // Single click: select only
+                        container.classList.add('icon-selected');
                     }
                 } else {
                     const mouseX = lastClientX;
@@ -762,6 +873,13 @@ document.addEventListener('DOMContentLoaded', () => {
             document.addEventListener('mousemove', onMouseMove);
             document.addEventListener('mouseup', onMouseUp);
         });
+    });
+
+    // Clicking elsewhere on the desktop deselects icons
+    document.addEventListener('mousedown', (e) => {
+        if (!e.target.closest('.icon-container')) {
+            iconContainers.forEach(ic => ic.classList.remove('icon-selected'));
+        }
     });
 
     // === Minesweeper ===
@@ -1040,4 +1158,34 @@ document.addEventListener('DOMContentLoaded', () => {
 
         tick();
     }
+
+    // ====== Boot Screen ======
+    (function initBootScreen() {
+        const screen = document.getElementById('boot-screen');
+        if (!screen) return;
+        const fill   = document.getElementById('boot-bar-fill');
+        const status = document.getElementById('boot-status-text');
+        const steps  = [
+            { pct: 18,  text: 'Starting Windows 95...' },
+            { pct: 38,  text: 'Loading system files...' },
+            { pct: 62,  text: 'Initializing portfolio...' },
+            { pct: 82,  text: 'Preparing workspace...' },
+            { pct: 100, text: 'Almost ready...' },
+        ];
+        let i = 0;
+        function step() {
+            if (i >= steps.length) {
+                setTimeout(() => {
+                    screen.classList.add('boot-fade-out');
+                    setTimeout(() => screen.remove(), 700);
+                }, 300);
+                return;
+            }
+            const s = steps[i++];
+            fill.style.width   = s.pct + '%';
+            status.textContent = s.text;
+            setTimeout(step, 320 + Math.random() * 260);
+        }
+        setTimeout(step, 350);
+    })();
 });

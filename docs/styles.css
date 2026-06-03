@@ -839,6 +839,139 @@ body.dragging-disable-select, body.dragging-disable-select * {
 }
 
 
+/* ====== Boot Screen ====== */
+#boot-screen {
+    position: fixed;
+    inset: 0;
+    background: #000;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.6s ease;
+}
+#boot-screen.boot-fade-out { opacity: 0; pointer-events: none; }
+.boot-content { text-align: center; font-family: 'Chicago', 'Charcoal', 'Geneva', sans-serif; }
+.boot-logo { display: flex; align-items: center; gap: 18px; justify-content: center; margin-bottom: 44px; }
+.boot-flag { display: grid; grid-template-columns: 1fr 1fr; gap: 3px; width: 58px; height: 58px; }
+.boot-flag-q1 { background: #e74c3c; }
+.boot-flag-q2 { background: #2ecc71; }
+.boot-flag-q3 { background: #3498db; }
+.boot-flag-q4 { background: #f1c40f; }
+.boot-title { color: #fff; font-size: 38px; font-style: italic; letter-spacing: 2px; }
+.boot-title em { color: #4fc3f7; font-style: normal; }
+.boot-bar-track {
+    width: 320px;
+    height: 22px;
+    background: #1a1a1a;
+    border: 2px solid #555;
+    margin: 0 auto 16px;
+    overflow: hidden;
+}
+.boot-bar-fill {
+    height: 100%;
+    width: 0%;
+    background: repeating-linear-gradient(
+        90deg,
+        rgb(21, 21, 130) 0px,
+        rgb(21, 21, 130) 18px,
+        transparent 18px,
+        transparent 22px
+    );
+    transition: width 0.3s linear;
+}
+.boot-status-text { color: #aaa; font-size: 13px; font-style: italic; }
+
+/* ====== Minimize Button ====== */
+.modal-minimize {
+    position: absolute;
+    top: 10px;
+    right: 55px;
+    cursor: none;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    background: lightgrey;
+    border-top: 4px solid rgb(168, 168, 168);
+    border-left: 4px solid rgb(168, 168, 168);
+    border-right: 4px solid black;
+    border-bottom: 4px solid black;
+    width: 35px;
+    height: 35px;
+    text-align: center;
+    line-height: 22px;
+    z-index: 201;
+    padding: 0;
+}
+
+/* ====== Resize Handle ====== */
+.resize-handle {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 16px;
+    height: 16px;
+    cursor: nwse-resize !important;
+    z-index: 202;
+    background: linear-gradient(
+        135deg,
+        transparent 0%, transparent 40%,
+        #888 40%, #888 50%,
+        transparent 50%, transparent 65%,
+        #888 65%, #888 75%,
+        transparent 75%, transparent 85%,
+        #888 85%, #888 95%,
+        transparent 95%
+    );
+}
+
+/* ====== Icon Selected State ====== */
+.icon-selected .icon-label {
+    background-color: rgb(21, 21, 130) !important;
+    color: #fff !important;
+}
+.icon-selected .icon {
+    filter: brightness(0.7) sepia(1) hue-rotate(190deg) saturate(3);
+}
+
+
+/* ====== Wallpaper Picker ====== */
+.wallpaper-section { margin-top: 18px; padding-top: 14px; border-top: 2px solid #bbb; }
+.wallpaper-label { font-size: 13px; font-style: italic; margin-bottom: 10px !important; color: #444; }
+.wallpaper-options { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+.wallpaper-thumb {
+    cursor: none;
+    text-align: center;
+    font-size: 11px;
+    font-style: italic;
+    color: #333;
+}
+.wallpaper-preview {
+    width: 68px;
+    height: 46px;
+    background-size: cover;
+    background-position: center;
+    border-top: 3px solid rgb(168,168,168);
+    border-left: 3px solid rgb(168,168,168);
+    border-right: 3px solid black;
+    border-bottom: 3px solid black;
+    margin-bottom: 4px;
+}
+.wp-none {
+    background: #c0c0c0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.wallpaper-selected .wallpaper-preview {
+    border-color: rgb(21,21,130) !important;
+    outline: 2px solid rgb(21,21,130);
+}
+.taskbar-tab.minimized {
+    opacity: 0.6;
+    font-style: italic;
+}
+
 /* ====== Mobile Layout (≤768px) ====== */
 @media (max-width: 768px) {
     /* Restore native cursor / touch indicator */

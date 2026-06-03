@@ -30,9 +30,14 @@ https://github.com/user-attachments/assets/e4c59ba2-cedf-4007-9779-b3876d255786
 ---
 
 ## Features
-- **Retro Desktop Interface**: Windowed modal system evokes classic OS aesthetics (title bars, close buttons, draggable windows).
+- **Boot Screen**: Windows 95-style startup sequence with an animated progress bar and status messages plays on every visit before the desktop appears.
+- **Retro Desktop Interface**: Windowed modal system evokes classic OS aesthetics (title bars, close/minimize buttons, draggable & resizable windows).
 - **Start Menu**: Click the Start button to launch any window from a classic dropdown menu.
-- **Taskbar Window Tabs**: Each open window gets a grey tab in the bottom taskbar showing its name — click to bring the window to front, just like a real OS.
+- **Taskbar Window Tabs**: Each open window gets a grey tab in the bottom taskbar — click to bring to front or restore a minimized window.
+- **Minimize & Restore**: Every window has a minimize button (`_`) that collapses it to the taskbar tab; clicking the tab restores it.
+- **Resizable Windows**: Drag the bottom-right corner handle of any modal to resize it freely.
+- **Double-Click to Open Icons**: Single-clicking an icon selects it (blue highlight); double-clicking opens it — authentic desktop OS behavior.
+- **Wallpaper Selector**: Choose from four background wallpapers (or none) directly inside the Settings window; choice persists across sessions via localStorage.
 - **Custom Pointer & Interaction Feedback**: The pointer changes contextually (e.g., clickable vs idle) for a tactile feel.
 - **Draggable Icons & Free Positioning**: Icons can be rearranged anywhere on the desktop by dragging.
 - **Trash System**: Drag icons to the Trash to remove them from the desktop; drag them back out to restore.
