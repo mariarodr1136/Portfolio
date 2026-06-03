@@ -957,12 +957,6 @@ body.dragging-disable-select, body.dragging-disable-select * {
     border-bottom: 3px solid black;
     margin-bottom: 4px;
 }
-.wp-none {
-    background: #c0c0c0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
 .wallpaper-selected .wallpaper-preview {
     border-color: rgb(21,21,130) !important;
     outline: 2px solid rgb(21,21,130);
