@@ -163,8 +163,16 @@ document.addEventListener('DOMContentLoaded', () => {
         cursorVisible = false;
     }
 
+    // Preload click cursor so it's ready on first hover
+    new Image().src = 'static/click.png';
+
     document.addEventListener('mousemove', updateCursor);
-    document.addEventListener('mouseout', hideCursor);
+    // Only hide when mouse leaves the browser window (relatedTarget is null),
+    // not when moving between elements — mouseout bubbles and would otherwise
+    // hide the cursor whenever the pointer enters any child element.
+    document.addEventListener('mouseout', (e) => {
+        if (!e.relatedTarget) hideCursor();
+    });
 
     function openModal1() {
         // Hide all modals initially
