@@ -123,7 +123,7 @@ body.dragging-disable-select, body.dragging-disable-select * {
     transform: translate(-50%, -45%);
 }
 
-#modal2 { width: 480px; height: 660px; }
+#modal2 { width: 560px; height: auto; overflow: visible; }
 
 #modal3 {
     width: 720px;
@@ -465,8 +465,9 @@ body.dragging-disable-select, body.dragging-disable-select * {
 /* ====== Utility Classes ====== */
 .download-button {
     position: absolute;
-    top: 73px;
-    left: 20px; 
+    top: 75px;
+    right: 20px;
+    left: auto;
     color: rgb(21, 21, 130);
     background: none;
     padding: 5px;
