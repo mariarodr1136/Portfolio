@@ -355,6 +355,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         button.addEventListener('mouseenter', () => {
+            cursor.style.opacity = '1';
+            cursorVisible = true;
             cursor.style.backgroundImage = "url('static/click.png')";
         });
 
@@ -523,7 +525,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const tab = taskbarTabs ? taskbarTabs.querySelector(`[data-modal-id="${modal.id}"]`) : null;
             if (tab) { tab.classList.remove('active'); tab.classList.add('minimized'); }
         });
-        btn.addEventListener('mouseenter', () => { cursor.style.backgroundImage = "url('static/click.png')"; });
+        btn.addEventListener('mouseenter', () => { cursor.style.opacity = '1'; cursorVisible = true; cursor.style.backgroundImage = "url('static/click.png')"; });
         btn.addEventListener('mouseleave', () => { cursor.style.backgroundImage = "url('static/cursor.png')"; });
     });
 
