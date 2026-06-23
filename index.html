@@ -167,7 +167,7 @@
       object-fit: cover;
       display: block;
       border-style: solid;
-      border-color: #ffffff;
+      border-color: #faf8f4;
       border-width: 16px 16px 44px 16px;
       box-shadow: 0 12px 28px -4px rgba(0,0,0,.18);
       outline: 1px solid rgba(0,0,0,.06);
@@ -322,7 +322,7 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding-top: .8rem;
+      padding-top: 2.5rem;
       padding-bottom: 1.2rem;
       padding-left: clamp(1.5rem, 4vw, 3rem);
       padding-right: clamp(1.5rem, 4vw, 3rem);
@@ -353,13 +353,18 @@
 
     .exp-aside {
       position: absolute;
-      top: -3.6rem;
+      top: -4.1rem;
       right: 1.5rem;
       font-family: Caveat, cursive;
       font-size: 25px;
       color: var(--teal);
       transform: rotate(-2deg);
       white-space: nowrap;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='30' preserveAspectRatio='none'%3E%3Cpath d='M22,11 C70,3 130,3 178,11' fill='none' stroke='%231a6b6b' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: bottom;
+      background-size: 100% 30px;
+      padding-bottom: 24px;
     }
 
     .do-right {
@@ -400,7 +405,7 @@
       color: var(--text);
       text-align: left;
       margin: 0 0 .8rem;
-      padding: .3rem 0;
+      padding: .9rem 0;
     }
 
     .do-headline-accent {
@@ -562,11 +567,11 @@
     }
 
     .edu-degree {
-      font-size: .875rem;
-      font-weight: 500;
-      color: #111827;
+      font-size: .8rem;
+      font-weight: 400;
+      color: #1d1d1f;
       margin-bottom: .2rem;
-      letter-spacing: -.01em;
+      letter-spacing: .01em;
     }
 
     .edu-cert {
@@ -599,7 +604,7 @@
 
     .tl-item {
       position: relative;
-      padding: .55rem 0;
+      padding: .35rem 0;
     }
 
     .tl-item:not(:last-child)::after {
@@ -613,10 +618,25 @@
 
     .tl-meta {
       display: grid;
-      grid-template-columns: auto 1fr auto;
+      grid-template-columns: 1fr auto;
       align-items: baseline;
       gap: 0 1.5rem;
-      margin-bottom: .75rem;
+      margin-bottom: .35rem;
+    }
+
+    .tl-title-row {
+      display: flex;
+      align-items: baseline;
+      gap: 0;
+      flex-wrap: wrap;
+    }
+
+    .tl-sep {
+      font-size: .65rem;
+      font-weight: 600;
+      letter-spacing: .14em;
+      color: var(--teal);
+      margin: 0 .4rem;
     }
 
     .tl-company {
@@ -628,12 +648,11 @@
     }
 
     .tl-role {
-      font-family: Fraunces, serif;
-      font-size: 1.05rem;
-      font-weight: 700;
-      color: #111827;
-      line-height: 1.2;
-      letter-spacing: -.01em;
+      font-size: .65rem;
+      font-weight: 600;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--teal);
     }
 
     .tl-date {
@@ -655,7 +674,7 @@
     }
 
     .tl-bullets li { padding-left: .8rem; position: relative; }
-    .tl-bullets li::before { content: ''; position: absolute; left: 0; top: .6em; width: 4px; height: 4px; border-radius: 50%; background: #d1d5db; }
+    .tl-bullets li::before { content: ''; position: absolute; left: 0; top: .6em; width: 4px; height: 4px; border-radius: 50%; background: var(--teal); }
 
     /* AI block */
     .ai-block {
@@ -693,7 +712,7 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding-top: 0;
+      padding-top: clamp(3rem, 5vw, 5rem);
       background: #ffffff;
       max-width: 100%;
       margin: 0;
@@ -701,15 +720,16 @@
 
     #made .section-head {
       font-family: Fraunces, serif;
-      font-size: clamp(26px, 3.6vw, 44px);
+      font-size: clamp(22px, 3vw, 38px);
       font-weight: 500;
       letter-spacing: -.015em;
       line-height: 1.08;
       color: var(--text);
       text-align: center;
-      max-width: 960px;
-      margin: 0 auto .7rem;
-      padding: 2rem 2.5rem 3rem;
+      white-space: nowrap;
+      max-width: none;
+      margin: 0 auto .4rem;
+      padding: .8rem 1rem 1.6rem;
     }
 
     #made .section-sub {
@@ -720,81 +740,104 @@
 
     .projects {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: .6rem;
       border-top: none;
     }
 
     .project-item {
       display: flex;
       flex-direction: column;
-      gap: .6rem;
-      padding: 1rem 1.4rem 1.4rem;
+      gap: .3rem;
+      padding: .5rem .5rem .6rem;
       background: #fdfcfa;
       border-radius: 6px;
       border: 1px solid #eeebe6;
       border-bottom: 2px solid #eeebe6;
       position: relative;
       overflow: visible;
+      transition: transform .2s ease, box-shadow .2s ease;
     }
 
-    .project-item::after { display: none; }
+    .project-item:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 16px rgba(0,0,0,0.08);
+    }
+
+    .project-img {
+      width: 100%;
+      aspect-ratio: 16/7;
+      background: #f0ece4;
+      border-radius: 3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .65rem;
+      color: var(--light);
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      overflow: hidden;
+    }
+
+    .project-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
 
     .project-name {
-      font-family: Fraunces, serif;
-      font-size: 1.05rem;
-      font-weight: 700;
+      font-size: .62rem;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
       color: var(--text);
       margin-bottom: .1rem;
     }
 
     .project-desc {
-      font-size: .82rem;
+      font-size: .75rem;
       color: var(--muted);
-      line-height: 1.55;
+      line-height: 1.5;
       flex: 1;
     }
 
-    .project-tags {
+    .project-actions {
       display: flex;
-      flex-wrap: wrap;
-      gap: .35rem;
+      gap: .5rem;
+      margin-top: .3rem;
     }
 
-    .tag {
-      font-size: .72rem;
-      color: var(--muted);
+    .btn-proj {
+      display: inline-flex;
+      align-items: center;
+      gap: .3rem;
+      padding: .35rem .85rem;
       border: 1px solid var(--border);
-      border-radius: 2px;
-      padding: .15rem .5rem;
-      letter-spacing: .03em;
-    }
-
-    .project-status {
-      font-size: .75rem;
-      color: var(--muted);
+      border-radius: 999px;
+      font-size: .72rem;
+      font-weight: 500;
+      color: var(--text);
+      text-decoration: none;
+      transition: background .2s, color .2s, border-color .2s;
       white-space: nowrap;
     }
 
-    .status-dot {
-      display: inline-block;
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--border);
-      margin-right: .3rem;
-      vertical-align: middle;
+    .btn-proj:hover { background: var(--text); color: #fff; border-color: var(--text); text-decoration: none; }
+
+    .proj-note {
+      position: absolute;
+      bottom: .7rem;
+      right: 1.8rem;
+      font-family: Caveat, cursive;
+      font-size: 1.3rem;
+      color: var(--teal);
+      max-width: 10rem;
+      text-align: right;
+      line-height: 1.2;
+      pointer-events: none;
+      transform: rotate(-2deg);
     }
-
-    .status-dot.live { background: #4a9fd4; }
-
-    .project-footer {
-      margin-top: 1.5rem;
-      font-size: .85rem;
-      color: var(--muted);
-    }
-
-    .project-footer a { text-decoration: underline; text-underline-offset: 3px; }
 
     /* ── CONTACT ── */
     #contact {
@@ -1110,6 +1153,23 @@
 
     .section-arrow svg { display: block; }
 
+    .oval-highlight {
+      position: relative;
+      display: inline-block;
+    }
+
+    .oval-highlight::before {
+      content: '';
+      position: absolute;
+      top: -16px;
+      left: -16px;
+      right: -16px;
+      bottom: -12px;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 126 57' preserveAspectRatio='none'%3E%3Cpath d='M58,5 C78,1 104,6 115,17 C124,25 120,38 112,44 C104,50 86,53 63,52 C42,54 18,48 8,38 C0,28 2,13 18,7 C30,3 42,7 58,5' fill='none' stroke='%231a6b6b' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat center / 100% 100%;
+      pointer-events: none;
+      transform: rotate(-6deg);
+    }
+
 
   </style>
 </head>
@@ -1207,8 +1267,7 @@
 
           <div class="tl-item">
             <div class="tl-meta">
-              <span class="tl-company">JETSET Pilates</span>
-              <div class="tl-role">Technical Operations Associate</div>
+              <div class="tl-title-row"><span class="tl-role">Technical Operations Associate</span><span class="tl-sep"> — </span><span class="tl-company">JETSET Pilates</span></div>
               <div class="tl-date">June 2022 – Present</div>
             </div>
             <ul class="tl-bullets">
@@ -1220,8 +1279,7 @@
 
           <div class="tl-item">
             <div class="tl-meta">
-              <span class="tl-company">Style Link Miami</span>
-              <div class="tl-role">Full-Stack Web Developer</div>
+              <div class="tl-title-row"><span class="tl-role">Full-Stack Web Developer</span><span class="tl-sep"> — </span><span class="tl-company">Style Link Miami</span></div>
               <div class="tl-date">January 2019 – November 2020</div>
             </div>
             <ul class="tl-bullets">
@@ -1233,8 +1291,7 @@
 
           <div class="tl-item">
             <div class="tl-meta">
-              <span class="tl-company">Hannah Bella Collections</span>
-              <div class="tl-role">Web Developer &amp; Marketing Intern</div>
+              <div class="tl-title-row"><span class="tl-role">Web Developer &amp; Marketing Intern</span><span class="tl-sep"> — </span><span class="tl-company">Hannah Bella Collections</span></div>
               <div class="tl-date">July 2018 – December 2018</div>
             </div>
             <ul class="tl-bullets">
@@ -1250,75 +1307,68 @@
 
     <!-- ── III · MADE ── -->
     <section id="made">
-      <h2 class="section-head">Architected, developed, and<br><span class="do-headline-accent wavy">shipped 100% independently.</span></h2>
+      <h2 class="section-head"><span class="oval-highlight">Architected</span>, developed, and <span class="do-headline-accent wavy">shipped 100% independently</span></h2>
 
       <div class="projects">
 
         <div class="project-item">
-          <div>
-            <div class="project-name">Nexus: Full-Stack Supply Chain Visualizer</div>
-            <div class="project-desc">20+ REST endpoints across shipments, inventory, and analytics. Secured with Spring Security + JWT stateless auth. Dockerized with multi-stage builds and deployed via Render Blueprint IaC — interactive maps with Leaflet and Chart.js.</div>
-            <div class="project-tags">
-              <span class="tag">Java</span>
-              <span class="tag">Spring Boot</span>
-              <span class="tag">React</span>
-              <span class="tag">PostgreSQL</span>
-              <span class="tag">Docker</span>
-            </div>
-          </div>
-          <div class="project-status">
-            <span class="status-dot live"></span>live
+          <div class="project-img"><span>image</span></div>
+          <div class="project-name">Nexus: Supply Chain Visualizer</div>
+          <div class="project-desc">Full-stack supply chain platform with 20+ REST endpoints, JWT auth, Docker deployment, and interactive maps.</div>
+          <div class="project-actions">
+            <a class="btn-proj" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> Repo</a>
+            <a class="btn-proj" href="#">↗ Live Demo</a>
           </div>
         </div>
 
         <div class="project-item">
-          <div>
-            <div class="project-name">JETSET: Franchise Intelligence Dashboard</div>
-            <div class="project-desc">Next.js/TypeScript platform with SSE live alerts, Gemini streaming AI, and FTS5 full-text search across 69 locations. 8-model Prisma schema, all ORM queries server-side. Sigmoid churn model (AUC 0.841) scoring 15K+ members with feature importance and an ROI calculator.</div>
-            <div class="project-tags">
-              <span class="tag">TypeScript</span>
-              <span class="tag">Next.js</span>
-              <span class="tag">Prisma</span>
-              <span class="tag">SQLite</span>
-              <span class="tag">Gemini API</span>
-            </div>
+          <div class="project-img"><span>image</span></div>
+          <div class="project-name">JETSET: Franchise Intelligence Dashboard</div>
+          <div class="project-desc">Real-time franchise dashboard with SSE alerts, Gemini AI streaming, and a churn model scoring 15K+ members.</div>
+          <div class="project-actions">
+            <a class="btn-proj" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> Repo</a>
+            <a class="btn-proj" href="#">↗ Live Demo</a>
           </div>
-          <div class="project-status">
-            <span class="status-dot live"></span>live
+          <span class="proj-note">the one I'm proudest of right now</span>
+        </div>
+
+        <div class="project-item">
+          <div class="project-img"><span>image</span></div>
+          <div class="project-name">GenAI: Voice-Driven Mock Interview App</div>
+          <div class="project-desc">Voice-to-AI interview pipeline using Groq Whisper and Llama 3 with real-time audio capture and browser-native TTS.</div>
+          <div class="project-actions">
+            <a class="btn-proj" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> Repo</a>
+            <a class="btn-proj" href="#">↗ Live Demo</a>
           </div>
         </div>
 
         <div class="project-item">
-          <div>
-            <div class="project-name">GenAI: Voice-Driven AI Mock Interview App</div>
-            <div class="project-desc">Voice-to-AI pipeline using Groq Whisper Large v3 for transcription and Llama 3 70B for follow-up question generation. Real-time audio capture via MediaRecorder and Web Audio APIs, browser-native TTS, and a modular Express backend with rate limiting and response sanitization.</div>
-            <div class="project-tags">
-              <span class="tag">React</span>
-              <span class="tag">Node.js</span>
-              <span class="tag">Groq</span>
-              <span class="tag">Whisper</span>
-              <span class="tag">Llama 3</span>
-            </div>
-          </div>
-          <div class="project-status">
-            <span class="status-dot live"></span>live
+          <div class="project-img"><span>image</span></div>
+          <div class="project-name">Atmosphere: Real-Time AQI Monitor</div>
+          <div class="project-desc">Live weather and AQI dashboard over WebSockets with Redis scaling, z-score anomaly detection, and CSV/PDF export.</div>
+          <div class="project-actions">
+            <a class="btn-proj" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> Repo</a>
+            <a class="btn-proj" href="#">↗ Live Demo</a>
           </div>
         </div>
 
         <div class="project-item">
-          <div>
-            <div class="project-name">Atmosphere Analyzer: Real-Time Monitoring</div>
-            <div class="project-desc">Live weather and AQI data streamed via token-authenticated WebSockets with Redis scaling and HTTP polling failover. 4-layer data fallback with EPA PM2.5-to-AQI conversion, z-score anomaly detection per city, real-time forecast panels, heatmaps, and CSV/PDF export.</div>
-            <div class="project-tags">
-              <span class="tag">Python</span>
-              <span class="tag">Django</span>
-              <span class="tag">React</span>
-              <span class="tag">Docker</span>
-              <span class="tag">WebSockets</span>
-            </div>
+          <div class="project-img"><span>image</span></div>
+          <div class="project-name">ThreadTrace: Fashion Inventory Tracker</div>
+          <div class="project-desc">Inventory management tool with barcode scanning, low-stock alerts, supplier management, and sales trend charts.</div>
+          <div class="project-actions">
+            <a class="btn-proj" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> Repo</a>
+            <a class="btn-proj" href="#">↗ Live Demo</a>
           </div>
-          <div class="project-status">
-            <span class="status-dot live"></span>live
+        </div>
+
+        <div class="project-item">
+          <div class="project-img"><span>image</span></div>
+          <div class="project-name">PulseCheck: Dev Health Dashboard</div>
+          <div class="project-desc">GitHub-connected DORA metrics dashboard tracking PR cycle time, deployment frequency, and team alerting per repo.</div>
+          <div class="project-actions">
+            <a class="btn-proj" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> Repo</a>
+            <a class="btn-proj" href="#">↗ Live Demo</a>
           </div>
         </div>
 
