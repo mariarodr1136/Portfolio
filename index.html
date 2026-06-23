@@ -62,6 +62,8 @@
 
     nav.nav-faded { opacity: 0.2; }
     nav.nav-faded:hover { opacity: 1; }
+    nav.nav-on-projects { background: rgba(255,255,255,0.25); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+    nav.nav-on-projects:hover { background: rgba(255,255,255,0.82); }
 
     .nav-links {
       display: flex;
@@ -712,7 +714,7 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding-top: clamp(3rem, 5vw, 5rem);
+      padding-top: clamp(1.5rem, 3vw, 2.5rem);
       background: #ffffff;
       max-width: 100%;
       margin: 0;
@@ -729,7 +731,7 @@
       white-space: nowrap;
       max-width: none;
       margin: 0 auto .4rem;
-      padding: .8rem 1rem 1.6rem;
+      padding: 2.2rem 1rem 1.1rem;
     }
 
     #made .section-sub {
@@ -766,7 +768,7 @@
 
     .project-img {
       width: 100%;
-      aspect-ratio: 16/7;
+      aspect-ratio: 16/7.5;
       background: #f0ece4;
       border-radius: 3px;
       display: flex;
@@ -777,13 +779,31 @@
       letter-spacing: .12em;
       text-transform: uppercase;
       overflow: hidden;
+      position: relative;
+      width: calc(100% + 1rem);
+      margin: -.5rem 0 0 -.5rem;
+      border-radius: 5px 5px 0 0;
     }
 
-    .project-img img {
+    .project-img img,
+    .project-img video {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      border-radius: 3px;
+    }
+
+    .project-img video {
+      opacity: 0;
+      transition: opacity .35s ease;
+    }
+
+    .project-item:hover .project-img video {
+      opacity: 1;
     }
 
     .project-name {
@@ -792,7 +812,7 @@
       letter-spacing: .1em;
       text-transform: uppercase;
       color: var(--teal);
-      margin-bottom: .1rem;
+      margin-bottom: -.25rem;
     }
 
     .project-desc {
@@ -1312,7 +1332,10 @@
       <div class="projects">
 
         <div class="project-item">
-          <div class="project-img"><span>image</span></div>
+          <div class="project-img">
+            <img src="media/nexus/preview.png" alt="Nexus preview" />
+            <video src="media/nexus/preview.mp4" muted loop playsinline></video>
+          </div>
           <div class="project-name">Nexus: Supply Chain Visualizer</div>
           <div class="project-desc">Full-stack supply chain platform with 20+ REST endpoints, JWT auth, Docker deployment, and interactive maps.</div>
           <div class="project-actions">
@@ -1322,7 +1345,10 @@
         </div>
 
         <div class="project-item">
-          <div class="project-img"><span>image</span></div>
+          <div class="project-img">
+            <img src="media/jetset/preview.png" alt="JETSET preview" />
+            <video src="media/jetset/preview.mp4" muted loop playsinline></video>
+          </div>
           <div class="project-name">JETSET: Franchise Intelligence Dashboard</div>
           <div class="project-desc">Real-time franchise dashboard with SSE alerts, Gemini AI streaming, and a churn model scoring 15K+ members.</div>
           <div class="project-actions">
@@ -1333,7 +1359,10 @@
         </div>
 
         <div class="project-item">
-          <div class="project-img"><span>image</span></div>
+          <div class="project-img">
+            <img src="media/genai/preview.jpg" alt="GenAI preview" />
+            <video src="media/genai/preview.mp4" muted loop playsinline></video>
+          </div>
           <div class="project-name">GenAI: Voice-Driven Mock Interview App</div>
           <div class="project-desc">Voice-to-AI interview pipeline using Groq Whisper and Llama 3 with real-time audio capture and browser-native TTS.</div>
           <div class="project-actions">
@@ -1343,7 +1372,10 @@
         </div>
 
         <div class="project-item">
-          <div class="project-img"><span>image</span></div>
+          <div class="project-img">
+            <img src="media/atmosphere/preview.jpg" alt="Atmosphere preview" />
+            <video src="media/atmosphere/preview.mp4" muted loop playsinline></video>
+          </div>
           <div class="project-name">Atmosphere: Real-Time AQI Monitor</div>
           <div class="project-desc">Live weather and AQI dashboard over WebSockets with Redis scaling, z-score anomaly detection, and CSV/PDF export.</div>
           <div class="project-actions">
@@ -1353,7 +1385,10 @@
         </div>
 
         <div class="project-item">
-          <div class="project-img"><span>image</span></div>
+          <div class="project-img">
+            <img src="media/threadtrace/preview.jpg" alt="ThreadTrace preview" />
+            <video src="media/threadtrace/preview.mp4" muted loop playsinline></video>
+          </div>
           <div class="project-name">ThreadTrace: Fashion Inventory Tracker</div>
           <div class="project-desc">Inventory management tool with barcode scanning, low-stock alerts, supplier management, and sales trend charts.</div>
           <div class="project-actions">
@@ -1363,7 +1398,10 @@
         </div>
 
         <div class="project-item">
-          <div class="project-img"><span>image</span></div>
+          <div class="project-img">
+            <img src="media/pulsecheck/preview.jpg" alt="PulseCheck preview" />
+            <video src="media/pulsecheck/preview.mp4" muted loop playsinline></video>
+          </div>
           <div class="project-name">PulseCheck: Dev Health Dashboard</div>
           <div class="project-desc">GitHub-connected DORA metrics dashboard tracking PR cycle time, deployment frequency, and team alerting per repo.</div>
           <div class="project-actions">
@@ -1475,6 +1513,14 @@
       show('state-message');
     }
 
+    // ── PROJECT HOVER VIDEO ──
+    document.querySelectorAll('.project-item').forEach(item => {
+      const video = item.querySelector('video');
+      if (!video) return;
+      item.addEventListener('mouseenter', () => video.play());
+      item.addEventListener('mouseleave', () => { video.pause(); video.currentTime = 0; });
+    });
+
     // Active nav link on scroll
     const nav = document.querySelector('nav');
     const sections = ['who','do','made','contact'];
@@ -1487,7 +1533,8 @@
           const id = entry.target.id;
           const active = document.querySelector(`.nav-links a[href="#${id}"]`);
           if (active) active.style.color = 'var(--text)';
-          nav.classList.toggle('nav-faded', id !== 'who');
+          nav.classList.toggle('nav-faded', id !== 'who' && id !== 'contact');
+          nav.classList.toggle('nav-on-projects', id === 'made');
         }
       });
     }, { rootMargin: '-30% 0px -60% 0px' });
@@ -1498,12 +1545,13 @@
     });
 
     let inWho = true;
+    let inContact = false;
     let scrollTimer;
     window.addEventListener('scroll', () => {
       nav.classList.remove('nav-faded');
       clearTimeout(scrollTimer);
       scrollTimer = setTimeout(() => {
-        if (!inWho) nav.classList.add('nav-faded');
+        if (!inWho && !inContact) nav.classList.add('nav-faded');
       }, 800);
     }, { passive: true });
 
@@ -1512,6 +1560,12 @@
       if (inWho) nav.classList.remove('nav-faded');
     }, { rootMargin: '-30% 0px -60% 0px' });
     whoObserver.observe(document.getElementById('who'));
+
+    const contactObserver = new IntersectionObserver(([entry]) => {
+      inContact = entry.isIntersecting;
+      if (inContact) nav.classList.remove('nav-faded');
+    }, { rootMargin: '-30% 0px -60% 0px' });
+    contactObserver.observe(document.getElementById('contact'));
 
     // ── SECTION SNAPPING ──
     const snapIds = ['who', 'do', 'made', 'contact'];
