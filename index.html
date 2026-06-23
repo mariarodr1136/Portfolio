@@ -740,6 +740,25 @@
       margin-bottom: 2.8rem;
     }
 
+    .projects-container {
+      position: relative;
+    }
+
+    .projects-wrap {
+      overflow: hidden;
+    }
+
+    .projects-track {
+      display: flex;
+      flex-wrap: nowrap;
+      transition: transform .5s cubic-bezier(.4, 0, .2, 1);
+      will-change: transform;
+    }
+
+    .projects-page {
+      min-width: 100%;
+    }
+
     .projects {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
@@ -769,7 +788,7 @@
     .project-img {
       width: 100%;
       aspect-ratio: 16/7.5;
-      background: #f0ece4;
+      background: #fdfcfa;
       border-radius: 3px;
       display: flex;
       align-items: center;
@@ -844,6 +863,45 @@
     }
 
     .btn-proj:hover { background: var(--text); color: #fff; border-color: var(--text); text-decoration: none; }
+
+    .proj-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 2.2rem;
+      height: 2.2rem;
+      border-radius: 50%;
+      border: 1.5px solid var(--teal);
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: var(--teal);
+      z-index: 5;
+      padding: 0;
+      box-shadow: 0 2px 8px rgba(0,0,0,.07);
+      transition: border-color .2s, color .2s, box-shadow .2s;
+    }
+
+    .proj-nav:hover {
+      border-color: var(--teal);
+      color: var(--teal);
+      box-shadow: 0 4px 12px rgba(0,0,0,.12);
+    }
+
+    .proj-nav-right { right: -4rem; }
+
+    .proj-nav-left {
+      left: -4rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .3s, border-color .2s, color .2s, box-shadow .2s;
+    }
+
+    .proj-nav-left.visible { opacity: 1; pointer-events: auto; }
 
     .proj-note {
       position: absolute;
@@ -1329,6 +1387,12 @@
     <section id="made">
       <h2 class="section-head"><span class="oval-highlight">Architected</span>, developed, and <span class="do-headline-accent wavy">shipped 100% independently</span></h2>
 
+      <div class="projects-container">
+      <button class="proj-nav proj-nav-left" id="proj-prev" aria-label="Previous projects"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button>
+      <button class="proj-nav proj-nav-right" id="proj-next" aria-label="Next projects"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></button>
+      <div class="projects-wrap">
+      <div class="projects-track" id="projects-track">
+      <div class="projects-page">
       <div class="projects">
 
         <div class="project-item">
@@ -1360,7 +1424,7 @@
 
         <div class="project-item">
           <div class="project-img">
-            <img src="media/genai/preview.jpg" alt="GenAI preview" />
+            <img src="media/genai/preview.png" alt="GenAI preview" />
             <video src="media/genai/preview.mp4" muted loop playsinline></video>
           </div>
           <div class="project-name">GenAI: Voice-Driven Mock Interview App</div>
@@ -1373,7 +1437,7 @@
 
         <div class="project-item">
           <div class="project-img">
-            <img src="media/atmosphere/preview.jpg" alt="Atmosphere preview" />
+            <img src="media/atmosphere/preview.png" alt="Atmosphere preview" />
             <video src="media/atmosphere/preview.mp4" muted loop playsinline></video>
           </div>
           <div class="project-name">Atmosphere: Real-Time AQI Monitor</div>
@@ -1410,7 +1474,77 @@
           </div>
         </div>
 
-      </div>
+      </div><!-- end .projects -->
+      </div><!-- end .projects-page -->
+
+      <div class="projects-page">
+      <div class="projects">
+
+        <div class="project-item">
+          <div class="project-img"><span>image</span></div>
+          <div class="project-name">Project Seven</div>
+          <div class="project-desc">Placeholder description for project seven. Built with modern tools and shipped independently.</div>
+          <div class="project-actions">
+            <a class="btn-proj" href="#">Repo</a>
+            <a class="btn-proj" href="#">↗ Live Demo</a>
+          </div>
+        </div>
+
+        <div class="project-item">
+          <div class="project-img"><span>image</span></div>
+          <div class="project-name">Project Eight</div>
+          <div class="project-desc">Placeholder description for project eight. Built with modern tools and shipped independently.</div>
+          <div class="project-actions">
+            <a class="btn-proj" href="#">Repo</a>
+            <a class="btn-proj" href="#">↗ Live Demo</a>
+          </div>
+        </div>
+
+        <div class="project-item">
+          <div class="project-img"><span>image</span></div>
+          <div class="project-name">Project Nine</div>
+          <div class="project-desc">Placeholder description for project nine. Built with modern tools and shipped independently.</div>
+          <div class="project-actions">
+            <a class="btn-proj" href="#">Repo</a>
+            <a class="btn-proj" href="#">↗ Live Demo</a>
+          </div>
+        </div>
+
+        <div class="project-item">
+          <div class="project-img"><span>image</span></div>
+          <div class="project-name">Project Ten</div>
+          <div class="project-desc">Placeholder description for project ten. Built with modern tools and shipped independently.</div>
+          <div class="project-actions">
+            <a class="btn-proj" href="#">Repo</a>
+            <a class="btn-proj" href="#">↗ Live Demo</a>
+          </div>
+        </div>
+
+        <div class="project-item">
+          <div class="project-img"><span>image</span></div>
+          <div class="project-name">Project Eleven</div>
+          <div class="project-desc">Placeholder description for project eleven. Built with modern tools and shipped independently.</div>
+          <div class="project-actions">
+            <a class="btn-proj" href="#">Repo</a>
+            <a class="btn-proj" href="#">↗ Live Demo</a>
+          </div>
+        </div>
+
+        <div class="project-item">
+          <div class="project-img"><span>image</span></div>
+          <div class="project-name">Project Twelve</div>
+          <div class="project-desc">Placeholder description for project twelve. Built with modern tools and shipped independently.</div>
+          <div class="project-actions">
+            <a class="btn-proj" href="#">Repo</a>
+            <a class="btn-proj" href="#">↗ Live Demo</a>
+          </div>
+        </div>
+
+      </div><!-- end .projects -->
+      </div><!-- end .projects-page -->
+      </div><!-- end .projects-track -->
+      </div><!-- end .projects-wrap -->
+      </div><!-- end .projects-container -->
 
     </section>
 
@@ -1512,6 +1646,26 @@
       document.getElementById('email-input').value = '';
       show('state-message');
     }
+
+    // ── PROJECT CAROUSEL ──
+    const projTrack = document.getElementById('projects-track');
+    const projPages = [...projTrack.querySelectorAll('.projects-page')];
+    const projNext = document.getElementById('proj-next');
+    const projPrev = document.getElementById('proj-prev');
+    let projPage = 0;
+    const totalProjPages = projPages.length;
+
+    function updateProjCarousel() {
+      projTrack.style.transform = `translateX(-${projPage * 100}%)`;
+      projPrev.classList.toggle('visible', projPage > 0);
+      const isLast = projPage >= totalProjPages - 1;
+      projNext.style.opacity = isLast ? '0' : '1';
+      projNext.style.pointerEvents = isLast ? 'none' : 'auto';
+    }
+
+    projNext.addEventListener('click', () => { if (projPage < totalProjPages - 1) { projPage++; updateProjCarousel(); } });
+    projPrev.addEventListener('click', () => { if (projPage > 0) { projPage--; updateProjCarousel(); } });
+    updateProjCarousel();
 
     // ── PROJECT HOVER VIDEO ──
     document.querySelectorAll('.project-item').forEach(item => {
