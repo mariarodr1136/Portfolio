@@ -319,14 +319,13 @@
 
     /* ── DO grid ── */
     #do {
-      height: 100svh;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding-top: 1.2rem;
-      padding-bottom: 1rem;
-      padding-left: clamp(2rem, 8vw, 6rem);
-      padding-right: clamp(2rem, 8vw, 6rem);
+      padding-top: clamp(2rem, 4vw, 3rem);
+      padding-bottom: clamp(4rem, 7vw, 6rem);
+      padding-left: clamp(1.5rem, 4vw, 3rem);
+      padding-right: clamp(1.5rem, 4vw, 3rem);
       max-width: 100%;
       margin: 0;
       background: #f0ece4;
@@ -336,9 +335,6 @@
     .do-grid {
       display: flex;
       flex-direction: column;
-      gap: 6rem;
-      flex: 1;
-      min-height: 0;
     }
 
     .do-top-row {
@@ -352,14 +348,13 @@
     .do-top-row .do-mid { height: 100%; box-sizing: border-box; }
 
     .do-right {
-      align-self: start;
-      width: calc(100% + 2 * clamp(2rem, 8vw, 6rem));
-      box-sizing: border-box;
+      width: 100%;
     }
 
     @media (max-width: 700px) {
-      #do { height: auto; }
       .do-top-row { grid-template-columns: 1fr; }
+      .tl-meta { grid-template-columns: 1fr; gap: .15rem 0; }
+      .tl-date { grid-column: 1; }
     }
 
     /* ── DO columns — cards ── */
@@ -382,8 +377,8 @@
       line-height: 1.08;
       color: var(--text);
       text-align: center;
-      margin: 0 auto 1.8rem;
-      padding: 2rem 2.5rem;
+      margin: 0 auto .8rem;
+      padding: .8rem 1rem;
     }
 
     .do-headline-accent {
@@ -399,34 +394,82 @@
       padding-bottom: 14px;
     }
 
-    .do-left, .do-mid, .do-right {
+    .do-left, .do-mid {
       background: #ffffff;
       border-radius: 6px;
-      padding: 1rem 1.4rem 1.4rem;
+      padding: 1rem 1.4rem .7rem;
       border: 1.5px solid #e8e2d9;
       border-bottom: 3px solid #e8e2d9;
       overflow: visible;
       position: relative;
     }
 
-    .do-right {
-      background: #ffffff;
-      border: none;
-      border-bottom: none;
-      border-top: 1.5px solid var(--teal);
-      border-bottom: 1.5px solid var(--teal);
-      box-shadow: none;
-      margin-left: calc(-1 * clamp(2rem, 8vw, 6rem));
-      margin-right: calc(-1 * clamp(2rem, 8vw, 6rem));
-      padding-left: clamp(2rem, 8vw, 6rem);
-      padding-right: clamp(2rem, 8vw, 6rem);
-      padding-top: 6rem;
-      padding-bottom: 6rem;
+    /* ── WORK EXPERIENCE ── */
+    .work-intro {
+      margin-bottom: 1rem;
     }
 
-    .do-right::after { display: none; }
+    .work-hero-head {
+      font-family: Fraunces, serif;
+      font-size: clamp(26px, 3.6vw, 44px);
+      font-weight: 500;
+      letter-spacing: -.02em;
+      line-height: 1.1;
+      color: var(--text);
+      margin-bottom: 1.2rem;
+    }
 
-    .do-left::after, .do-mid::after, .do-right::after { display: none; }
+    .work-hero-accent {
+      color: var(--teal);
+      font-style: italic;
+    }
+
+    .work-hero-sub {
+      font-size: 1rem;
+      color: var(--muted);
+      line-height: 1.65;
+      max-width: 560px;
+      margin-bottom: .6rem;
+    }
+
+    .work-stats-row {
+      display: flex;
+      gap: 3rem;
+      flex-wrap: wrap;
+    }
+
+    .work-stat-num {
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: -.02em;
+      color: var(--text);
+    }
+
+    .work-stat-num .teal { color: var(--teal); }
+
+    .work-stat-label {
+      font-size: .78rem;
+      color: var(--muted);
+      margin-top: .15rem;
+    }
+
+    #work {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-top: clamp(2.5rem, 4vw, 4rem);
+      padding-bottom: clamp(4rem, 7vw, 6rem);
+      padding-left: clamp(1.5rem, 4vw, 3rem);
+      padding-right: clamp(1.5rem, 4vw, 3rem);
+      max-width: 100%;
+      margin: 0;
+      background: #ffffff;
+      border-top: 1.5px solid var(--teal);
+    }
+
+
+
+    .do-left::after, .do-mid::after { display: none; }
 
     .card-head {
       display: flex;
@@ -526,56 +569,78 @@
     .edu-list li::before { content: ''; position: absolute; left: 0; top: .55em; width: 4px; height: 4px; border-radius: 50%; background: var(--teal); }
 
     /* Timeline */
-    .timeline { display: flex; flex-direction: column; gap: 1.4rem; }
-
-    .tl-item {
+    .timeline {
       display: flex;
       flex-direction: column;
-      gap: .15rem;
-      padding-left: 1rem;
-      border-left: 1.5px solid #e5e7eb;
     }
 
-    .tl-role {
-      font-size: .9rem;
-      font-weight: 600;
-      color: #111827;
-      line-height: 1.3;
-      letter-spacing: -.01em;
+    .tl-item {
+      position: relative;
+      padding: 1.6rem 0;
+    }
+
+    .tl-item::after {
+      content: '';
+      display: block;
+      height: 16px;
+      margin-top: 1rem;
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+    }
+
+    .tl-item:nth-child(1)::after {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='16' preserveAspectRatio='none'%3E%3Cpath d='M0,12 C35,2 75,16 120,5 C155,1 180,13 200,10' fill='none' stroke='%231a6b6b' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+    }
+
+    .tl-item:nth-child(2)::after {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='16' preserveAspectRatio='none'%3E%3Cpath d='M0,5 C30,14 70,2 110,12 C145,18 175,3 200,8' fill='none' stroke='%231a6b6b' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+    }
+
+    .tl-item:nth-child(3)::after {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='16' preserveAspectRatio='none'%3E%3Cpath d='M0,8 C55,15 95,2 145,11 C168,15 188,5 200,9' fill='none' stroke='%231a6b6b' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
     }
 
     .tl-meta {
-      display: flex;
-      gap: .5rem;
-      align-items: center;
-      flex-wrap: wrap;
-      margin-top: .1rem;
-      margin-bottom: .3rem;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: baseline;
+      gap: 0 1.5rem;
+      margin-bottom: .75rem;
     }
 
     .tl-company {
       font-size: .75rem;
-      color: var(--teal);
-      font-weight: 500;
-      letter-spacing: .03em;
+      font-weight: 600;
+      letter-spacing: .14em;
       text-transform: uppercase;
+      color: var(--teal);
+    }
+
+    .tl-role {
+      font-family: Fraunces, serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #111827;
+      line-height: 1.2;
+      letter-spacing: -.01em;
     }
 
     .tl-date {
-      font-size: .72rem;
+      font-size: .88rem;
       color: #9ca3af;
       letter-spacing: .02em;
+      white-space: nowrap;
     }
 
     .tl-bullets {
       list-style: none;
       padding-left: 0;
-      font-size: .78rem;
+      font-size: .92rem;
       color: #6b7280;
       line-height: 1.65;
       display: flex;
       flex-direction: column;
-      gap: .2rem;
+      gap: .3rem;
     }
 
     .tl-bullets li { padding-left: .8rem; position: relative; }
@@ -617,10 +682,11 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding-top: clamp(18rem, 28vw, 28rem);
+      padding-top: .8rem;
       background: #f0ece4;
       max-width: 100%;
       margin: 0;
+      border-top: 1.5px solid var(--teal);
       border-bottom: 1.5px solid var(--teal);
     }
 
@@ -1060,10 +1126,10 @@
           <h1 class="hero-name">Maria<br>Rodriguez.</h1>
           <p class="hero-tagline">software engineer building <span class="tagline-accent">clean &amp; data-driven</span> web applications.</p>
           <div class="hero-actions">
-            <a class="btn btn-solid" href="#" download>Resume ↓</a>
+            <a class="btn btn-solid" href="resume.pdf" download="Maria Rodriguez - Resume.pdf">↓ Resume</a>
             <a class="btn" href="https://github.com/mariarodr1136" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> GitHub</a>
             <a class="btn" href="https://www.linkedin.com/in/mariarodr/" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg> LinkedIn</a>
-            <a class="btn" href="#contact">Contact</a>
+            <a class="btn" href="#contact"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg> Contact</a>
           </div>
         </div>
         <div class="polaroid-wrap">
@@ -1078,7 +1144,7 @@
 
     <!-- ── II · DO ── -->
     <section id="do">
-      <h2 class="do-headline">Focused on the build —<br><span class="do-headline-accent">with the tangible output to back it up</span></h2>
+      <h2 class="do-headline">Focused on the build —<br><span class="do-headline-accent">with tangible output to back it up</span></h2>
       <div class="do-grid">
 
         <!-- TOP ROW: skills + education side by side -->
@@ -1125,55 +1191,58 @@
 
         </div><!-- end do-top-row -->
 
-        <!-- BOTTOM: work experience -->
-        <div class="do-right">
-          <div class="card-head">
-<h3 class="do-col-header">Work Experience</h3>
-          </div>
-          <div class="timeline">
+      </div>
+    </section>
 
-            <div class="tl-item">
+    <!-- ── II·b · WORK EXPERIENCE ── -->
+    <section id="work">
+      <div class="work-intro">
+        <h2 class="work-hero-head">Three roles in — <span class="work-hero-accent">and a track record to back it up.</span></h2>
+        <p class="work-hero-sub">Shopify storefronts built from scratch, live platform operations, e-commerce launches — real clients, shipped to production.</p>
+      </div>
+      <div class="do-right">
+        <div class="timeline">
+
+          <div class="tl-item">
+            <div class="tl-meta">
+              <span class="tl-company">JETSET Pilates</span>
               <div class="tl-role">Technical Operations Associate</div>
-              <div class="tl-meta">
-                <span class="tl-company">JETSET Pilates</span>
-                <span class="tl-date">June 2022 – Present</span>
-              </div>
-              <ul class="tl-bullets">
-                <li>Administered Mindbody platform for scheduling, payments, and account management as primary technical point of contact</li>
-                <li>Diagnosed and resolved client-facing booking and payment failures through systematic troubleshooting</li>
-                <li>Maintained internal system workflows and supported technical onboarding for new staff</li>
-              </ul>
+              <div class="tl-date">June 2022 – Present</div>
             </div>
-
-            <div class="tl-item">
-              <div class="tl-role">Full-Stack Web Developer</div>
-              <div class="tl-meta">
-                <span class="tl-company">Style Link Miami</span>
-                <span class="tl-date">January 2019 – November 2020</span>
-              </div>
-              <ul class="tl-bullets">
-                <li>Overhauled Shopify storefront by replacing the theme entirely, rebuilding navigation, collections, and product organization</li>
-                <li>Maintained live site with ongoing frontend updates, product listings, and content changes</li>
-                <li>Configured third-party Shopify apps and set up SEO metadata, including page titles and meta descriptions sitewide</li>
-              </ul>
-            </div>
-
-            <div class="tl-item">
-              <div class="tl-role">Web Developer &amp; Marketing Intern</div>
-              <div class="tl-meta">
-                <span class="tl-company">Hannah Bella Collections</span>
-                <span class="tl-date">July 2018 – December 2018</span>
-              </div>
-              <ul class="tl-bullets">
-                <li>Built brand's first Shopify storefront from scratch, configuring checkout, payments, shipping, and store settings end-to-end</li>
-                <li>Developed product catalog, navigation, and collections with custom HTML and CSS in mobile-friendly layouts</li>
-                <li>Integrated third-party apps and set up SEO foundations to support the brand's initial e-commerce launch</li>
-              </ul>
-            </div>
-
+            <ul class="tl-bullets">
+              <li>Administered Mindbody platform for scheduling, payments, and account management as primary technical point of contact</li>
+              <li>Diagnosed and resolved client-facing booking and payment failures through systematic troubleshooting</li>
+              <li>Maintained internal system workflows and supported technical onboarding for new staff</li>
+            </ul>
           </div>
-        </div>
 
+          <div class="tl-item">
+            <div class="tl-meta">
+              <span class="tl-company">Style Link Miami</span>
+              <div class="tl-role">Full-Stack Web Developer</div>
+              <div class="tl-date">January 2019 – November 2020</div>
+            </div>
+            <ul class="tl-bullets">
+              <li>Overhauled Shopify storefront by replacing the theme entirely, rebuilding navigation, collections, and product organization</li>
+              <li>Maintained live site with ongoing frontend updates, product listings, and content changes</li>
+              <li>Configured third-party Shopify apps and set up SEO metadata, including page titles and meta descriptions sitewide</li>
+            </ul>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-meta">
+              <span class="tl-company">Hannah Bella Collections</span>
+              <div class="tl-role">Web Developer &amp; Marketing Intern</div>
+              <div class="tl-date">July 2018 – December 2018</div>
+            </div>
+            <ul class="tl-bullets">
+              <li>Built brand's first Shopify storefront from scratch, configuring checkout, payments, shipping, and store settings end-to-end</li>
+              <li>Developed product catalog, navigation, and collections with custom HTML and CSS in mobile-friendly layouts</li>
+              <li>Integrated third-party apps and set up SEO foundations to support the brand's initial e-commerce launch</li>
+            </ul>
+          </div>
+
+        </div>
       </div>
     </section>
 
@@ -1273,7 +1342,7 @@
         </div>
         <div class="contact-divider"></div>
         <div class="contact-alt-links">
-          <a href="#" download>
+          <a href="resume.pdf" download="Maria Rodriguez - Resume.pdf">
             <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
             Resume
           </a>
