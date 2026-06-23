@@ -13,7 +13,7 @@
     :root {
       --bg:      #ffffff;
       --text:    #1d1d1f;
-      --muted:   #6e6e73;
+      --muted:   #1d1d1f;
       --light:   #a1a1a6;
       --border:  #d2d2d7;
       --gap:     clamp(4rem, 8vw, 8rem);
@@ -322,14 +322,13 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding-top: clamp(2rem, 4vw, 3rem);
-      padding-bottom: clamp(4rem, 7vw, 6rem);
+      padding-top: .8rem;
+      padding-bottom: 1.2rem;
       padding-left: clamp(1.5rem, 4vw, 3rem);
       padding-right: clamp(1.5rem, 4vw, 3rem);
       max-width: 100%;
       margin: 0;
-      background: #f0ece4;
-      border-top: 1.5px solid var(--teal);
+      background: #ffffff;
     }
 
     .do-grid {
@@ -342,14 +341,37 @@
       grid-template-columns: 1fr 1fr;
       gap: 1rem;
       align-items: stretch;
+      margin-top: .5rem;
     }
 
     .do-top-row .do-left,
     .do-top-row .do-mid { height: 100%; box-sizing: border-box; }
 
+    .do-mid-wrap {
+      position: relative;
+    }
+
+    .exp-aside {
+      position: absolute;
+      top: -3.6rem;
+      right: 1.5rem;
+      font-family: Caveat, cursive;
+      font-size: 25px;
+      color: var(--teal);
+      transform: rotate(-2deg);
+      white-space: nowrap;
+    }
+
     .do-right {
       width: 100%;
+      background: #fdfcfa;
+      border-radius: 6px;
+      padding: .6rem 1rem .5rem;
+      border: 1px solid #eeebe6;
+      border-bottom: 2px solid #eeebe6;
+      position: relative;
     }
+
 
     @media (max-width: 700px) {
       .do-top-row { grid-template-columns: 1fr; }
@@ -376,9 +398,9 @@
       font-weight: 500;
       line-height: 1.08;
       color: var(--text);
-      text-align: center;
-      margin: 0 auto .8rem;
-      padding: .8rem 1rem;
+      text-align: left;
+      margin: 0 0 .8rem;
+      padding: .3rem 0;
     }
 
     .do-headline-accent {
@@ -395,14 +417,16 @@
     }
 
     .do-left, .do-mid {
-      background: #ffffff;
+      background: #fdfcfa;
       border-radius: 6px;
-      padding: 1rem 1.4rem .7rem;
-      border: 1.5px solid #e8e2d9;
-      border-bottom: 3px solid #e8e2d9;
+      padding: .6rem 1rem .5rem;
+      border: 1px solid #eeebe6;
+      border-bottom: 2px solid #eeebe6;
       overflow: visible;
       position: relative;
     }
+
+
 
     /* ── WORK EXPERIENCE ── */
     .work-intro {
@@ -457,19 +481,17 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding-top: clamp(2.5rem, 4vw, 4rem);
-      padding-bottom: clamp(4rem, 7vw, 6rem);
+      padding-top: 0;
+      padding-bottom: 1.5rem;
       padding-left: clamp(1.5rem, 4vw, 3rem);
       padding-right: clamp(1.5rem, 4vw, 3rem);
       max-width: 100%;
       margin: 0;
       background: #ffffff;
-      border-top: 1.5px solid var(--teal);
     }
 
 
 
-    .do-left::after, .do-mid::after { display: none; }
 
     .card-head {
       display: flex;
@@ -490,8 +512,9 @@
 
     .do-col-header {
       font-family: Fraunces, serif;
-      font-size: 1.15rem;
-      font-weight: 700;
+      font-size: clamp(13px, 1.4vw, 16px);
+      font-style: italic;
+      font-weight: 500;
       letter-spacing: -.01em;
       text-transform: none;
       color: var(--text);
@@ -521,7 +544,7 @@
 
     .skill-tags-line {
       font-size: .8rem;
-      color: #6b7280;
+      color: #1d1d1f;
       line-height: 1.6;
       letter-spacing: .01em;
     }
@@ -549,7 +572,7 @@
     .edu-cert {
       font-size: .8rem;
       font-weight: 400;
-      color: #6b7280;
+      color: #1d1d1f;
       margin-bottom: .7rem;
       letter-spacing: .01em;
     }
@@ -558,7 +581,7 @@
       list-style: none;
       padding-left: 0;
       font-size: .78rem;
-      color: #6b7280;
+      color: #1d1d1f;
       line-height: 1.6;
       display: flex;
       flex-direction: column;
@@ -576,28 +599,16 @@
 
     .tl-item {
       position: relative;
-      padding: 1.6rem 0;
+      padding: .55rem 0;
     }
 
-    .tl-item::after {
+    .tl-item:not(:last-child)::after {
       content: '';
       display: block;
-      height: 16px;
-      margin-top: 1rem;
-      background-repeat: no-repeat;
-      background-size: 100% 100%;
-    }
-
-    .tl-item:nth-child(1)::after {
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='16' preserveAspectRatio='none'%3E%3Cpath d='M0,12 C35,2 75,16 120,5 C155,1 180,13 200,10' fill='none' stroke='%231a6b6b' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
-    }
-
-    .tl-item:nth-child(2)::after {
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='16' preserveAspectRatio='none'%3E%3Cpath d='M0,5 C30,14 70,2 110,12 C145,18 175,3 200,8' fill='none' stroke='%231a6b6b' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
-    }
-
-    .tl-item:nth-child(3)::after {
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='16' preserveAspectRatio='none'%3E%3Cpath d='M0,8 C55,15 95,2 145,11 C168,15 188,5 200,9' fill='none' stroke='%231a6b6b' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+      height: 1px;
+      background: #eeebe6;
+      opacity: 1;
+      margin-top: .8rem;
     }
 
     .tl-meta {
@@ -609,7 +620,7 @@
     }
 
     .tl-company {
-      font-size: .75rem;
+      font-size: .65rem;
       font-weight: 600;
       letter-spacing: .14em;
       text-transform: uppercase;
@@ -618,7 +629,7 @@
 
     .tl-role {
       font-family: Fraunces, serif;
-      font-size: 1.25rem;
+      font-size: 1.05rem;
       font-weight: 700;
       color: #111827;
       line-height: 1.2;
@@ -626,8 +637,8 @@
     }
 
     .tl-date {
-      font-size: .88rem;
-      color: #9ca3af;
+      font-size: .78rem;
+      color: #1d1d1f;
       letter-spacing: .02em;
       white-space: nowrap;
     }
@@ -635,8 +646,8 @@
     .tl-bullets {
       list-style: none;
       padding-left: 0;
-      font-size: .92rem;
-      color: #6b7280;
+      font-size: .82rem;
+      color: #1d1d1f;
       line-height: 1.65;
       display: flex;
       flex-direction: column;
@@ -682,12 +693,10 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding-top: .8rem;
-      background: #f0ece4;
+      padding-top: 0;
+      background: #ffffff;
       max-width: 100%;
       margin: 0;
-      border-top: 1.5px solid var(--teal);
-      border-bottom: 1.5px solid var(--teal);
     }
 
     #made .section-head {
@@ -721,10 +730,10 @@
       flex-direction: column;
       gap: .6rem;
       padding: 1rem 1.4rem 1.4rem;
-      background: #ffffff;
+      background: #fdfcfa;
       border-radius: 6px;
-      border: 1.5px solid #e8e2d9;
-      border-bottom: 3px solid #e8e2d9;
+      border: 1px solid #eeebe6;
+      border-bottom: 2px solid #eeebe6;
       position: relative;
       overflow: visible;
     }
@@ -1152,17 +1161,14 @@
 
           <!-- Skills -->
           <div class="do-left">
-            <div class="card-head">
-              <h3 class="do-col-header">Technical Skills</h3>
-            </div>
             <div class="skills-groups">
               <div class="skill-group">
                 <span class="skill-group-label">Languages</span>
-                <span class="skill-tags-line">Python · Java · JavaScript · TypeScript · SQL · C/C++</span>
+                <span class="skill-tags-line">Python · Java · JavaScript ·<br>TypeScript · SQL · C/C++</span>
               </div>
               <div class="skill-group">
                 <span class="skill-group-label">Frameworks</span>
-                <span class="skill-tags-line">React · Next.js · Node.js · Express · Django · Spring Boot · Flask · TensorFlow · OpenCV</span>
+                <span class="skill-tags-line">React · Next.js · Node.js · Express · Django ·<br>Spring Boot · Flask · TensorFlow · OpenCV</span>
               </div>
               <div class="skill-group">
                 <span class="skill-group-label">Databases</span>
@@ -1170,16 +1176,15 @@
               </div>
               <div class="skill-group">
                 <span class="skill-group-label">Cloud &amp; DevOps</span>
-                <span class="skill-tags-line">AWS (EC2, Lambda, S3) · Docker · Git / GitHub · Postman</span>
+                <span class="skill-tags-line">AWS (EC2, Lambda, S3) · Docker ·<br>Git / GitHub · Postman</span>
               </div>
             </div>
           </div>
 
           <!-- Education -->
+          <div class="do-mid-wrap">
+          <p class="exp-aside">and a lot to show for it</p>
           <div class="do-mid">
-            <div class="card-head">
-              <h3 class="do-col-header">Education</h3>
-            </div>
             <div class="edu-school">Florida International University – Graduated August 2025</div>
             <div class="edu-degree">Bachelor of Arts in Computer Science</div>
             <div class="edu-cert">Certificate in Cybersecurity Intelligence &amp; Information Policy</div>
@@ -1188,6 +1193,7 @@
               <li>Dean's List: Fall 2023 – Summer 2025, Academic Achievement Award</li>
             </ul>
           </div>
+          </div><!-- end do-mid-wrap -->
 
         </div><!-- end do-top-row -->
 
@@ -1196,10 +1202,6 @@
 
     <!-- ── II·b · WORK EXPERIENCE ── -->
     <section id="work">
-      <div class="work-intro">
-        <h2 class="work-hero-head">Three roles in — <span class="work-hero-accent">and a track record to back it up.</span></h2>
-        <p class="work-hero-sub">Shopify storefronts built from scratch, live platform operations, e-commerce launches — real clients, shipped to production.</p>
-      </div>
       <div class="do-right">
         <div class="timeline">
 
