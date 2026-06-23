@@ -330,6 +330,7 @@
       max-width: 100%;
       margin: 0;
       background: #f0ece4;
+      border-top: 1.5px solid var(--teal);
     }
 
     .do-grid {
@@ -412,6 +413,8 @@
       background: #ffffff;
       border: none;
       border-bottom: none;
+      border-top: 1.5px solid var(--teal);
+      border-bottom: 1.5px solid var(--teal);
       box-shadow: none;
       margin-left: calc(-1 * clamp(2rem, 8vw, 6rem));
       margin-right: calc(-1 * clamp(2rem, 8vw, 6rem));
@@ -423,17 +426,7 @@
 
     .do-right::after { display: none; }
 
-    .do-left::after, .do-mid::after, .do-right::after {
-      content: '';
-      position: absolute;
-      top: -.5rem;
-      right: 1.6rem;
-      width: 16px;
-      height: 16px;
-      border-radius: 50%;
-      background: var(--teal);
-      box-shadow: 0 4px 10px rgba(26,107,107,0.35);
-    }
+    .do-left::after, .do-mid::after, .do-right::after { display: none; }
 
     .card-head {
       display: flex;
@@ -628,6 +621,7 @@
       background: #f0ece4;
       max-width: 100%;
       margin: 0;
+      border-bottom: 1.5px solid var(--teal);
     }
 
     #made .section-head {
@@ -669,17 +663,7 @@
       overflow: visible;
     }
 
-    .project-item::after {
-      content: '';
-      position: absolute;
-      top: -.5rem;
-      right: 1.6rem;
-      width: 16px;
-      height: 16px;
-      border-radius: 50%;
-      background: var(--teal);
-      box-shadow: 0 4px 10px rgba(26,107,107,0.35);
-    }
+    .project-item::after { display: none; }
 
     .project-name {
       font-family: Fraunces, serif;
