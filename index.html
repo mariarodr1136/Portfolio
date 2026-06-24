@@ -755,6 +755,8 @@
 
     .projects-container {
       position: relative;
+      margin-left: calc(-1 * clamp(2rem, 8vw, 6rem));
+      margin-right: calc(-1 * clamp(2rem, 8vw, 6rem));
     }
 
     .projects-wrap {
@@ -764,19 +766,53 @@
     .projects-track {
       display: flex;
       flex-wrap: nowrap;
-      transition: transform .5s cubic-bezier(.4, 0, .2, 1);
-      will-change: transform;
+      align-items: stretch;
+      gap: .85rem;
     }
 
     .projects-page {
-      min-width: 100%;
+      min-width: 80%;
+      transition: opacity .4s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .projects-container::before,
+    .projects-container::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 20%;
+      pointer-events: none;
+      z-index: 4;
+    }
+
+    .projects-container::before {
+      left: 0;
+      background: linear-gradient(to right,
+        rgba(255,255,255,0.92) 0%,
+        rgba(255,255,255,0.6) 35%,
+        rgba(255,255,255,0.15) 70%,
+        transparent 100%);
+    }
+
+    .projects-container::after {
+      right: 0;
+      background: linear-gradient(to left,
+        rgba(255,255,255,0.92) 0%,
+        rgba(255,255,255,0.6) 35%,
+        rgba(255,255,255,0.15) 70%,
+        transparent 100%);
     }
 
     .projects {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
-      gap: .6rem;
+      grid-template-rows: 1fr 1fr;
+      gap: .85rem;
       border-top: none;
+      flex: 1;
     }
 
     .project-item {
@@ -800,7 +836,7 @@
 
     .project-img {
       width: 100%;
-      aspect-ratio: 16/7.5;
+      aspect-ratio: 16/7.8;
       background: #fdfcfa;
       border-radius: 3px;
       display: flex;
@@ -821,7 +857,6 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: rgba(253, 252, 250, 0.12);
       pointer-events: none;
       z-index: 1;
     }
@@ -841,7 +876,7 @@
 
     .project-img img {
       z-index: 0;
-      filter: grayscale(0.15) saturate(0.85);
+      filter: none;
     }
 
 
@@ -906,7 +941,7 @@
       height: 2.2rem;
       border-radius: 50%;
       border: 1.5px solid var(--teal);
-      background: rgba(255,255,255,0.92);
+      background: rgba(255,255,255,0.45);
       backdrop-filter: blur(8px);
       -webkit-backdrop-filter: blur(8px);
       display: flex;
@@ -926,10 +961,10 @@
       box-shadow: 0 4px 12px rgba(0,0,0,.12);
     }
 
-    .proj-nav-right { right: -4rem; }
+    .proj-nav-right { right: 1rem; }
 
     .proj-nav-left {
-      left: -4rem;
+      left: 1rem;
       opacity: 0;
       pointer-events: none;
       transition: opacity .3s, border-color .2s, color .2s, box-shadow .2s;
@@ -1458,14 +1493,13 @@
 
         <div class="project-item">
           <div class="project-img">
-            <img src="media/jetset/preview.png" alt="JETSET preview" />
-            <video src="media/jetset/preview.mp4" muted loop playsinline></video>
+            <img src="media/leafmedic/preview.png" alt="LeafMedic preview" />
+            <video src="media/leafmedic/preview.mp4" muted loop playsinline></video>
           </div>
-          <div class="project-name">JETSET: Franchise Intelligence Dashboard</div>
-          <div class="project-desc">Real-time franchise dashboard with SSE alerts, Gemini AI streaming, and a churn model scoring 15K+ members.</div>
+          <div class="project-name">LeafMedic: Plant Disease Classifier</div>
+          <div class="project-desc">Raspberry Pi ML system for real-time plant disease classification using TensorFlow Lite and computer vision, with a PyQt5 interface.</div>
           <div class="project-actions">
-            <a class="btn-proj" href="https://github.com/mariarodr1136/JETSET-Franchise-Intelligence" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> Repo</a>
-            <a class="btn-proj" href="https://jetset-franchise-intelligence.onrender.com/" target="_blank" rel="noopener">↗ Live Demo</a>
+            <a class="btn-proj" href="https://github.com/mariarodr1136/LeafMedic" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> Repo</a>
           </div>
         </div>
 
@@ -1497,6 +1531,31 @@
 
         <div class="project-item">
           <div class="project-img">
+            <img src="media/raspberrypilab/preview.png" alt="Raspberry Pi Lab preview" />
+            <video src="media/raspberrypilab/preview.mp4" muted loop playsinline></video>
+          </div>
+          <div class="project-name">Raspberry Pi Lab: Hardware Experiments</div>
+          <div class="project-desc">Curated Raspberry Pi hardware experiment collection — GPIO interfacing, sensor integration, ADC applications, and embedded Python prototypes.</div>
+          <div class="project-actions">
+            <a class="btn-proj" href="https://github.com/mariarodr1136/RaspberryPiLab" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> Repo</a>
+          </div>
+        </div>
+
+        <div class="project-item note-above">
+          <div class="project-img">
+            <img src="media/jetset/preview.png" alt="JETSET preview" />
+            <video src="media/jetset/preview.mp4" muted loop playsinline></video>
+          </div>
+          <div class="project-name">JETSET: Franchise Intelligence Dashboard</div>
+          <div class="project-desc">Real-time franchise dashboard with SSE alerts, Gemini AI streaming, and a churn model scoring 15K+ members.</div>
+          <div class="project-actions">
+            <a class="btn-proj" href="https://github.com/mariarodr1136/JETSET-Franchise-Intelligence" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> Repo</a>
+            <a class="btn-proj" href="https://jetset-franchise-intelligence.onrender.com/" target="_blank" rel="noopener">↗ Live Demo</a>
+          </div>
+        </div>
+
+        <div class="project-item">
+          <div class="project-img">
             <img src="media/atmosphere/preview.png" alt="Atmosphere preview" />
             <video src="media/atmosphere/preview.mp4" muted loop playsinline></video>
           </div>
@@ -1505,31 +1564,6 @@
           <div class="project-actions">
             <a class="btn-proj" href="https://github.com/mariarodr1136/AtmosphereAnalyzer" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> Repo</a>
             <a class="btn-proj" href="https://atmosphere-analyzer-dashboard.onrender.com/" target="_blank" rel="noopener">↗ Live Demo</a>
-          </div>
-        </div>
-
-        <div class="project-item note-above">
-          <div class="project-img">
-            <img src="media/leafmedic/preview.png" alt="LeafMedic preview" />
-            <video src="media/leafmedic/preview.mp4" muted loop playsinline></video>
-          </div>
-          <div class="project-name">LeafMedic: Plant Disease Classifier</div>
-          <div class="project-desc">Raspberry Pi ML system for real-time plant disease classification using TensorFlow Lite and computer vision, with a PyQt5 interface.</div>
-          <div class="project-actions">
-            <a class="btn-proj" href="https://github.com/mariarodr1136/LeafMedic" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> Repo</a>
-          </div>
-        </div>
-
-        <div class="project-item">
-          <div class="project-img">
-            <img src="media/microinvestment/preview.png" alt="VestLab preview" />
-            <video src="media/microinvestment/preview.mp4" muted loop playsinline></video>
-          </div>
-          <div class="project-name">VestLab: Micro-Investment Full-Stack Platform</div>
-          <div class="project-desc">Investment portfolio simulator built with React, Node/Express, and MongoDB — lets beginners explore real market strategies.</div>
-          <div class="project-actions">
-            <a class="btn-proj" href="https://github.com/mariarodr1136/MicroInvestmentPlatform" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> Repo</a>
-            <a class="btn-proj" href="https://microinvestmentplatform-frontend.onrender.com/" target="_blank" rel="noopener">↗ Live Demo</a>
           </div>
         </div>
 
@@ -1576,13 +1610,14 @@
 
         <div class="project-item">
           <div class="project-img">
-            <img src="media/raspberrypilab/preview.png" alt="Raspberry Pi Lab preview" />
-            <video src="media/raspberrypilab/preview.mp4" muted loop playsinline></video>
+            <img src="media/microinvestment/preview.png" alt="VestLab preview" />
+            <video src="media/microinvestment/preview.mp4" muted loop playsinline></video>
           </div>
-          <div class="project-name">Raspberry Pi Lab: Hardware Experiments</div>
-          <div class="project-desc">Curated Raspberry Pi hardware experiment collection — GPIO interfacing, sensor integration, ADC applications, and embedded Python prototypes.</div>
+          <div class="project-name">VestLab: Micro-Investment Full-Stack Platform</div>
+          <div class="project-desc">Investment portfolio simulator built with React, Node/Express, and MongoDB — lets beginners explore real market strategies.</div>
           <div class="project-actions">
-            <a class="btn-proj" href="https://github.com/mariarodr1136/RaspberryPiLab" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> Repo</a>
+            <a class="btn-proj" href="https://github.com/mariarodr1136/MicroInvestmentPlatform" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> Repo</a>
+            <a class="btn-proj" href="https://microinvestmentplatform-frontend.onrender.com/" target="_blank" rel="noopener">↗ Live Demo</a>
           </div>
         </div>
 
@@ -1719,9 +1754,10 @@
 
     // ── PROJECT CAROUSEL ──
     const projTrack = document.getElementById('projects-track');
+    const projWrap  = projTrack.parentElement;
     const projPages = [...projTrack.querySelectorAll('.projects-page')];
-    const projNext = document.getElementById('proj-next');
-    const projPrev = document.getElementById('proj-prev');
+    const projNext  = document.getElementById('proj-next');
+    const projPrev  = document.getElementById('proj-prev');
     let projPage = 0;
     const totalProjPages = projPages.length;
 
@@ -1737,21 +1773,54 @@
       atmoNote.style.top = (cardRect.bottom - containerRect.top - 40) + 'px';
     }
 
-    function updateProjCarousel() {
-      projTrack.style.transform = `translateX(-${projPage * 100}%)`;
+    let trackX = 0;
+
+    function pageWidth() { return projPages[0].offsetWidth; }
+
+    function snapToPage(n) {
+      projPage = Math.max(0, Math.min(n, totalProjPages - 1));
+      trackX = -projPage * pageWidth();
+      projTrack.style.transition = 'transform .35s cubic-bezier(.4,0,.2,1)';
+      projTrack.style.transform = `translateX(${trackX}px)`;
+      projPages.forEach((p, i) => p.classList.toggle('is-active', i === projPage));
       projPrev.classList.toggle('visible', projPage > 0);
       const isLast = projPage >= totalProjPages - 1;
       projNext.style.opacity = isLast ? '0' : '1';
       projNext.style.pointerEvents = isLast ? 'none' : 'auto';
       atmoNote.style.display = projPage === 0 ? '' : 'none';
+      positionAtmoNote();
     }
+
+    // Trackpad: move live, no auto-snap
+    projWrap.addEventListener('wheel', e => {
+      if (Math.abs(e.deltaY) > Math.abs(e.deltaX) * 1.2) return;
+      e.preventDefault();
+      const maxX = -(totalProjPages - 1) * pageWidth();
+      trackX = Math.max(maxX, Math.min(0, trackX - e.deltaX));
+      projTrack.style.transition = 'none';
+      projTrack.style.transform = `translateX(${trackX}px)`;
+      const nearest = Math.round(-trackX / pageWidth());
+      if (nearest !== projPage) { projPage = nearest; updateProjUI(); }
+    }, { passive: false });
+
+    // Mouse drag
+    let isDragging = false, dragStartX = 0, dragStartTrackX = 0;
+    projWrap.addEventListener('mousedown', e => { isDragging = true; dragStartX = e.clientX; dragStartTrackX = trackX; });
+    window.addEventListener('mouseup', () => { isDragging = false; });
+    projWrap.addEventListener('mousemove', e => {
+      if (!isDragging) return;
+      const maxX = -(totalProjPages - 1) * pageWidth();
+      trackX = Math.max(maxX, Math.min(0, dragStartTrackX + (e.clientX - dragStartX)));
+      projTrack.style.transition = 'none';
+      projTrack.style.transform = `translateX(${trackX}px)`;
+    });
+
+    projNext.addEventListener('click', () => snapToPage(projPage + 1));
+    projPrev.addEventListener('click', () => snapToPage(projPage - 1));
 
     positionAtmoNote();
     window.addEventListener('resize', positionAtmoNote);
-
-    projNext.addEventListener('click', () => { if (projPage < totalProjPages - 1) { projPage++; updateProjCarousel(); } });
-    projPrev.addEventListener('click', () => { if (projPage > 0) { projPage--; updateProjCarousel(); } });
-    updateProjCarousel();
+    snapToPage(0);
 
     // ── PROJECT HOVER VIDEO ──
     document.querySelectorAll('.project-item').forEach(item => {
