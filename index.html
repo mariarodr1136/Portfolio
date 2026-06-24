@@ -730,6 +730,7 @@
       background: #ffffff;
       max-width: 100%;
       margin: 0;
+      position: relative;
     }
 
     #made .section-head {
@@ -816,6 +817,15 @@
       border-radius: 5px 5px 0 0;
     }
 
+    .project-img::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(253, 252, 250, 0.12);
+      pointer-events: none;
+      z-index: 1;
+    }
+
     .project-img img,
     .project-img video {
       width: 100%;
@@ -831,21 +841,10 @@
 
     .project-img img {
       z-index: 0;
+      filter: grayscale(0.15) saturate(0.85);
     }
 
-    .project-img::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: rgba(253, 252, 250, 0.12);
-      z-index: 1;
-      transition: opacity .35s ease;
-      pointer-events: none;
-    }
 
-.project-item:hover .project-img::after {
-      opacity: 0;
-    }
 
     .project-img video {
       opacity: 0;
@@ -940,14 +939,15 @@
 
     .proj-note {
       position: absolute;
-      bottom: 0.7rem;
-      right: 0.8rem;
-      width: 3rem;
-      height: 3rem;
+      top: 3.8rem;
+      right: clamp(7rem, 16vw, 17rem);
+      width: 2.4rem;
+      height: 2.4rem;
       object-fit: contain;
       pointer-events: none;
       transform: rotate(-8deg);
       opacity: 0.85;
+      filter: invert(58%) sepia(60%) saturate(400%) hue-rotate(130deg) brightness(45%);
     }
 
     .proj-note-left {
@@ -1006,7 +1006,15 @@
       color: var(--teal);
       display: inline-block;
       margin-bottom: 0;
-      transform: translateX(-65px);
+      transform: translateX(-65px) rotate(-2deg);
+    }
+
+    .contact-intro-you {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='30' preserveAspectRatio='none'%3E%3Cpath d='M22,11 C70,9 130,9 178,11' fill='none' stroke='%231a6b6b' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: left 6px bottom 6px;
+      background-size: 100% 30px;
+      padding-bottom: 20px;
     }
 
     .contact-arrow {
@@ -1029,18 +1037,18 @@
     }
 
     .contact-sub {
-      font-family: Caveat, cursive;
-      font-size: clamp(18px, 1.6vw, 22px);
-      font-weight: 400;
+      font-family: Fraunces, serif;
+      font-size: clamp(13px, 1vw, 15px);
+      font-weight: 500;
       letter-spacing: -.012em;
       line-height: 1.2;
-      color: var(--teal);
+      color: var(--text);
       max-width: none;
       white-space: nowrap;
       margin-left: auto;
       margin-right: auto;
       margin-bottom: 1.2rem;
-      padding-top: 0.4rem;
+      padding-top: 0.5rem;
     }
 
     /* ── CONTACT ALT LINKS ── */
@@ -1438,6 +1446,7 @@
     <!-- ── III · MADE ── -->
     <section id="made">
       <h2 class="section-head"><span class="oval-highlight">Architected</span>, developed, and <span class="do-headline-accent wavy">shipped 100% independently</span></h2>
+      <img class="proj-note" src="media/star.png" alt="star" />
 
       <div class="projects-container">
       <button class="proj-nav proj-nav-left" id="proj-prev" aria-label="Previous projects"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button>
@@ -1446,6 +1455,19 @@
       <div class="projects-track" id="projects-track">
       <div class="projects-page">
       <div class="projects">
+
+        <div class="project-item">
+          <div class="project-img">
+            <img src="media/jetset/preview.png" alt="JETSET preview" />
+            <video src="media/jetset/preview.mp4" muted loop playsinline></video>
+          </div>
+          <div class="project-name">JETSET: Franchise Intelligence Dashboard</div>
+          <div class="project-desc">Real-time franchise dashboard with SSE alerts, Gemini AI streaming, and a churn model scoring 15K+ members.</div>
+          <div class="project-actions">
+            <a class="btn-proj" href="https://github.com/mariarodr1136/JETSET-Franchise-Intelligence" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> Repo</a>
+            <a class="btn-proj" href="https://jetset-franchise-intelligence.onrender.com/" target="_blank" rel="noopener">↗ Live Demo</a>
+          </div>
+        </div>
 
         <div class="project-item">
           <div class="project-img">
@@ -1462,32 +1484,18 @@
 
         <div class="project-item">
           <div class="project-img">
-            <img src="media/jetset/preview.png" alt="JETSET preview" />
-            <video src="media/jetset/preview.mp4" muted loop playsinline></video>
-          </div>
-          <div class="project-name">JETSET: Franchise Intelligence Dashboard</div>
-          <div class="project-desc">Real-time franchise dashboard with SSE alerts, Gemini AI streaming, and a churn model scoring 15K+ members.</div>
-          <div class="project-actions">
-            <a class="btn-proj" href="https://github.com/mariarodr1136/JETSET-Franchise-Intelligence" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> Repo</a>
-            <a class="btn-proj" href="https://jetset-franchise-intelligence.onrender.com/" target="_blank" rel="noopener">↗ Live Demo</a>
-          </div>
-          <img class="proj-note" src="media/star.png" alt="star" />
-        </div>
-
-        <div class="project-item">
-          <div class="project-img">
             <img src="media/genai/preview.png" alt="GenAI preview" />
             <video src="media/genai/preview.mp4" muted loop playsinline></video>
           </div>
           <div class="project-name">GenAI: Voice-Driven Mock Interview App</div>
           <div class="project-desc">Voice-to-AI interview pipeline using Groq Whisper and Llama 3 with real-time audio capture and browser-native TTS.</div>
           <div class="project-actions">
-            <a class="btn-proj" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> Repo</a>
-            <a class="btn-proj" href="#">↗ Live Demo</a>
+            <a class="btn-proj" href="https://github.com/mariarodr1136/GenAI-Technical-Interviewer" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> Repo</a>
+            <a class="btn-proj" href="https://genai-technical-interviewer-1.onrender.com/" target="_blank" rel="noopener">↗ Live Demo</a>
           </div>
         </div>
 
-        <div class="project-item note-above">
+        <div class="project-item">
           <div class="project-img">
             <img src="media/atmosphere/preview.png" alt="Atmosphere preview" />
             <video src="media/atmosphere/preview.mp4" muted loop playsinline></video>
@@ -1495,25 +1503,12 @@
           <div class="project-name">Atmosphere: Real-Time AQI Monitor</div>
           <div class="project-desc">Live weather and AQI dashboard over WebSockets with Redis scaling, z-score anomaly detection, and CSV/PDF export.</div>
           <div class="project-actions">
-            <a class="btn-proj" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> Repo</a>
-            <a class="btn-proj" href="#">↗ Live Demo</a>
+            <a class="btn-proj" href="https://github.com/mariarodr1136/AtmosphereAnalyzer" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> Repo</a>
+            <a class="btn-proj" href="https://atmosphere-analyzer-dashboard.onrender.com/" target="_blank" rel="noopener">↗ Live Demo</a>
           </div>
         </div>
 
-        <div class="project-item">
-          <div class="project-img">
-            <img src="media/microinvestment/preview.png" alt="MicroInvestment preview" />
-            <video src="media/microinvestment/preview.mp4" muted loop playsinline></video>
-          </div>
-          <div class="project-name">Micro-Investment Education Platform</div>
-          <div class="project-desc">Simulated micro-investment app with React, Node/Express, and MongoDB — lets beginners practice strategies with virtual money.</div>
-          <div class="project-actions">
-            <a class="btn-proj" href="https://github.com/mariarodr1136/MicroInvestmentPlatform"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> Repo</a>
-            <a class="btn-proj" href="https://microinvestmentplatform-frontend.onrender.com/">↗ Live Demo</a>
-          </div>
-        </div>
-
-        <div class="project-item">
+        <div class="project-item note-above">
           <div class="project-img">
             <img src="media/leafmedic/preview.png" alt="LeafMedic preview" />
             <video src="media/leafmedic/preview.mp4" muted loop playsinline></video>
@@ -1521,7 +1516,20 @@
           <div class="project-name">LeafMedic: Plant Disease Classifier</div>
           <div class="project-desc">Raspberry Pi ML system for real-time plant disease classification using TensorFlow Lite and computer vision, with a PyQt5 interface.</div>
           <div class="project-actions">
-            <a class="btn-proj" href="https://github.com/mariarodr1136/LeafMedic"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> Repo</a>
+            <a class="btn-proj" href="https://github.com/mariarodr1136/LeafMedic" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> Repo</a>
+          </div>
+        </div>
+
+        <div class="project-item">
+          <div class="project-img">
+            <img src="media/microinvestment/preview.png" alt="VestLab preview" />
+            <video src="media/microinvestment/preview.mp4" muted loop playsinline></video>
+          </div>
+          <div class="project-name">VestLab: Micro-Investment Full-Stack Platform</div>
+          <div class="project-desc">Investment portfolio simulator built with React, Node/Express, and MongoDB — lets beginners explore real market strategies.</div>
+          <div class="project-actions">
+            <a class="btn-proj" href="https://github.com/mariarodr1136/MicroInvestmentPlatform" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> Repo</a>
+            <a class="btn-proj" href="https://microinvestmentplatform-frontend.onrender.com/" target="_blank" rel="noopener">↗ Live Demo</a>
           </div>
         </div>
 
@@ -1532,42 +1540,27 @@
       <div class="projects">
 
         <div class="project-item">
-          <div class="project-img"><span>image</span></div>
-          <div class="project-name">Project Seven</div>
-          <div class="project-desc">Placeholder description for project seven. Built with modern tools and shipped independently.</div>
+          <div class="project-img">
+            <img src="media/retrofolio/preview.png" alt="Retro-Folio preview" />
+            <video src="media/retrofolio/preview.mp4" muted loop playsinline></video>
+          </div>
+          <div class="project-name">Retro-Folio: Windows 95-Style Portfolio</div>
+          <div class="project-desc">Retro Windows 95-inspired portfolio site in vanilla JavaScript — pixel-perfect desktop UI with draggable windows and icons.</div>
           <div class="project-actions">
-            <a class="btn-proj" href="#">Repo</a>
-            <a class="btn-proj" href="#">↗ Live Demo</a>
+            <a class="btn-proj" href="https://github.com/mariarodr1136/Retro-Folio" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> Repo</a>
+            <a class="btn-proj" href="https://maria-portfolio-envz.onrender.com/" target="_blank" rel="noopener">↗ Live Demo</a>
           </div>
         </div>
 
         <div class="project-item">
-          <div class="project-img"><span>image</span></div>
-          <div class="project-name">Project Eight</div>
-          <div class="project-desc">Placeholder description for project eight. Built with modern tools and shipped independently.</div>
-          <div class="project-actions">
-            <a class="btn-proj" href="#">Repo</a>
-            <a class="btn-proj" href="#">↗ Live Demo</a>
+          <div class="project-img">
+            <img src="media/operationroomba/preview.png" alt="Operation Roomba preview" />
           </div>
-        </div>
-
-        <div class="project-item">
-          <div class="project-img"><span>image</span></div>
-          <div class="project-name">Project Nine</div>
-          <div class="project-desc">Placeholder description for project nine. Built with modern tools and shipped independently.</div>
+          <div class="project-name">Operation Roomba: Stealth Cleaning Game</div>
+          <div class="project-desc">Top-down stealth game in vanilla JS — navigate five procedurally generated rooms as a Roomba without waking the family.</div>
           <div class="project-actions">
-            <a class="btn-proj" href="#">Repo</a>
-            <a class="btn-proj" href="#">↗ Live Demo</a>
-          </div>
-        </div>
-
-        <div class="project-item">
-          <div class="project-img"><span>image</span></div>
-          <div class="project-name">Project Ten</div>
-          <div class="project-desc">Placeholder description for project ten. Built with modern tools and shipped independently.</div>
-          <div class="project-actions">
-            <a class="btn-proj" href="#">Repo</a>
-            <a class="btn-proj" href="#">↗ Live Demo</a>
+            <a class="btn-proj" href="https://github.com/mariarodr1136/OperationRoomba" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> Repo</a>
+            <a class="btn-proj" href="https://operationroomba.onrender.com/" target="_blank" rel="noopener">↗ Live Demo</a>
           </div>
         </div>
 
@@ -1576,8 +1569,33 @@
           <div class="project-name">Project Eleven</div>
           <div class="project-desc">Placeholder description for project eleven. Built with modern tools and shipped independently.</div>
           <div class="project-actions">
-            <a class="btn-proj" href="#">Repo</a>
-            <a class="btn-proj" href="#">↗ Live Demo</a>
+            <a class="btn-proj" href="#" target="_blank" rel="noopener">Repo</a>
+            <a class="btn-proj" href="#" target="_blank" rel="noopener">↗ Live Demo</a>
+          </div>
+        </div>
+
+        <div class="project-item">
+          <div class="project-img">
+            <img src="media/raspberrypilab/preview.png" alt="Raspberry Pi Lab preview" />
+            <video src="media/raspberrypilab/preview.mp4" muted loop playsinline></video>
+          </div>
+          <div class="project-name">Raspberry Pi Lab: Hardware Experiments</div>
+          <div class="project-desc">Curated Raspberry Pi hardware experiment collection — GPIO interfacing, sensor integration, ADC applications, and embedded Python prototypes.</div>
+          <div class="project-actions">
+            <a class="btn-proj" href="https://github.com/mariarodr1136/RaspberryPiLab" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> Repo</a>
+          </div>
+        </div>
+
+        <div class="project-item">
+          <div class="project-img">
+            <img src="media/fraudwatch/preview.png" alt="FraudWatch preview" />
+            <video src="media/fraudwatch/preview.mp4" muted loop playsinline></video>
+          </div>
+          <div class="project-name">FraudWatch: Credit Card Fraud Detector</div>
+          <div class="project-desc">ML fraud detection system using Random Forest on credit card data — interactive confusion matrix heatmap and Flask web interface.</div>
+          <div class="project-actions">
+            <a class="btn-proj" href="https://github.com/mariarodr1136/FraudDetectionSystem" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> Repo</a>
+            <a class="btn-proj" href="https://frauddetectionsystem-qcmh.onrender.com/" target="_blank" rel="noopener">↗ Live Demo</a>
           </div>
         </div>
 
@@ -1586,8 +1604,8 @@
           <div class="project-name">Project Twelve</div>
           <div class="project-desc">Placeholder description for project twelve. Built with modern tools and shipped independently.</div>
           <div class="project-actions">
-            <a class="btn-proj" href="#">Repo</a>
-            <a class="btn-proj" href="#">↗ Live Demo</a>
+            <a class="btn-proj" href="#" target="_blank" rel="noopener">Repo</a>
+            <a class="btn-proj" href="#" target="_blank" rel="noopener">↗ Live Demo</a>
           </div>
         </div>
 
@@ -1602,9 +1620,9 @@
 
     <!-- ── CONTACT ── -->
     <section id="contact">
-      <img src="media/bubble.png" alt="speech bubble" style="position:relative;transform:translate(80%,15%);width:4rem;height:auto;object-fit:contain;pointer-events:none;opacity:0.9;" />
+      <p class="contact-intro">i'd love to hear from <span class="contact-intro-you">you</span></p>
       <h2 class="contact-head">Say hi.</h2>
-      <p class="contact-sub">let's talk projects, roles, or just tech</p>
+      <p class="contact-sub">whether you have a project in mind, a role to discuss, or just want to talk tech</p>
 
       <!-- Step 1: Message -->
       <div class="form-state active" id="state-message">
