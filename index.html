@@ -353,6 +353,18 @@
       position: relative;
     }
 
+    .exp-laptop {
+      position: absolute;
+      top: -7.5rem;
+      right: 7rem;
+      width: 4rem;
+      height: 4rem;
+      object-fit: contain;
+      pointer-events: none;
+      transform: rotate(5deg);
+      opacity: 0.9;
+    }
+
     .exp-aside {
       position: absolute;
       top: -4.1rem;
@@ -865,6 +877,7 @@
       display: flex;
       gap: .5rem;
       margin-top: .3rem;
+      justify-content: center;
     }
 
     .btn-proj {
@@ -927,16 +940,32 @@
 
     .proj-note {
       position: absolute;
-      bottom: .7rem;
-      right: 1.8rem;
+      bottom: 0.7rem;
+      right: 0.8rem;
+      width: 3rem;
+      height: 3rem;
+      object-fit: contain;
+      pointer-events: none;
+      transform: rotate(-8deg);
+      opacity: 0.85;
+    }
+
+    .proj-note-left {
+      position: absolute;
       font-family: Caveat, cursive;
-      font-size: 1.3rem;
+      font-size: 1.7rem;
       color: var(--teal);
-      max-width: 10rem;
-      text-align: right;
+      max-width: 14rem;
+      text-align: left;
       line-height: 1.2;
       pointer-events: none;
-      transform: rotate(-2deg);
+      transform: rotate(3deg);
+      z-index: 9999;
+    }
+
+
+    .project-item.note-above {
+      z-index: 10;
     }
 
     /* ── CONTACT ── */
@@ -1000,18 +1029,18 @@
     }
 
     .contact-sub {
-      font-family: Fraunces, serif;
-      font-size: clamp(13px, 1vw, 15px);
-      font-weight: 500;
+      font-family: Caveat, cursive;
+      font-size: clamp(18px, 1.6vw, 22px);
+      font-weight: 400;
       letter-spacing: -.012em;
       line-height: 1.2;
-      color: var(--text);
+      color: var(--teal);
       max-width: none;
       white-space: nowrap;
       margin-left: auto;
       margin-right: auto;
       margin-bottom: 1.2rem;
-      padding-top: 1.5rem;
+      padding-top: 0.4rem;
     }
 
     /* ── CONTACT ALT LINKS ── */
@@ -1344,6 +1373,7 @@
           <!-- Education -->
           <div class="do-mid-wrap">
           <p class="exp-aside">and a lot to show for it</p>
+          <img class="exp-laptop" src="media/laptop.png" alt="laptop" />
           <div class="do-mid">
             <div class="edu-school">Florida International University – Graduated August 2025</div>
             <div class="edu-degree">Bachelor of Arts in Computer Science</div>
@@ -1425,8 +1455,8 @@
           <div class="project-name">Nexus: Supply Chain Visualizer</div>
           <div class="project-desc">Full-stack supply chain platform with 20+ REST endpoints, JWT auth, Docker deployment, and interactive maps.</div>
           <div class="project-actions">
-            <a class="btn-proj" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> Repo</a>
-            <a class="btn-proj" href="#">↗ Live Demo</a>
+            <a class="btn-proj" href="https://github.com/mariarodr1136/SupplyChainVisualizer" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> Repo</a>
+            <a class="btn-proj" href="https://supply-chain-visualizer.onrender.com/" target="_blank" rel="noopener">↗ Live Demo</a>
           </div>
         </div>
 
@@ -1438,10 +1468,10 @@
           <div class="project-name">JETSET: Franchise Intelligence Dashboard</div>
           <div class="project-desc">Real-time franchise dashboard with SSE alerts, Gemini AI streaming, and a churn model scoring 15K+ members.</div>
           <div class="project-actions">
-            <a class="btn-proj" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> Repo</a>
-            <a class="btn-proj" href="#">↗ Live Demo</a>
+            <a class="btn-proj" href="https://github.com/mariarodr1136/JETSET-Franchise-Intelligence" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> Repo</a>
+            <a class="btn-proj" href="https://jetset-franchise-intelligence.onrender.com/" target="_blank" rel="noopener">↗ Live Demo</a>
           </div>
-          <span class="proj-note">the one I'm proudest of right now</span>
+          <img class="proj-note" src="media/star.png" alt="star" />
         </div>
 
         <div class="project-item">
@@ -1457,7 +1487,7 @@
           </div>
         </div>
 
-        <div class="project-item">
+        <div class="project-item note-above">
           <div class="project-img">
             <img src="media/atmosphere/preview.png" alt="Atmosphere preview" />
             <video src="media/atmosphere/preview.mp4" muted loop playsinline></video>
@@ -1476,7 +1506,7 @@
             <video src="media/microinvestment/preview.mp4" muted loop playsinline></video>
           </div>
           <div class="project-name">Micro-Investment Education Platform</div>
-          <div class="project-desc">Simulated micro-investment app built with React, Node/Express, and MongoDB — lets beginners practice strategies with virtual money in a risk-free environment.</div>
+          <div class="project-desc">Simulated micro-investment app with React, Node/Express, and MongoDB — lets beginners practice strategies with virtual money.</div>
           <div class="project-actions">
             <a class="btn-proj" href="https://github.com/mariarodr1136/MicroInvestmentPlatform"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> Repo</a>
             <a class="btn-proj" href="https://microinvestmentplatform-frontend.onrender.com/">↗ Live Demo</a>
@@ -1489,7 +1519,7 @@
             <video src="media/leafmedic/preview.mp4" muted loop playsinline></video>
           </div>
           <div class="project-name">LeafMedic: Plant Disease Classifier</div>
-          <div class="project-desc">Embedded ML system for real-time plant disease classification using TensorFlow Lite and computer vision on a Raspberry Pi, with a PyQt5 interface and confidence-ranked predictions.</div>
+          <div class="project-desc">Raspberry Pi ML system for real-time plant disease classification using TensorFlow Lite and computer vision, with a PyQt5 interface.</div>
           <div class="project-actions">
             <a class="btn-proj" href="https://github.com/mariarodr1136/LeafMedic"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> Repo</a>
           </div>
@@ -1565,15 +1595,16 @@
       </div><!-- end .projects-page -->
       </div><!-- end .projects-track -->
       </div><!-- end .projects-wrap -->
+      <span class="proj-note-left" id="atmo-note" style="display:none"></span>
       </div><!-- end .projects-container -->
 
     </section>
 
     <!-- ── CONTACT ── -->
     <section id="contact">
-      <p class="contact-intro">i'd love to hear from you</p>
+      <img src="media/bubble.png" alt="speech bubble" style="position:relative;transform:translate(80%,15%);width:4rem;height:auto;object-fit:contain;pointer-events:none;opacity:0.9;" />
       <h2 class="contact-head">Say hi.</h2>
-      <p class="contact-sub">whether you have a project in mind, a role to discuss, or just want to talk tech</p>
+      <p class="contact-sub">let's talk projects, roles, or just tech</p>
 
       <!-- Step 1: Message -->
       <div class="form-state active" id="state-message">
@@ -1676,13 +1707,29 @@
     let projPage = 0;
     const totalProjPages = projPages.length;
 
+    const atmoNote = document.getElementById('atmo-note');
+
+    function positionAtmoNote() {
+      const atmoCard = document.querySelector('.project-item.note-above');
+      const container = document.querySelector('.projects-container');
+      if (!atmoCard || !container || !atmoNote) return;
+      const cardRect = atmoCard.getBoundingClientRect();
+      const containerRect = container.getBoundingClientRect();
+      atmoNote.style.left = (cardRect.left - containerRect.left - 75) + 'px';
+      atmoNote.style.top = (cardRect.bottom - containerRect.top - 40) + 'px';
+    }
+
     function updateProjCarousel() {
       projTrack.style.transform = `translateX(-${projPage * 100}%)`;
       projPrev.classList.toggle('visible', projPage > 0);
       const isLast = projPage >= totalProjPages - 1;
       projNext.style.opacity = isLast ? '0' : '1';
       projNext.style.pointerEvents = isLast ? 'none' : 'auto';
+      atmoNote.style.display = projPage === 0 ? '' : 'none';
     }
+
+    positionAtmoNote();
+    window.addEventListener('resize', positionAtmoNote);
 
     projNext.addEventListener('click', () => { if (projPage < totalProjPages - 1) { projPage++; updateProjCarousel(); } });
     projPrev.addEventListener('click', () => { if (projPage > 0) { projPage--; updateProjCarousel(); } });
