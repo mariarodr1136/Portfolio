@@ -832,6 +832,7 @@
       position: relative;
       overflow: visible;
       transition: transform .2s ease, box-shadow .2s ease;
+      cursor: pointer;
     }
 
     .project-item:hover {
@@ -967,7 +968,7 @@
       box-shadow: 0 4px 12px rgba(0,0,0,.12);
     }
 
-    .proj-nav-right { right: 1rem; }
+    .proj-nav-right { right: 1rem; transition: opacity .3s, border-color .2s, color .2s, box-shadow .2s; }
 
     .proj-nav-left {
       left: 1rem;
@@ -976,7 +977,7 @@
       transition: opacity .3s, border-color .2s, color .2s, box-shadow .2s;
     }
 
-    .proj-nav-left.visible { opacity: 1; pointer-events: auto; }
+    .proj-nav-left.visible { opacity: 1; pointer-events: auto; background: rgba(255,255,255,0.92); }
 
     .proj-note {
       position: absolute;
@@ -1497,7 +1498,7 @@
       <div class="projects-page">
       <div class="projects">
 
-        <div class="project-item">
+        <div class="project-item" data-href="https://github.com/mariarodr1136/LeafMedic">
           <div class="project-img">
             <img src="media/leafmedic/preview.png" alt="LeafMedic preview" />
             <video src="media/leafmedic/preview.mp4" muted loop playsinline></video>
@@ -1509,7 +1510,7 @@
           </div>
         </div>
 
-        <div class="project-item">
+        <div class="project-item" data-href="https://supply-chain-visualizer.onrender.com/">
           <div class="project-img">
             <img src="media/nexus/preview.png" alt="Nexus preview" />
             <video src="media/nexus/preview.mp4" muted loop playsinline></video>
@@ -1522,7 +1523,7 @@
           </div>
         </div>
 
-        <div class="project-item">
+        <div class="project-item" data-href="https://genai-technical-interviewer-1.onrender.com/">
           <div class="project-img">
             <img src="media/genai/preview.png" alt="GenAI preview" />
             <video src="media/genai/preview.mp4" muted loop playsinline></video>
@@ -1535,7 +1536,7 @@
           </div>
         </div>
 
-        <div class="project-item">
+        <div class="project-item" data-href="https://github.com/mariarodr1136/RaspberryPiLab">
           <div class="project-img">
             <img src="media/raspberrypilab/preview.png" alt="Raspberry Pi Lab preview" />
             <video src="media/raspberrypilab/preview.mp4" muted loop playsinline></video>
@@ -1547,7 +1548,7 @@
           </div>
         </div>
 
-        <div class="project-item note-above">
+        <div class="project-item note-above" data-href="https://jetset-franchise-intelligence.onrender.com/">
           <div class="project-img">
             <img src="media/jetset/preview.png" alt="JETSET preview" />
             <video src="media/jetset/preview.mp4" muted loop playsinline></video>
@@ -1560,7 +1561,7 @@
           </div>
         </div>
 
-        <div class="project-item">
+        <div class="project-item" data-href="https://atmosphere-analyzer-dashboard.onrender.com/">
           <div class="project-img">
             <img src="media/atmosphere/preview.png" alt="Atmosphere preview" />
             <video src="media/atmosphere/preview.mp4" muted loop playsinline></video>
@@ -1579,7 +1580,7 @@
       <div class="projects-page" id="projects-page-2">
       <div class="projects projects--two-col">
 
-        <div class="project-item">
+        <div class="project-item" data-href="https://maria-portfolio-envz.onrender.com/">
           <div class="project-img">
             <img src="media/retrofolio/preview.png" alt="Retro-Folio preview" />
             <video src="media/retrofolio/preview.mp4" muted loop playsinline></video>
@@ -1592,7 +1593,7 @@
           </div>
         </div>
 
-        <div class="project-item">
+        <div class="project-item" data-href="https://frauddetectionsystem-qcmh.onrender.com/">
           <div class="project-img">
             <img src="media/fraudwatch/preview.png" alt="FraudWatch preview" />
             <video src="media/fraudwatch/preview.mp4" muted loop playsinline></video>
@@ -1605,7 +1606,7 @@
           </div>
         </div>
 
-<div class="project-item">
+<div class="project-item" data-href="https://microinvestmentplatform-frontend.onrender.com/">
           <div class="project-img">
             <img src="media/microinvestment/preview.png" alt="VestLab preview" />
             <video src="media/microinvestment/preview.mp4" muted loop playsinline></video>
@@ -1618,7 +1619,7 @@
           </div>
         </div>
 
-        <div class="project-item">
+        <div class="project-item" data-href="https://operationroomba.onrender.com/">
           <div class="project-img">
             <img src="media/operationroomba/preview.png" alt="Operation Roomba preview" />
           </div>
@@ -1773,18 +1774,23 @@
       return -(last.offsetLeft + last.offsetWidth - projWrap.offsetWidth);
     }
 
-    function snapToPage(n) {
-      projPage = Math.max(0, Math.min(n, totalProjPages - 1));
-      trackX = projPage === totalProjPages - 1 ? maxTrackX() : -pageOffsetLeft(projPage);
-      projTrack.style.transition = 'transform .35s cubic-bezier(.4,0,.2,1)';
-      projTrack.style.transform = `translateX(${trackX}px)`;
+    function updateProjUI() {
       projPages.forEach((p, i) => p.classList.toggle('is-active', i === projPage));
-      projPrev.classList.toggle('visible', projPage > 0);
+      const hasPrev = projPage > 0;
+      projPrev.classList.toggle('visible', hasPrev);
       const isLast = projPage >= totalProjPages - 1;
       projNext.style.opacity = isLast ? '0' : '1';
       projNext.style.pointerEvents = isLast ? 'none' : 'auto';
       atmoNote.style.display = projPage === 0 ? '' : 'none';
       positionAtmoNote();
+    }
+
+    function snapToPage(n) {
+      projPage = Math.max(0, Math.min(n, totalProjPages - 1));
+      trackX = projPage === totalProjPages - 1 ? maxTrackX() : -pageOffsetLeft(projPage);
+      projTrack.style.transition = 'transform .35s cubic-bezier(.4,0,.2,1)';
+      projTrack.style.transform = `translateX(${trackX}px)`;
+      updateProjUI();
     }
 
     // Trackpad: move live, no auto-snap
@@ -1794,8 +1800,12 @@
       trackX = Math.max(maxTrackX(), Math.min(0, trackX - e.deltaX));
       projTrack.style.transition = 'none';
       projTrack.style.transform = `translateX(${trackX}px)`;
-      const nearest = projPages.reduce((best, p, i) =>
-        Math.abs(p.offsetLeft + trackX) < Math.abs(projPages[best].offsetLeft + trackX) ? i : best, 0);
+      const vpCenter = projWrap.offsetWidth / 2;
+      const nearest = projPages.reduce((best, p, i) => {
+        const d  = Math.abs(p.offsetLeft + p.offsetWidth / 2 + trackX - vpCenter);
+        const bd = Math.abs(projPages[best].offsetLeft + projPages[best].offsetWidth / 2 + trackX - vpCenter);
+        return d < bd ? i : best;
+      }, 0);
       if (nearest !== projPage) { projPage = nearest; updateProjUI(); }
     }, { passive: false });
 
@@ -1832,6 +1842,14 @@
       if (!video) return;
       item.addEventListener('mouseenter', () => video.play());
       item.addEventListener('mouseleave', () => { video.pause(); video.currentTime = 0; });
+    });
+
+    // ── PROJECT CARD CLICK → OPEN LIVE DEMO ──
+    document.querySelectorAll('.project-item[data-href]').forEach(item => {
+      item.addEventListener('click', e => {
+        if (e.target.closest('.btn-proj')) return;
+        window.open(item.dataset.href, '_blank', 'noopener');
+      });
     });
 
     // Active nav link on scroll
