@@ -815,10 +815,14 @@
       flex: 1;
     }
 
+    .projects--two-col {
+      grid-template-columns: 1fr 1fr;
+    }
+
     .project-item {
       display: flex;
       flex-direction: column;
-      gap: .3rem;
+      gap: .18rem;
       padding: .5rem .5rem .6rem;
       background: #fdfcfa;
       border-radius: 6px;
@@ -898,6 +902,7 @@
       text-transform: uppercase;
       color: var(--teal);
       margin-bottom: -.25rem;
+      margin-top: .35rem;
     }
 
     .project-desc {
@@ -910,7 +915,7 @@
     .project-actions {
       display: flex;
       gap: .5rem;
-      margin-top: .3rem;
+      margin-top: -.7rem;
       justify-content: center;
     }
 
@@ -1570,8 +1575,8 @@
       </div><!-- end .projects -->
       </div><!-- end .projects-page -->
 
-      <div class="projects-page">
-      <div class="projects">
+      <div class="projects-page" id="projects-page-2">
+      <div class="projects projects--two-col">
 
         <div class="project-item">
           <div class="project-img">
@@ -1588,6 +1593,19 @@
 
         <div class="project-item">
           <div class="project-img">
+            <img src="media/fraudwatch/preview.png" alt="FraudWatch preview" />
+            <video src="media/fraudwatch/preview.mp4" muted loop playsinline></video>
+          </div>
+          <div class="project-name">FraudWatch: Credit Card Fraud Detector</div>
+          <div class="project-desc">ML fraud detection system using Random Forest on credit card data — interactive confusion matrix heatmap and Flask web interface.</div>
+          <div class="project-actions">
+            <a class="btn-proj" href="https://github.com/mariarodr1136/FraudDetectionSystem" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> Repo</a>
+            <a class="btn-proj" href="https://frauddetectionsystem-qcmh.onrender.com/" target="_blank" rel="noopener">↗ Live Demo</a>
+          </div>
+        </div>
+
+<div class="project-item">
+          <div class="project-img">
             <img src="media/operationroomba/preview.png" alt="Operation Roomba preview" />
           </div>
           <div class="project-name">Operation Roomba: Stealth Cleaning Game</div>
@@ -1595,16 +1613,6 @@
           <div class="project-actions">
             <a class="btn-proj" href="https://github.com/mariarodr1136/OperationRoomba" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> Repo</a>
             <a class="btn-proj" href="https://operationroomba.onrender.com/" target="_blank" rel="noopener">↗ Live Demo</a>
-          </div>
-        </div>
-
-        <div class="project-item">
-          <div class="project-img"><span>image</span></div>
-          <div class="project-name">Project Eleven</div>
-          <div class="project-desc">Placeholder description for project eleven. Built with modern tools and shipped independently.</div>
-          <div class="project-actions">
-            <a class="btn-proj" href="#" target="_blank" rel="noopener">Repo</a>
-            <a class="btn-proj" href="#" target="_blank" rel="noopener">↗ Live Demo</a>
           </div>
         </div>
 
@@ -1621,28 +1629,11 @@
           </div>
         </div>
 
-        <div class="project-item">
-          <div class="project-img">
-            <img src="media/fraudwatch/preview.png" alt="FraudWatch preview" />
-            <video src="media/fraudwatch/preview.mp4" muted loop playsinline></video>
-          </div>
-          <div class="project-name">FraudWatch: Credit Card Fraud Detector</div>
-          <div class="project-desc">ML fraud detection system using Random Forest on credit card data — interactive confusion matrix heatmap and Flask web interface.</div>
-          <div class="project-actions">
-            <a class="btn-proj" href="https://github.com/mariarodr1136/FraudDetectionSystem" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> Repo</a>
-            <a class="btn-proj" href="https://frauddetectionsystem-qcmh.onrender.com/" target="_blank" rel="noopener">↗ Live Demo</a>
-          </div>
-        </div>
+        
 
-        <div class="project-item">
-          <div class="project-img"><span>image</span></div>
-          <div class="project-name">Project Twelve</div>
-          <div class="project-desc">Placeholder description for project twelve. Built with modern tools and shipped independently.</div>
-          <div class="project-actions">
-            <a class="btn-proj" href="#" target="_blank" rel="noopener">Repo</a>
-            <a class="btn-proj" href="#" target="_blank" rel="noopener">↗ Live Demo</a>
-          </div>
-        </div>
+
+        
+
 
       </div><!-- end .projects -->
       </div><!-- end .projects-page -->
@@ -1775,11 +1766,12 @@
 
     let trackX = 0;
 
-    function pageWidth() { return projPages[0].offsetWidth; }
+    function pageOffsetLeft(n) { return projPages[n].offsetLeft; }
+    function maxTrackX() { return -pageOffsetLeft(totalProjPages - 1); }
 
     function snapToPage(n) {
       projPage = Math.max(0, Math.min(n, totalProjPages - 1));
-      trackX = -projPage * pageWidth();
+      trackX = -pageOffsetLeft(projPage);
       projTrack.style.transition = 'transform .35s cubic-bezier(.4,0,.2,1)';
       projTrack.style.transform = `translateX(${trackX}px)`;
       projPages.forEach((p, i) => p.classList.toggle('is-active', i === projPage));
@@ -1795,11 +1787,11 @@
     projWrap.addEventListener('wheel', e => {
       if (Math.abs(e.deltaY) > Math.abs(e.deltaX) * 1.2) return;
       e.preventDefault();
-      const maxX = -(totalProjPages - 1) * pageWidth();
-      trackX = Math.max(maxX, Math.min(0, trackX - e.deltaX));
+      trackX = Math.max(maxTrackX(), Math.min(0, trackX - e.deltaX));
       projTrack.style.transition = 'none';
       projTrack.style.transform = `translateX(${trackX}px)`;
-      const nearest = Math.round(-trackX / pageWidth());
+      const nearest = projPages.reduce((best, p, i) =>
+        Math.abs(p.offsetLeft + trackX) < Math.abs(projPages[best].offsetLeft + trackX) ? i : best, 0);
       if (nearest !== projPage) { projPage = nearest; updateProjUI(); }
     }, { passive: false });
 
@@ -1809,8 +1801,7 @@
     window.addEventListener('mouseup', () => { isDragging = false; });
     projWrap.addEventListener('mousemove', e => {
       if (!isDragging) return;
-      const maxX = -(totalProjPages - 1) * pageWidth();
-      trackX = Math.max(maxX, Math.min(0, dragStartTrackX + (e.clientX - dragStartX)));
+      trackX = Math.max(maxTrackX(), Math.min(0, dragStartTrackX + (e.clientX - dragStartX)));
       projTrack.style.transition = 'none';
       projTrack.style.transform = `translateX(${trackX}px)`;
     });
@@ -1818,8 +1809,17 @@
     projNext.addEventListener('click', () => snapToPage(projPage + 1));
     projPrev.addEventListener('click', () => snapToPage(projPage - 1));
 
+    function sizePage2() {
+      const gap = parseFloat(getComputedStyle(document.documentElement).fontSize) * 0.85;
+      const cardW = (projPages[0].offsetWidth - 2 * gap) / 3;
+      const p2w = Math.round(2 * cardW + gap);
+      const p2 = document.getElementById('projects-page-2');
+      if (p2) { p2.style.minWidth = p2w + 'px'; p2.style.width = p2w + 'px'; }
+    }
+
+    sizePage2();
     positionAtmoNote();
-    window.addEventListener('resize', positionAtmoNote);
+    window.addEventListener('resize', () => { sizePage2(); positionAtmoNote(); });
     snapToPage(0);
 
     // ── PROJECT HOVER VIDEO ──
