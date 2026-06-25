@@ -6,7 +6,7 @@
 
 The design is clean and typographic — a floating pill nav, full-viewport section snapping, and a two-page projects carousel with arrow navigation. Every interactive detail (nav fade on projects, oval text highlights, wavy accent spans, tape-edged polaroid photo) is handled in pure CSS and vanilla JS.
 
-Live Application: https://mariarodr1136.github.io/Portfolio
+Live Application: https://mariarod.dev
 
 ---
 
