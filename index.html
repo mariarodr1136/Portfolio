@@ -1333,6 +1333,42 @@
 
     .section-arrow svg { display: block; }
 
+    .early-dev-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.58);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 3;
+      border-radius: 5px 5px 0 0;
+      pointer-events: none;
+    }
+
+    .early-dev-overlay span {
+      font-family: Caveat, cursive;
+      font-size: clamp(16px, 2vw, 24px);
+      font-weight: 600;
+      letter-spacing: .01em;
+      text-align: center;
+      line-height: 1.1;
+      text-transform: none;
+      text-shadow: 0 2px 8px rgba(0,0,0,.4);
+      color: #fff;
+      position: relative;
+      display: inline-block;
+      padding: .55rem 1.2rem;
+    }
+
+    .early-dev-overlay span::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      transform: translate(4px, 4px);
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 65' preserveAspectRatio='none'%3E%3Cpath d='M75,5 C96,2 124,8 133,22 C140,34 136,49 122,55 C106,61 80,63 54,61 C30,59 8,51 3,37 C-2,23 6,10 25,6 C39,3 57,7 75,5' fill='%231a6b6b' fill-opacity='.2' stroke='white' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat center / 100% 100%;
+      pointer-events: none;
+    }
+
     .oval-highlight {
       position: relative;
       display: inline-block;
@@ -1598,6 +1634,7 @@
           <div class="project-img">
             <img src="media/operationroomba/preview.png" alt="Operation Roomba preview" />
             <video src="media/operationroomba/Roomba.mp4" muted loop playsinline></video>
+            <div class="early-dev-overlay"><span>early<br>development</span></div>
           </div>
           <div class="project-name">Operation Roomba: Stealth Cleaning Game</div>
           <div class="project-desc">Top-down stealth game in vanilla JS — navigate five procedurally generated rooms as a Roomba without waking the family.</div>
