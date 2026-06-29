@@ -23,6 +23,9 @@
 
     html { scroll-behavior: smooth; }
 
+    ::selection { background: #4a8f8f; color: #fff; }
+    ::-moz-selection { background: #4a8f8f; color: #fff; }
+
     body {
       font-family: 'Hanken Grotesk', system-ui, -apple-system, sans-serif;
       background: var(--bg);
@@ -1554,7 +1557,7 @@
         <div class="project-item" data-href="https://supply-chain-visualizer.onrender.com/">
           <div class="project-img">
             <img src="media/nexus/preview.png" alt="Nexus preview" />
-            <video src="media/nexus/preview.mp4" muted loop playsinline></video>
+            <video src="media/nexus/NexusDemo.mp4" muted loop playsinline></video>
           </div>
           <div class="project-name">Nexus: Supply Chain Visualizer</div>
           <div class="project-desc">Full-stack supply chain platform with 20+ REST endpoints, JWT auth, Docker deployment, and interactive maps.</div>
