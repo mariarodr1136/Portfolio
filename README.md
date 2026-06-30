@@ -74,12 +74,12 @@ Projects showcased in the portfolio carousel:
 | [Atmosphere: Real-Time AQI Monitor](https://github.com/mariarodr1136/AtmosphereAnalyzer) | Python · Django Channels · React · Redis · Docker · WebSockets | Live weather and AQI dashboard over WebSockets with z-score anomaly detection, Leaflet sensor map, activity heatmap, and CSV/PDF export |
 | [LeafMedic: Plant Disease Classifier](https://github.com/mariarodr1136/LeafMedic) | Python · TensorFlow · OpenCV · PyQt6 · Raspberry Pi | Edge AI system deploying TensorFlow Lite MobileNetV1 on Raspberry Pi — 90%+ accuracy across 16 disease classes |
 | [Nexus: Supply Chain Visualizer](https://github.com/mariarodr1136/SupplyChainVisualizer) | Java · Spring Boot · React · PostgreSQL · Docker | Full-stack logistics dashboard with 20+ REST endpoints, JWT auth, Dockerized deployment, Leaflet maps, and Chart.js visualizations |
-| [GenAI: Voice-Driven Mock Interviewer](https://github.com/mariarodr1136/GenAI-Technical-Interviewer) | React · Vite · Node.js · Groq API · Web Speech API · MediaRecorder | Voice-to-AI interview pipeline: Groq Whisper transcription → Llama 3 adaptive questions → browser TTS playback, with AI-generated debrief |
+| [GenAI: Voice-Driven Mock Interviewer](https://github.com/mariarodr1136/GenAI-Technical-Interviewer) | React · Vite · Node.js · Groq API · Web Speech API · MediaRecorder | Voice-to-AI interview pipeline: Groq Whisper Large v3 transcription → Groq Qwen3.6 27B adaptive questions → browser TTS playback, with AI-generated debrief |
 | [VestLab: Micro-Investment Platform](https://github.com/mariarodr1136/MicroInvestmentPlatform) | React · Node.js · Express · MongoDB · Alpha Vantage API | MERN trading simulator with JWT auth, real-time stock data, Chart.js P&L tracking, and a competitive leaderboard |
 | [FraudWatch: Credit Card Fraud Detector](https://github.com/mariarodr1136/FraudDetectionSystem) | Python · Flask · scikit-learn · Plotly | Random Forest fraud detection pipeline (99.95% accuracy, 83.91% F1) with an interactive Plotly dashboard |
 | [Retro-Folio: Windows 95-Style Portfolio](https://github.com/mariarodr1136/Retro-Folio) | HTML · CSS · JavaScript · Node.js · Express · WebAssembly | Retro portfolio styled as a Windows 95 desktop — draggable windows, taskbar, Start menu, Clippy assistant, Minesweeper, Space Cadet Pinball (WASM), and Solitaire |
 | [Operation Roomba: Stealth Cleaning Game](https://github.com/mariarodr1136/OperationRoomba) | HTML5 Canvas · JavaScript · Web Audio API | Top-down stealth game — five procedurally generated rooms, noise meter, battery, combo multiplier, and fully synthesized audio |
-| [Raspberry Pi Lab: Hardware Experiments](https://github.com/mariarodr1136/RaspberryPiLab) | Python · Raspberry Pi · GPIO | Hardware interfacing experiments: PIR motion detection, RFID access control, ultrasonic distance sensing, and LCD display |
+| [Raspberry Pi Lab: Hardware Projects](https://github.com/mariarodr1136/RaspberryPiLab) | Python · Raspberry Pi · GPIO | Curated Raspberry Pi hardware project collection — GPIO interfacing, sensor integration, ADC applications, and embedded Python prototypes |
 
 ---
 
@@ -127,9 +127,9 @@ Portfolio/
     ├── genai/        preview.png + preview.mp4
     ├── jetset/       preview.png + preview.mp4
     ├── leafmedic/    preview.png + preview.mp4
-    ├── microinvestment/ preview.png + preview.mp4
+    ├── vestlab/      preview.png + preview.mp4
     ├── nexus/        preview.png + preview.mp4
-    ├── operationroomba/ preview.png + Roomba.mp4
+    ├── operationroomba/ preview.png + preview.mp4
     ├── raspberrypilab/  preview.png + preview.mp4
     └── retrofolio/   preview.png + preview.mp4
 ```
