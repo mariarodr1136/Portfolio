@@ -1409,6 +1409,60 @@
       transform: rotate(-6deg);
     }
 
+    /* ── MOBILE ── */
+    @media (max-width: 600px) {
+      nav { max-width: calc(100vw - 2rem); }
+
+      #who { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .hero-layout { align-items: center; }
+      .polaroid-wrap { margin-right: 0; transform: none; align-self: center; }
+      .hero-photo { width: clamp(150px, 46vw, 200px); }
+      .hero-text { text-align: center; }
+      .hero-actions { display: grid; grid-template-columns: auto auto; gap: .5rem; justify-content: center; }
+      .hero-tagline { margin-left: auto; margin-right: auto; }
+      .hero-sub { margin-left: auto; margin-right: auto; }
+
+      #do { padding-left: 1rem; padding-right: 1rem; }
+      .do-headline { text-align: center; }
+      .do-eyebrow { text-align: center; }
+      .skills-groups { grid-template-columns: 1fr; }
+      .skill-group { align-items: center; text-align: center; }
+      .exp-laptop { display: none; }
+      .exp-aside {
+        position: static;
+        top: auto; right: auto;
+        margin-bottom: .6rem;
+        font-size: 20px;
+        background-image: none;
+        padding-bottom: 0;
+        text-align: center;
+      }
+
+      #work { padding-left: 1rem; padding-right: 1rem; }
+
+      #made .section-head { white-space: normal; padding-left: 1.5rem; padding-right: 1.5rem; }
+      .projects-wrap { overflow: visible; }
+      .projects-track { flex-direction: column !important; transform: none !important; }
+      .projects-page { min-width: 100% !important; width: 100% !important; }
+      .projects--two-col { grid-template-columns: 1fr; }
+      .projects-container::before,
+      .projects-container::after { display: none; }
+      .proj-nav { display: none; }
+      .proj-note { display: none; }
+
+      #contact { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .project-actions { margin-top: .2rem; }
+
+      .contact-intro { transform: rotate(-2deg); }
+      .contact-sub { white-space: normal; font-size: clamp(12px, 3.5vw, 15px); }
+      .contact-alt-links { flex-wrap: wrap; gap: 1rem; }
+    }
+
+    @media (max-width: 400px) {
+      .nav-links { gap: .85rem; }
+      .nav-links a { font-size: .68rem; letter-spacing: .04em; }
+      .hero-name { font-size: 46px; }
+    }
 
   </style>
 </head>
@@ -2028,6 +2082,7 @@
       touchStartY = e.touches[0].clientY;
     }, { passive: true });
     window.addEventListener('touchend', e => {
+      if (window.innerWidth < 768) return;
       const dy = touchStartY - e.changedTouches[0].clientY;
       if (Math.abs(dy) > 50) snapTo(snapIdx + (dy > 0 ? 1 : -1));
     }, { passive: true });

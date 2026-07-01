@@ -59,7 +59,7 @@ https://github.com/user-attachments/assets/d6313315-247c-4da6-9715-f1dfe3cbe06e
 - **Oval text highlights**: CSS `::before` pseudo-element draws a hand-drawn oval around key words.
 - **Wavy underline accent**: Decorative wavy `text-decoration` on headline emphasis spans.
 - **Polaroid photo**: CSS tape strips, box-shadow, and slight rotation on the hero photo.
-- **Responsive layout**: Clamp-based font sizing and flexible grids adapt from mobile to desktop.
+- **Responsive layout**: Clamp-based font sizing and flexible grids adapt from mobile to desktop. On viewports ≤ 600px: hero text and buttons are centered, CTA buttons collapse into a 2×2 grid, the projects carousel converts to a vertically stacked list, section snap-scrolling is disabled so long sections scroll freely, and overflow-causing styles (`white-space: nowrap`, absolute-positioned decorations) are reset.
 - **Smooth scroll**: `scroll-behavior: smooth` and `IntersectionObserver`-driven nav highlighting.
 
 ---
