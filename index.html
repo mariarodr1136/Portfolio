@@ -730,7 +730,7 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding-top: clamp(1.5rem, 3vw, 2.5rem);
+      padding-top: clamp(2.25rem, 4.25vw, 3.5rem);
       background: #ffffff;
       max-width: 100%;
       margin: 0;
@@ -739,7 +739,7 @@
 
     #made .section-head {
       font-family: Fraunces, serif;
-      font-size: clamp(22px, 3vw, 38px);
+      font-size: clamp(20px, 2.6vw, 32px);
       font-weight: 500;
       letter-spacing: -.015em;
       line-height: 1.08;
@@ -748,7 +748,7 @@
       white-space: nowrap;
       max-width: none;
       margin: 0 auto .4rem;
-      padding: 2.2rem 1rem 1.1rem;
+      padding: .6rem 1rem .6rem;
     }
 
     #made .section-sub {
@@ -759,68 +759,92 @@
 
     .projects-container {
       position: relative;
-      margin-left: calc(-1 * clamp(2rem, 8vw, 6rem));
-      margin-right: calc(-1 * clamp(2rem, 8vw, 6rem));
-    }
-
-    .projects-wrap {
-      overflow: hidden;
-    }
-
-    .projects-track {
-      display: flex;
-      flex-wrap: nowrap;
-      align-items: stretch;
-      gap: .85rem;
-    }
-
-    .projects-page {
-      min-width: 80%;
-      transition: opacity .4s ease;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .projects-container::before,
-    .projects-container::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      width: 20%;
-      pointer-events: none;
-      z-index: 4;
-    }
-
-    .projects-container::before {
-      left: 0;
-      background: linear-gradient(to right,
-        rgba(255,255,255,0.55) 0%,
-        rgba(255,255,255,0.28) 35%,
-        rgba(255,255,255,0.06) 70%,
-        transparent 100%);
-    }
-
-    .projects-container::after {
-      right: 0;
-      background: linear-gradient(to left,
-        rgba(255,255,255,0.55) 0%,
-        rgba(255,255,255,0.28) 35%,
-        rgba(255,255,255,0.06) 70%,
-        transparent 100%);
+      max-width: 1120px;
+      width: 100%;
+      margin: 0 auto;
     }
 
     .projects {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      grid-template-rows: 1fr 1fr;
+      display: flex;
+      flex-direction: column;
       gap: .85rem;
       border-top: none;
-      flex: 1;
     }
 
-    .projects--two-col {
-      grid-template-columns: 1fr 1fr;
+    .projects-featured-col {
+      display: flex;
+      flex-direction: row;
+      gap: .85rem;
+      width: calc(100% + 9rem);
+      margin-left: -4.5rem;
+    }
+
+    .projects-featured-col .project-item--featured {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .projects-small-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: .85rem;
+      width: 90%;
+      margin: 0 auto;
+    }
+
+    .projects-small-grid .project-item {
+      min-width: 0;
+    }
+
+    .project-item--featured .project-img {
+      aspect-ratio: 16/8.8;
+    }
+
+    .project-item--featured .project-name {
+      font-size: .68rem;
+    }
+
+    .project-item--featured .project-desc {
+      font-size: .68rem;
+    }
+
+    .project-item--featured .project-tag {
+      font-size: .56rem;
+      padding: .1rem .45rem;
+    }
+
+    .project-item--featured .btn-proj {
+      font-size: .6rem;
+      padding: .25rem .6rem;
+    }
+
+    .project-item[data-href="https://jetset-franchise-intelligence.onrender.com/"] .project-img img,
+    .project-item[data-href="https://jetset-franchise-intelligence.onrender.com/"] .project-img video {
+      object-position: center 30%;
+      transform: scale(1);
+    }
+
+    .projects-small-grid .project-img {
+      aspect-ratio: 16/8.8;
+    }
+
+    .projects-small-grid .project-name {
+      font-size: .52rem;
+    }
+
+    .projects-small-grid .project-desc {
+      font-size: .64rem;
+      line-height: 1.35;
+    }
+
+    .projects-small-grid .project-tag {
+      font-size: .5rem;
+      padding: .06rem .38rem;
+    }
+
+    .projects-small-grid .btn-proj {
+      font-size: .56rem;
+      padding: .2rem .5rem;
     }
 
 
@@ -846,7 +870,7 @@
 
     .project-img {
       width: 100%;
-      aspect-ratio: 16/7.8;
+      aspect-ratio: 16/9;
       background: #fdfcfa;
       border-radius: 3px;
       display: flex;
@@ -876,7 +900,8 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: top;
+      object-position: center;
+      transform: scale(1.06);
       display: block;
       position: absolute;
       top: 0;
@@ -901,43 +926,6 @@
       opacity: 1;
     }
 
-    .project-item[data-href="https://atmosphere-analyzer-dashboard.onrender.com/"] .project-img video {
-      object-position: center 25%;
-    }
-
-    .project-item[data-href="https://atmosphere-analyzer-dashboard.onrender.com/"] .project-img img {
-      object-position: center 40%;
-    }
-
-    .project-item[data-href="https://genai-technical-interviewer-1.onrender.com/"] .project-img img {
-      object-position: center 15%;
-    }
-
-    .project-item[data-href="https://operationroomba.onrender.com/"] .project-img img,
-    .project-item[data-href="https://operationroomba.onrender.com/"] .project-img video {
-      object-position: center top;
-    }
-
-    .project-item[data-href="https://microinvestmentplatform-frontend.onrender.com/"] .project-img img,
-    .project-item[data-href="https://microinvestmentplatform-frontend.onrender.com/"] .project-img video {
-      object-position: center 40%;
-    }
-
-    .project-item[data-href="https://frauddetectionsystem-qcmh.onrender.com/"] .project-img img {
-      transform: scale(1.2);
-      transform-origin: center top;
-    }
-
-    .project-item[data-href="https://maria-portfolio-envz.onrender.com/"] .project-img img,
-    .project-item[data-href="https://maria-portfolio-envz.onrender.com/"] .project-img video {
-      top: -5px;
-      height: calc(100% + 5px);
-    }
-
-    .project-item[data-href="https://maria-portfolio-envz.onrender.com/"] .project-img video {
-      object-position: center top;
-    }
-
     .project-name {
       font-size: .62rem;
       font-weight: 600;
@@ -945,20 +933,60 @@
       text-transform: uppercase;
       color: var(--teal);
       margin-bottom: -.25rem;
-      margin-top: .35rem;
+      margin-top: .25rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .project-desc {
       font-size: .75rem;
       color: var(--muted);
-      line-height: 1.5;
+      line-height: 1.4;
       flex: 1;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .3rem;
+      margin-top: .4rem;
+    }
+
+    .project-tag {
+      font-size: .58rem;
+      font-weight: 500;
+      letter-spacing: .04em;
+      color: var(--muted);
+      background: #f4f1ec;
+      border: 1px solid #eeebe6;
+      border-radius: 999px;
+      padding: .1rem .45rem;
+      white-space: nowrap;
+    }
+
+    .more-projects {
+      display: block;
+      width: fit-content;
+      margin: .45rem auto 0;
+      font-size: .72rem;
+      font-weight: 500;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color .2s;
+    }
+
+    .more-projects:hover { color: var(--teal); text-decoration: none; }
 
     .project-actions {
       display: flex;
       gap: .5rem;
-      margin-top: -.7rem;
+      margin-top: .2rem;
       justify-content: center;
     }
 
@@ -980,45 +1008,6 @@
     }
 
     .btn-proj:hover { background: var(--text); color: #fff; border-color: var(--text); text-decoration: none; }
-
-    .proj-nav {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 2.2rem;
-      height: 2.2rem;
-      border-radius: 50%;
-      border: 1.5px solid var(--teal);
-      background: rgba(255,255,255,0.45);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      color: var(--teal);
-      z-index: 5;
-      padding: 0;
-      box-shadow: 0 2px 8px rgba(0,0,0,.07);
-      transition: border-color .2s, color .2s, box-shadow .2s;
-    }
-
-    .proj-nav:hover {
-      border-color: var(--teal);
-      color: var(--teal);
-      box-shadow: 0 4px 12px rgba(0,0,0,.12);
-    }
-
-    .proj-nav-right { right: 1rem; background: rgba(255,255,255,0.92); transition: opacity .3s, border-color .2s, color .2s, box-shadow .2s; }
-
-    .proj-nav-left {
-      left: 1rem;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity .3s, border-color .2s, color .2s, box-shadow .2s;
-    }
-
-    .proj-nav-left.visible { opacity: 1; pointer-events: auto; background: rgba(255,255,255,0.92); }
 
     .proj-note {
       position: absolute;
@@ -1309,7 +1298,8 @@
     @media (max-width: 600px) {
       .tl-item { grid-template-columns: 1fr; gap: .2rem; }
       .tl-date { margin-bottom: .2rem; }
-      .projects { grid-template-columns: 1fr; }
+      .projects-featured-col { flex-direction: column; width: 100%; margin-left: 0; }
+      .projects-small-grid { grid-template-columns: 1fr; }
       .project-status { text-align: left; }
       .email-row { grid-template-columns: 1fr; }
       nav { top: .8rem; padding: .55rem 1.2rem; }
@@ -1355,42 +1345,6 @@
     }
 
     .section-arrow svg { display: block; }
-
-    .early-dev-overlay {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      background: none;
-      display: flex;
-      align-items: flex-start;
-      justify-content: flex-end;
-      z-index: 3;
-      pointer-events: none;
-    }
-
-    .early-dev-overlay span {
-      font-family: Fraunces, serif;
-      font-size: clamp(6px, 0.75vw, 10px);
-      font-weight: 600;
-      letter-spacing: .01em;
-      text-align: center;
-      line-height: 1.1;
-      text-transform: none;
-      text-shadow: 0 2px 8px rgba(0,0,0,.4);
-      color: #fff;
-      position: relative;
-      display: inline-block;
-      padding: .55rem 1.2rem;
-    }
-
-    .early-dev-overlay span::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      transform: translate(4px, 2px);
-      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 65' preserveAspectRatio='none'%3E%3Cpath d='M75,5 C96,2 124,8 133,22 C140,34 136,49 122,55 C106,61 80,63 54,61 C30,59 8,51 3,37 C-2,23 6,10 25,6 C39,3 57,7 75,5' fill='%231a6b6b' fill-opacity='.2' stroke='white' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat center / 100% 100%;
-      pointer-events: none;
-    }
 
     .oval-highlight {
       position: relative;
@@ -1441,13 +1395,8 @@
       #work { padding-left: 1rem; padding-right: 1rem; }
 
       #made .section-head { white-space: normal; padding-left: 1.5rem; padding-right: 1.5rem; }
-      .projects-wrap { overflow: visible; }
-      .projects-track { flex-direction: column !important; transform: none !important; }
-      .projects-page { min-width: 100% !important; width: 100% !important; }
-      .projects--two-col { grid-template-columns: 1fr; }
-      .projects-container::before,
-      .projects-container::after { display: none; }
-      .proj-nav { display: none; }
+      .projects-featured-col { flex-direction: column; width: 100%; margin-left: 0; }
+      .projects-small-grid { grid-template-columns: 1fr; }
       .proj-note { display: none; }
 
       #contact { padding-left: 1.5rem; padding-right: 1.5rem; }
@@ -1605,75 +1554,53 @@
       <img class="proj-note" src="media/icons/star.png" alt="star" />
 
       <div class="projects-container">
-      <button class="proj-nav proj-nav-left" id="proj-prev" aria-label="Previous projects"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button>
-      <button class="proj-nav proj-nav-right" id="proj-next" aria-label="Next projects"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></button>
-      <div class="projects-wrap">
-      <div class="projects-track" id="projects-track">
-      <div class="projects-page">
       <div class="projects">
 
-        <div class="project-item" data-href="https://github.com/mariarodr1136/LeafMedic">
-          <div class="project-img">
-            <img src="media/leafmedic/preview.png" alt="LeafMedic preview" />
-            <video src="media/leafmedic/preview.mp4" muted loop playsinline></video>
-          </div>
-          <div class="project-name">LeafMedic: Plant Disease Classifier</div>
-          <div class="project-desc">Raspberry Pi ML system for real-time plant disease classification using TensorFlow Lite and computer vision, with a PyQt5 interface.</div>
-          <div class="project-actions">
-            <a class="btn-proj" href="https://github.com/mariarodr1136/LeafMedic" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> Repo</a>
-          </div>
-        </div>
-
-        <div class="project-item" data-href="https://supply-chain-visualizer.onrender.com/">
+      <div class="projects-featured-col">
+        <div class="project-item project-item--featured" data-href="https://supply-chain-visualizer.onrender.com/">
           <div class="project-img">
             <img src="media/nexus/preview.png" alt="Nexus preview" />
             <video src="media/nexus/preview.mp4" muted loop playsinline></video>
           </div>
-          <div class="project-name">Nexus: Supply Chain Visualizer</div>
-          <div class="project-desc">Full-stack supply chain platform with 25+ REST endpoints, JWT auth, Docker deployment, and interactive maps.</div>
+          <div class="project-name">Nexus: Full-Stack Supply Chain Visualizer</div>
+          <div class="project-tags"><span class="project-tag">Full-Stack</span><span class="project-tag">REST API</span><span class="project-tag">JWT Auth</span><span class="project-tag">Docker</span></div>
+          <div class="project-desc">Supply chain platform with 25+ REST endpoints.</div>
           <div class="project-actions">
             <a class="btn-proj" href="https://github.com/mariarodr1136/SupplyChainVisualizer" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> Repo</a>
             <a class="btn-proj" href="https://supply-chain-visualizer.onrender.com/" target="_blank" rel="noopener">↗ Live Demo</a>
           </div>
         </div>
 
-        <div class="project-item" data-href="https://genai-technical-interviewer-1.onrender.com/">
+        <div class="project-item project-item--featured" data-href="https://genai-technical-interviewer-1.onrender.com/">
           <div class="project-img">
             <img src="media/genai/preview.png" alt="GenAI preview" />
             <video src="media/genai/preview.mp4" muted loop playsinline></video>
           </div>
-          <div class="project-name">GenAI: Voice-Driven Mock Interview App</div>
-          <div class="project-desc">Voice-to-AI interview pipeline using Groq Whisper Large v3 for transcription and Groq Qwen3.6 27B for interview reasoning.</div>
+          <div class="project-name">GenAI: Voice AI Mock Interviewer</div>
+          <div class="project-tags"><span class="project-tag">Groq</span><span class="project-tag">Whisper v3</span><span class="project-tag">LLM Pipeline</span><span class="project-tag">Voice AI</span></div>
+          <div class="project-desc">AI mock interviews powered by Groq Whisper.</div>
           <div class="project-actions">
             <a class="btn-proj" href="https://github.com/mariarodr1136/GenAI-Technical-Interviewer" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> Repo</a>
             <a class="btn-proj" href="https://genai-technical-interviewer-1.onrender.com/" target="_blank" rel="noopener">↗ Live Demo</a>
           </div>
         </div>
 
-        <div class="project-item" data-href="https://maria-portfolio-envz.onrender.com/">
-          <div class="project-img">
-            <img src="media/raspberrypilab/preview.png" alt="Raspberry Pi Lab preview" />
-            <video src="media/raspberrypilab/preview.mp4" muted loop playsinline></video>
-          </div>
-          <div class="project-name">Raspberry Pi Lab: Hardware Projects</div>
-          <div class="project-desc">Curated Raspberry Pi hardware project collection — GPIO interfacing, sensor integration, ADC applications, and embedded Python prototypes.</div>
-          <div class="project-actions">
-            <a class="btn-proj" href="https://github.com/mariarodr1136/RaspberryPiLab" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> Repo</a>
-          </div>
-        </div>
-
-        <div class="project-item" data-href="https://jetset-franchise-intelligence.onrender.com/">
+        <div class="project-item project-item--featured" data-href="https://jetset-franchise-intelligence.onrender.com/">
           <div class="project-img">
             <img src="media/jetset/preview.png" alt="JETSET preview" />
             <video src="media/jetset/preview.mp4" muted loop playsinline></video>
           </div>
           <div class="project-name">JETSET: Franchise Intelligence Dashboard</div>
-          <div class="project-desc">Real-time franchise dashboard with SSE alerts, Gemini AI streaming, and a churn model scoring 15K+ members.</div>
+          <div class="project-tags"><span class="project-tag">Gemini AI</span><span class="project-tag">SSE</span><span class="project-tag">Machine Learning</span></div>
+          <div class="project-desc">Real-time SSE dashboard with a churn model scoring 15K+ members.</div>
           <div class="project-actions">
             <a class="btn-proj" href="https://github.com/mariarodr1136/JETSET-Franchise-Intelligence" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> Repo</a>
             <a class="btn-proj" href="https://jetset-franchise-intelligence.onrender.com/" target="_blank" rel="noopener">↗ Live Demo</a>
           </div>
         </div>
+      </div><!-- end .projects-featured-col -->
+
+      <div class="projects-small-grid">
 
         <div class="project-item" data-href="https://atmosphere-analyzer-dashboard.onrender.com/">
           <div class="project-img">
@@ -1681,82 +1608,44 @@
             <video src="media/atmosphere/preview.mp4" muted loop playsinline></video>
           </div>
           <div class="project-name">Atmosphere: Real-Time AQI Monitor</div>
-          <div class="project-desc">Live weather and AQI dashboard over WebSockets with Redis scaling, z-score anomaly detection, and CSV/PDF export.</div>
+          <div class="project-tags"><span class="project-tag">WebSockets</span><span class="project-tag">Redis</span><span class="project-tag">Anomaly Detection</span></div>
+          <div class="project-desc">Live AQI dashboard with WebSockets and anomaly detection.</div>
           <div class="project-actions">
             <a class="btn-proj" href="https://github.com/mariarodr1136/AtmosphereAnalyzer" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> Repo</a>
             <a class="btn-proj" href="https://atmosphere-analyzer-dashboard.onrender.com/" target="_blank" rel="noopener">↗ Live Demo</a>
           </div>
         </div>
 
-      </div><!-- end .projects -->
-      </div><!-- end .projects-page -->
-
-      <div class="projects-page" id="projects-page-2">
-      <div class="projects projects--two-col">
+        <div class="project-item" data-href="https://github.com/mariarodr1136/LeafMedic">
+          <div class="project-img">
+            <img src="media/leafmedic/preview.png" alt="LeafMedic preview" />
+            <video src="media/leafmedic/preview.mp4" muted loop playsinline></video>
+          </div>
+          <div class="project-name">LeafMedic: Plant Disease Classifier</div>
+          <div class="project-tags"><span class="project-tag">Raspberry Pi</span><span class="project-tag">TensorFlow Lite</span><span class="project-tag">Computer Vision</span></div>
+          <div class="project-desc">Real-time plant disease classifier on a Raspberry Pi.</div>
+          <div class="project-actions">
+            <a class="btn-proj" href="https://github.com/mariarodr1136/LeafMedic" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> Repo</a>
+          </div>
+        </div>
 
         <div class="project-item" data-href="https://microinvestmentplatform-frontend.onrender.com/">
           <div class="project-img">
             <img src="media/vestlab/preview.png" alt="VestLab preview" />
             <video src="media/vestlab/preview.mp4" muted loop playsinline></video>
           </div>
-          <div class="project-name">VestLab: Micro-Investment Full-Stack Platform</div>
-          <div class="project-desc">Investment portfolio simulator built with React, Node/Express, and MongoDB — lets beginners explore real market strategies.</div>
+          <div class="project-name">VestLab: Micro-Investment Platform</div>
+          <div class="project-tags"><span class="project-tag">React</span><span class="project-tag">Node/Express</span><span class="project-tag">MongoDB</span></div>
+          <div class="project-desc">Investment simulator built with React and MongoDB.</div>
           <div class="project-actions">
             <a class="btn-proj" href="https://github.com/mariarodr1136/MicroInvestmentPlatform" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> Repo</a>
             <a class="btn-proj" href="https://microinvestmentplatform-frontend.onrender.com/" target="_blank" rel="noopener">↗ Live Demo</a>
           </div>
         </div>
-
-        <div class="project-item" data-href="https://maria-portfolio-envz.onrender.com/">
-          <div class="project-img">
-            <img src="media/retrofolio/preview.png" alt="Retro-Folio preview" />
-            <video src="media/retrofolio/preview.mp4" muted loop playsinline></video>
-          </div>
-          <div class="project-name">Retro-Folio: Windows 95-Style Portfolio</div>
-          <div class="project-desc">Retro Windows 95-inspired portfolio site in vanilla JavaScript — pixel-perfect desktop UI with draggable windows and icons.</div>
-          <div class="project-actions">
-            <a class="btn-proj" href="https://github.com/mariarodr1136/Retro-Folio" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> Repo</a>
-            <a class="btn-proj" href="https://maria-portfolio-envz.onrender.com/" target="_blank" rel="noopener">↗ Live Demo</a>
-          </div>
-        </div>
-
-        <div class="project-item" data-href="https://frauddetectionsystem-qcmh.onrender.com/">
-          <div class="project-img">
-            <img src="media/fraudwatch/preview.png" alt="FraudWatch preview" />
-            <video src="media/fraudwatch/preview.mp4" muted loop playsinline></video>
-          </div>
-          <div class="project-name">FraudWatch: Credit Card Fraud Detector</div>
-          <div class="project-desc">ML fraud detection system using Random Forest on credit card data — interactive confusion matrix heatmap and Flask web interface.</div>
-          <div class="project-actions">
-            <a class="btn-proj" href="https://github.com/mariarodr1136/FraudDetectionSystem" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> Repo</a>
-            <a class="btn-proj" href="https://frauddetectionsystem-qcmh.onrender.com/" target="_blank" rel="noopener">↗ Live Demo</a>
-          </div>
-        </div>
-
-        <div class="project-item" data-href="https://operationroomba.onrender.com/">
-          <div class="project-img">
-            <img src="media/operationroomba/preview.png" alt="Operation Roomba preview" />
-            <video src="media/operationroomba/preview.mp4" muted loop playsinline></video>
-            <div class="early-dev-overlay"><span>early<br>development</span></div>
-          </div>
-          <div class="project-name">Operation Roomba: Stealth Cleaning Game</div>
-          <div class="project-desc">Top-down stealth game in vanilla JS — navigate five procedurally generated rooms as a Roomba without waking the family.</div>
-          <div class="project-actions">
-            <a class="btn-proj" href="https://github.com/mariarodr1136/OperationRoomba" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> Repo</a>
-            <a class="btn-proj" href="https://operationroomba.onrender.com/" target="_blank" rel="noopener">↗ Live Demo</a>
-          </div>
-        </div>
-
-        
-
-
-        
-
+      </div><!-- end .projects-small-grid -->
 
       </div><!-- end .projects -->
-      </div><!-- end .projects-page -->
-      </div><!-- end .projects-track -->
-      </div><!-- end .projects-wrap -->
+      <a class="more-projects" href="https://github.com/mariarodr1136" target="_blank" rel="noopener">More on GitHub →</a>
       </div><!-- end .projects-container -->
 
     </section>
@@ -1880,82 +1769,6 @@
       document.getElementById('email-input').value = '';
       show('state-message');
     }
-
-    // ── PROJECT CAROUSEL ──
-    const projTrack = document.getElementById('projects-track');
-    const projWrap  = projTrack.parentElement;
-    const projPages = [...projTrack.querySelectorAll('.projects-page')];
-    const projNext  = document.getElementById('proj-next');
-    const projPrev  = document.getElementById('proj-prev');
-    let projPage = 0;
-    const totalProjPages = projPages.length;
-
-    let trackX = 0;
-
-    function pageOffsetLeft(n) { return projPages[n].offsetLeft; }
-    function maxTrackX() {
-      const last = projPages[totalProjPages - 1];
-      return -(last.offsetLeft + last.offsetWidth - projWrap.offsetWidth);
-    }
-
-    function updateProjUI() {
-      projPages.forEach((p, i) => p.classList.toggle('is-active', i === projPage));
-      const hasPrev = projPage > 0;
-      projPrev.classList.toggle('visible', hasPrev);
-      const isLast = projPage >= totalProjPages - 1;
-      projNext.style.opacity = isLast ? '0' : '1';
-      projNext.style.pointerEvents = isLast ? 'none' : 'auto';
-    }
-
-    function snapToPage(n) {
-      projPage = Math.max(0, Math.min(n, totalProjPages - 1));
-      trackX = projPage === totalProjPages - 1 ? maxTrackX() : -pageOffsetLeft(projPage);
-      projTrack.style.transition = 'transform .35s cubic-bezier(.4,0,.2,1)';
-      projTrack.style.transform = `translateX(${trackX}px)`;
-      updateProjUI();
-    }
-
-    // Trackpad: move live, no auto-snap
-    projWrap.addEventListener('wheel', e => {
-      if (Math.abs(e.deltaY) > Math.abs(e.deltaX) * 1.2) return;
-      e.preventDefault();
-      trackX = Math.max(maxTrackX(), Math.min(0, trackX - e.deltaX));
-      projTrack.style.transition = 'none';
-      projTrack.style.transform = `translateX(${trackX}px)`;
-      const vpCenter = projWrap.offsetWidth / 2;
-      const nearest = projPages.reduce((best, p, i) => {
-        const d  = Math.abs(p.offsetLeft + p.offsetWidth / 2 + trackX - vpCenter);
-        const bd = Math.abs(projPages[best].offsetLeft + projPages[best].offsetWidth / 2 + trackX - vpCenter);
-        return d < bd ? i : best;
-      }, 0);
-      if (nearest !== projPage) { projPage = nearest; updateProjUI(); }
-    }, { passive: false });
-
-    // Mouse drag
-    let isDragging = false, dragStartX = 0, dragStartTrackX = 0;
-    projWrap.addEventListener('mousedown', e => { isDragging = true; dragStartX = e.clientX; dragStartTrackX = trackX; });
-    window.addEventListener('mouseup', () => { isDragging = false; });
-    projWrap.addEventListener('mousemove', e => {
-      if (!isDragging) return;
-      trackX = Math.max(maxTrackX(), Math.min(0, dragStartTrackX + (e.clientX - dragStartX)));
-      projTrack.style.transition = 'none';
-      projTrack.style.transform = `translateX(${trackX}px)`;
-    });
-
-    projNext.addEventListener('click', () => snapToPage(projPage + 1));
-    projPrev.addEventListener('click', () => snapToPage(projPage - 1));
-
-    function sizePage2() {
-      const gap = parseFloat(getComputedStyle(document.documentElement).fontSize) * 0.85;
-      const cardW = (projPages[0].offsetWidth - 2 * gap) / 3;
-      const p2w = Math.round(2 * cardW + gap);
-      const p2 = document.getElementById('projects-page-2');
-      if (p2) { p2.style.minWidth = p2w + 'px'; p2.style.width = p2w + 'px'; }
-    }
-
-    sizePage2();
-    window.addEventListener('resize', () => { sizePage2(); });
-    snapToPage(0);
 
     // ── PROJECT HOVER VIDEO ──
     document.querySelectorAll('.project-item').forEach(item => {
