@@ -818,6 +818,18 @@
       padding: .25rem .6rem;
     }
 
+    .project-item[data-href="https://supply-chain-visualizer.onrender.com/"] .project-img img,
+    .project-item[data-href="https://supply-chain-visualizer.onrender.com/"] .project-img video {
+      object-position: center top;
+      transform: scale(1);
+    }
+
+    .project-item[data-href="https://genai-technical-interviewer-1.onrender.com/"] .project-img img,
+    .project-item[data-href="https://genai-technical-interviewer-1.onrender.com/"] .project-img video {
+      object-position: center 54%;
+      transform: scale(1);
+    }
+
     .project-item[data-href="https://jetset-franchise-intelligence.onrender.com/"] .project-img img,
     .project-item[data-href="https://jetset-franchise-intelligence.onrender.com/"] .project-img video {
       object-position: center 30%;
@@ -1023,6 +1035,33 @@
     }
 
 
+    .proj-caption {
+      position: absolute;
+      bottom: 16rem;
+      right: -8.5rem;
+      font-family: Caveat, cursive;
+      font-size: 1.3rem;
+      color: var(--teal);
+      max-width: 9rem;
+      text-align: right;
+      line-height: 1.2;
+      pointer-events: none;
+      transform: rotate(4deg);
+    }
+
+    .proj-caption-arrow {
+      position: absolute;
+      bottom: 14.5rem;
+      right: -4.25rem;
+      width: 4.5rem;
+      height: 4.5rem;
+      object-fit: contain;
+      transform: rotate(-90deg);
+      filter: invert(58%) sepia(60%) saturate(400%) hue-rotate(130deg) brightness(45%);
+      pointer-events: none;
+    }
+
+
     /* ── CONTACT ── */
     #contact {
       background: #ffffff;
@@ -1107,18 +1146,12 @@
     }
 
     /* ── CONTACT ALT LINKS ── */
-    .contact-divider {
-      width: 6rem;
-      height: 1.5px;
-      background: var(--teal);
-      margin: 1.8rem auto 1.8rem;
-    }
-
     .contact-alt-links {
       display: flex;
       gap: 1.6rem;
       justify-content: center;
       align-items: center;
+      margin-top: 1.8rem;
     }
 
     .contact-alt-links a {
@@ -1398,6 +1431,8 @@
       .projects-featured-col { flex-direction: column; width: 100%; margin-left: 0; }
       .projects-small-grid { grid-template-columns: 1fr; }
       .proj-note { display: none; }
+      .proj-caption { display: none; }
+      .proj-caption-arrow { display: none; }
 
       #contact { padding-left: 1.5rem; padding-right: 1.5rem; }
       .project-actions { margin-top: .2rem; }
@@ -1563,8 +1598,8 @@
             <video src="media/nexus/preview.mp4" muted loop playsinline></video>
           </div>
           <div class="project-name">Nexus: Full-Stack Supply Chain Visualizer</div>
-          <div class="project-tags"><span class="project-tag">Full-Stack</span><span class="project-tag">REST API</span><span class="project-tag">JWT Auth</span><span class="project-tag">Docker</span></div>
-          <div class="project-desc">Supply chain platform with 25+ REST endpoints.</div>
+          <div class="project-tags"><span class="project-tag">Spring Boot</span><span class="project-tag">React</span><span class="project-tag">PostgreSQL</span><span class="project-tag">JWT Auth</span><span class="project-tag">Docker</span></div>
+          <div class="project-desc">Full-stack supply chain platform with 40+ REST endpoints.</div>
           <div class="project-actions">
             <a class="btn-proj" href="https://github.com/mariarodr1136/SupplyChainVisualizer" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> Repo</a>
             <a class="btn-proj" href="https://supply-chain-visualizer.onrender.com/" target="_blank" rel="noopener">↗ Live Demo</a>
@@ -1577,8 +1612,8 @@
             <video src="media/genai/preview.mp4" muted loop playsinline></video>
           </div>
           <div class="project-name">GenAI: Voice AI Mock Interviewer</div>
-          <div class="project-tags"><span class="project-tag">Groq</span><span class="project-tag">Whisper v3</span><span class="project-tag">LLM Pipeline</span><span class="project-tag">Voice AI</span></div>
-          <div class="project-desc">AI mock interviews powered by Groq Whisper.</div>
+          <div class="project-tags"><span class="project-tag">Groq</span><span class="project-tag">Whisper Large v3</span><span class="project-tag">Qwen3.6-27B</span><span class="project-tag">React</span><span class="project-tag">Node/Express</span></div>
+          <div class="project-desc">Real-time mock interviews with streaming voice transcription and AI feedback.</div>
           <div class="project-actions">
             <a class="btn-proj" href="https://github.com/mariarodr1136/GenAI-Technical-Interviewer" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> Repo</a>
             <a class="btn-proj" href="https://genai-technical-interviewer-1.onrender.com/" target="_blank" rel="noopener">↗ Live Demo</a>
@@ -1591,8 +1626,8 @@
             <video src="media/jetset/preview.mp4" muted loop playsinline></video>
           </div>
           <div class="project-name">JETSET: Franchise Intelligence Dashboard</div>
-          <div class="project-tags"><span class="project-tag">Gemini AI</span><span class="project-tag">SSE</span><span class="project-tag">Machine Learning</span></div>
-          <div class="project-desc">Real-time SSE dashboard with a churn model scoring 15K+ members.</div>
+          <div class="project-tags"><span class="project-tag">Next.js</span><span class="project-tag">Gemini 2.5 Flash</span><span class="project-tag">SSE</span><span class="project-tag">Prisma/SQLite</span><span class="project-tag">FTS5 Search</span></div>
+          <div class="project-desc">Real-time SSE dashboard with churn scoring (0.84 AUC) across 69 studios.</div>
           <div class="project-actions">
             <a class="btn-proj" href="https://github.com/mariarodr1136/JETSET-Franchise-Intelligence" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> Repo</a>
             <a class="btn-proj" href="https://jetset-franchise-intelligence.onrender.com/" target="_blank" rel="noopener">↗ Live Demo</a>
@@ -1608,8 +1643,8 @@
             <video src="media/atmosphere/preview.mp4" muted loop playsinline></video>
           </div>
           <div class="project-name">Atmosphere: Real-Time AQI Monitor</div>
-          <div class="project-tags"><span class="project-tag">WebSockets</span><span class="project-tag">Redis</span><span class="project-tag">Anomaly Detection</span></div>
-          <div class="project-desc">Live AQI dashboard with WebSockets and anomaly detection.</div>
+          <div class="project-tags"><span class="project-tag">Django Channels</span><span class="project-tag">Redis</span><span class="project-tag">Z-Score Detection</span></div>
+          <div class="project-desc">Live weather &amp; AQI dashboard with z-score anomaly detection.</div>
           <div class="project-actions">
             <a class="btn-proj" href="https://github.com/mariarodr1136/AtmosphereAnalyzer" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> Repo</a>
             <a class="btn-proj" href="https://atmosphere-analyzer-dashboard.onrender.com/" target="_blank" rel="noopener">↗ Live Demo</a>
@@ -1622,8 +1657,8 @@
             <video src="media/leafmedic/preview.mp4" muted loop playsinline></video>
           </div>
           <div class="project-name">LeafMedic: Plant Disease Classifier</div>
-          <div class="project-tags"><span class="project-tag">Raspberry Pi</span><span class="project-tag">TensorFlow Lite</span><span class="project-tag">Computer Vision</span></div>
-          <div class="project-desc">Real-time plant disease classifier on a Raspberry Pi.</div>
+          <div class="project-tags"><span class="project-tag">Raspberry Pi</span><span class="project-tag">TensorFlow Lite</span><span class="project-tag">MobileNetV1</span></div>
+          <div class="project-desc">Real-time 16-class disease classifier on a Raspberry Pi 4.</div>
           <div class="project-actions">
             <a class="btn-proj" href="https://github.com/mariarodr1136/LeafMedic" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> Repo</a>
           </div>
@@ -1635,8 +1670,8 @@
             <video src="media/vestlab/preview.mp4" muted loop playsinline></video>
           </div>
           <div class="project-name">VestLab: Micro-Investment Platform</div>
-          <div class="project-tags"><span class="project-tag">React</span><span class="project-tag">Node/Express</span><span class="project-tag">MongoDB</span></div>
-          <div class="project-desc">Investment simulator built with React and MongoDB.</div>
+          <div class="project-tags"><span class="project-tag">React</span><span class="project-tag">Node/Express</span><span class="project-tag">MongoDB</span><span class="project-tag">Alpha Vantage API</span></div>
+          <div class="project-desc">Investment simulator with live Alpha Vantage market data.</div>
           <div class="project-actions">
             <a class="btn-proj" href="https://github.com/mariarodr1136/MicroInvestmentPlatform" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> Repo</a>
             <a class="btn-proj" href="https://microinvestmentplatform-frontend.onrender.com/" target="_blank" rel="noopener">↗ Live Demo</a>
@@ -1645,6 +1680,8 @@
       </div><!-- end .projects-small-grid -->
 
       </div><!-- end .projects -->
+      <span class="proj-caption">the one<br>I'm proudest<br>of right now</span>
+      <img class="proj-caption-arrow" src="media/icons/arrow.png" alt="" aria-hidden="true" />
       <a class="more-projects" href="https://github.com/mariarodr1136" target="_blank" rel="noopener">More on GitHub →</a>
       </div><!-- end .projects-container -->
 
@@ -1666,7 +1703,6 @@
         <div class="form-row">
           <button class="btn btn-solid" onclick="goToEmail()">Next →</button>
         </div>
-        <div class="contact-divider"></div>
         <div class="contact-alt-links">
           <a href="Maria Rodriguez - Online Resume.pdf" download="Maria Rodriguez - Online Resume.pdf">
             <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
