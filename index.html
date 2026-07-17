@@ -785,19 +785,20 @@
     }
 
     .projects-small-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      display: flex;
+      flex-direction: row;
       gap: .85rem;
-      width: 90%;
-      margin: 0 auto;
+      width: calc(100% + 9rem);
+      margin-left: -4.5rem;
     }
 
     .projects-small-grid .project-item {
+      flex: 1;
       min-width: 0;
     }
 
     .project-item--featured .project-img {
-      aspect-ratio: 16/8.8;
+      aspect-ratio: 16/8.0;
     }
 
     .project-item--featured .project-name {
@@ -832,39 +833,21 @@
 
     .project-item[data-href="https://jetset-franchise-intelligence.onrender.com/"] .project-img img,
     .project-item[data-href="https://jetset-franchise-intelligence.onrender.com/"] .project-img video {
-      object-position: center 30%;
+      object-position: center top;
       transform: scale(1);
     }
 
-    .projects-small-grid .project-img {
-      aspect-ratio: 16/8.8;
+    .project-item[data-href="https://atmosphere-analyzer-dashboard.onrender.com/"] .project-img img,
+    .project-item[data-href="https://atmosphere-analyzer-dashboard.onrender.com/"] .project-img video {
+      object-position: center top;
+      transform: scale(1);
     }
-
-    .projects-small-grid .project-name {
-      font-size: .52rem;
-    }
-
-    .projects-small-grid .project-desc {
-      font-size: .64rem;
-      line-height: 1.35;
-    }
-
-    .projects-small-grid .project-tag {
-      font-size: .5rem;
-      padding: .06rem .38rem;
-    }
-
-    .projects-small-grid .btn-proj {
-      font-size: .56rem;
-      padding: .2rem .5rem;
-    }
-
 
     .project-item {
       display: flex;
       flex-direction: column;
-      gap: .18rem;
-      padding: .5rem .5rem .6rem;
+      gap: .16rem;
+      padding: .5rem .5rem .5rem;
       background: #fdfcfa;
       border-radius: 6px;
       border: 1px solid #eeebe6;
@@ -913,7 +896,7 @@
       height: 100%;
       object-fit: cover;
       object-position: center;
-      transform: scale(1.06);
+      transform: scale(1);
       display: block;
       position: absolute;
       top: 0;
@@ -1037,7 +1020,7 @@
 
     .proj-caption {
       position: absolute;
-      bottom: 16rem;
+      bottom: 22.8rem;
       right: -8.5rem;
       font-family: Caveat, cursive;
       font-size: 1.3rem;
@@ -1051,10 +1034,10 @@
 
     .proj-caption-arrow {
       position: absolute;
-      bottom: 14.5rem;
+      bottom: 21.3rem;
       right: -4.25rem;
-      width: 4.5rem;
-      height: 4.5rem;
+      width: 3.8rem;
+      height: 3.8rem;
       object-fit: contain;
       transform: rotate(-90deg);
       filter: invert(58%) sepia(60%) saturate(400%) hue-rotate(130deg) brightness(45%);
@@ -1332,7 +1315,7 @@
       .tl-item { grid-template-columns: 1fr; gap: .2rem; }
       .tl-date { margin-bottom: .2rem; }
       .projects-featured-col { flex-direction: column; width: 100%; margin-left: 0; }
-      .projects-small-grid { grid-template-columns: 1fr; }
+      .projects-small-grid { flex-direction: column; width: 100%; margin-left: 0; }
       .project-status { text-align: left; }
       .email-row { grid-template-columns: 1fr; }
       nav { top: .8rem; padding: .55rem 1.2rem; }
@@ -1429,7 +1412,7 @@
 
       #made .section-head { white-space: normal; padding-left: 1.5rem; padding-right: 1.5rem; }
       .projects-featured-col { flex-direction: column; width: 100%; margin-left: 0; }
-      .projects-small-grid { grid-template-columns: 1fr; }
+      .projects-small-grid { flex-direction: column; width: 100%; margin-left: 0; }
       .proj-note { display: none; }
       .proj-caption { display: none; }
       .proj-caption-arrow { display: none; }
@@ -1637,7 +1620,7 @@
 
       <div class="projects-small-grid">
 
-        <div class="project-item" data-href="https://atmosphere-analyzer-dashboard.onrender.com/">
+        <div class="project-item project-item--featured" data-href="https://atmosphere-analyzer-dashboard.onrender.com/">
           <div class="project-img">
             <img src="media/atmosphere/preview.png" alt="Atmosphere preview" />
             <video src="media/atmosphere/preview.mp4" muted loop playsinline></video>
@@ -1651,7 +1634,7 @@
           </div>
         </div>
 
-        <div class="project-item" data-href="https://github.com/mariarodr1136/LeafMedic">
+        <div class="project-item project-item--featured" data-href="https://github.com/mariarodr1136/LeafMedic">
           <div class="project-img">
             <img src="media/leafmedic/preview.png" alt="LeafMedic preview" />
             <video src="media/leafmedic/preview.mp4" muted loop playsinline></video>
@@ -1664,7 +1647,7 @@
           </div>
         </div>
 
-        <div class="project-item" data-href="https://microinvestmentplatform-frontend.onrender.com/">
+        <div class="project-item project-item--featured" data-href="https://microinvestmentplatform-frontend.onrender.com/">
           <div class="project-img">
             <img src="media/vestlab/preview.png" alt="VestLab preview" />
             <video src="media/vestlab/preview.mp4" muted loop playsinline></video>
