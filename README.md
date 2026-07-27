@@ -2,9 +2,9 @@
 
 ![HTML](https://img.shields.io/badge/HTML-5-orange) ![CSS](https://img.shields.io/badge/CSS-3-blue) ![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-yellow) ![Google Fonts](https://img.shields.io/badge/Fonts-Google-red) ![Formspree](https://img.shields.io/badge/Forms-Formspree-blueviolet) ![Render](https://img.shields.io/badge/Deploy-Render-46E3B7)
 
-**Maria Rodriguez Portfolio** is a single-page personal portfolio site built entirely in vanilla HTML, CSS, and JavaScript — no frameworks, no build step. It presents four scroll-snapped sections: an **About** hero with a polaroid photo, an **Experience** panel covering skills, education, and a work timeline, a **Projects** carousel with hover-to-play demo videos, and a **Contact** form that submits directly via Formspree.
+**Maria Rodriguez Portfolio** is a single-page personal portfolio site built entirely in vanilla HTML, CSS, and JavaScript — no frameworks, no build step. It presents five scroll-snapped sections: an **About** hero with a polaroid photo, a **Skills & Education** panel, a **Work** timeline, a **Projects** grid with hover-to-play demo videos, and a **Contact** form that submits directly via Formspree.
 
-The design is clean and typographic — a floating pill nav, full-viewport section snapping, and a two-page projects carousel with arrow navigation. Every interactive detail (nav fade on projects, oval text highlights, wavy accent spans, tape-edged polaroid photo) is handled in pure CSS and vanilla JS.
+The design is clean and typographic — a floating pill nav, full-viewport section snapping, and a six-card projects grid. Every interactive detail (nav fade on projects, oval text highlights, wavy accent spans, tape-edged polaroid photo) is handled in pure CSS and vanilla JS.
 
 Live Application: https://mariarod.dev
 
@@ -43,11 +43,11 @@ https://github.com/user-attachments/assets/d6313315-247c-4da6-9715-f1dfe3cbe06e
 - **Education card**: Florida International University — B.A. Computer Science, Certificate in Cybersecurity Intelligence & Information Policy, GPA 3.72 Magna Cum Laude.
 - **Work timeline**: Vertical timeline with role, company, dates, and bullet points for each position.
 
-**Projects Carousel**
-- **Two-page carousel**: Arrow-navigated carousel showing 10 projects across two pages — page one in a 3-column grid, page two in a 2-column grid.
+**Projects Grid**
+- **Six-card grid**: Three large cards in a top row (`.projects-featured-col`) and three in a smaller row beneath (`.projects-small-grid`), followed by a "More on GitHub" link.
 - **Hover-to-play video previews**: Each card shows a static preview image at rest; hovering swaps in an autoplay looping demo video.
-- **Project cards**: Each card shows project name, one-line description, and action buttons (Repo / Live Demo).
-- **Smooth slide transition**: CSS `transform` + `transition` slide between pages with active-dot indicators.
+- **Project cards**: Each card shows project name, tech tags, a one-line description, and action buttons (Repo / Live Demo).
+- **Click-through cards**: Each card carries a `data-href` attribute — clicking anywhere on it opens the live demo. The same attribute keys the per-project CSS that tunes image cropping, so it must stay in sync with the Live Demo link.
 
 **Contact**
 - **Multi-step form**: Step 1 collects the message in a textarea; Step 2 asks for an email; Step 3 shows a confirmation — no page reload.
@@ -59,27 +59,23 @@ https://github.com/user-attachments/assets/d6313315-247c-4da6-9715-f1dfe3cbe06e
 - **Oval text highlights**: CSS `::before` pseudo-element draws a hand-drawn oval around key words.
 - **Wavy underline accent**: Decorative wavy `text-decoration` on headline emphasis spans.
 - **Polaroid photo**: CSS tape strips, box-shadow, and slight rotation on the hero photo.
-- **Responsive layout**: Clamp-based font sizing and flexible grids adapt from mobile to desktop. On viewports ≤ 600px: hero text and buttons are centered, CTA buttons collapse into a 2×2 grid, the projects carousel converts to a vertically stacked list, section snap-scrolling is disabled so long sections scroll freely, and overflow-causing styles (`white-space: nowrap`, absolute-positioned decorations) are reset.
+- **Responsive layout**: Clamp-based font sizing and flexible grids adapt from mobile to desktop. On viewports ≤ 600px: hero text and buttons are centered, CTA buttons collapse into a 2×2 grid, the projects grid converts to a vertically stacked list, section snap-scrolling is disabled so long sections scroll freely, and overflow-causing styles (`white-space: nowrap`, absolute-positioned decorations) are reset.
 - **Smooth scroll**: `scroll-behavior: smooth` and `IntersectionObserver`-driven nav highlighting.
 
 ---
 
 ## Featured Projects
 
-Projects showcased in the portfolio carousel:
+The six projects currently showcased in the portfolio grid:
 
 | Project | Stack | Description |
 |---------|-------|-------------|
-| [JETSET: Franchise Intelligence Dashboard](https://github.com/mariarodr1136/JETSET-Franchise-Intelligence) | Next.js · TypeScript · Tailwind · Prisma · SQLite · Recharts · Gemini AI · SSE | Full-stack internal analytics platform — SSE live alerts, interactive US map, sigmoid churn model (AUC 0.841), Gemini AI briefs, ⌘K FTS5 search, Kanban pipeline |
-| [Atmosphere: Real-Time AQI Monitor](https://github.com/mariarodr1136/AtmosphereAnalyzer) | Python · Django Channels · React · Redis · Docker · WebSockets | Live weather and AQI dashboard over WebSockets with z-score anomaly detection, Leaflet sensor map, activity heatmap, and CSV/PDF export |
-| [LeafMedic: Plant Disease Classifier](https://github.com/mariarodr1136/LeafMedic) | Python · TensorFlow · OpenCV · PyQt6 · Raspberry Pi | Edge AI system deploying TensorFlow Lite MobileNetV1 on Raspberry Pi — 90%+ accuracy across 16 disease classes |
-| [Nexus: Supply Chain Visualizer](https://github.com/mariarodr1136/SupplyChainVisualizer) | Java · Spring Boot · React · PostgreSQL · Docker | Full-stack logistics dashboard with 20+ REST endpoints, JWT auth, Dockerized deployment, Leaflet maps, and Chart.js visualizations |
-| [GenAI: Voice-Driven Mock Interviewer](https://github.com/mariarodr1136/GenAI-Technical-Interviewer) | React · Vite · Node.js · Groq API · Web Speech API · MediaRecorder | Voice-to-AI interview pipeline: Groq Whisper Large v3 transcription → Groq Qwen3.6 27B adaptive questions → browser TTS playback, with AI-generated debrief |
-| [VestLab: Micro-Investment Platform](https://github.com/mariarodr1136/MicroInvestmentPlatform) | React · Node.js · Express · MongoDB · Alpha Vantage API | MERN trading simulator with JWT auth, real-time stock data, Chart.js P&L tracking, and a competitive leaderboard |
-| [FraudWatch: Credit Card Fraud Detector](https://github.com/mariarodr1136/FraudDetectionSystem) | Python · Flask · scikit-learn · Plotly | Random Forest fraud detection pipeline (99.95% accuracy, 83.91% F1) with an interactive Plotly dashboard |
-| [Retro-Folio: Windows 95-Style Portfolio](https://github.com/mariarodr1136/Retro-Folio) | HTML · CSS · JavaScript · Node.js · Express · WebAssembly | Retro portfolio styled as a Windows 95 desktop — draggable windows, taskbar, Start menu, Clippy assistant, Minesweeper, Space Cadet Pinball (WASM), and Solitaire |
-| [Operation Roomba: Stealth Cleaning Game](https://github.com/mariarodr1136/OperationRoomba) | HTML5 Canvas · JavaScript · Web Audio API | Top-down stealth game — five procedurally generated rooms, noise meter, battery, combo multiplier, and fully synthesized audio |
-| [Raspberry Pi Lab: Hardware Projects](https://github.com/mariarodr1136/RaspberryPiLab) | Python · Raspberry Pi · GPIO | Curated Raspberry Pi hardware project collection — GPIO interfacing, sensor integration, ADC applications, and embedded Python prototypes |
+| [LeafMedic: Edge AI Plant Disease Detection System](https://github.com/mariarodr1136/LeafMedic) | Raspberry Pi · TensorFlow Lite · ONNX Runtime Web · OpenCV | Quantized MobileNet diagnosing 16 crop conditions on-device — the model runs in the browser, so photos never leave the user's machine |
+| [Nexus: Full-Stack Supply Chain Visualizer](https://github.com/mariarodr1136/SupplyChainVisualizer) | Spring Boot · React · PostgreSQL · JWT Auth · Docker | Full-stack supply chain platform with 40+ REST endpoints, JWT auth, Dockerized deployment, and Leaflet/Chart.js visualizations |
+| [Clay: Generative UI for Project Data](https://github.com/mariarodr1136/Clay) | Next.js 16 · Claude API · tRPC · Drizzle/Postgres · Clerk | A Claude agent that builds versioned, interactive dashboards from plain-English descriptions |
+| [Meridian: Franchise Retention Intelligence](https://github.com/mariarodr1136/Meridian-Franchise-Retention) | Next.js · Gemini 2.5 Flash · SSE · Prisma/SQLite · FTS5 Search | 20+ page ops platform — SSE live alerts, interactive US map, churn modeling, streaming Gemini briefs, and ⌘K FTS5 search |
+| [GenAI: Voice AI Mock Interviewer](https://github.com/mariarodr1136/GenAI-Technical-Interviewer) | Groq · Whisper Large v3 · Qwen3.6-27B · React · Node/Express | Voice-to-AI interview pipeline: Whisper transcription → adaptive Qwen questions → browser TTS playback, with an AI-generated debrief |
+| [Atmosphere-Analyzer: Real-Time AQI Monitor](https://github.com/mariarodr1136/AtmosphereAnalyzer) | Django Channels · Redis · WebSockets · Z-Score Detection | Live weather and AQI dashboard over WebSockets with z-score anomaly detection, Leaflet sensor map, and CSV/PDF export |
 
 ---
 
@@ -88,7 +84,7 @@ Projects showcased in the portfolio carousel:
 ### Frontend
 - **HTML5**: Single-page document structure with semantic sectioning and accessible landmark roles
 - **CSS3**: Custom properties, CSS Grid, Flexbox, scroll-snap, backdrop-filter, clamp-based responsive sizing, and `@keyframes` animations — no external CSS framework
-- **JavaScript (ES6+)**: Carousel logic, multi-step form, `IntersectionObserver`-based nav highlighting, scroll sync, and video hover swap
+- **JavaScript (ES6+)**: Multi-step form, `IntersectionObserver`-based nav highlighting, scroll sync, project card click-through, and video hover swap
 
 ### Fonts
 - **Hanken Grotesk**: Body and UI text
@@ -115,33 +111,27 @@ Portfolio/
 ├── index.html        # Entire site — styles, markup, and JavaScript in one file
 ├── Palisade.otf      # Custom display font
 ├── photo.jpg         # Hero photo
-├── resume.pdf        # Downloadable resume
+├── Maria Rodriguez - Online Resume.pdf   # Downloadable resume
 └── media/
-    ├── envelope.png
-    ├── laptop.png
-    ├── laptop-white.png
-    ├── phone.png
-    ├── star.png
+    ├── icons/        arrow.png, chart.png, envelope.png, laptop.png, star.png
     ├── atmosphere/   preview.png + preview.mp4
-    ├── fraudwatch/   preview.png + preview.mp4
+    ├── clay/         preview.png + preview.mp4
     ├── genai/        preview.png + preview.mp4
-    ├── jetset/       preview.png + preview.mp4
-    ├── leafmedic/    preview.png + preview.mp4
-    ├── vestlab/      preview.png + preview.mp4
-    ├── nexus/        preview.png + preview.mp4
-    ├── operationroomba/ preview.png + preview.mp4
-    ├── raspberrypilab/  preview.png + preview.mp4
-    └── retrofolio/   preview.png + preview.mp4
+    ├── leafmedic/    preview.png + preview.webp + preview.mp4
+    ├── meridian/     preview.png + preview.mp4
+    └── nexus/        preview.png + preview.mp4
 ```
 
+Each project folder holds a `preview.png` poster and a `preview.mp4` shown on hover. Videos are encoded 1920px-wide, 30fps, H.264 with `+faststart`, audio stripped.
+
 Key sections inside `index.html`:
-- **`<style>`** — all CSS including variables, nav, hero, experience, carousel, contact, and utility classes
+- **`<style>`** — all CSS including variables, nav, hero, experience, projects grid, contact, and utility classes
 - **`#who`** — hero section with photo, name, tagline, and CTA buttons
 - **`#do`** — skills grid and education card
 - **`#work`** — work experience timeline
-- **`#made`** — two-page project carousel with hover video logic
+- **`#made`** — six-card project grid with hover video logic
 - **`#contact`** — three-state contact form wired to Formspree
-- **`<script>`** — carousel navigation, scroll-snap sync, `IntersectionObserver` nav highlighting, form state machine, video hover swap
+- **`<script>`** — scroll-snap sync, `IntersectionObserver` nav highlighting, form state machine, card click-through, video hover swap
 
 ---
 
@@ -163,6 +153,8 @@ python3 -m http.server 3000
 ```
 Visit: http://localhost:3000
 
+> **Note:** `python3 -m http.server` does not implement HTTP Range requests, which browsers require for `<video>`. The page loads fine, but the hover-to-play previews will not start. Use a Range-capable server (e.g. `npx serve`) to test them.
+
 ## Requirements
 - Any modern browser (Chrome, Firefox, Safari, Edge)
 - No Node.js, no build tools, no dependencies
@@ -171,7 +163,7 @@ Visit: http://localhost:3000
 
 ## Inspiration
 
-This portfolio is designed around the idea that simplicity and restraint are a skill — that a clean, well-paced single page can communicate more than a feature-heavy one. The typographic choices (editorial serif headings, neutral grotesque body text, handwritten accents) create a visual hierarchy that guides the reader through who I am, what I've built, and how to reach me. The scroll-snapping layout draws from full-screen editorial design: each section gets your full attention before you move on. The projects carousel with hover-to-play video previews was an intentional choice to let the work speak for itself without requiring a click or a new tab.
+This portfolio is designed around the idea that simplicity and restraint are a skill — that a clean, well-paced single page can communicate more than a feature-heavy one. The typographic choices (editorial serif headings, neutral grotesque body text, handwritten accents) create a visual hierarchy that guides the reader through who I am, what I've built, and how to reach me. The scroll-snapping layout draws from full-screen editorial design: each section gets your full attention before you move on. The projects grid with hover-to-play video previews was an intentional choice to let the work speak for itself without requiring a click or a new tab.
 
 ---
 
