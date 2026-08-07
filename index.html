@@ -1017,11 +1017,16 @@
     .btn-proj:hover { background: var(--text); color: #fff; border-color: var(--text); text-decoration: none; }
 
     .proj-note {
-      position: absolute;
-      top: 3.5rem;
-      right: clamp(10rem, 21vw, 22rem);
-      width: 2.4rem;
-      height: 2.4rem;
+      /* Sits inline at the end of the headline so it tracks the text at any
+         screen size. Sized in em so it scales with the headline font-size. */
+      display: inline-block;
+      position: relative;
+      top: -0.34em;
+      width: 1.35em;
+      height: 1.35em;
+      margin-left: -0.48em;
+      margin-right: -0.87em;
+      vertical-align: baseline;
       object-fit: contain;
       pointer-events: none;
       transform: rotate(-8deg);
@@ -1580,8 +1585,7 @@
 
     <!-- ── III · MADE ── -->
     <section id="made">
-      <h2 class="section-head"><span class="oval-highlight">Architected</span>, developed, and <span class="do-headline-accent wavy">shipped 100% independently</span></h2>
-      <img class="proj-note" src="media/icons/star.png" alt="star" />
+      <h2 class="section-head"><span class="oval-highlight">Architected</span>, developed, and <span class="do-headline-accent wavy">shipped 100% independently</span><img class="proj-note" src="media/icons/star.png" alt="" /></h2>
 
       <div class="projects-container">
       <div class="projects">
