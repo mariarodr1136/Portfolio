@@ -73,7 +73,7 @@ The six projects currently showcased in the portfolio grid:
 | [LeafMedic: Edge AI Plant Disease Detection System](https://github.com/mariarodr1136/LeafMedic) | Raspberry Pi · TensorFlow Lite · ONNX Runtime Web · OpenCV | Quantized MobileNet diagnosing 16 crop conditions on-device — the model runs in the browser, so photos never leave the user's machine |
 | [Nexus: Full-Stack Supply Chain Visualizer](https://github.com/mariarodr1136/SupplyChainVisualizer) | Spring Boot · React · PostgreSQL · JWT Auth · Docker | Full-stack supply chain platform with 40+ REST endpoints, JWT auth, Dockerized deployment, and Leaflet/Chart.js visualizations |
 | [Clay: Generative UI for Project Data](https://github.com/mariarodr1136/Clay) | Next.js 16 · Claude API · tRPC · Drizzle/Postgres · Clerk | A Claude agent that builds versioned, interactive dashboards from plain-English descriptions |
-| [Meridian: Franchise Retention Intelligence](https://github.com/mariarodr1136/Meridian-Franchise-Retention) | Next.js · Gemini 2.5 Flash · SSE · Prisma/SQLite · FTS5 Search | 20+ page ops platform — SSE live alerts, interactive US map, churn modeling, streaming Gemini briefs, and ⌘K FTS5 search |
+| [JETSET: Franchise Retention Intelligence](https://meridian-retention-intelligence.vercel.app/) | Next.js · Gemini 2.5 Flash · SSE · Prisma/SQLite · FTS5 Search | 20+ page ops platform — SSE live alerts, interactive US map, churn modeling, streaming Gemini briefs, and ⌘K FTS5 search |
 | [GenAI: Voice AI Mock Interviewer](https://github.com/mariarodr1136/GenAI-Technical-Interviewer) | Groq · Whisper Large v3 · Qwen3.6-27B · React · Node/Express | Voice-to-AI interview pipeline: Whisper transcription → adaptive Qwen questions → browser TTS playback, with an AI-generated debrief |
 | [Atmosphere-Analyzer: Real-Time AQI Monitor](https://github.com/mariarodr1136/AtmosphereAnalyzer) | Django Channels · Redis · WebSockets · Z-Score Detection | Live weather and AQI dashboard over WebSockets with z-score anomaly detection, Leaflet sensor map, and CSV/PDF export |
 
@@ -118,7 +118,7 @@ Portfolio/
     ├── clay/         preview.png + preview.mp4
     ├── genai/        preview.png + preview.mp4
     ├── leafmedic/    preview.png + preview.webp + preview.mp4
-    ├── meridian/     preview.png + preview.mp4
+    ├── jetset/       preview.png + preview.mp4
     └── nexus/        preview.png + preview.mp4
 ```
 
