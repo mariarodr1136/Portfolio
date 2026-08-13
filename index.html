@@ -927,6 +927,11 @@
       opacity: 0;
       transition: opacity .35s ease;
       z-index: 2;
+      /* Overhang a hair: the box height lands on a fractional device pixel, and
+         the video's compositing layer rounds differently than the poster <img>
+         beneath it, letting a sliver of the poster show along the bottom edge.
+         The overflow is clipped by .project-img, so nothing else changes. */
+      height: calc(100% + 1px);
     }
 
     .project-item:hover .project-img video {
