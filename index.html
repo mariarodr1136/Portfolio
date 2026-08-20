@@ -328,8 +328,8 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding-top: 2.5rem;
-      padding-bottom: 1.2rem;
+      padding-top: 2.4rem;
+      padding-bottom: .2rem;
       padding-left: clamp(1.5rem, 4vw, 3rem);
       padding-right: clamp(1.5rem, 4vw, 3rem);
       max-width: 100%;
@@ -347,7 +347,7 @@
       grid-template-columns: 1fr 1fr;
       gap: 1rem;
       align-items: stretch;
-      margin-top: .5rem;
+      margin-top: .7rem;
     }
 
     .do-top-row .do-left,
@@ -359,7 +359,8 @@
 
     .exp-laptop {
       position: absolute;
-      top: -7.5rem;
+      z-index: 3;
+      top: -7.1rem;
       right: 7rem;
       width: 4rem;
       height: 4rem;
@@ -371,7 +372,8 @@
 
     .exp-aside {
       position: absolute;
-      top: -4.1rem;
+      z-index: 3;
+      top: -3.9rem;
       right: 1.5rem;
       font-family: Caveat, cursive;
       font-size: 25px;
@@ -382,14 +384,14 @@
       background-repeat: no-repeat;
       background-position: bottom;
       background-size: 100% 30px;
-      padding-bottom: 24px;
+      padding-bottom: 22px;
     }
 
     .do-right {
       width: 100%;
       background: #fdfcfa;
       border-radius: 6px;
-      padding: .6rem 1rem .5rem;
+      padding: .45rem 1rem .35rem;
       border: 1px solid #eeebe6;
       border-bottom: 2px solid #eeebe6;
       position: relative;
@@ -422,8 +424,8 @@
       line-height: 1.08;
       color: var(--text);
       text-align: left;
-      margin: 0 0 .8rem;
-      padding: .9rem 0;
+      margin: 0 0 .4rem;
+      padding: .15rem 0;
     }
 
     .do-headline-accent {
@@ -504,8 +506,8 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding-top: 0;
-      padding-bottom: 1.5rem;
+      padding-top: .7rem;
+      padding-bottom: .2rem;
       padding-left: clamp(1.5rem, 4vw, 3rem);
       padding-right: clamp(1.5rem, 4vw, 3rem);
       max-width: 100%;
@@ -622,7 +624,7 @@
 
     .tl-item {
       position: relative;
-      padding: .35rem 0;
+      padding: .2rem 0;
     }
 
     .tl-item:not(:last-child)::after {
@@ -631,7 +633,7 @@
       height: 1px;
       background: #eeebe6;
       opacity: 1;
-      margin-top: .8rem;
+      margin-top: .5rem;
     }
 
     .tl-meta {
@@ -639,7 +641,7 @@
       grid-template-columns: 1fr auto;
       align-items: baseline;
       gap: 0 1.5rem;
-      margin-bottom: .35rem;
+      margin-bottom: .25rem;
     }
 
     .tl-title-row {
@@ -685,10 +687,10 @@
       padding-left: 0;
       font-size: .82rem;
       color: #1d1d1f;
-      line-height: 1.65;
+      line-height: 1.55;
       display: flex;
       flex-direction: column;
-      gap: .3rem;
+      gap: .22rem;
     }
 
     .tl-bullets li { padding-left: .8rem; position: relative; }
@@ -1585,13 +1587,25 @@
 
           <div class="tl-item">
             <div class="tl-meta">
-              <div class="tl-title-row"><span class="tl-role">Full-Stack Web Developer</span><span class="tl-sep"> — </span><span class="tl-company">Style Link Miami | Hannah Bella Collections</span></div>
-              <div class="tl-date">July 2018 – November 2020</div>
+              <div class="tl-title-row"><span class="tl-role">Full-Stack Developer: Web, E-Commerce, &amp; Digital Platforms</span><span class="tl-sep"> — </span><span class="tl-company">Style Link Miami</span></div>
+              <div class="tl-date">January 2019 – November 2020</div>
             </div>
             <ul class="tl-bullets">
-              <li>Launched brand's first Shopify storefront &mdash; checkout, payments, shipping, and store settings end-to-end</li>
-              <li>Developed product catalogs and collection pages in custom, mobile-friendly HTML/CSS</li>
-              <li>Configured third-party Shopify apps and set up site-wide SEO metadata</li>
+              <li>Led an end-to-end overhaul of the brand's storefront, re-engineering the core theme and UI navigation schemas to modernize the customer experience</li>
+              <li>Restructured collection architecture and shipped continuous frontend releases that sharpened product discovery across the full catalog</li>
+              <li>Owned daily digital commerce operations, deploying live site changes, product listings, and content updates with zero customer-facing downtime</li>
+            </ul>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-meta">
+              <div class="tl-title-row"><span class="tl-role">Web Developer &amp; Digital Commerce Intern</span><span class="tl-sep"> — </span><span class="tl-company">Hannah Bella Collections</span></div>
+              <div class="tl-date">July 2018 – December 2018</div>
+            </div>
+            <ul class="tl-bullets">
+              <li>Architected and launched the brand's first e-commerce platform from the ground up, establishing its online retail channel</li>
+              <li>Engineered custom HTML and CSS layouts to deliver a fully responsive, mobile-optimized storefront</li>
+              <li>Configured end-to-end commerce infrastructure &mdash; payment gateways, shipping logistics, dynamic product catalogs, and checkout workflows supporting full-cycle online orders</li>
             </ul>
           </div>
 
