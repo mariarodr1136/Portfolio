@@ -819,9 +819,16 @@
       padding: .25rem .6rem;
     }
 
-    .project-item[data-href="https://supply-chain-visualizer.onrender.com/"] .project-img img,
-    .project-item[data-href="https://supply-chain-visualizer.onrender.com/"] .project-img video {
+    .project-item[data-href="https://supply-chain-visualizer.onrender.com/"] .project-img img {
       object-position: center top;
+      transform: scale(1);
+    }
+
+    /* The reel is 16:9 inside a 2:1 box, so 120px of its height is always cropped.
+       Anchoring at the top clipped the last row of the dashboard tables; centering
+       splits the loss between the top chrome strip and the bottom instead. */
+    .project-item[data-href="https://supply-chain-visualizer.onrender.com/"] .project-img video {
+      object-position: center 50%;
       transform: scale(1);
     }
 
