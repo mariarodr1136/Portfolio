@@ -10,7 +10,7 @@ Live Application: https://mariarod.dev
 
 ---
 
-https://github.com/user-attachments/assets/d6313315-247c-4da6-9715-f1dfe3cbe06e
+https://github.com/user-attachments/assets/b13fc373-d305-4129-a54e-40c378fc61f9
 
 ---
 
