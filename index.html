@@ -179,6 +179,26 @@
       outline: 1px solid rgba(0,0,0,.06);
     }
 
+    .photo-caption {
+      /* Sits inside the polaroid's 44px bottom border, right-aligned to the
+         photo edge (the frame's 16px side border). Same Caveat hand as
+         .exp-aside, sized down to sit comfortably in the band. */
+      position: absolute;
+      right: 16px;
+      bottom: 5px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      z-index: 2;
+      font-family: Caveat, cursive;
+      font-size: 19px;
+      line-height: 1;
+      color: var(--teal);
+      transform: rotate(-1.5deg);
+      white-space: nowrap;
+      pointer-events: none;
+    }
+
     @media (max-width: 600px) {
       .hero-layout { flex-direction: column-reverse; align-items: flex-start; gap: 1.5rem; }
     }
@@ -1499,6 +1519,7 @@
         <div class="polaroid-wrap">
           <span class="tape-br"></span>
           <img class="hero-photo" src="photo.jpg" alt="Maria Rodriguez" />
+          <span class="photo-caption">— that's me</span>
         </div>
       </div>
       <div class="section-arrow">
