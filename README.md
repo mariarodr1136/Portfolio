@@ -114,15 +114,15 @@ Portfolio/
 ├── Maria Rodriguez - Online Resume.pdf   # Downloadable resume
 └── media/
     ├── icons/        arrow.png, chart.png, envelope.png, laptop.png, star.png
-    ├── atmosphere/   preview.png + preview.mp4
-    ├── clay/         preview.png + preview.mp4
-    ├── genai/        preview.png + preview.mp4
-    ├── leafmedic/    preview.png + preview.webp + preview.mp4
-    ├── jetset/       preview.png + preview.mp4
-    └── nexus/        preview.png + preview.mp4
+    ├── atmosphere/   preview.webp + preview.jpg + preview.mp4
+    ├── clay/         preview.webp + preview.jpg + preview.mp4
+    ├── genai/        preview.webp + preview.jpg + preview.mp4
+    ├── leafmedic/    preview.webp + preview.jpg + preview.mp4
+    ├── jetset/       preview.webp + preview.jpg + preview.mp4
+    └── nexus/        preview.webp + preview.jpg + preview.mp4
 ```
 
-Each project folder holds a `preview.png` poster and a `preview.mp4` shown on hover. Videos are encoded 1920px-wide, 30fps, H.264 with `+faststart`, audio stripped.
+Each project folder holds a `preview.webp` poster (1400px wide, q82) with a `preview.jpg` fallback for browsers without WebP, plus a `preview.mp4` shown on hover. Posters are served via `<picture>`; videos carry `preload="none"` so they are fetched only on hover. Videos are encoded 1280px-wide, H.264 CRF 30 with `+faststart`, audio stripped.
 
 Key sections inside `index.html`:
 - **`<style>`** — all CSS including variables, nav, hero, experience, projects grid, contact, and utility classes
